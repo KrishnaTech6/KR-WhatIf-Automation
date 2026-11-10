@@ -1,0 +1,81 @@
+name: voiceover
+
+# Claude commits runs/<slug>/voice/config.json, then starts this workflow.
+# It runs the Chatterbox notebook on Kaggle's free GPU and returns the audio
+# as the artifact "audio-<slug>" (final/*.wav, parts/, report.json, log.txt).
+on:
+  workflow_dispatch:
+    inputs:
+      slug:
+        description: "run folder name under runs/"
+        required: true
+      only:
+        description: 'redo run, e.g. {"main":[5]}  (empty = all beats)'
+        required: false
+        default: ""
+
+concurrency:
+  group: kaggle-voiceover      # one Kaggle GPU run at a time
+  cancel-in-progress: false
+
+jobs:
+  voice:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    env:
+      KAGGLE_USERNAME: ${{ vars.KAGGLE_USERNAME || secrets.KAGGLE_USERNAME }}
+      SLUG: ${{ inputs.slug }}
+      ONLY: ${{ inputs.only }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Kaggle login
+        env:
+          T: ${{ secrets.KAGGLE_API_TOKEN }}
+          K: ${{ secrets.KAGGLE_KEY }}
+        run: |
+          if [ -n "$T" ]; then echo "KAGGLE_API_TOKEN=$T" >> "$GITHUB_ENV"
+          elif [ -n "$K" ]; then echo "KAGGLE_KEY=$K" >> "$GITHUB_ENV"
+          else echo "::error::add the KAGGLE_API_TOKEN secret"; exit 1; fi
+      - name: Install tools
+        run: pip install -q kaggle numpy soundfile
+      - name: Build kernel
+        run: |
+          cfg=runs/$SLUG/voice/config.json
+          if [ -n "$ONLY" ]; then
+            python -c "import json,os,sys; c=json.load(open('$cfg')); c['only']=json.loads(os.environ['ONLY']); json.dump(c,open('/tmp/config.json','w'))"
+          else
+            cp "$cfg" /tmp/config.json
+          fi
+          python kaggle/build_kernel.py /tmp/config.json lexicon.json build "$KAGGLE_USERNAME"
+      - name: Push to Kaggle (T4 GPU)
+        run: kaggle kernels push -p build --accelerator NvidiaTeslaT4
+      - name: Wait for the run
+        run: |
+          id="$KAGGLE_USERNAME/kr-voiceover"
+          sleep 60
+          for i in $(seq 1 280); do
+            s=$(kaggle kernels status "$id" 2>&1 | tr 'A-Z' 'a-z')
+            echo "$(date -u +%H:%M) $s"
+            case "$s" in
+              *complete*) exit 0 ;;
+              *error*|*cancel*) echo "::error::Kaggle run failed: $s"; exit 1 ;;
+            esac
+            sleep 60
+          done
+          echo "::error::Kaggle run did not finish in time"; exit 1
+      - name: Download output
+        if: always()
+        run: |
+          mkdir -p out
+          kaggle kernels output "$KAGGLE_USERNAME/kr-voiceover" -p out || true
+          ls -R out | head -50
+          test -f out/report.json && cat out/report.json | head -80 || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: audio-${{ inputs.slug }}
+          path: out/
+          retention-days: 14

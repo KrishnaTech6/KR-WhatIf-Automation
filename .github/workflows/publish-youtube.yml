@@ -1,0 +1,49 @@
+name: publish-youtube
+
+# Claude creates a GitHub Release tagged <slug> holding MAIN.mp4, SHORT.mp4, REEL.mp4,
+# the thumbnail(s) and upload.json, then starts this workflow. The result is committed
+# to runs/<slug>/published.json (links, and whether YouTube locked the uploads private).
+on:
+  workflow_dispatch:
+    inputs:
+      slug:
+        description: "release tag = run folder name"
+        required: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-${{ inputs.slug }}
+  cancel-in-progress: false
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      SLUG: ${{ inputs.slug }}
+      GH_TOKEN: ${{ github.token }}
+      YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+      YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+      YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q google-api-python-client google-auth
+      - name: Get release files
+        run: gh release download "$SLUG" -D assets
+      - name: Upload to YouTube
+        run: python scripts/youtube_upload.py assets/upload.json assets "runs/$SLUG/published.json"
+      - name: Save links
+        if: always()
+        run: |
+          test -f "runs/$SLUG/published.json" || exit 0
+          cat "runs/$SLUG/published.json"
+          git config user.name "kr-autopilot"
+          git config user.email "actions@users.noreply.github.com"
+          git add "runs/$SLUG/published.json"
+          git commit -m "published: $SLUG" || exit 0
+          git pull --rebase -q && git push -q

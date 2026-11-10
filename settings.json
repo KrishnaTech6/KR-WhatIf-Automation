@@ -1,0 +1,17 @@
+{
+ "_help": "Pipeline switches. Claude reads this at the start of every run.",
+ "youtube_upload": "manual",
+ "_youtube_upload": "manual = you upload the YouTube files yourself (until the API audit passes); api = GitHub Actions uploads",
+ "dry_runs_left": 2,
+ "_dry_runs_left": "runs that make everything but publish nothing; counts down to 0",
+ "ab_test": "native",
+ "_ab_test": "native = 3 title+thumbnail pairs sent to you for YouTube Studio Test & Compare; rotation = not built yet",
+ "publish": "on_finish",
+ "_publish": "on_finish, or a fixed IST time like 18:00 (needs youtube_upload = api)",
+ "default_language": "en",
+ "synthetic_label": false,
+ "min_days_between_videos": 2,
+ "github_user": "",
+ "kaggle_user": "",
+ "instagram_account_id": ""
+}

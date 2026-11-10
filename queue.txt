@@ -1,0 +1,3 @@
+# Topics you want next. The first line that isn't a comment is used, then removed.
+# Format:  Title | options      options (all optional): Hinglish, English, memes, global, india
+# Example: What If Mumbai Had No Monsoon? | Hinglish | memes

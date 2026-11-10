@@ -1,0 +1,23 @@
+{
+ "_help": "Pronunciation fixes. word (lowercase) -> spellings tried in order. Put the normal spelling first when it might already work; Claude moves the spelling that passed to the front.",
+ "bhopal": [
+  "Bhopal",
+  "Bho-paal"
+ ],
+ "chanda mama": [
+  "Chanda Mama",
+  "Chunda Maama"
+ ],
+ "jugaad": [
+  "jugaad",
+  "joo-gaad"
+ ],
+ "karva chauth": [
+  "Karva Chauth",
+  "Kurva Chowth"
+ ],
+ "purnima": [
+  "Purnima",
+  "Poor-nima"
+ ]
+}

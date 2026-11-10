@@ -1,0 +1,35 @@
+name: keepalive
+
+# Weekly check that the YouTube and Kaggle logins still work.
+# If either fails, GitHub emails you, so you hear about it before a video run does.
+on:
+  schedule:
+    - cron: "17 4 * * 1"     # Mondays 09:47 IST
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    env:
+      YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+      YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+      YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+      KAGGLE_USERNAME: ${{ vars.KAGGLE_USERNAME || secrets.KAGGLE_USERNAME }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Kaggle login
+        env:
+          T: ${{ secrets.KAGGLE_API_TOKEN }}
+          K: ${{ secrets.KAGGLE_KEY }}
+        run: |
+          if [ -n "$T" ]; then echo "KAGGLE_API_TOKEN=$T" >> "$GITHUB_ENV"
+          elif [ -n "$K" ]; then echo "KAGGLE_KEY=$K" >> "$GITHUB_ENV"
+          else echo "::error::add the KAGGLE_API_TOKEN secret"; exit 1; fi
+      - run: pip install -q google-api-python-client google-auth kaggle
+      - name: YouTube login
+        run: python scripts/youtube_upload.py --check
+      - name: Kaggle check
+        run: kaggle kernels list --mine --page-size 1

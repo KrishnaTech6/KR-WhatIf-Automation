@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+build/
+out/
+assets/
+runs/*/audio/
+runs/*/render/
+*.mp4
+*.wav
+client_secret*.json
