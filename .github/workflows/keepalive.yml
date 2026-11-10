@@ -35,3 +35,5 @@ jobs:
         run: python scripts/youtube_upload.py --check
       - name: Kaggle check
         run: kaggle kernels list --mine --page-size 1
+      - name: Voice samples dataset
+        run: kaggle datasets files "$KAGGLE_USERNAME/kr-voice-samples"
