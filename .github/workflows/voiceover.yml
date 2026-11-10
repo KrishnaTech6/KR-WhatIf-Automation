@@ -40,7 +40,7 @@ jobs:
           elif [ -n "$K" ]; then echo "KAGGLE_KEY=$K" >> "$GITHUB_ENV"
           else echo "::error::add the KAGGLE_API_TOKEN secret"; exit 1; fi
       - name: Install tools
-        run: pip install -q kaggle numpy soundfile
+        run: pip install -q kaggle six numpy soundfile
       - name: Build kernel
         run: |
           cfg=runs/$SLUG/voice/config.json

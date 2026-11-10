@@ -28,7 +28,7 @@ jobs:
           if [ -n "$T" ]; then echo "KAGGLE_API_TOKEN=$T" >> "$GITHUB_ENV"
           elif [ -n "$K" ]; then echo "KAGGLE_KEY=$K" >> "$GITHUB_ENV"
           else echo "::error::add the KAGGLE_API_TOKEN secret"; exit 1; fi
-      - run: pip install -q google-api-python-client google-auth kaggle
+      - run: pip install -q google-api-python-client google-auth kaggle six  # kaggle forgets to declare six
       - name: YouTube login
         run: python scripts/youtube_upload.py --check
       - name: Kaggle check
