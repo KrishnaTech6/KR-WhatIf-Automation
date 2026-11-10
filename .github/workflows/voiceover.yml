@@ -37,7 +37,9 @@ jobs:
           K: ${{ secrets.KAGGLE_KEY }}
         run: |
           if [ -n "$T" ]; then echo "KAGGLE_API_TOKEN=$T" >> "$GITHUB_ENV"
-          elif [ -n "$K" ]; then echo "KAGGLE_KEY=$K" >> "$GITHUB_ENV"
+          elif [ "${K#KGAT_}" != "$K" ]; then echo "KAGGLE_API_TOKEN=$K" >> "$GITHUB_ENV"
+          # new kaggle CLI ignores KAGGLE_KEY env; legacy keys only work from kaggle.json
+          elif [ -n "$K" ]; then mkdir -p ~/.kaggle && umask 077 && printf '{"username":"%s","key":"%s"}' "$KAGGLE_USERNAME" "$K" > ~/.kaggle/kaggle.json
           else echo "::error::add the KAGGLE_API_TOKEN secret"; exit 1; fi
       - name: Install tools
         run: pip install -q kaggle six numpy soundfile
