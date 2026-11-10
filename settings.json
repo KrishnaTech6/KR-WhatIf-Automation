@@ -1,6 +1,6 @@
 {
  "_help": "Pipeline switches. Claude reads this at the start of every run.",
- "youtube_upload": "manual",
+ "youtube_upload": "api",
  "_youtube_upload": "manual = you upload the YouTube files yourself (until the API audit passes); api = GitHub Actions uploads",
  "dry_runs_left": 2,
  "_dry_runs_left": "runs that make everything but publish nothing; counts down to 0",
