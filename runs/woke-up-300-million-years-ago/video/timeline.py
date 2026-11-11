@@ -22,6 +22,7 @@ def _parse(path):
         toks = []
         for l in lines:
             l = re.sub(r"\{\w+\}", "", l)
+            l = re.sub(r"\(pause\s+[\d.]+\)", "", l)
             for tok in re.findall(r"\(beat\)|[^\s]+", l):
                 toks.append(tok)
         out.append(toks)

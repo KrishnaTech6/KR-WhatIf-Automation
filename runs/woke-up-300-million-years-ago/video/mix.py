@@ -110,6 +110,14 @@ def master(voice, mus, fx, amb, sections, total, fade=1.8):
     g = np.minimum(g, np.minimum(1, c / np.maximum(pk, 1e-9)) + 0.0)
     mix = mix * g
     c2 = db(-2.0)                                   # final soft ceiling (AAC adds ~1 dB of overs)
+    from scipy.signal import resample_poly           # true-peak control: soften and lowpass the hot spots
+    mix = sosfilt(butter(4, 16000, 'low', fs=SR, output='sos'), mix)
+    for _ in range(3):
+        tp = np.abs(resample_poly(mix, 4, 1))
+        tpk = maximum_filter1d(tp.reshape(-1, 4).max(1)[:len(mix)], int(0.01 * SR))
+        g2 = np.minimum(1, db(-2.2) / np.maximum(tpk, 1e-9))
+        g2 = np.convolve(g2, np.ones(int(0.01 * SR)) / int(0.01 * SR), 'same')
+        mix = mix * np.minimum(g2, 1)
     mix = np.where(np.abs(mix) > c2 * 0.7, np.sign(mix) * (c2 * 0.7 + c2 * 0.3 * np.tanh((np.abs(mix) - c2 * 0.7) / (c2 * 0.3))), mix)
     fl = int(fade * SR); mix[-fl:] *= np.linspace(1, 0, fl)
     return mix.astype(np.float32), dict(v=v, m=m, f=f, a=a)

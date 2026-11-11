@@ -58,8 +58,9 @@ def main(job):
     out = os.path.join(HERE, "out"); os.makedirs(out, exist_ok=True)
     n = int(total * FPS)
     K = 4
+    audio_only = os.environ.get("AUDIO_ONLY") == "1"
     bounds = [(n * k // K, n * (k + 1) // K) for k in range(K)]
-    procs = [subprocess.Popen([sys.executable, __file__, "chunk", job, str(a), str(b), f"{out}/{job}_{k}.mp4"])
+    procs = [] if audio_only else [subprocess.Popen([sys.executable, __file__, "chunk", job, str(a), str(b), f"{out}/{job}_{k}.mp4"])
              for k, (a, b) in enumerate(bounds)]
     # audio while frames render
     wav = os.path.join(RUN, "audio", "final", f"{job}_edit.wav")

@@ -16,7 +16,7 @@ def parse_lines(job):
     for l in body.splitlines():
         if not l.strip() or l.startswith("["):
             continue
-        l = re.sub(r"\{\w+\}", "", l).strip()
+        l = re.sub(r"\{\w+\}|\(pause\s+[\d.]+\)", "", l).strip()
         lines.append(l)
     return lines
 
@@ -151,7 +151,7 @@ def plan_short(vt):
     w = vt.T
     return [
         (0.0, lambda d: 3.2 + d, 960, 1.25),
-        (w("its"), lambda d: MT("hook", "wings") + 1.0 + d, 1160, 1.15),
+        (w("its"), lambda d: MT("hook", "wings") + 1.0 + d, 1060, 0.9),
         (w("you", 1), lambda d: MT("promise", "three") + 0.6 + d * 1.5, 960, 0.75),
         (w("no"), lambda d: MT("hour1", "dinosaurs") + 0.6 + d, 1000, 1.2),
         (w("look"), lambda d: MT("hour3", "millipede") + 0.6 + d * 1.4, 900, 1.1),
@@ -178,8 +178,8 @@ def plan_reel(vt):
         (w("proof"), lambda d: MT("year", "odisha") - 0.5 + d, 1000, 1.1),
         (w("big"), lambda d: MT("year", "boulders") + 0.2 + d, 960, 1.15),
         (w("meanwhile"), lambda d: MT("hour1", "tall") + d, 1000, 1.15),
-        (w("dragonflies"), lambda d: MT("hook", "wings") + 1.0 + d, 1160, 1.15),
-        (w("later"), lambda d: MT("hour1", "spot") + d, 960, 1.2),
+        (w("dragonflies"), lambda d: MT("hook", "wings") + 1.0 + d, 1060, 0.9),
+        (w("later"), lambda d: MT("hour1", "spot") + d, 960, 0.95),
         (w("probably"), lambda d: MT("payoff", "so", 1) + 0.2 + d * 0.4, 1000, 1.15),
         (w("full"), lambda d: E_END + 0.8 + d, 960, 1.0),
         (w("because"), lambda d: MT("year", "frozen") + 0.4 + d * 0.3, 1440, 1.25),
@@ -199,7 +199,7 @@ def frame(c, job, vt, plan, t):
     img = main_frame(max(0.0, fn(t - st)))
     reframe(c, img, cx, 540, z)
     # top text: hook from frame 0, then a small persistent label
-    if t < plan[1][0]:
+    if t < plan[1][0] - 0.25:
         hook_text(c, HOOK[job], 1.0 if t < 0.05 else span(t, 0, 0.25) * 0 + 1.0, 130, 80, "gold")
         text(c, SUB[job], VW / 2, 215, font("bold", 40), paint("cream", 0.9))
     else:

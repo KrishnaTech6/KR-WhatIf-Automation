@@ -48,8 +48,8 @@ Night one.
 Clouds roll in. (beat)
 Lightning hits a tree.
 Now, remember the extra oxygen?
-In our world, wet leaves just smoke. Here, even damp plants can keep burning.
-The fire doesn't walk. It runs.
+In our world, wet leaves just smoke. Here, even damp plants can keep burning. (pause 0.3)
+The fire doesn't walk. It runs. (pause 0.3)
 And we know this really happened. Coal from this time is full of tiny bits of burnt wood. Fires came back... again and again.
 {tense} So the danger here was never the bugs. It's the air itself.
 
@@ -70,9 +70,9 @@ Maybe the tiny fungi that eat wood hadn't figured it out yet. Maybe the swamps w
 Either way, all that buried wood is what pumped this air full of oxygen.
 
 [Payoff - your light switch | soft]
-And later, India's own forests went through the same thing. They became India's coal.
+And later, India's own forests went through the same thing. They became India's coal. (pause 0.3)
 Today, about three out of every four units of India's electricity come from burning coal.
-So that forest that almost burned you this morning? (beat) It's in your light switch.
+So that forest that almost burned you this morning? (beat) It's in your light switch. (pause 0.3)
 And every time we burn it, the carbon those trees locked away goes right back into the sky. That's happening right now.
 {warm} If you could bring one thing back from that world, what would you pick? Tell me below.
 You wake up. Your own room. The fan is spinning... running on a forest three hundred million years old.
