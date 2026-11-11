@@ -1,0 +1,69 @@
+name: verify-youtube
+
+# Scheduled uploads are private on purpose until their release time, so a video that YouTube
+# locked (Google project hasn't passed the API audit) looks normal at upload. This checks each
+# video ~1 h after the 9 PM release: still private = locked. Then it switches settings.json to
+# "manual" (the next run hands you the files instead) and fails, so GitHub emails you.
+on:
+  schedule:
+    - cron: "40 16 * * *"     # 22:10 IST daily
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: verify-youtube
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    env:
+      YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+      YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+      YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q google-api-python-client google-auth
+      - name: Check every published video
+        id: check
+        run: |
+          locked=0; errors=0
+          for f in runs/*/published.json; do
+            [ -f "$f" ] || continue
+            echo "== $f"
+            rc=0; python scripts/youtube_upload.py --verify "$f" || rc=$?
+            if [ "$rc" = 3 ]; then locked=1; elif [ "$rc" != 0 ]; then errors=1; fi
+          done
+          echo "locked=$locked" >> "$GITHUB_OUTPUT"
+          echo "errors=$errors" >> "$GITHUB_OUTPUT"
+      - name: Switch to manual upload if locked
+        if: steps.check.outputs.locked == '1'
+        run: |
+          python - <<'EOF'
+          import json
+          s = json.load(open("settings.json"))
+          s["youtube_upload"] = "manual"
+          json.dump(s, open("settings.json", "w"), indent=1, ensure_ascii=False)
+          EOF
+      - name: Save results
+        run: |
+          git config user.name "kr-autopilot"
+          git config user.email "actions@users.noreply.github.com"
+          git add runs settings.json
+          git commit -m "verify-youtube: $(date -u +%F)" || exit 0
+          git pull --rebase -q && git push -q
+      - name: Fail if locked or broken
+        if: steps.check.outputs.locked == '1' || steps.check.outputs.errors == '1'
+        run: |
+          if [ "${{ steps.check.outputs.locked }}" = 1 ]; then
+            echo "::error::YouTube locked the upload(s) as private: the Google project has not passed the YouTube API audit. settings.json is now youtube_upload=manual."
+          fi
+          if [ "${{ steps.check.outputs.errors }}" = 1 ]; then
+            echo "::error::A check could not run (see the log above, e.g. an expired YouTube login)."
+          fi
+          exit 1

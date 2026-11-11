@@ -2,6 +2,8 @@
 
   python scripts/youtube_upload.py <assets_dir>/upload.json <assets_dir> runs/<slug>/published.json
   python scripts/youtube_upload.py --check          # login test only (keepalive workflow)
+  python scripts/youtube_upload.py --verify runs/<slug>/published.json
+                                                    # after release time: still private = locked (verify-youtube workflow)
 
 Credentials come from env: YT_CLIENT_ID, YT_CLIENT_SECRET, YT_REFRESH_TOKEN.
 
@@ -11,6 +13,8 @@ upload.json (written by Claude):
   "dry_run": false,                 # true = validate and print the plan, upload nothing
   "privacy": "public",              # or "private" / "unlisted"
   "publish_at": null,               # ISO time, e.g. "2026-11-12T12:30:00Z" (needs privacy "private")
+                                    # main / each short may carry its own "privacy" and "publish_at";
+                                    # an item's own value wins over the package-level one
   "synthetic": false,               # YouTube "altered or synthetic content" flag
   "language": "en",
   "main":   {"file": "MAIN.mp4", "title": "...", "description": "...", "tags": ["..."],
@@ -19,11 +23,13 @@ upload.json (written by Claude):
              {"file": "REEL.mp4",  "title": "... #shorts", "description": "... {MAIN_URL} ...", "tags": ["..."]}]
 }
 published.json is written after every finished step, so a re-run skips what is already up.
+It also keeps each video's publish_at, so --verify can check later that YouTube really published it.
 """
 import json
 import os
 import sys
 import time
+from datetime import datetime, timedelta, timezone
 
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
@@ -54,6 +60,15 @@ def with_retry(fn, what, tries=4):
             time.sleep(10 * 2 ** n)
 
 
+def when(iso):
+    return datetime.fromisoformat(iso.replace("Z", "+00:00"))
+
+
+def settings_for(pkg, item):
+    """(privacy, publish_at) for one video: its own values win over the package-level ones."""
+    return item.get("privacy", pkg.get("privacy", "public")), item.get("publish_at", pkg.get("publish_at"))
+
+
 def validate(pkg, assets):
     errors = []
     items = [("main", pkg["main"])] + [(f"shorts[{i}]", s) for i, s in enumerate(pkg.get("shorts", []))]
@@ -68,6 +83,18 @@ def validate(pkg, assets):
             errors.append(f"{name}: '<' or '>' is not allowed in title/description")
         if len(",".join(it.get("tags", []))) > 500:
             errors.append(f"{name}: tags over 500 characters")
+        privacy, at = settings_for(pkg, it)
+        if at:
+            if privacy != "private":
+                errors.append(f"{name}: publish_at needs privacy 'private'")
+            try:
+                t = when(at)
+                if t.tzinfo is None:
+                    errors.append(f"{name}: publish_at needs a time zone, e.g. 2026-11-12T15:30:00Z")
+                elif t < datetime.now(timezone.utc) + timedelta(minutes=15):
+                    errors.append(f"{name}: publish_at {at} is under 15 min away (YouTube would publish at once)")
+            except ValueError:
+                errors.append(f"{name}: publish_at is not an ISO time: {at}")
     thumb = pkg["main"].get("thumbnail")
     if thumb:
         p = os.path.join(assets, thumb)
@@ -75,16 +102,15 @@ def validate(pkg, assets):
             errors.append(f"main: missing thumbnail {thumb}")
         elif os.path.getsize(p) > 2 * 1024 * 1024:
             errors.append("main: thumbnail over 2 MB")
-    if pkg.get("publish_at") and pkg.get("privacy", "public") != "private":
-        errors.append("publish_at needs privacy 'private'")
     return errors
 
 
-def status_block(pkg):
-    st = {"privacyStatus": pkg.get("privacy", "public"), "selfDeclaredMadeForKids": False,
+def status_block(pkg, item):
+    privacy, at = settings_for(pkg, item)
+    st = {"privacyStatus": privacy, "selfDeclaredMadeForKids": False,
           "containsSyntheticMedia": bool(pkg.get("synthetic", False))}
-    if pkg.get("publish_at"):
-        st["publishAt"] = pkg["publish_at"]
+    if at:
+        st["publishAt"] = at
     return st
 
 
@@ -93,7 +119,7 @@ def upload(yt, path, item, pkg):
                         "tags": item.get("tags", []), "categoryId": item.get("category", "27"),
                         "defaultLanguage": pkg.get("language", "en"),
                         "defaultAudioLanguage": pkg.get("language", "en")},
-            "status": status_block(pkg)}
+            "status": status_block(pkg, item)}
     media = MediaFileUpload(path, mimetype="video/mp4", chunksize=8 * 1024 * 1024, resumable=True)
     req = yt.videos().insert(part="snippet,status", body=body, media_body=media)
     resp, fails = None, 0
@@ -109,13 +135,50 @@ def upload(yt, path, item, pkg):
             time.sleep(10 * fails)
     vid = resp["id"]
     got = with_retry(lambda: yt.videos().list(part="status", id=vid).execute(), "status")["items"][0]["status"]
-    locked = status_block(pkg)["privacyStatus"] != "private" and got.get("privacyStatus") == "private"
-    return vid, locked
+    asked = status_block(pkg, item)
+    # Asked for public/unlisted but got private = locked now. A scheduled upload is private on purpose,
+    # so its lock only shows after the release time: keep publish_at for --verify.
+    rec = {"id": vid, "locked_private": asked["privacyStatus"] != "private" and got.get("privacyStatus") == "private"}
+    if asked.get("publishAt"):
+        rec["publish_at"] = asked["publishAt"]
+        rec["schedule_kept"] = bool(got.get("publishAt"))   # hint only: YouTube doesn't document this
+    return rec
 
 
 def save(out, data):
     os.makedirs(os.path.dirname(out) or ".", exist_ok=True)
     json.dump(data, open(out, "w"), indent=1)
+
+
+def verify(out):
+    """Every video whose publish_at passed 15+ min ago must be public by now. Still private = locked
+    (the Google project hasn't passed YouTube's API audit). Returns 3 if any video is locked
+    (any other non-zero exit is an error, e.g. a broken login)."""
+    done = json.load(open(out))
+    recs = [("main", done.get("main"))] + [(s.get("file", "short"), s) for s in done.get("shorts", [])]
+    now = datetime.now(timezone.utc)
+    due = [(n, r) for n, r in recs if r and r.get("publish_at") and "verified" not in r
+           and when(r["publish_at"]) + timedelta(minutes=15) <= now]
+    if not due:
+        print("  nothing due")
+        return 0
+    yt = youtube()
+    ids = ",".join(r["id"] for _, r in due)
+    got = {v["id"]: v["status"] for v in
+           with_retry(lambda: yt.videos().list(part="status", id=ids).execute(), "status")["items"]}
+    bad = 0
+    for n, r in due:
+        st = got.get(r["id"])
+        if st is None:
+            r["verified"] = "missing"
+            print(f"  {n}: {r['id']} not found (deleted?)")
+            continue
+        r["verified"] = st["privacyStatus"]
+        r["locked_private"] = st["privacyStatus"] == "private"
+        bad += r["locked_private"]
+        print(f"  {n}: {st['privacyStatus']}" + ("  <- LOCKED: API audit not passed" if r["locked_private"] else ""))
+    save(out, done)
+    return 3 if bad else 0
 
 
 def main():
@@ -131,6 +194,8 @@ def main():
             if v["status"].get("publishAt"):
                 print(f"scheduled: {v['status']['publishAt']}  https://youtu.be/{v['id']}  {v['snippet']['title']}")
         return
+    if sys.argv[1:2] == ["--verify"]:
+        sys.exit(verify(sys.argv[2]))
     pkg_path, assets, out = sys.argv[1:4]
     pkg = json.load(open(pkg_path))
     errors = validate(pkg, assets)
@@ -146,10 +211,10 @@ def main():
     done = json.load(open(out)) if os.path.exists(out) else {}
     yt = youtube()
     if "main" not in done:
-        vid, locked = upload(yt, os.path.join(assets, pkg["main"]["file"]), pkg["main"], pkg)
-        done["main"] = {"id": vid, "url": f"https://youtu.be/{vid}", "locked_private": locked}
+        rec = upload(yt, os.path.join(assets, pkg["main"]["file"]), pkg["main"], pkg)
+        done["main"] = dict(rec, url=f"https://youtu.be/{rec['id']}")
         save(out, done)
-        print("main:", done["main"]["url"], "(LOCKED PRIVATE: API audit not passed)" if locked else "", flush=True)
+        print("main:", done["main"]["url"], "(LOCKED PRIVATE: API audit not passed)" if rec["locked_private"] else "", flush=True)
     vid = done["main"]["id"]
     if pkg["main"].get("thumbnail") and not done.get("thumbnail"):
         with_retry(lambda: yt.thumbnails().set(
@@ -170,9 +235,8 @@ def main():
         if i < len(done["shorts"]):
             continue
         item = dict(s, description=s["description"].replace("{MAIN_URL}", done["main"]["url"]))
-        sid, locked = upload(yt, os.path.join(assets, s["file"]), item, pkg)
-        done["shorts"].append({"file": s["file"], "id": sid, "url": f"https://youtube.com/shorts/{sid}",
-                               "locked_private": locked})
+        rec = upload(yt, os.path.join(assets, s["file"]), item, pkg)
+        done["shorts"].append(dict(rec, file=s["file"], url=f"https://youtube.com/shorts/{rec['id']}"))
         save(out, done)
         print(f"{s['file']}: {done['shorts'][-1]['url']}", flush=True)
     print("ALL UPLOADED")
