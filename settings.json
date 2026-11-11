@@ -13,5 +13,7 @@
  "min_days_between_videos": 2,
  "github_user": "KrishnaTech6",
  "kaggle_user": "krishnarana1412",
- "instagram_account_id": "29240610082246011"
+ "instagram_account_id": "29240610082246011",
+ "thumbnail_rules": "brand/thumbnail_rules.md",
+ "_thumbnail_rules": "Read before Stage 5 / A6. Overrides the skill: no KR in thumbnails, thumbnail text = the video title."
 }
