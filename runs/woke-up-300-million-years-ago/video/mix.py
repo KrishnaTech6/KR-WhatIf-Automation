@@ -109,5 +109,7 @@ def master(voice, mus, fx, amb, sections, total, fade=1.8):
     g = np.convolve(g, np.ones(int(0.02 * SR)) / int(0.02 * SR), 'same')
     g = np.minimum(g, np.minimum(1, c / np.maximum(pk, 1e-9)) + 0.0)
     mix = mix * g
+    c2 = db(-2.0)                                   # final soft ceiling (AAC adds ~1 dB of overs)
+    mix = np.where(np.abs(mix) > c2 * 0.7, np.sign(mix) * (c2 * 0.7 + c2 * 0.3 * np.tanh((np.abs(mix) - c2 * 0.7) / (c2 * 0.3))), mix)
     fl = int(fade * SR); mix[-fl:] *= np.linspace(1, 0, fl)
     return mix.astype(np.float32), dict(v=v, m=m, f=f, a=a)
