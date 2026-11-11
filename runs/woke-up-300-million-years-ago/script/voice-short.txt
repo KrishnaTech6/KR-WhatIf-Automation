@@ -4,28 +4,28 @@ KEY_BEATS: hook
 HARD_CUT_BEFORE:
 
 [Hook | dramatic]
-Don't move. A seventy centimetre dragonfly is on you.
+Don't move. There's a seventy centimetre bug on your chest.
+It's a dragonfly. Its wings are as long as your arm.
 
-[Giants | neutral]
-This is Earth, three hundred million years ago.
-No dinosaurs. Not even close.
-Next to your bed, a millipede called Arthropleura... longer than your bed.
-{playful} It eats plants. Probably.
+[Where | neutral]
+You just woke up three hundred million years ago.
+No dinosaurs. They're not even born yet.
+Look down. A millipede... longer than your bed.
+{playful} It probably eats plants. Probably.
 
-[Why big | neutral]
-So why is everything so big?
-The air. It's almost one-third oxygen.
-Insects don't have lungs. Air seeps in through tiny tubes.
-The classic idea: more oxygen, bigger bugs.
-Scientists still argue about it.
+[Why | neutral]
+So why is everything so huge?
+The crazy part? It's the air.
+It has way more oxygen than ours. Almost one-third.
+Bugs don't have lungs. Air just leaks in through tiny tubes.
+More oxygen... bigger bugs. That's the big idea.
 
 [Danger | dramatic]
-But that same air has a dark side.
-One lightning strike... and even damp forests keep burning.
-Coal from this time is full of fossil charcoal.
-And the scariest thing about this world?
-It never really went away.
+But that air has a dark side.
+One lightning strike... and even damp plants keep burning.
+And the scariest part? That world never really went away.
+It's still in your house.
 
 [Loop | neutral]
 Full video on K R's What If Explained.
-So if you ever wake up there... and a dragonfly lands on you...
+So if you ever wake up there... and you feel a bug on your chest...

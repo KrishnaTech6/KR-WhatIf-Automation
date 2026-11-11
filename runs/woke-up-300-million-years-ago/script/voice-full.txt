@@ -4,66 +4,76 @@ KEY_BEATS: hook, fire, payoff
 HARD_CUT_BEFORE: fire
 
 [Hook | soft]
-You open your eyes... and a dragonfly as wide as your arms lands on your chest. (beat)
-{tense} The air is almost one-third oxygen. One spark, and the forest burns.
-And the most dangerous thing here... isn't the bug.
+You wake up. A dragonfly is sitting on your chest. (beat)
+Its wings are as long as your whole arm.
+{tense} Outside, one tiny spark could set the whole forest on fire.
+And the scariest thing here... is not the dragonfly.
 
 [Promise - logo | neutral]
-This is K R's What If Explained. Real science, real numbers.
-Nothing can send you back in time. But let's pretend.
-One day... three hundred million years ago. Before a single dinosaur.
+This is K R's What If Explained. Real science, simple words.
+Nobody can really go back in time. But let's pretend you did.
+Three hundred million years back. Before even the dinosaurs.
 
 [Minute one - the air | neutral]
-Minute one.
-You take a breath... and it feels great.
-Today, oxygen is twenty-one percent of the air. Here, it's around thirty. Maybe more.
-Your lungs are fine with that. Doctors only worry when oxygen gets well above this.
-{deadpan} Your campfire, though... Fire here is very enthusiastic.
+Minute one. You take a deep breath.
+And it feels... strangely good.
+Why? Because this air has way more oxygen than ours.
+Today, about one-fifth of the air is oxygen. Here? Almost one-third.
+Don't worry, your body can handle that.
+{playful} But fire loves oxygen. Strike a match here... and it doesn't just light. It goes whoosh.
+{neutral} Remember that. It matters later.
 
 [Hour one - the forest | wonder]
-Hour one. You walk into the forest.
-Except these aren't trees you know. Giant clubmosses with scaly trunks, thirty metres tall. Ten storeys. And tree ferns everywhere.
-No flowers. No grass. No birdsong. Just the hum of insects.
-{playful} And no, there are no dinosaurs. In movies, every prehistoric scene has a T. rex.
-In reality, the first dinosaurs show up about seventy million years after this morning.
-You're early. Very early.
+Hour one. You step outside.
+And something feels wrong. Can you spot it?
+There are no flowers. Not one. No grass. No birds singing.
+Flowers, grass, birds... none of them exist yet.
+The trees look weird too. Scaly, like snake skin. As tall as a ten-storey building.
+{playful} And dinosaurs? Sorry. You're way too early.
+The first dinosaur won't show up for another seventy million years.
 
 [Hour three - the giants | tense]
-Hour three. Something rustles in the ferns.
-A millipede... longer than your bed. It's called Arthropleura. {deadpan} It eats plants. Probably.
-Overhead, a griffinfly called Meganeura. Seventy-centimetre wings. A hunter.
-{neutral} Why so big? Insects don't have lungs. Air seeps in through tiny tubes.
-The classic idea: more oxygen let bigger bodies still get enough.
-But newer studies say... it may not be that simple. Scientists are still arguing.
-So, quick question. Which one would you run from first... the giant millipede, or the griffinfly? Tell me in the comments.
+Hour three. Something moves near your feet.
+It's a millipede. Like the one in your garden... except this one is longer than your bed. (beat)
+{deadpan} Good news: it probably eats plants. Probably.
+{tense} And above you, that dragonfly again. And it's a hunter.
+{neutral} So why is everything here so huge?
+Here's the cool part. Bugs don't breathe with lungs like we do. Air just slowly leaks into their body through tiny tubes.
+More oxygen in the air... means the air reaches deeper. So bugs could grow bigger.
+At least, that's the popular idea. Scientists are still fighting about it.
+Quick question. Giant millipede or giant dragonfly... which one are you running from first? Tell me in the comments.
 
 [Night one - the fire | deep]
 Night one.
-A storm rolls in. (beat)
-One bolt of lightning hits the forest.
-Today, damp leaves just smoulder. In this air, even damp plants can keep burning.
-The fire doesn't creep. It runs.
-Coal from this time is full of fossil charcoal. Layer after layer. These forests burned... again and again.
-{tense} So it's not the bugs. It's the air.
+Clouds roll in. (beat)
+Lightning hits a tree.
+Now, remember the extra oxygen?
+In our world, wet leaves just smoke. Here, even damp plants can keep burning.
+The fire doesn't walk. It runs.
+And we know this really happened. Coal from this time is full of tiny bits of burnt wood. Fires came back... again and again.
+{tense} So the danger here was never the bugs. It's the air itself.
 
 [Year one - India under ice | neutral]
-Year one. You want to go home. To India, say.
-Bad news. There is no India yet. It's a piece of a giant southern continent called Gondwana... far to the south, under the polar ice.
-The rocks still remember. In Odisha, the Talchir boulder beds were dropped by that ice.
-So this planet has steaming swamps at the equator... and glaciers where India will be.
+Year one. You've had enough. You want to go home. To India.
+But here's the strange part. India is not where you left it.
+All the land on Earth is slowly crashing together into one giant piece.
+And India is stuck far down south... under thick ice.
+The proof is still there. In Odisha, there are big boulders that only moving ice could have carried.
+So the middle of the Earth is a steaming jungle... and India is frozen.
 
 [Twist - trees that never rot | wonder]
-Now, the twist. Why is there so much oxygen?
-Because these trees die... and don't fully rot. They pile up in swamps, get buried, and slowly turn... into coal.
-In twenty twelve, one team said the fungi that rot wood just hadn't caught up yet.
-In twenty sixteen, another said no. It was wet swamps and moving continents.
-Either way, all that buried wood is what filled this sky with oxygen.
+Now think about this. Why is there so much oxygen here in the first place?
+Because when these trees die... they don't fully rot.
+They fall into the swamp, get buried in mud, and over millions of years... get squeezed into coal.
+Why didn't they rot? Scientists still argue.
+Maybe the tiny fungi that eat wood hadn't figured it out yet. Maybe the swamps were just too wet.
+Either way, all that buried wood is what pumped this air full of oxygen.
 
 [Payoff - your light switch | soft]
-And the forests of Gondwana, a little later, became India's coal.
-Today, about three-quarters of India's electricity comes from burning coal.
-So the forest that nearly killed you this morning? (beat) It's in your light switch.
-Every time we burn it, we put that ancient carbon... back into the sky. That's already happening.
-{warm} If you could bring back one thing from that world, what would it be? Tell me below.
-You open your eyes. Your own room. The fan is running... on a forest three hundred million years old.
+And later, India's own forests went through the same thing. They became India's coal.
+Today, about three out of every four units of India's electricity come from burning coal.
+So that forest that almost burned you this morning? (beat) It's in your light switch.
+And every time we burn it, the carbon those trees locked away goes right back into the sky. That's happening right now.
+{warm} If you could bring one thing back from that world, what would you pick? Tell me below.
+You wake up. Your own room. The fan is spinning... running on a forest three hundred million years old.
 Next time: what if India got no monsoon for a whole year? (beat) But that story... is for the next What If.

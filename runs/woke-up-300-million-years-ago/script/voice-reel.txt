@@ -4,21 +4,19 @@ KEY_BEATS: hook
 HARD_CUT_BEFORE:
 
 [Hook | dramatic]
-Your India, three hundred million years ago? Not tropical. Frozen.
+Your India, three hundred million years ago? Not hot. Frozen.
 
-[Gondwana | wonder]
-India was part of a giant continent, Gondwana.
-And it sat far to the south, under polar ice.
-The ice left proof.
-In Odisha, the Talchir boulder beds were dropped by glaciers.
+[Ice | wonder]
+All the land on Earth was crashing into one giant piece.
+And India was stuck far down south... under thick ice.
+The proof is still in Odisha. Big boulders that only moving ice could carry.
 
 [Meanwhile | wonder]
-Meanwhile, near the equator... swamp forests of ten-storey clubmosses.
-Dragonflies as wide as your arms.
+Meanwhile, in the middle of the Earth... steaming jungles.
+Trees ten storeys tall. Dragonflies with arm-long wings.
 
 [Tease | soft]
-Later, India's frozen land grew forests of its own.
-Forests that never really left us. (beat)
-{warm} Guess where they are right now?
-Full story on YouTube.
-K R's What If Explained. Link in bio.
+Later, India got jungles of its own.
+And those jungles never really left. (beat)
+{warm} You probably used one today. Can you guess how?
+Full story on YouTube. K R's What If Explained. Link in bio.
