@@ -1,1 +1,1 @@
-{"stage": "render", "title": "What If You Woke Up 300 Million Years Ago?", "fails": 0, "doc": "https://claude.ai/artifact/Rh3GGsMN9NUAneUotPewiC", "notes": "Voice gate passed (main 98.4% after 2 redo rounds; Short 96%, Reel accepted). Short+Reel rendered; main rendering."}
+{"stage": "waiting_videos", "title": "What If You Woke Up 300 Million Years Ago?", "fails": 0, "doc": "https://claude.ai/artifact/Rh3GGsMN9NUAneUotPewiC", "notes": "Checkpoint 3 sent: MAIN 5:09, SHORT 0:58, REEL 0:43 (local files in video/out, not committed)."}
