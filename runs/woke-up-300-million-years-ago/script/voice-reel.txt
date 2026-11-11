@@ -4,7 +4,7 @@ KEY_BEATS: hook
 HARD_CUT_BEFORE:
 
 [Hook | dramatic]
-Your India? Not hot. Frozen.
+India was frozen. You never knew that.
 
 [Ice | wonder]
 Three hundred million years ago.
@@ -23,4 +23,4 @@ Later, India got jungles of its own.
 And those jungles never really left. (beat)
 {warm} You probably used one today. Can you guess how?
 Full story on YouTube. K R's What If Explained.
-Because once upon a time... your India was frozen.
+Because once upon a time... India was frozen.
