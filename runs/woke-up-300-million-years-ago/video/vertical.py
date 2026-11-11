@@ -106,9 +106,14 @@ def captions(c, vt, t, y=1360):
             g = gr
     if g is None or t > ws[g[-1]][0] + 1.2:
         return
-    f = font("extrabold", 92)
     disp = [fix(ws[i][1]) for i in g]
-    total = sum(text_w(d, f) for d in disp) + 26 * (len(disp) - 1)
+    size = 92
+    while True:
+        f = font("extrabold", size)
+        total = sum(text_w(d, f) for d in disp) + 26 * (len(disp) - 1)
+        if total <= VW - 120 or size <= 56:
+            break
+        size -= 4
     x = VW / 2 - total / 2
     for i, d in zip(g, disp):
         on = ws[i][0] <= t
