@@ -113,3 +113,42 @@ def thumb_one(c):
     sticker(c, lambda cc: T2.person(cc, 1250, 1005, 200, "stand", "#1A0710"), "#FFE8B0", 4)
     T2.title_block(c)
     vignette(c, W, H, 0.4)
+
+
+def bed_wakeup(c, x, base, s, color="#1A0710", rim="#FFE8B0"):
+    """Silhouette: a bed, and a faceless person sitting up in it with one arm raised (just woke up)."""
+    c.save(); c.translate(x, base); c.scale(s, s)
+    p = skia.Path()
+    p.addRect(skia.Rect(-260, -70, 260, -30))                     # mattress
+    p.addRect(skia.Rect(-280, -190, -250, 0)); p.addRect(skia.Rect(250, -110, 275, 0))   # head/foot boards
+    p.addRect(skia.Rect(-250, -30, -235, 0)); p.addRect(skia.Rect(235, -30, 250, 0))
+    blanket = skia.Path(); blanket.moveTo(-120, -70); blanket.cubicTo(-60, -120, 120, -110, 250, -80); blanket.lineTo(250, -60); blanket.lineTo(-120, -60); blanket.close()
+    p = skia.Op(p, blanket, skia.PathOp.kUnion_PathOp)
+    torso = skia.Path(); torso.moveTo(-170, -70); torso.lineTo(-150, -190); torso.lineTo(-110, -195); torso.lineTo(-95, -70); torso.close()
+    p = skia.Op(p, torso, skia.PathOp.kUnion_PathOp)
+    head = skia.Path(); head.addCircle(-128, -222, 26); p = skia.Op(p, head, skia.PathOp.kUnion_PathOp)
+    arm = skia.Path(); arm.moveTo(-112, -185); arm.lineTo(-40, -270); arm.lineTo(-28, -260); arm.lineTo(-98, -170); arm.close()
+    p = skia.Op(p, arm, skia.PathOp.kUnion_PathOp)
+    pillow = skia.Path(); pillow.addRRect(skia.RRect.MakeRectXY(skia.Rect(-245, -100, -170, -70), 14, 14)); p = skia.Op(p, pillow, skia.PathOp.kUnion_PathOp)
+    c.drawPath(p, paint(color))
+    c.drawPath(p, paint(rim, 0.55, stroke=3))
+    c.restore()
+
+
+def thumb_wakeup(c):
+    """You just woke up in bed 300 million years ago: giant dragonfly over the bed, forest silhouettes, sunset burst."""
+    radial_bg(c, 1400, 430, "#FFB347", "#5A0F2E", 1300)
+    burst(c, 1400, 430, "#FFE8B0", 24, 0.12)
+    glow(c, 1400, 430, 420, "#FFF1C8", 0.75)
+    S = skia.Surface(W, H); cc = S.getCanvas(); cc.clear(skia.Color(0, 0, 0, 0))
+    for i, (x, h, w) in enumerate([(980, 760, 60), (1170, 560, 36), (1820, 780, 70), (1660, 520, 30), (1930, 640, 50)]):
+        lycopsid(cc, x, H + 5, h, w, T0, i + 30)
+    for i in range(6):
+        tree_fern(cc, 900 + i * 210, 1010, 140 + 40 * (i % 2), T0, i, 0.8)
+    p = skia.Paint(); p.setColorFilter(skia.ColorFilters.Blend(col("#1A0710"), skia.BlendMode.kSrcIn))
+    c.drawImage(S.makeImageSnapshot(), 0, 0, skia.SamplingOptions(), p)
+    c.drawRect(skia.Rect(0, 1000, W, H), paint("#1A0710"))
+    bed_wakeup(c, 1330, 1005, 1.15)
+    sticker(c, lambda cc: dragonfly(cc, 1420, 330, 1.45, 0.37, ang=-8), "white", 3, "gold")
+    T2.title_block(c)
+    vignette(c, W, H, 0.4)
