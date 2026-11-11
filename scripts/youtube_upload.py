@@ -120,8 +120,16 @@ def save(out, data):
 
 def main():
     if sys.argv[1:] == ["--check"]:
-        me = youtube().channels().list(part="snippet", mine=True).execute()
-        print("login OK:", me["items"][0]["snippet"]["title"])
+        yt = youtube()
+        me = yt.channels().list(part="snippet,contentDetails", mine=True).execute()["items"][0]
+        print("login OK:", me["snippet"]["title"])
+        # also list scheduled uploads, so their publish times can be mirrored on Instagram
+        up = me["contentDetails"]["relatedPlaylists"]["uploads"]
+        ids = [i["contentDetails"]["videoId"] for i in
+               yt.playlistItems().list(part="contentDetails", playlistId=up, maxResults=20).execute()["items"]]
+        for v in yt.videos().list(part="snippet,status", id=",".join(ids)).execute()["items"] if ids else []:
+            if v["status"].get("publishAt"):
+                print(f"scheduled: {v['status']['publishAt']}  https://youtu.be/{v['id']}  {v['snippet']['title']}")
         return
     pkg_path, assets, out = sys.argv[1:4]
     pkg = json.load(open(pkg_path))
