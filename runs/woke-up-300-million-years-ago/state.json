@@ -3,11 +3,9 @@
  "title": "What If You Woke Up 300 Million Years Ago?",
  "fails": 0,
  "doc": "https://claude.ai/artifact/Rh3GGsMN9NUAneUotPewiC",
- "notes": "Checkpoint 4 v2 sent (no KR, title as thumbnail text). Waiting for OK + real/dry-run decision.",
+ "notes": "Checkpoint 4: single thumbnail sent. Waiting for ok / ok real.",
  "thumbs": {
-  "A": "giant dragonfly over a person (scale)",
-  "B": "tiny person in a 30 m forest",
-  "C": "light bulb with the forest inside",
-  "title_all": "What If You Woke Up 300 Million Years Ago?"
+  "A": "sunset poster, giant dragonfly, person for scale",
+  "title": "What If You Woke Up 300 Million Years Ago?"
  }
 }

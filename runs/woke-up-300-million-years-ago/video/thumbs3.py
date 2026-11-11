@@ -96,3 +96,20 @@ if __name__ == "__main__":
     ps = [T2.render(thumb_a, "THUMB_A.jpg"), T2.render(thumb_b, "THUMB_B.jpg"), T2.render(thumb_c, "THUMB_C.jpg")]
     T1.sheet(ps)
     for p in ps: print(p, os.path.getsize(p))
+
+
+def thumb_one(c):
+    """Single thumbnail: sunset poster + giant dragonfly hero + tiny person for scale."""
+    radial_bg(c, 1430, 470, "#FFB347", "#5A0F2E", 1300)
+    burst(c, 1430, 470, "#FFE8B0", 24, 0.12)
+    glow(c, 1430, 470, 420, "#FFF1C8", 0.75)
+    S = skia.Surface(W, H); cc = S.getCanvas(); cc.clear(skia.Color(0, 0, 0, 0))
+    for i, (x, h, w) in enumerate([(1000, 760, 60), (1190, 600, 40), (1780, 780, 70), (1640, 520, 32), (1900, 640, 50)]):
+        lycopsid(cc, x, H + 5, h, w, T0, i + 30)
+    p = skia.Paint(); p.setColorFilter(skia.ColorFilters.Blend(col("#1A0710"), skia.BlendMode.kSrcIn))
+    c.drawImage(S.makeImageSnapshot(), 0, 0, skia.SamplingOptions(), p)
+    c.drawRect(skia.Rect(0, 1000, W, H), paint("#1A0710"))
+    sticker(c, lambda cc: dragonfly(cc, 1430, 360, 1.6, 0.37, ang=-6), "white", 3, "gold")
+    sticker(c, lambda cc: T2.person(cc, 1250, 1005, 200, "stand", "#1A0710"), "#FFE8B0", 4)
+    T2.title_block(c)
+    vignette(c, W, H, 0.4)
