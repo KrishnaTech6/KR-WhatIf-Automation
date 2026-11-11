@@ -1,1 +1,12 @@
-{"stage": "waiting_videos", "title": "What If You Woke Up 300 Million Years Ago?", "fails": 0, "doc": "https://claude.ai/artifact/Rh3GGsMN9NUAneUotPewiC", "notes": "Checkpoint 3 sent: MAIN 5:09, SHORT 0:58, REEL 0:43 (local files in video/out, not committed)."}
+{
+ "stage": "waiting_thumbs",
+ "title": "What If You Woke Up 300 Million Years Ago?",
+ "fails": 0,
+ "doc": "https://claude.ai/artifact/Rh3GGsMN9NUAneUotPewiC",
+ "notes": "Checkpoint 3 OK (release tomorrow 12 Nov). Checkpoint 4 sent: A dragonfly / B forest-in-bulb / C air that burns. dry_runs_left=2 -> asked Krishna whether to publish for real.",
+ "thumbs": {
+  "A": "What If You Woke Up 300 Million Years Ago?",
+  "B": "You Use a 300 Million Year Old Forest Every Day",
+  "C": "300 Million Years Ago, the Air Was One-Third Oxygen"
+ }
+}
