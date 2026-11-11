@@ -8,3 +8,5 @@ runs/*/render/
 *.mp4
 *.wav
 client_secret*.json
+runs/*/video/sheets/
+runs/*/video/transcript*.json

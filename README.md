@@ -10,7 +10,8 @@ Claude does the creative work; this repo holds the free parts.
 | `history.json` | Every topic already made, so nothing repeats. |
 | `lexicon.json` | Pronunciation fixes for the voice; grows by itself. |
 | `brand/` | KR, logo, cards, music: the parts that never change. |
-| `runs/<slug>/` | Per-video state, voice scripts, and published links. |
+| `runs/<slug>/` | Per-video state, voice scripts, shot list, and published links. |
+| `tools/` | The video engine: `python3 tools/wi.py <slug> sheets / render / vertical ...` (see `tools/README.md`). |
 | `kaggle/` | Chatterbox voiceover that runs on Kaggle's free GPU. |
 | `scripts/` | YouTube login (one time, on your computer) and the uploader. |
 | `.github/workflows/` | `voiceover` (Kaggle), `publish-youtube`, `verify-youtube` (nightly: did the scheduled videos really go public?), `keepalive` (weekly login check). |

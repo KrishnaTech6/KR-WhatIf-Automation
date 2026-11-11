@@ -1,7 +1,7 @@
 """Voice processing + music/sfx/ambience levelling, ducking, -14 LUFS master."""
 import numpy as np, soundfile as sf, pyloudnorm as pyln
 from scipy.signal import butter, sosfilt, fftconvolve
-from sfx import SR
+from .sfx import SR
 
 meter = pyln.Meter(SR)
 

@@ -1,7 +1,8 @@
-"""Sampled orchestra (FluidR3_GM cache) arranged to the timeline sections."""
-import os, numpy as np
-from sfx import SR, lp
-SF = "/tmp/claude-0/-home-user-KR-WhatIf-Automation/78e4e397-8cb2-57f1-8382-3ff9493a7fb3/scratchpad/sf"
+"""Sampled orchestra (FluidR3_GM, MIT licence) for the channel score: notes, chords, pads, arps, pulses, the D-F-A-G motif.
+Samples download once into the cache (assets.soundfont)."""
+import numpy as np
+from .sfx import SR, lp
+from .assets import soundfont
 NAMES = ["C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B"]
 _cache = {}
 SUSTAIN = {"string_ensemble_1", "choir_aahs", "pad_2_warm", "cello", "contrabass", "french_horn", "synth_strings_1"}
@@ -9,7 +10,7 @@ SUSTAIN = {"string_ensemble_1", "choir_aahs", "pad_2_warm", "cello", "contrabass
 
 def sample(inst, midi):
     if inst not in _cache:
-        _cache[inst] = dict(np.load(os.path.join(SF, inst + ".npz")))
+        _cache[inst] = dict(np.load(soundfont(inst)))
     name = NAMES[midi % 12] + str(midi // 12 - 1)
     return _cache[inst][name].astype(np.float64)
 

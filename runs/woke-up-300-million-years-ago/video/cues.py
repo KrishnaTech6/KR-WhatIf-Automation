@@ -1,14 +1,13 @@
 """Music, SFX and ambience cue sheet for the main video (style: a sound on every motion,
 ambience bed per scene, riser -> impact into every chapter card, silence before the fire)."""
 import numpy as np
-import sfx as X
-from sfx import SR
-import music as Mu
-from timeline import T, B, E, TOTAL
+from krwi import sfx as X, music as Mu
+from krwi.sfx import SR
+from krwi.timeline import T, B, E, TOTAL
 import shots as S
 
 
-def build():
+def BUILD():
     tot = TOTAL + 6
     mus, fx, amb = Mu.Track(tot), Mu.Track(tot), Mu.Track(tot)
     L = S.SHOTS()
@@ -161,3 +160,10 @@ def build():
     for tr in (mus, amb):
         tr.buf[a:b] *= np.concatenate([np.linspace(1, 0, int(0.15 * SR)), np.zeros(b - a - int(0.15 * SR))])
     return mus.buf, fx.buf, amb.buf
+
+
+def SECTIONS(total):
+    return [(0, E("hook"), -31), (E("hook"), E("hook") + 3.5, -24), (E("hook") + 3.5, B("minute"), -31),
+            (B("minute"), B("night") - 1.5, -31), (B("night") - 1.5, B("night") + 0.3, None),
+            (B("night") + 0.3, E("night"), -28), (E("night"), B("payoff"), -31), (B("payoff"), E("payoff"), -32),
+            (E("payoff"), total, -25)]
