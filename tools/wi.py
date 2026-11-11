@@ -17,6 +17,7 @@
     python3 tools/wi.py <slug> vertical short|reel  9:16 render -> video/out/SHORT.mp4 / REEL.mp4 (+ QA)
     python3 tools/wi.py <slug> vertical short 1/2 ... then `vertical short join`   same, in parts
     python3 tools/wi.py <slug> qa FILE [seconds]    loudness / true peak / black frames / length
+    python3 tools/wi.py <slug> check [part]         every rule as code: script|audio|shots|video|text|all -> PASS/WARN/FAIL
 
 KR_WORKERS sets the number of render processes (default: CPU count). Speed on a 2-CPU workspace: ~0.13 s per
 frame for the main video (5 min ~ 20 min: use `render 1/3` .. `3/3`, then `render join`) and ~0.3 s per frame for
@@ -115,6 +116,9 @@ def main(argv):
         else:
             i, n = map(int, args[1].split("/"))
             vertical.part(args[0], i, n)
+    elif cmd == "check":
+        from krwi import check
+        sys.exit(0 if check.run(args[0] if args else "all") else 1)
     elif cmd == "qa":
         from krwi.qa import check
         ok = check(args[0], float(args[1]) if len(args) > 1 else None)

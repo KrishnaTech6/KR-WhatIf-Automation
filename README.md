@@ -8,13 +8,14 @@ Claude does the creative work; this repo holds the free parts.
 | `queue.txt` | Topics you want next (optional). |
 | `settings.json` | Switches: dry runs, manual/API YouTube upload, publish time, language. |
 | `history.json` | Every topic already made, so nothing repeats. |
+| `yt_learnings.md` | Auto: views, % viewed, where viewers leave, thumbnail CTR per video. The script stage reads it. |
 | `lexicon.json` | Pronunciation fixes for the voice; grows by itself. |
 | `brand/` | KR, logo, cards, music: the parts that never change. |
 | `runs/<slug>/` | Per-video state, voice scripts, shot list, and published links. |
 | `tools/` | The video engine: `python3 tools/wi.py <slug> sheets / render / vertical ...` (see `tools/README.md`). |
 | `kaggle/` | Chatterbox voiceover that runs on Kaggle's free GPU. |
 | `scripts/` | YouTube login (one time, on your computer) and the uploader. |
-| `.github/workflows/` | `voiceover` (Kaggle), `publish-youtube`, `verify-youtube` (nightly: did the scheduled videos really go public?), `keepalive` (weekly login check). |
+| `.github/workflows/` | `voiceover` (Kaggle), `publish-youtube`, `verify-youtube` (nightly: did the scheduled videos really go public?), `keepalive` (weekly login check), `learn-youtube` (Mon/Wed/Fri: YouTube stats -> `yt_learnings.md`). |
 | `docs/` | Home page and privacy policy (GitHub Pages) for the Google OAuth app. |
 
 Pause everything: create a file named `PAUSE` in the repo root. Delete it to resume.

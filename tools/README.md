@@ -17,7 +17,20 @@ python3 tools/wi.py <slug> vertical reel     # a ~40 s Reel fits in one call
 python3 tools/wi.py <slug> preview 40 55     # quick look at 40-55 s with the voice
 python3 tools/wi.py <slug> remix             # audio fix only: rebuild the mix, re-mux MAIN.mp4
 python3 tools/wi.py <slug> qa FILE [seconds] # -14 LUFS +-1, true peak <= -1 dB, no black > 0.5 s, length
+python3 tools/wi.py <slug> check [part]      # every rule as code -> PASS / WARN / FAIL (see below)
 ```
+
+## One check (`wi.py <slug> check [script|audio|shots|video|text]`)
+
+| Part | Checks |
+| --- | --- |
+| script | digits / `"""` / moods in the voice scripts, length band, hook <= 15 s, first sentence short, KEY_BEATS and HARD_CUT_BEFORE resolve, hard cut ~65-75% in, sign-off, Short 115-145 and Reel 80-105 words, hook scores |
+| audio | `audio/report.json`: word match (main >= 97%), every ⚠️ line with its time; wav peaks <= -1 dBFS; lengths vs word count |
+| shots | shot list order, frame 0 shot, logo sting right after the hook and by 0:16, chapter cards, shots over 8 s, end card, anchor match % |
+| video | QA of MAIN/SHORT/REEL.mp4 (-14 LUFS, true peak, black frames, length), thumbnail size |
+| text | Instagram caption lint + human score (vendored `tools/vendor/ig`), main title <= 60, chapters start 0:00 (>= 3), Shorts link the main video |
+
+Parts with nothing to check yet print INFO. Exit code 1 on any FAIL.
 
 ## What a video folder contains
 

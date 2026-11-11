@@ -1,0 +1,40 @@
+name: learn-youtube
+
+# What is working on YouTube: views, % viewed, retention curve (where viewers leave) and thumbnail CTR for every
+# public upload -> learn/youtube.json + yt_learnings.md, which the script stage reads before writing.
+# Runs 35 min before the topic picks (Mon/Wed/Fri 22:17 IST) and on demand.
+on:
+  schedule:
+    - cron: "47 16 * * 1,3,5"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: learn-youtube
+  cancel-in-progress: true
+
+jobs:
+  learn:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+      YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+      YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q google-api-python-client google-auth
+      - name: Pull YouTube stats
+        run: python scripts/youtube_learn.py
+      - name: Save
+        run: |
+          git config user.name "kr-autopilot"
+          git config user.email "actions@users.noreply.github.com"
+          git add learn/youtube.json yt_learnings.md
+          git commit -qm "learn: YouTube stats" || exit 0
+          git pull --rebase -q && git push -q

@@ -7,6 +7,7 @@ client_secret.json = the file you downloaded for the Desktop OAuth client.
 A browser opens: pick the account that owns KR's What If Explained, then
 Advanced -> Go to KR What If Uploader (unsafe) -> Allow.
 It prints 3 values; save each as a GitHub secret with exactly that name.
+(Already set up? Re-run it only to add a new permission, then replace just YT_REFRESH_TOKEN.)
 """
 import json
 import sys
@@ -16,6 +17,7 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 SCOPES = [
     "https://www.googleapis.com/auth/youtube.upload",     # upload videos
     "https://www.googleapis.com/auth/youtube.force-ssl",  # thumbnails, titles, comments
+    "https://www.googleapis.com/auth/yt-analytics.readonly",  # read-only stats: retention, % viewed, CTR (learn-youtube)
 ]
 
 if len(sys.argv) != 2:
