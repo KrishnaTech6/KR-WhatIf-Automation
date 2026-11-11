@@ -75,3 +75,27 @@ if __name__ == "__main__":
     json.dump(d, open(os.path.join(HERE, "anchors.json"), "w"))
     print("words", len(words), "match", d["match"], "total", round(total, 1))
     for k in BEAT_KEYS: print(k, d["spans"][k])
+
+
+def vertical(job):
+    """anchors_<job>.json: script words (as written) with heard start times."""
+    import vertical as V
+    wav = os.path.join(RUN, "audio", "final", f"{job}_edit.wav")
+    if not os.path.exists(wav):
+        wav = os.path.join(RUN, "audio", "final", f"{job}.wav")
+    words, total = transcribe(wav)
+    toks = [t for l in V.parse_lines(job) for t in l.split() if t != "(beat)"]
+    heard = [norm(w) for _, w in words]
+    sm = difflib.SequenceMatcher(None, [norm(t) for t in toks], heard, autojunk=False)
+    times = [None] * len(toks)
+    for b in sm.get_matching_blocks():
+        for i in range(b.size):
+            times[b.a + i] = words[b.b + i][0]
+    idx = [i for i, t in enumerate(times) if t is not None]
+    for i in range(len(times)):
+        if times[i] is None:
+            p = max([j for j in idx if j < i], default=None); n = min([j for j in idx if j > i], default=None)
+            times[i] = (times[n] - 0.35 * (n - i)) if p is None else (times[p] + 0.35 * (i - p)) if n is None else times[p] + (times[n] - times[p]) * (i - p) / (n - p)
+    out = {"words": [[round(t, 3), w] for t, w in zip(times, toks)], "total": total, "match": round(len(idx) / len(toks), 3)}
+    json.dump(out, open(os.path.join(HERE, f"anchors_{job}.json"), "w"))
+    return out

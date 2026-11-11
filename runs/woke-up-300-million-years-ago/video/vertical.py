@@ -156,7 +156,8 @@ def plan_short(vt):
         (w("no"), lambda d: MT("hour1", "dinosaurs") + 0.6 + d, 1000, 1.2),
         (w("look"), lambda d: MT("hour3", "millipede") + 0.6 + d * 1.4, 900, 1.1),
         (w("it", 1), lambda d: MT("hour3", "good") + 0.8 + d, 900, 1.15),
-        (w("so", 1), lambda d: MT("minute", "today") + d * 1.3, 960, 1.1),
+        (w("so", 1), lambda d: MT("hour3", "so", 1) + 0.6 + d, 960, 1.15),
+        (w("has"), lambda d: MT("minute", "today") + d * 1.3, 960, 1.1),
         (w("bugs"), lambda d: MT("hour3", "bugs") + 0.8 + d, 1060, 1.1),
         (w("more", 2), lambda d: MT("hour3", "more") + d * 1.2, 1060, 1.1),
         (w("but", 1), lambda d: MT("night", "lightning") - 0.4 + d, 1000, 1.25),
@@ -180,7 +181,7 @@ def plan_reel(vt):
         (w("meanwhile"), lambda d: MT("hour1", "tall") + d, 1000, 1.15),
         (w("dragonflies"), lambda d: MT("hook", "wings") + 1.0 + d, 1160, 1.15),
         (w("later"), lambda d: MT("hour1", "spot") + d, 960, 1.2),
-        (w("you"), lambda d: MT("payoff", "so", 1) + 0.2 + d * 0.4, 1000, 1.15),
+        (w("probably"), lambda d: MT("payoff", "so", 1) + 0.2 + d * 0.4, 1000, 1.15),
         (w("full"), lambda d: E_END + 0.8 + d, 960, 1.0),
         (w("because"), lambda d: MT("year", "frozen") + 0.4 + d * 0.3, 1440, 1.25),
     ]
