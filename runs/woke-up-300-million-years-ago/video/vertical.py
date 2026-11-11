@@ -196,7 +196,11 @@ SUB = {"short": "300 MILLION YEARS AGO", "reel": "300 MILLION YEARS AGO"}
 def frame(c, job, vt, plan, t):
     idx = max(i for i, p in enumerate(plan) if p[0] <= t or i == 0)
     st, fn, cx, z = plan[idx]
-    img = main_frame(max(0.0, fn(t - st)))
+    tm0 = max(0.0, fn(0.0))
+    starts = [x[0] for x in _main_shots] + [1e9]
+    k = max(i for i in range(len(_main_shots)) if starts[i] <= tm0 + 1e-6) if tm0 >= starts[0] else 0
+    lo, hi = starts[k], starts[k + 1] - 0.05      # stay inside the main shot the plan points at
+    img = main_frame(min(max(fn(t - st), lo), hi))
     reframe(c, img, cx, 540, z)
     # top text: hook from frame 0, then a small persistent label
     if t < plan[1][0] - 0.25:
