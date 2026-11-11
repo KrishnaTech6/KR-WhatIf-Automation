@@ -1,0 +1,6 @@
+__pycache__/
+*.png
+frames/
+*.part.mp4
+out/
+transcript.json

@@ -1,0 +1,36 @@
+{
+ "title": "What If You Woke Up 300 Million Years Ago?",
+ "lang": "en",
+ "tries": 4,
+ "jobs": [
+  {
+   "name": "main",
+   "kind": "main",
+   "script": "[Hook | soft]\nYou wake up. A dragonfly is sitting on your chest. (beat)\nIts wings are as long as your whole arm.\n{tense} Outside, one tiny spark could set the whole forest on fire.\nAnd the scariest thing here... is not the dragonfly.\n\n[Promise - logo | neutral]\nThis is K R's What If Explained. Real science, simple words.\nNobody can really go back in time. But let's pretend you did.\nThree hundred million years back. Before even the dinosaurs.\n\n[Minute one - the air | neutral]\nMinute one. You take a deep breath.\nAnd it feels... strangely good.\nWhy? Because this air has way more oxygen than ours.\nToday, about one-fifth of the air is oxygen. Here? Almost one-third.\nDon't worry, your body can handle that.\n{playful} But fire loves oxygen. Strike a match here... and it doesn't just light. It goes whoosh.\n{neutral} Remember that. It matters later.\n\n[Hour one - the forest | wonder]\nHour one. You step outside.\nAnd something feels wrong. Can you spot it?\nThere are no flowers. Not one. No grass. No birds singing.\nFlowers, grass, birds... none of them exist yet.\nThe trees look weird too. Scaly, like snake skin. As tall as a ten-storey building.\n{playful} And dinosaurs? Sorry. You're way too early.\nThe first dinosaur won't show up for another seventy million years.\n\n[Hour three - the giants | tense]\nHour three. Something moves near your feet.\nIt's a millipede. Like the one in your garden... except this one is longer than your bed. (beat)\n{deadpan} Good news: it probably eats plants. Probably.\n{tense} And above you, that dragonfly again. And it's a hunter.\n{neutral} So why is everything here so huge?\nHere's the cool part. Bugs don't breathe with lungs like we do. Air just slowly leaks into their body through tiny tubes.\nMore oxygen in the air... means the air reaches deeper. So bugs could grow bigger.\nAt least, that's the popular idea. Scientists are still fighting about it.\nQuick question. Giant millipede or giant dragonfly... which one are you running from first? Tell me in the comments.\n\n[Night one - the fire | deep]\nNight one.\nClouds roll in. (beat)\nLightning hits a tree.\nNow, remember the extra oxygen?\nIn our world, wet leaves just smoke. Here, even damp plants can keep burning. (pause 0.3)\nThe fire doesn't walk. It runs. (pause 0.3)\nAnd we know this really happened. Coal from this time is full of tiny bits of burnt wood. Fires came back... again and again.\n{tense} So the danger here was never the bugs. It's the air itself.\n\n[Year one - India under ice | neutral]\nYear one. You've had enough. You want to go home. To India.\nBut here's the strange part. India is not where you left it.\nAll the land on Earth is slowly crashing together into one giant piece.\nAnd India is stuck far down south... under thick ice.\nThe proof is still there. In Odisha, there are big boulders that only moving ice could have carried.\nSo the middle of the Earth is a steaming jungle... and India is frozen.\n\n[Twist - trees that never rot | wonder]\nNow think about this. Why is there so much oxygen here in the first place?\nBecause when these trees die... they don't fully rot.\nThey fall into the swamp, get buried in mud, and over millions of years... get squeezed into coal.\nWhy didn't they rot? Scientists still argue.\nMaybe the tiny fungi that eat wood hadn't figured it out yet. Maybe the swamps were just too wet.\nEither way, all that buried wood is what pumped this air full of oxygen.\n\n[Payoff - your light switch | soft]\nAnd later, India's own forests went through the same thing. They became India's coal. (pause 0.3)\nToday, about three out of every four units of India's electricity come from burning coal.\nSo that forest that almost burned you this morning? (beat) It's in your light switch. (pause 0.3)\nAnd every time we burn it, the carbon those trees locked away goes right back into the sky. That's happening right now.\n{warm} If you could bring one thing back from that world, what would you pick? Tell me below.\nYou wake up. Your own room. The fan is spinning... running on a forest three hundred million years old.\nNext time: what if India got no monsoon for a whole year? (beat) But that story... is for the next What If.\n",
+   "strict": [
+    "hook",
+    "fire",
+    "payoff"
+   ],
+   "hard_cut_before": [
+    "fire"
+   ]
+  },
+  {
+   "name": "short",
+   "kind": "short",
+   "script": "[Hook | dramatic]\nDon't move. There's a seventy centimetre bug on your chest.\nIt's a dragonfly. Its wings are as long as your arm.\n\n[Where | neutral]\nYou just woke up three hundred million years ago.\nNo dinosaurs. They're not even born yet.\nLook down. A millipede... longer than your bed.\n{playful} It probably eats plants. Probably.\n\n[Why | neutral]\nSo why is everything so huge?\nThe crazy part? It's the air.\nIt has way more oxygen than ours. Almost one-third.\nBugs don't have lungs. Air just leaks in through tiny tubes.\nMore oxygen... bigger bugs. That's the big idea.\n\n[Danger | dramatic]\nBut that air has a dark side.\nOne lightning strike... and even damp plants keep burning.\nAnd the scariest part? That world never really went away.\nIt's still in your house.\n\n[Loop | neutral]\nFull video on K R's What If Explained.\nSo if you ever wake up there... and you feel a bug on your chest...\n",
+   "strict": [
+    "hook"
+   ]
+  },
+  {
+   "name": "reel",
+   "kind": "short",
+   "script": "[Hook | dramatic]\nIndia was frozen. You never knew that.\n\n[Ice | wonder]\nThree hundred million years ago.\nAll the land on Earth was crashing together.\nOne giant piece.\nAnd India was stuck far down south... under thick ice.\nThe proof is still in Odisha.\nBig boulders that only moving ice could carry.\n\n[Meanwhile | wonder]\nMeanwhile, in the middle of the Earth... steaming jungles.\nTrees ten storeys tall. Dragonflies with arm-long wings.\n\n[Tease | soft]\nLater, India got jungles of its own.\nAnd those jungles never really left. (beat)\n{warm} You probably used one today. Can you guess how?\nFull story on YouTube. K R's What If Explained.\nBecause once upon a time... India was frozen.\n",
+   "strict": [
+    "hook"
+   ]
+  }
+ ]
+}
