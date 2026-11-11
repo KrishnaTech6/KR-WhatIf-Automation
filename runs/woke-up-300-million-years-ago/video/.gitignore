@@ -1,0 +1,4 @@
+__pycache__/
+*.png
+frames/
+*.part.mp4
