@@ -2,36 +2,12 @@
 import math
 import skia
 from art import *  # noqa
-from timeline import T, B, E, TOTAL
-from logo import draw_logo, chapter_card, end_card
+from krwi.timeline import T, B, E, TOTAL
+from krwi.lib import card, pop, xmark
 
 # ---------------------------------------------------------------- helpers
-def pop(c, x, y, label, t, t0, color="teal", size=40):
-    p = span(t, t0, t0 + 0.35)
-    if p <= 0:
-        return
-    k = back_out(p)
-    c.save(); c.translate(x, y); c.scale(k, k); pill(c, 0, 0, 1.0, label, color, "cream", size); c.restore()
-
-
-def xmark(c, x, y, s, p):
-    if p <= 0:
-        return
-    a = ease_out(p)
-    c.drawLine(x - 40 * s, y - 40 * s, x - 40 * s + 80 * s * a, y - 40 * s + 80 * s * a, paint("coral", stroke=12 * s))
-    if p > 0.5:
-        b = ease_out((p - 0.5) * 2)
-        c.drawLine(x + 40 * s, y - 40 * s, x + 40 * s - 80 * s * b, y - 40 * s + 80 * s * b, paint("coral", stroke=12 * s))
-
-
 def corner_gauge(c, t, val=30, alert=False):
     gauge(c, 1770, 150, 95, val, t, True, alert)
-
-
-def card(value, name):
-    def f(c, t, t0):
-        chapter_card(c, W, H, value, name, span(t, t0, t0 + 1.4), t)
-    return f
 
 
 # ---------------------------------------------------------------- HOOK
@@ -743,33 +719,3 @@ def SHOTS():
         (E("payoff") + 0.3, s_end, "fade"),
     ]
     return L
-
-
-TRANS = {"cut": 0.0, "fade": 0.35, "iris": 0.5, "zoom": 0.4, "whip": 0.3, "flash": 0.25}
-
-
-def render_frame(c, t, shots=None):
-    shots = shots or SHOTS()
-    idx = max(i for i, s in enumerate(shots) if s[0] <= t or i == 0)
-    st, fn, tr = shots[idx]
-    d = TRANS[tr]
-    p = span(t, st, st + d) if d else 1.0
-    if p < 1 and idx > 0:
-        pst, pfn, _ = shots[idx - 1]
-        pfn(c, t, pst)
-        if tr == "iris":
-            c.save(); clip = skia.Path(); clip.addCircle(W / 2, H / 2, ease(p) * 1150); c.clipPath(clip, doAntiAlias=True)
-            fn(c, t, st); c.restore()
-        elif tr == "flash":
-            fn(c, t, st); c.drawRect(skia.Rect(0, 0, W, H), paint("cream", 1 - p))
-        elif tr == "whip":
-            c.saveLayerAlpha(None, int(255 * ease(p))); c.translate((1 - ease(p)) * 300, 0); fn(c, t, st); c.restore()
-        elif tr == "zoom":
-            c.saveLayerAlpha(None, int(255 * ease(p))); k = 1.25 - 0.25 * ease(p)
-            c.translate(W / 2, H / 2); c.scale(k, k); c.translate(-W / 2, -H / 2); fn(c, t, st); c.restore()
-        else:
-            c.saveLayerAlpha(None, int(255 * ease(p))); fn(c, t, st); c.restore()
-    else:
-        fn(c, t, st)
-    finish(c, W, H, t)
-    return shots[idx]
