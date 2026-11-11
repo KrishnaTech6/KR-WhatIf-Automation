@@ -1,9 +1,9 @@
 {
- "stage": "waiting_thumbs",
+ "stage": "publishing",
  "title": "What If You Woke Up 300 Million Years Ago?",
  "fails": 0,
  "doc": "https://claude.ai/artifact/Rh3GGsMN9NUAneUotPewiC",
- "notes": "Checkpoint 4: single thumbnail sent. Waiting for ok / ok real.",
+ "notes": "Checkpoint 4 OK (ok real). dry_runs_left set to 0. Release files on branch release-files/<slug>; publish-youtube dispatched with files_branch. Instagram to post after 21:05 IST 12 Nov via YouTube Short links.",
  "thumbs": {
   "A": "wake-up: person sitting up in bed under a giant dragonfly, sunset poster",
   "title": "What If You Woke Up 300 Million Years Ago?"

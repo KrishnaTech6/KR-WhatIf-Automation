@@ -1,0 +1,60 @@
+{
+ "slug": "woke-up-300-million-years-ago",
+ "dry_run": false,
+ "privacy": "private",
+ "publish_at": null,
+ "synthetic": false,
+ "language": "en",
+ "main": {
+  "file": "MAIN.mp4",
+  "title": "What If You Woke Up 300 Million Years Ago?",
+  "description": "You open your eyes and a dragonfly with 70 cm wings is sitting on your chest.\nThe air is almost one-third oxygen, and one spark can set the whole forest on fire.\n\nReal science in this video:\n- 300 million years ago, oxygen was around 30% of the air (today it's 21%).\n- Giant clubmoss trees stood about 30 m tall, and there were no flowers, grass or birds yet.\n- Griffinflies like Meganeura had wings about 70 cm across; Arthropleura, a millipede-like giant, was about 2.6 m long.\n- The land that became India sat far to the south under ice; glacial boulder beds in Odisha (Talchir) still show it.\n- Buried swamp forests became coal, and coal makes about three-quarters of India's electricity today.\n\nChapters:\n0:00 You wake up\n0:32 Minute 1 · The air\n1:02 Hour 1 · The forest\n1:35 Hour 3 · The giants\n2:27 Night 1 · The fire\n3:05 Year 1 · Where is India?\n3:35 Today · The twist\n\nNobody can travel back in time. This is a thought experiment built on real research, and some numbers (like the exact oxygen level) are still debated by scientists.\n\nIf you could bring one thing back from that world, what would you pick?\n\nSources:\nKrause et al. 2018, Nature Communications (oxygen history): https://pmc.ncbi.nlm.nih.gov/articles/PMC6172248\nNatural History Museum, giant dragonflies: https://www.nhm.ac.uk/discover/giant-dragonflies.html\nUniversity of Cambridge, Arthropleura (Davies et al. 2021): https://www.cam.ac.uk/stories/giantmillipede\nGlasspool & Scott 2010, fossil charcoal and oxygen (Field Museum): https://www.eurekalert.org/pub_releases/2010-08/fm-oft080210.php\nGeological Survey of India, Gondwana coal: https://fossil.energy.gov/international/Publications/ucg_1106_gsi.pdf\nEmber, India electricity data: https://ember-energy.org/countries-and-regions/india\n\n#whatif #science #prehistoric",
+  "tags": [
+   "what if",
+   "300 million years ago",
+   "carboniferous",
+   "prehistoric earth",
+   "giant insects",
+   "meganeura",
+   "arthropleura",
+   "oxygen levels",
+   "gondwana",
+   "india coal",
+   "science explained",
+   "KR's What If Explained"
+  ],
+  "category": "27",
+  "thumbnail": "THUMB_A.jpg",
+  "comment": "Giant millipede or giant dragonfly: which one are you running from first?",
+  "privacy": "private",
+  "publish_at": "2026-11-12T15:30:00Z"
+ },
+ "shorts": [
+  {
+   "file": "SHORT.mp4",
+   "title": "Don't Move. This Bug Has 70 cm Wings #shorts",
+   "description": "The air was almost one-third oxygen, and the bugs were huge.\nFull video: {MAIN_URL}",
+   "tags": [
+    "what if",
+    "prehistoric",
+    "giant insects",
+    "shorts"
+   ],
+   "privacy": "private",
+   "publish_at": "2026-11-12T14:30:00Z"
+  },
+  {
+   "file": "REEL.mp4",
+   "title": "India Was Frozen 300 Million Years Ago #shorts",
+   "description": "300 million years ago, India was under thick ice.\nFull video: {MAIN_URL}",
+   "tags": [
+    "what if",
+    "india",
+    "gondwana",
+    "shorts"
+   ],
+   "privacy": "private",
+   "publish_at": "2026-11-12T15:00:00Z"
+  }
+ ]
+}

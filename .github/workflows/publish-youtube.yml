@@ -9,6 +9,10 @@ on:
       slug:
         description: "release tag = run folder name"
         required: true
+      files_branch:
+        description: "optional: branch holding the release files; the workflow then creates the Release itself"
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -33,7 +37,16 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install -q google-api-python-client google-auth
+      - name: Create the Release from a files branch (sessions that cannot upload release assets)
+        if: inputs.files_branch != ''
+        run: |
+          git fetch -q origin "${{ inputs.files_branch }}"
+          mkdir -p assets && git archive FETCH_HEAD | tar -x -C assets
+          ls -la assets
+          title=$(python -c "import json;print(json.load(open('assets/upload.json'))['main']['title'])")
+          gh release view "$SLUG" >/dev/null 2>&1 || gh release create "$SLUG" assets/* --title "$title" --notes "MAIN + SHORT + REEL, thumbnail, upload.json, upload_text.txt"
       - name: Get release files
+        if: inputs.files_branch == ''
         run: gh release download "$SLUG" -D assets
       - name: Upload to YouTube
         run: python scripts/youtube_upload.py assets/upload.json assets "runs/$SLUG/published.json"
