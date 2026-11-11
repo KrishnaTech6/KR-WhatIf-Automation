@@ -1,1 +1,1 @@
-{"stage": "render", "title": "What If You Woke Up 300 Million Years Ago?", "fails": 0, "doc": "https://claude.ai/artifact/Rh3GGsMN9NUAneUotPewiC", "notes": "Audio fetched via artifacts/<slug> branch. Short+Reel aligned (trimmed silences); Short rendering. Main beats 5,6,9 being re-recorded on Kaggle."}
+{"stage": "render", "title": "What If You Woke Up 300 Million Years Ago?", "fails": 0, "doc": "https://claude.ai/artifact/Rh3GGsMN9NUAneUotPewiC", "notes": "Voice gate passed (main 98.4% after 2 redo rounds; Short 96%, Reel accepted). Short+Reel rendered; main rendering."}
