@@ -1,5 +1,6 @@
-"""Generic drawing helpers for every video (Night Atlas look). Moved unchanged from the first runs, so old shots keep
-working. `from krwi.art import *` gives: brand primitives (col, paint, font, text, ease, span, keys, glow, pill, ...),
+"""Generic drawing helpers for every video. Moved unchanged from the first runs, so old shots keep working; in the
+atlas style (default) every function below draws exactly as before. In the cinematic / collage styles (krwi.style),
+explainer_bg, big_text, pill, pop, stamp, glow and comment_card switch to that style's look. `from krwi.art import *` gives: brand primitives (col, paint, font, text, ease, span, keys, glow, pill, ...),
 draw_kr, the logo/chapter/end cards, W/H, and the helpers below. Topic-specific art stays in the run's video/art.py."""
 import math, os, json
 import skia
@@ -7,7 +8,9 @@ import skia
 from . import ctx
 from .ctx import W, H, BRAND
 from primitives import (col, paint, font, text, text_w, clamp, ease, ease_out, back_out, span, keys,  # noqa: F401
-                        night_sky, glow, vignette, grain, finish, pill)
+                        night_sky, vignette, grain, finish)
+from primitives import glow as _atlas_glow, pill as _atlas_pill
+from . import style as _style
 from kr import draw_kr  # noqa: F401
 from logo import draw_logo, chapter_card, end_card  # noqa: F401
 
@@ -43,7 +46,21 @@ def lin(c, x0, y0, x1, y1, cols, stops=None, rect=None):
     c.drawRect(rect or skia.Rect(0, 0, W, H), skia.Paint(Shader=sh))
 
 
+def glow(c, x, y, r, color, a=0.6):
+    if _style.NAME != "atlas":
+        return _style.glow(c, x, y, r, color, a)
+    _atlas_glow(c, x, y, r, color, a)
+
+
+def pill(c, x, y, s, label, color="teal", text_color="cream", size=34):
+    if _style.NAME != "atlas":
+        return _style.pill(c, x, y, s, label, color, text_color, size)
+    _atlas_pill(c, x, y, s, label, color, text_color, size)
+
+
 def stamp(c, x, y, label, p, color="coral", rot=-12):
+    if _style.NAME != "atlas":
+        return _style.stamp(c, x, y, label, p, color, rot)
     if p <= 0:
         return
     k = 1.6 - 0.6 * back_out(p)
@@ -57,6 +74,8 @@ def stamp(c, x, y, label, p, color="coral", rot=-12):
 
 
 def big_text(c, s, x, y, size, p=1.0, color="cream", kind="extrabold"):
+    if _style.NAME != "atlas":
+        return _style.big_text(c, s, x, y, size, p, color, kind)
     if p <= 0:
         return
     a = ease_out(p)
@@ -84,6 +103,8 @@ def paper(c, x, y, s, title, sub, color="teal", rot=0, a=1.0):
 
 
 def comment_card(c, x, y, s, q, p, t):
+    if _style.comment_card(c, x, y, s, q, p, t):
+        return
     if p <= 0:
         return
     k = back_out(p)
@@ -150,7 +171,10 @@ def xmark(c, x, y, s, p):
 
 
 def explainer_bg(c, t, tint="plum"):
-    """Plain explainer backdrop: night sky, a soft glow, darkened. Default background of the shot library."""
+    """Plain explainer backdrop: night sky, a soft glow, darkened. Default background of the shot library.
+    Cinematic: near-black starfield with faint nebula glows. Collage: kraft paper."""
+    if _style.NAME != "atlas":
+        return _style.background(c, t, tint)
     night_sky(c, W, H, t)
     glow(c, W / 2, H * 0.55, 900, tint, 0.3)
     c.drawRect(skia.Rect(0, 0, W, H), paint("deep", 0.55))

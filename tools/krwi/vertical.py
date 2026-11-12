@@ -4,6 +4,8 @@ Per video, video/vertical_plan.py provides:
   HOOK = {"short": "DON'T MOVE.", "reel": "..."}   frame-0 hook text (<= 6 words)
   SUB  = {"short": "300 MILLION YEARS AGO", ...}    smaller line under it
   FIX  = {"three": "300", "hundred": ""}            caption display fixes (word -> shown text, "" hides it)
+  CAPTIONS = "standard"                             or "bold" (Style 2: Anton, white + yellow, black outline, pop)
+                                                    use "bold" only sometimes, never on every Reel (Krishna, Nov 2026)
   def plan_short(vt): return [scene(0.0, main_time, cx, zoom, rate), scene(vt.T("its"), ...), ...]
   def plan_reel(vt):  ...
   AUDIO(job, vt, total, mus, fx)                    optional: replace the default vertical score
@@ -20,7 +22,7 @@ import skia
 import soundfile as sf
 
 from . import ctx
-from .art import font, text, paint, back_out, finish, grain, text_w
+from .art import font, text, paint, back_out, finish, grain, text_w, span
 from .script import norm, vertical_lines
 
 VW, VH = ctx.VW, ctx.VH
@@ -81,14 +83,22 @@ def main_shots():
     return _main
 
 
+_held = [None, None]
+
+
 def main_frame(tm):
     global _surf
-    from .compose import render_frame
+    from .compose import render_frame, frame_key
+    key = frame_key(tm, main_shots())
+    if key is not None and key == _held[0]:   # collage stop-motion: same drawing as the last frame
+        return _held[1]
     if _surf is None:
         _surf = skia.Surface(ctx.W, ctx.H)
     c = _surf.getCanvas(); c.clear(skia.Color(0, 0, 0))
     render_frame(c, tm, main_shots())
-    return _surf.makeImageSnapshot()
+    img = _surf.makeImageSnapshot()
+    _held[0], _held[1] = key, img
+    return img
 
 
 def reframe(c, img, cx, cy=540, zoom=1.25, top=150):
@@ -158,6 +168,33 @@ def captions(c, vt, t, extra=None, y=1360):
         x += text_w(d, f) + 26
 
 
+def captions_bold(c, vt, t, extra=None, y=1330):
+    """Style 2 captions: groups of 2-3 words in Anton, white with a thick black outline, the spoken word yellow,
+    each group pops in."""
+    from .style import bold_words
+    ws = vt.words
+    groups, cur = [], []
+    for i, (wt, w) in enumerate(ws):
+        cur.append(i)
+        if len(cur) == 3 or w[-1] in ".?!," or (len(cur) == 2 and len(w) > 7):
+            groups.append(cur); cur = []
+    if cur:
+        groups.append(cur)
+    g = None
+    for gr in groups:
+        if ws[gr[0]][0] - 0.05 <= t:
+            g = gr
+    if g is None or t > ws[g[-1]][0] + 1.2:
+        return
+    shown = [(i, fix(ws[i][1], extra or {})) for i in g]
+    shown = [(i, d) for i, d in shown if d]
+    if not shown:
+        return
+    spoken = [k for k, (i, _) in enumerate(shown) if ws[i][0] <= t]
+    hl = {spoken[-1]} if spoken else set()
+    bold_words(c, [d for _, d in shown], VW / 2, y, 124, hl, span(t, ws[g[0]][0] - 0.05, ws[g[0]][0] + 0.15), VW - 110)
+
+
 def cut_marks(c, t, marks):
     for m in marks:
         if 0 <= t - m < 0.12:
@@ -179,12 +216,17 @@ def frame(c, job, vt, plan, t):
     lo, hi = starts[k], starts[k + 1] - 0.05             # stay inside the main shot the plan points at
     reframe(c, main_frame(min(max(fn(t - st), lo), hi)), cx, 540, z)
     hook_end = plan[1][0] - 0.25 if len(plan) > 1 else 2.5
+    bold = getattr(P, "CAPTIONS", "standard") == "bold"
     if t < hook_end:                                      # hook text from frame 0, then a small channel label
-        hook_text(c, P.HOOK[job], 1.0, 130, 80, "gold")
+        if bold:
+            from .style import bold_words
+            bold_words(c, P.HOOK[job].split(), VW / 2, 120, 110, set(range(1, 99)), 1.0, VW - 100, 0)
+        else:
+            hook_text(c, P.HOOK[job], 1.0, 130, 80, "gold")
         text(c, P.SUB[job], VW / 2, 215, font("bold", 40), paint("cream", 0.9))
     else:
         text(c, "KR's What If Explained", VW / 2, 110, font("semibold", 34), paint("sand", 0.75))
-    captions(c, vt, t, getattr(P, "FIX", {}))
+    (captions_bold if bold else captions)(c, vt, t, getattr(P, "FIX", {}))
     cut_marks(c, t, [p[0] for p in plan[1:]])
     grain(c, VW, VH, t)
 

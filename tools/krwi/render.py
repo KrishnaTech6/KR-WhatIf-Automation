@@ -21,14 +21,19 @@ def _ffmpeg_pipe(w, h, out):
 def frames(a, b, out):
     import skia
     import shots as S
-    from .compose import render_frame
+    from .compose import render_frame, frame_key
     L = S.SHOTS()
     p = _ffmpeg_pipe(ctx.W, ctx.H, out)
     s = skia.Surface(ctx.W, ctx.H)
+    last, buf = None, None
     for i in range(a, b):
-        c = s.getCanvas(); c.clear(skia.Color(0, 0, 0))
-        render_frame(c, i / ctx.FPS, L)
-        p.stdin.write(s.makeImageSnapshot().toarray(colorType=skia.kBGRA_8888_ColorType).tobytes())
+        key = frame_key(i / ctx.FPS, L)
+        if key is None or key != last:           # collage stop-motion: reuse the held drawing
+            c = s.getCanvas(); c.clear(skia.Color(0, 0, 0))
+            render_frame(c, i / ctx.FPS, L)
+            buf = s.makeImageSnapshot().toarray(colorType=skia.kBGRA_8888_ColorType).tobytes()
+        last = key
+        p.stdin.write(buf)
     p.stdin.close(); p.wait(); os.rename(out + ".part.mp4", out)
 
 

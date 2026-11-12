@@ -7,6 +7,7 @@ contact sheets, thumbnails and QA. A video folder only holds what is new for tha
 ```
 python3 tools/wi.py setup                    # once per machine: libraries + ASR model + orchestra samples (~2 min)
 python3 tools/wi.py <slug> new               # creates runs/<slug>/video/{shots,cues,vertical_plan}.py from templates/
+python3 tools/wi.py <slug> style collage     # visual style: atlas (default) | cinematic | collage -> video/run.json
 python3 tools/wi.py <slug> timeline          # beat keys, aliases, spans, mood, hard cut
 python3 tools/wi.py <slug> sheets            # Checkpoint 2: one still per shot, 9 per sheet (video/sheets/)
 python3 tools/wi.py <slug> anchors all       # after the voiceover: real word timing for main, Short, Reel
@@ -40,7 +41,7 @@ Parts with nothing to check yet print INFO. Exit code 1 on any FAIL.
 | `video/art.py` (optional) | topic drawings (a dragonfly, a coal seam); `from krwi.art import *` for the rest |
 | `video/cues.py` | `HITS()` (a sound on every visible hit) and `AMB()` (ambience beds); everything else is automatic |
 | `video/vertical_plan.py` | `HOOK`, `SUB`, `FIX`, `plan_short(vt)`, `plan_reel(vt)` built from `scene(...)` |
-| `video/run.json` (optional) | `{"beats": [...]}` to name beats yourself; default keys come from the beat names |
+| `video/run.json` | `{"style": "collage"}` (set with `wi.py <slug> style NAME`; rule in `brand/styles/README.md`), optional `"beats": [...]` to name beats yourself |
 | `video/thumbs.py` | the thumbnail drawing, using `krwi.thumb.canvas()`, `save()`, `compare()` |
 
 ## Timing
@@ -72,6 +73,18 @@ name used by only one beat is an alias (`fire`, `night`). `wi.py <slug> timeline
 | `layer(a, b, ...)`, `stamp_at(label, t)`, `pop_at(label, t)`, `zoom(shot)` | overlays and push-ins on any shot |
 
 Every factory returns `fn(c, t, t0)`; times are absolute seconds; `bg=` takes any `fn(c, t)` background.
+
+## Styles (`krwi.style`)
+
+`STYLE` (from `video/run.json`) switches the library's backgrounds, `big_text`, pills/pops, stamps, glow strength,
+chapter cards and the frame finish; collage also renders as 12 fps stop-motion with a small per-drawing jitter (held
+frames are reused, so it costs about the same as atlas). KR, the logo sting and the end card never change. Topic art
+is drawn in the style with its helpers (all exported by `krwi.lib`): collage `cutout(c, lambda k: ...)`,
+`paper_circle`, `halftone`, `tape`, `torn_strip`, `type_text`, `index_card`, `marker_circle`, `marker_line`,
+`red_string`, `pin`, `jit(key, t)`; cinematic `cinematic_bg`, `bloom`, `light_stream`, `shock_ring`, `countdown`,
+`starfield`. `brand/styles/demo/video/shots.py` shows one shot drawn in all three (branch on `STYLE`).
+Verticals: `CAPTIONS = "bold"` in `vertical_plan.py` gives the Style 2 caption look (Anton, white + yellow, black
+outline, pop); use it only sometimes (rule in `brand/styles/README.md`).
 
 ## Sound (automatic)
 
