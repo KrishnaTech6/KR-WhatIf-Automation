@@ -37,6 +37,31 @@ def _secs(iso):
     return d * 86400 + h * 3600 + mi * 60 + s
 
 
+def _why(e, creds):
+    """The real reason behind an Analytics API error, so the fix is obvious from yt_learnings.md."""
+    import urllib.request
+    try:
+        reason = json.loads(e.content.decode())["error"]
+        reason = f'{reason.get("status", "")} {reason.get("message", "")}'.strip()
+    except Exception:
+        reason = str(e)
+    if "has not been used" in reason or "disabled" in reason or "accessNotConfigured" in reason:
+        fix = "turn on 'YouTube Analytics API' in the Google Cloud project (APIs & Services -> Library)"
+    else:
+        try:
+            info = json.load(urllib.request.urlopen(f"https://oauth2.googleapis.com/tokeninfo?access_token={creds.token}"))
+            scopes = info.get("scope", "")
+        except Exception:
+            scopes = ""
+        if scopes and "yt-analytics.readonly" not in scopes:
+            fix = ("the YT_REFRESH_TOKEN secret has no analytics permission (granted: "
+                   + ", ".join(x.rsplit("/", 1)[-1] for x in scopes.split()) +
+                   "); re-run scripts/youtube_auth.py, tick every box, replace YT_REFRESH_TOKEN")
+        else:
+            fix = "token has the analytics permission; see the reason"
+    return f"{fix}. Google said: {reason[:300]}"
+
+
 def fetch():
     from googleapiclient.discovery import build
     from googleapiclient.errors import HttpError
@@ -80,8 +105,7 @@ def fetch():
                                          shares=d["shares"], subs_gained=d["subscribersGained"])
         out["analytics"] = "ok"
     except HttpError as e:
-        out["analytics"] = f"HTTP {e.resp.status}: needs the yt-analytics.readonly permission (re-run scripts/youtube_auth.py)" \
-            if e.resp.status in (401, 403) else f"HTTP {e.resp.status}"
+        out["analytics"] = f"HTTP {e.resp.status}: {_why(e, creds)}"
     if out["analytics"] == "ok":
         try:
             r = ya.reports().query(**q, dimensions="video", maxResults=200, sort="-videoThumbnailImpressions",
