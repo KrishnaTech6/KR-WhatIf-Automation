@@ -7,6 +7,7 @@ from krwi.timeline import T as MT, at as MAT, B as MB, E as ME  # noqa: F401  ma
 HOOK = {"short": "HOOK TEXT", "reel": "HOOK TEXT"}       # frame-0 text, <= 6 words
 SUB = {"short": "SUBLINE", "reel": "SUBLINE"}
 FIX = {}                                                  # caption fixes: {"three": "3", "hundred": ""}
+CAPTIONS = "standard"                                     # or "bold" (Style 2) only sometimes: brand/styles/README.md
 
 
 def plan_short(vt):

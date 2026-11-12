@@ -3,6 +3,7 @@
 
     python3 tools/wi.py setup                       install libs, cache ASR model + orchestra samples (once per machine)
     python3 tools/wi.py <slug> new                  scaffold runs/<slug>/video/ from tools/templates
+    python3 tools/wi.py <slug> style [atlas|cinematic|collage]   show / set the visual style (video/run.json)
     python3 tools/wi.py <slug> timeline             beat keys, aliases, spans (estimate or real)
     python3 tools/wi.py <slug> sheets               one still per shot, 9 per contact sheet -> video/sheets/shots_N.png
     python3 tools/wi.py <slug> sheet NAME t1 t2 ... contact sheet at chosen times
@@ -57,6 +58,18 @@ def main(argv):
         return
     if not os.path.isdir(run):
         raise SystemExit(f"no run folder {run}")
+    if cmd == "style":
+        import json
+        p = os.path.join(run, "video", "run.json")
+        cfg = json.load(open(p)) if os.path.exists(p) else {}
+        if args:
+            if args[0] not in ("atlas", "cinematic", "collage"):
+                raise SystemExit("style must be atlas, cinematic or collage")
+            cfg["style"] = args[0]
+            os.makedirs(os.path.dirname(p), exist_ok=True)
+            json.dump(cfg, open(p, "w"))
+        print("style:", cfg.get("style", "atlas (default)"))
+        return
     os.environ["KR_RUN"] = run
     sys.path.insert(0, TOOLS)
     from krwi import ctx  # noqa: F401  (sets sys.path for brand/ and the run's video/)

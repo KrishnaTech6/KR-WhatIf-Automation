@@ -1,4 +1,6 @@
 """Shot library. A run's video/shots.py starts with `from krwi.lib import *` and gets:
+  - the run's visual style: STYLE (atlas | cinematic | collage, from video/run.json) and the style helpers
+    (cutout, halftone, tape, type_text, red_string, bloom, countdown, bold_words, ... see krwi/style.py)
   - timing: T, at, B, E, TOTAL, MODE (from the voice script / anchors.json)
   - drawing: everything in krwi.art (brand primitives, draw_kr, logo cards, big_text, india_map, Cam, rng, ...)
   - the ready-made shots below. Each one is a factory that returns fn(c, t, t0) for the shot list:
@@ -14,6 +16,11 @@ from .art import *  # noqa: F401,F403
 from .art import W, H, explainer_bg, span, ease, ease_out, back_out, paint, font, text, text_w, glow, pill, big_text, \
     counter_text, stamp, paper, comment_card, india_map, pop, draw_kr, draw_logo, chapter_card, end_card, night_sky, finish, lin
 from .timeline import T, at, B, E, TOTAL, MODE, BEAT_KEYS  # noqa: F401
+from . import style as _style
+from .style import (STYLES, cutout, paper_circle, halftone, tape, torn_strip, type_text, index_card,  # noqa: F401
+                    marker_circle, marker_line, red_string, pin, jit, starfield, bloom, light_stream, shock_ring,
+                    countdown, bold_words, cinematic_bg, collage_bg, kr_cutout, INK, RED_INK, PAPER)
+STYLE = _style.NAME
 
 
 def _bg(bg, c, t):
@@ -30,7 +37,10 @@ def _named(fn, name, kind=None):
 def card(value, name):
     """Full-screen chapter card: the time value big ('DAY 10', '+2 HOURS'), the chapter name under it. ~1.5 s."""
     def f(c, t, t0):
-        chapter_card(c, W, H, value, name, span(t, t0, t0 + 1.4), t)
+        if _style.NAME == "atlas":
+            chapter_card(c, W, H, value, name, span(t, t0, t0 + 1.4), t)
+        else:
+            _style.chapter_card(c, W, H, value, name, span(t, t0, t0 + 1.4), t)
     f.kind = "card"
     return f
 
@@ -163,7 +173,7 @@ def kr_react(expr="shocked", line=None, line_at=None, bg=None, x=W / 2, scale=1.
         glow(c, x, 640, 520, "teal", 0.25)
         k = back_out(span(t, t0, t0 + 0.35))
         c.save(); c.translate(x, 940); c.scale(k, k); c.translate(-x, -940)
-        draw_kr(c, x, 940, scale, expr, t)
+        kr_cutout(c, lambda k: draw_kr(k, x, 940, scale, expr, t))
         c.restore()
         if line:
             pop(c, x, 170, line, t, line_at if line_at is not None else t0 + 0.3, color, 46)

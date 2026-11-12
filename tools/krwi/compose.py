@@ -3,7 +3,8 @@ The compositor draws the previous shot under the new one during the transition, 
 (grain + vignette). Everything is a pure function of t, so frames render in any order."""
 import skia
 
-from .art import W, H, span, ease, paint, finish
+from .art import W, H, span, ease, paint
+from . import style
 
 TRANS = {"cut": 0.0, "fade": 0.35, "iris": 0.5, "zoom": 0.4, "whip": 0.3, "flash": 0.25}
 
@@ -11,6 +12,11 @@ TRANS = {"cut": 0.0, "fade": 0.35, "iris": 0.5, "zoom": 0.4, "whip": 0.3, "flash
 def render_frame(c, t, shots):
     idx = max(i for i, s in enumerate(shots) if s[0] <= t or i == 0)
     st, fn, tr = shots[idx]
+    kind = getattr(fn, "kind", None)
+    t = style.frame_time(t, kind)          # collage: 12 fps stop-motion (identity in atlas / cinematic)
+    style.ctx_t[0] = t
+    c.save()
+    style.frame_jitter(c, W, H, t, kind)   # collage: tiny whole-frame boil per drawing
     d = TRANS[tr]
     p = span(t, st, st + d) if d else 1.0
     if p < 1 and idx > 0:
@@ -30,8 +36,21 @@ def render_frame(c, t, shots):
             c.saveLayerAlpha(None, int(255 * ease(p))); fn(c, t, st); c.restore()
     else:
         fn(c, t, st)
-    finish(c, W, H, t)
+    c.restore()
+    style.finish(c, W, H, t, kind)         # atlas: the original grain + vignette
     return shots[idx]
+
+
+def frame_key(t, shots):
+    """Same key = same picture (collage holds each drawing 1/12 s), so renders can reuse the last frame.
+    None = always draw (atlas, cinematic, brand moments)."""
+    if style.NAME != "collage":
+        return None
+    idx = max(i for i, s in enumerate(shots) if s[0] <= t or i == 0)
+    kind = getattr(shots[idx][1], "kind", None)
+    if kind in ("logo", "end"):
+        return None
+    return (idx, round(style.frame_time(t, kind) * 12))
 
 
 def check(shots):

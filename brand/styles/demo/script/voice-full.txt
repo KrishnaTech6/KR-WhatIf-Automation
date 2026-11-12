@@ -1,0 +1,17 @@
+TITLE: Style demo: What If the Sun Vanished for 8 Minutes?
+LANG: en
+KEY_BEATS: hook
+HARD_CUT_BEFORE: payoff
+
+[Hook | soft]
+The Sun just vanished. And nobody on Earth knows yet.
+
+[Promise - logo | neutral]
+This is K R's What If Explained. Real science, simple words.
+
+[Minute one - old light | neutral]
+Sunlight takes eight minutes and twenty seconds to reach us.
+So for eight minutes, the sky still looks perfectly normal.
+
+[Payoff - dark | deep]
+Then the lights go out. Tell me, what would you do first?

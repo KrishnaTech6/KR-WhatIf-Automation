@@ -166,6 +166,11 @@ def shots(R):
     from .timeline import MODE, E, B, TOTAL, BEAT_KEYS
     from .compose import check as cc
     import shots as S
+    from . import style as st
+    cfg = os.path.join(ctx.VIDEO, "run.json")
+    set_ = os.path.exists(cfg) and "style" in json.load(open(cfg))
+    R.ok(set_, "style", f"{st.NAME} (video/run.json)" if set_ else "no style in video/run.json: rendering atlas; "
+         "pick one by the topic rule (`wi.py <slug> style NAME`)", "WARN")
     L = S.SHOTS()
     probs = cc(L)
     R.ok(not probs, "shot list", f"{len(L)} shots, order and transitions OK" if not probs else probs[0])

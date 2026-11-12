@@ -5,6 +5,10 @@ minimal text, cold open = the hook's consequence on frame 0, logo sting right af
 Library shots (krwi.lib): card, logo_sting, end_screen, counter, statement, pills, bars, india_pin, india_states,
 split, kr_react, papers, comment_prompt, tease, layer + stamp_at / pop_at overlays, zoom.
 Write new code only for hero shots and topic drawings (put reusable topic drawings in art.py).
+Style: STYLE is this run's look (`wi.py <slug> style atlas|cinematic|collage`, rule in brand/styles/README.md).
+Library shots switch automatically; draw hero shots IN the style with its helpers (cinematic: cinematic_bg, bloom,
+light_stream, countdown; collage: collage_bg, cutout, halftone, tape, type_text, red_string, jit). Example of one
+shot in all styles: brand/styles/demo/video/shots.py.
 Beat keys: `python3 tools/wi.py <slug> timeline` lists them and their aliases.
 """
 from krwi.lib import *  # noqa: F401,F403
