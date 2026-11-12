@@ -15,5 +15,7 @@
  "kaggle_user": "krishnarana1412",
  "instagram_account_id": "29240610082246011",
  "thumbnail_rules": "brand/thumbnail_rules.md",
- "_thumbnail_rules": "Read before Stage 5 / A6. Overrides the skill: no KR in thumbnails, thumbnail text = the video title."
+ "_thumbnail_rules": "Read before Stage 5 / A6. Overrides the skill: no KR in thumbnails, thumbnail text = the video title.",
+ "github_release": "off",
+ "_github_release": "off = never create a GitHub Release (Krishna, 12 Nov 2026). Files go to the temporary branch release-files/<slug>; publish-youtube deletes it after upload. In manual mode, send the files in chat instead of a Release link."
 }
