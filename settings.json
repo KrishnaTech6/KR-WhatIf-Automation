@@ -8,6 +8,12 @@
  "_ab_test": "off = one thumbnail, one title (Krishna, 11 Nov 2026). native = 3 title+thumbnail pairs for Test & Compare",
  "publish": "on_finish",
  "_publish": "on_finish, or a fixed IST time like 18:00 (needs youtube_upload = api)",
+ "release_schedule": {
+  "main": "D1 18:00",
+  "short": "D2 09:00",
+  "reel": "D2 20:00"
+ },
+ "_release_schedule": "IST. Main first, then the Short next morning and the Reel next evening, so something goes out daily and the verticals link to a live main video (Krishna, 13 Nov 2026; from general India data, re-check with the channel's own Studio data after ~3 weeks). scripts/release_times.py <slug> gives the exact times. YouTube and Instagram post the Short/Reel at the same times.",
  "default_language": "en",
  "synthetic_label": false,
  "min_days_between_videos": 2,
