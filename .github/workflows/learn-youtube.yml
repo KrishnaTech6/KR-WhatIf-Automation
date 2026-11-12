@@ -2,10 +2,10 @@ name: learn-youtube
 
 # What is working on YouTube: views, % viewed, retention curve (where viewers leave) and thumbnail CTR for every
 # public upload -> learn/youtube.json + yt_learnings.md, which the script stage reads before writing.
-# Runs 35 min before the topic picks (Mon/Wed/Fri 22:17 IST) and on demand.
+# Runs Mon/Wed/Fri 16:25 IST, 35 min before the topic picks at 17:00 IST, and on demand.
 on:
   schedule:
-    - cron: "47 16 * * 1,3,5"
+    - cron: "55 10 * * 1,3,5"   # 10:55 UTC = 16:25 IST
   workflow_dispatch:
 
 permissions:
