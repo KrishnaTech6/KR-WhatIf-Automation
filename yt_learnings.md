@@ -1,8 +1,8 @@
-# YouTube learnings (auto-generated 2026-11-12 18:53 UTC)
+# YouTube learnings (auto-generated 2026-11-12 18:54 UTC)
 
 Channel: kr's what if explained · 10 subscribers · 9 main videos · 20 Shorts. Made by `scripts/youtube_learn.py` (learn-youtube workflow); don't edit by hand.
 
-**Retention and % viewed are missing:** HTTP 403: needs the yt-analytics.readonly permission (re-run scripts/youtube_auth.py). Only public counts below.
+**Retention and % viewed are missing:** HTTP 403: the YT_REFRESH_TOKEN secret has no analytics permission (granted: youtube.force-ssl, youtube.upload); re-run scripts/youtube_auth.py, tick every box, replace YT_REFRESH_TOKEN. Google said: PERMISSION_DENIED Request had insufficient authentication scopes.. Only public counts below.
 
 ## Main videos
 
@@ -13,7 +13,7 @@ Channel: kr's what if explained · 10 subscribers · 9 main videos · 20 Shorts.
 | 2026-11-09 | What If Delhi Was Trapped Under Smog Forever? | 2 | 0.7 | - | - | - | - |
 | 2026-11-09 | What If India Woke Up Without the Himalayas? | 5 | 1.7 | - | - | - | - |
 | 2026-11-08 | What If the Whole World Lost the Internet for One We | 3 | 0.8 | - | - | - | - |
-| 2026-11-07 | What If the Moon Disappeared Tomorrow? | KR's What i | 78 | 15.6 | - | - | - | - |
+| 2026-11-07 | What If the Moon Disappeared Tomorrow? | KR's What i | 79 | 15.8 | - | - | - | - |
 | 2026-11-07 | What If the Electric Motor Was Never Invented? | 63 | 12.6 | - | - | - | - |
 | 2026-11-06 | What If You Woke Up 1 Millimetre Tall Tomorrow? | KR | 57 | 9.5 | - | - | - | - |
 | 2026-11-04 | What If Only ONE City on Earth Had Drinking Water? | 12 | 1.5 | - | - | - | - |
@@ -23,10 +23,10 @@ Channel: kr's what if explained · 10 subscribers · 9 main videos · 20 Shorts.
 | Published | Title | Views | Views/day | Avg viewed | Likes per 1k views |
 | --- | --- | --- | --- | --- | --- |
 | 2026-11-12 | India Was Frozen 300 Million Years Ago #shorts | 4 | 4.0 | - | 0 |
-| 2026-11-12 | Don't Move. This Bug Has 70 cm Wings #shorts | 19 | 19.0 | - | 0 |
+| 2026-11-12 | Don't Move. This Bug Has 70 cm Wings #shorts | 0 | 0.0 | - | - |
 | 2026-11-11 | The Sun Vanished. You Won't Know for 8 Minutes #shor | 36 | 36.0 | - | 28 |
-| 2026-11-11 | Noon , but sky full of stars #whatif #reels | 187 | 187.0 | - | 5 |
-| 2026-11-10 | If Earth Had Rings, Delhi Nights Never Go Dark #shor | 314 | 157.0 | - | 10 |
+| 2026-11-11 | Noon , but sky full of stars #whatif #reels | 186 | 186.0 | - | 5 |
+| 2026-11-10 | If Earth Had Rings, Delhi Nights Never Go Dark #shor | 315 | 157.5 | - | 10 |
 | 2026-11-10 | Mumbai's Noon Sun Hidden for 80 Days? #shorts | 659 | 329.5 | - | 8 |
 | 2026-11-10 | What If the Himalayas Vanished Overnight? #shorts | 1014 | 507.0 | - | 8 |
 | 2026-11-09 | Kangchenjunga Vanished From My Window #shorts | 706 | 235.3 | - | 4 |
