@@ -10,49 +10,49 @@ And the person hit hardest... isn't you.
 
 [Promise - logo | neutral]
 This is K R's What If Explained. Real numbers, simple words.
-U P I has stumbled before. In April twenty twenty-five, payments kept failing for about five hours.
+UPI has stumbled before. In April twenty twenty-five, payments kept failing for about five hours.
 Let's stretch that to one full week.
 
 [Minute one - the chai stall | playful]
 Minute one. You scan the Q R code again. Failed.
 You switch apps. Google Pay. Then PhonePe. Then Paytm. Failed, failed, failed.
-Here's the myth. Most of us think these apps are U P I.
+Here's the myth. Most of us think these apps are UPI.
 They're not. They're just doors.
-Almost eight out of every ten U P I payments go through just two of these apps.
-Behind every door is the same house... U P I, run by N P C I.
+Almost eight out of every ten UPI payments go through just two of these apps.
+Behind every door is the same house... UPI, run by N P C I.
 {deadpan} Change the door all you want. The house is closed.
 
 [Hour three - the ATM line | tense]
 Hour three. Everyone has the same idea. Cash.
 The line outside your nearest A T M is now twenty people long. Then fifty.
-Here's why. On a normal day, U P I moves about one lakh crore rupees.
+Here's why. On a normal day, UPI moves about one lakh crore rupees.
 {neutral} That's money that never had to be counted, carried, or kept in a drawer.
 Now all of it wants to be paper. By lunch, the machine says... temporarily out of service.
 {tense} Some people just go home. Hungry. Holding a phone full of money they can't use.
 
 [Night one - the shops | neutral]
 Night one. Your card mostly still works. So does net banking.
-U P I is one road. It's just the busiest one.
+UPI is one road. It's just the busiest one.
 About eighty-five percent of India's digital payments go through it.
 But walk into your local kirana. There's a Q R sticker on the counter.
 And no card machine anywhere.
 {warm} Quick question. How much cash is in your wallet right now? Be honest. Tell me in the comments.
 
-[Day three - chhutta | neutral]
+[Day three - no change | neutral]
 Day three. A new problem. Change.
-Last year, the average U P I payment at a shop was about six hundred rupees. Lots are far smaller. A chai. An auto. A bunch of dhaniya.
-For years, U P I made exact change. One rupee? Done.
-{playful} Now every shopkeeper says the same line. Chhutta nahi hai.
+Last year, the average UPI payment at a shop was about six hundred rupees. Lots are far smaller. A chai. An auto. A bunch of dhaniya.
+For years, UPI made exact change. One rupee? Done.
+{playful} Now every shopkeeper says the same line. Sorry... no change.
 {neutral} And remember the person hit hardest? Meet him.
 The sabziwala at your corner. His customers stopped carrying cash years ago.
 Today, they walk past him. Not because they don't want his tomatoes. Because they can't pay.
 
 [Day five - the slowdown | deep]
 Day five.
-Five days without U P I means about five lakh crore rupees that didn't move the normal way.
+Five days without UPI means about five lakh crore rupees that didn't move the normal way.
 The delivery rider who gets paid every evening... didn't. (beat)
 The cook who sends money home to her village... couldn't.
-This is the moment you realise... U P I isn't an app.
+This is the moment you realise... UPI isn't an app.
 It's how India breathes.
 {neutral} So small shops do something very old. They open a notebook. Udhaar. Pay me when it comes back.
 {deadpan} India's oldest payment app... is back.
@@ -62,13 +62,13 @@ Day seven. And here's the twist.
 The cash never left.
 Right now, India has about forty-three lakh crore rupees in notes and coins.
 And it's growing at its fastest pace in five years. (beat)
-{neutral} Even while U P I exploded, we quietly kept more cash than ever.
+{neutral} Even while UPI exploded, we quietly kept more cash than ever.
 Not to spend. Just in case.
 {playful} Your dadi's steel dabba of notes in the kitchen? Turns out she was right.
-{neutral} And for people without a smartphone, there's even U P I one two three pay. It works on a basic phone. No internet needed.
+{neutral} And for people without a smartphone, there's even UPI one two three pay. It works on a basic phone. No internet needed.
 
 [Payoff - back at the chai stall | warm]
-Monday. Day eight. U P I comes back.
+Monday. Day eight. UPI comes back.
 You walk to the same chai stall. Same Q R code. Ten rupees.
 Scan. And that tiny sound... payment successful.
 India handles nearly half of all the real-time payments on Earth.

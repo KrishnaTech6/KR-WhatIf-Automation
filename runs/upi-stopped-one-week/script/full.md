@@ -41,7 +41,7 @@ Countdown ladder over one week: Minute 1 → Hour 3 → Night 1 → Day 3 → Da
 | Cue | Where |
 | --- | --- |
 | Ticking + low heartbeat | Hook |
-| Bouncy plucks | Minute 1 myth-bust, chhutta joke |
+| Bouncy plucks | Minute 1 myth-bust, "no change" joke |
 | Tense pulse | Hour 3 ATM line |
 | Hard cut to silence | Before Day 5 |
 | Dark drone + wind | Day 5 |
@@ -136,7 +136,7 @@ Countdown ladder over one week: Minute 1 → Hour 3 → Night 1 → Day 3 → Da
 - **Sound:** Night ambience; marker squeak.
 - **On-screen text:** "85% OF DIGITAL PAYMENTS"; comment question
 
-### Day three - chhutta (1:52–2:35)
+### Day three - no change (1:52–2:35)
 
 > Day three. A new problem. Change.
 >
@@ -144,7 +144,7 @@ Countdown ladder over one week: Minute 1 → Hour 3 → Night 1 → Day 3 → Da
 >
 > For years, UPI made exact change. One rupee? Done.
 >
-> Now every shopkeeper says the same line. Chhutta nahi hai.
+> Now every shopkeeper says the same line. Sorry... no change.
 >
 > And remember the person hit hardest? Meet him.
 >
@@ -152,10 +152,10 @@ Countdown ladder over one week: Minute 1 → Hour 3 → Night 1 → Day 3 → Da
 >
 > Today, they walk past him. Not because they don't want his tomatoes. Because they can't pay.
 
-- **Tone:** Neutral, playful on "Chhutta nahi hai", then quiet.
-- **Scenes:** (1) Card: DAY 3 · Chhutta. (2) ₹600 price tag, then tiny tags: chai, auto, dhaniya. (3) A ₹500 note cut-out vs a ₹10 chai; stamp "NO CHANGE". (4) Speech bubble on a torn strip: "CHHUTTA NAHI HAI". (5) The sabziwala's cart with tomatoes, people cut-outs walk past.
+- **Tone:** Neutral, playful on "Sorry... no change", then quiet.
+- **Scenes:** (1) Card: DAY 3 · No change. (2) ₹600 price tag, then tiny tags: chai, auto, dhaniya. (3) A ₹500 note cut-out vs a ₹10 chai; stamp "NO CHANGE". (4) Speech bubble on a torn strip: "SORRY, NO CHANGE". (5) The sabziwala's cart with tomatoes, people cut-outs walk past.
 - **Sound:** Plucks; coin clink; street ambience fades.
-- **On-screen text:** "AVG SHOP PAYMENT ≈ ₹600"; "CHHUTTA NAHI HAI"
+- **On-screen text:** "AVG SHOP PAYMENT ≈ ₹600"; "SORRY, NO CHANGE"
 
 ### Day five - the slowdown (2:38–3:15)
 
@@ -232,7 +232,7 @@ Countdown ladder over one week: Minute 1 → Hour 3 → Night 1 → Day 3 → Da
 - **Short/Reel captions: bold (Style 2)**. The Short is number-led, and the last video used standard captions.
 - KR moments: logo/promise, myth-bust (doors), comment question (wallet), dadi joke, outro.
 - Visual threads: (1) the chai stall + QR at frame 0 returns in the payoff, same framing; (2) a red-✗ QR sticker sits in every shop scene as the "UPI down" symbol; (3) dadi's steel dabba appears quietly on a kitchen shelf in Hour 3, before the twist.
-- Chapter cards: MINUTE 1 · The chai stall / HOUR 3 · The ATM line / NIGHT 1 · The shops / DAY 3 · Chhutta / DAY 5 · The slowdown / DAY 7 · The twist / DAY 8 · Back at the stall.
+- Chapter cards: MINUTE 1 · The chai stall / HOUR 3 · The ATM line / NIGHT 1 · The shops / DAY 3 · No change / DAY 5 · The slowdown / DAY 7 · The twist / DAY 8 · Back at the stall.
 
 ## Retention map and runtime
 
@@ -257,7 +257,7 @@ Angle: the shock — 82 crore payments fail, the apps are just doors, the ATM em
 | --- | --- | --- | --- |
 | 0:00 | Seven days without UPI... and you can't even buy a ten rupee chai. 82 crore payments a day. Failed. | Chai glass + phone, PAYMENT FAILED stamp | "7 DAYS. NO UPI." |
 | 0:07 | Google Pay. PhonePe. Paytm... just doors to the same house. And the house is closed. | Three doors, red string, CLOSED sign | "THE APPS ARE JUST DOORS" |
-| 0:18 | ATM line 20, then 50. By lunch, out of service. Card mostly works, but the kirana has only a QR. Chhutta nahi hai. | Queue, ATM sticker, kirana counter | "OUT OF SERVICE" |
+| 0:18 | ATM line 20, then 50. By lunch, out of service. Card mostly works, but the kirana has only a QR. Sorry, no change. | Queue, ATM sticker, kirana counter | "OUT OF SERVICE" |
 | 0:38 | The person hit hardest isn't you. It's the sabziwala. Full video on KR's What If Explained. Because one bad day without UPI... can easily turn into | Sabziwala's cart, people walking past | "WHO LOSES MOST?" |
 
 Posting kit: title "7 Days Without UPI, You Can't Even Buy Chai #shorts"; description: "82 crore UPI payments a day, gone for a week. Full video: {MAIN_URL}"

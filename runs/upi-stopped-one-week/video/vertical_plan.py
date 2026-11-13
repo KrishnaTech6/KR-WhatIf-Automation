@@ -20,9 +20,9 @@ def plan_short(vt):
         scene(w("and", 2), MT("minute_one", "change") + 0.2, cx=1620, zoom=1.2),
         scene(w("so"), MT("hour_three", "twenty") - 0.6, cx=1150, zoom=1.0),
         scene(w("by"), MT("hour_three", "temporarily") - 0.3, cx=960, zoom=1.1),
-        scene(w("your"), MT("night_one", "u") + 0.8, cx=1100, zoom=1.0),
+        scene(w("your"), MT("night_one", "upi") + 0.8, cx=1100, zoom=1.0),
         scene(w("but"), MT("night_one", "no") + 0.4, cx=1100, zoom=1.0),
-        scene(w("by", 2), MT("day_three", "chhutta") + 0.2, cx=1000, zoom=1.0),
+        scene(w("by", 2), MT("day_three", "sorry") + 0.2, cx=1000, zoom=1.0),
         scene(w("and", 4), MT("day_three", "sabziwala") + 0.4, cx=1050, zoom=1.0),
         scene(w("full"), MT("hook", "person") + 0.2, cx=1100, zoom=1.0),
         scene(w("because", 2), 0.2, cx=940, zoom=1.2),                             # loop back to frame 0

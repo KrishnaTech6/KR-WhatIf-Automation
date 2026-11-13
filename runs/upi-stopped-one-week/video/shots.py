@@ -249,7 +249,7 @@ def s_roads(c, t, t0):
     for i in range(10):
         c.drawLine(200 + i * 170, 560, 270 + i * 170, 560, paint("#F4EFE3", stroke=10))
     torn_strip(c, 960, 450, 640, 96, seed=44, color="#FFF3C4")
-    type_text(c, "UPI · BUSIEST ROAD", 960, 450, 57, span(t, T("night_one", "u") - 0.1, T("night_one", "u") + 0.6))
+    type_text(c, "UPI · BUSIEST ROAD", 960, 450, 57, span(t, T("night_one", "upi") - 0.1, T("night_one", "upi") + 0.6))
     stamp(c, 1400, 560, "BLOCKED", span(t, T("night_one", "busiest"), T("night_one", "busiest") + 0.25), color="coral", rot=-8)
 
 
@@ -319,8 +319,8 @@ def s_chhutta(c, t, t0):
     tail = skia.Path(); tail.moveTo(940 + dx, 560 + dy); tail.lineTo(760, 640); tail.lineTo(1040 + dx, 600 + dy); tail.close()
     cutout(c, lambda k: (k.drawPath(bub, paint("#FFFFFF")), k.drawPath(tail, paint("#FFFFFF"))))
     if p > 0.9:
-        type_text(c, "CHHUTTA", 1310 + dx, 400 + dy, 92, span(t, t0 + 0.3, t0 + 0.8), color=RED_INK)
-        type_text(c, "NAHI HAI", 1310 + dx, 510 + dy, 92, span(t, t0 + 0.6, t0 + 1.1), color=RED_INK)
+        type_text(c, "SORRY,", 1310 + dx, 400 + dy, 92, span(t, t0 + 0.3, t0 + 0.8), color=RED_INK)
+        type_text(c, "NO CHANGE", 1310 + dx, 510 + dy, 92, span(t, t0 + 0.6, t0 + 1.1), color=RED_INK)
 
 
 def s_cart(c, t, t0):
@@ -594,7 +594,7 @@ def SHOTS():
         (T("hook", "for") - 0.2, s_week, "fade"),
         (T("hook", "and", 2) - 0.25, s_who, "fade"),
         (E("hook") + 0.1, logo_sting(), "flash"),
-        (T("promise", "u") - 0.3, s_clip, "fade"),
+        (T("promise", "upi") - 0.3, s_clip, "fade"),
         (T("promise", "lets") - 0.3, s_stretch, "zoom"),
         (B("minute_one") - 0.6, card("MINUTE 1", "The chai stall"), "iris"),
         (T("minute_one", "you", 1) - 0.2, s_scan, "fade"),
@@ -609,14 +609,14 @@ def SHOTS():
         (T("hour_three", "by") - 0.2, s_out, "fade"),
         (T("hour_three", "some") - 0.2, s_home, "fade"),
         (B("night_one") - 0.6, card("NIGHT 1", "The shops"), "iris"),
-        (T("night_one", "u") - 0.4, s_roads, "fade"),
+        (T("night_one", "upi") - 0.4, s_roads, "fade"),
         (T("night_one", "about") - 0.2, s_85, "fade"),
         (kr_, s_kirana, "fade"),
         (wl, s_wallet, "zoom"),
-        (B("day_three") - 0.6, card("DAY 3", "Chhutta"), "iris"),
+        (B("day_three") - 0.6, card("DAY 3", "No change"), "iris"),
         (T("day_three", "last") - 0.2, s_tags, "fade"),
         (T("day_three", "for") - 0.2, s_change, "fade"),
-        (T("day_three", "chhutta") - 0.3, s_chhutta, "whip"),
+        (T("day_three", "sorry") - 0.3, s_chhutta, "whip"),
         (ct, s_cart, "fade"),
         (B("day_five") - 0.3, card("DAY 5", "The slowdown"), "cut"),
         (T("day_five", "five", 2) - 0.3, s_5lakh, "fade"),
