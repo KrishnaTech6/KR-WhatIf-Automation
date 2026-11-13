@@ -18,7 +18,9 @@
    "file": "SHORT.mp4",
    "url": "https://youtube.com/shorts/bHC5JXn4_Dg",
    "verified": "public"
-  },
+  }
+ ],
+ "deleted_shorts": [
   {
    "id": "UtKWjeWgW5k",
    "locked_private": false,
@@ -26,7 +28,8 @@
    "schedule_kept": true,
    "file": "REEL.mp4",
    "url": "https://youtube.com/shorts/UtKWjeWgW5k",
-   "verified": "public"
+   "verified": "public",
+   "deleted": "2026-11-13: deleted on YouTube by Krishna, re-uploaded"
   }
  ]
 }
