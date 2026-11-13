@@ -1,0 +1,60 @@
+{
+ "slug": "upi-stopped-one-week",
+ "dry_run": false,
+ "privacy": "private",
+ "publish_at": null,
+ "synthetic": false,
+ "language": "en",
+ "main": {
+  "file": "MAIN.mp4",
+  "title": "What If UPI Stopped Working for One Week?",
+  "description": "Ten rupees, one chai, and your phone says: payment failed.\nNow imagine that for 82 crore UPI payments a day, for a whole week.\n\nReal numbers in this video:\n- In October 2026, UPI handled about 82 crore payments and about ₹1 lakh crore every single day (NPCI data).\n- Almost 8 in 10 UPI payments go through just two apps, PhonePe and Google Pay. The apps are front doors; UPI itself is run by NPCI.\n- UPI carries about 85% of India's digital payments by volume (RBI).\n- On 12 April 2025, UPI payments kept failing for about five hours.\n- India still holds about ₹43 lakh crore in notes and coins, and it's growing at its fastest pace in five years (RBI).\n- UPI 123PAY lets you pay with UPI from a basic phone, without internet.\n\nChapters:\n0:00 Ten rupees, one chai\n0:32 Minute 1 · The chai stall\n1:06 Hour 3 · The ATM line\n1:44 Night 1 · The shops\n2:12 Day 3 · No change\n3:00 Day 5 · The slowdown\n3:39 Day 7 · The twist\n4:14 Day 8 · Back at the stall\n\nThis is a thought experiment. A full week-long UPI shutdown has never happened; the numbers are real and the scenario is imagined from them.\n\nAfter this, would you keep more cash at home?\n\nSources:\nNPCI data, October 2026 (via Entrepreneur India): https://india.entrepreneur.com/business-news/upi-hits-record-25-47-bn-transactions-in-october-daily-value-crosses-inr-1-l-cr\nOutlook Money, daily UPI value crosses ₹1 lakh crore: https://www.outlookmoney.com/banking/upi-average-daily-transaction-value-crosses-rs-1-lakh-crore-for-first-time-ever-in-october\nOutlook Business, PhonePe and Google Pay share: https://www.outlookbusiness.com/economy-and-policy/phonepe-google-pay-combined-upi-market-share-drops-below-80-for-first-time\nRBI Payment Systems Report: https://rbi.org.in/Scripts/PublicationsView.aspx?id=23813\nOutlook Money, April 2025 UPI outage: https://www.outlookmoney.com/banking/upi-outage-attributed-to-surge-in-api-calls-from-banks-says-npci\nFree Press Journal, currency in circulation (RBI data): https://www.freepressjournal.in/business/indias-currency-in-circulation-growth-hits-5-year-high-at-135\nNPCI, UPI 123PAY: https://www.npci.org.in/PDF/npci/upi-123pay/Product-Booklet.pdf\nACI Worldwide, real-time payments: https://investor.aciworldwide.com/news-releases/news-release-details/global-real-time-payments-growth-sustainable-new-use-cases-push\n\n#whatif #upi #india",
+  "tags": [
+   "what if",
+   "what if upi stopped working",
+   "upi down",
+   "upi outage",
+   "upi",
+   "npci",
+   "digital payments india",
+   "cash in india",
+   "phonepe",
+   "google pay",
+   "paytm",
+   "KR's What If Explained"
+  ],
+  "category": "27",
+  "thumbnail": "THUMB.jpg",
+  "comment": "How much cash is in your wallet right now? Be honest.",
+  "privacy": "private",
+  "publish_at": "2026-11-14T12:30:00Z"
+ },
+ "shorts": [
+  {
+   "file": "SHORT.mp4",
+   "title": "7 Days Without UPI, You Can't Even Buy Chai #shorts",
+   "description": "82 crore UPI payments a day, gone for a week.\nFull video: {MAIN_URL}",
+   "tags": [
+    "what if",
+    "upi",
+    "upi down",
+    "shorts"
+   ],
+   "privacy": "private",
+   "publish_at": "2026-11-15T03:30:00Z"
+  },
+  {
+   "file": "REEL.mp4",
+   "title": "Day 3 Without UPI: Your Sabziwala Is Broke #shorts",
+   "description": "His customers stopped carrying cash years ago. Now UPI is down.\nFull video: {MAIN_URL}",
+   "tags": [
+    "what if",
+    "upi",
+    "india",
+    "shorts"
+   ],
+   "privacy": "private",
+   "publish_at": "2026-11-15T14:30:00Z"
+  }
+ ]
+}
