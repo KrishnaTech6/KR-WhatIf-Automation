@@ -1,5 +1,5 @@
 {
- "stage": "waiting_final",
+ "stage": "done",
  "title": "What If UPI Stopped Working for One Week?",
  "fails": 0,
  "doc": "https://claude.ai/artifact/9QzD64nr29dJqr19Weoa2P",
@@ -13,7 +13,7 @@
   "accuracy": 8,
   "retention": 8
  },
- "notes": "Checkpoint 3 round 3: Paytm lines re-voiced (run 43460672845) + spliced, female cook, no rupee glyph in bold captions. MAIN 4:59.7, SHORT 0:52, REEL 0:40, QA pass.",
+ "notes": "Published (scheduled). IG tasks trig_01Ce4SpXKL5KAdsJgZdjJ6D2 (short) and trig_01LRuejWjnPnsG5JP9A2d1gM (reel). Comment pending (manual).",
  "voice_run": 43436270866,
  "frames_ok": true
 }
