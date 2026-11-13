@@ -50,6 +50,35 @@ jobs:
           s["youtube_upload"] = "manual"
           json.dump(s, open("settings.json", "w"), indent=1, ensure_ascii=False)
           EOF
+      - name: Delete video files once everything is public
+        # Krishna, 13 Nov 2026: the repo is public, so the mp4s and voice wavs should not stay.
+        # Runs after the day's last release (REEL 20:00 IST, Instagram posts at the same time).
+        # Only when main + every short is verified public; keeps files if anything is locked/missing.
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for f in runs/*/published.json; do
+            slug=$(basename "$(dirname "$f")")
+            ok=$(python - "$f" <<'EOF'
+          import json, sys
+          d = json.load(open(sys.argv[1]))
+          recs = [d.get("main")] + d.get("shorts", [])
+          done = not d.get("files_cleaned") and all(r and r.get("verified") == "public" for r in recs)
+          print("yes" if done else "no")
+          EOF
+            )
+            [ "$ok" = yes ] || continue
+            echo "== cleaning $slug"
+            gh release delete "$slug" --cleanup-tag -y || echo "  no release"
+            for b in "release-files/$slug" "artifacts/$slug"; do
+              git push -q origin --delete "$b" 2>/dev/null && echo "  deleted $b" || echo "  no branch $b"
+            done
+            python - "$f" <<'EOF'
+          import json, sys
+          d = json.load(open(sys.argv[1])); d["files_cleaned"] = True
+          json.dump(d, open(sys.argv[1], "w"), indent=1)
+          EOF
+          done
       - name: Save results
         run: |
           git config user.name "kr-autopilot"
