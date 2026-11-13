@@ -13,5 +13,6 @@
   "accuracy": 8,
   "retention": 8
  },
- "notes": "Checkpoint 2 sent. Voiceover NOT started yet: waiting for Krishna yes to push + run voiceover workflow (push/workflow were blocked pending his OK). Quality gate r2: scroll 8, boring 6, premium 7, stands out 7, clarity 7; r2 fixes applied after."
+ "notes": "Krishna said yes push (13 Nov). Voiceover workflow 43436270866 running on branch claude/wonderful-bell-wyvqf8. Waiting for OK on checkpoint 2 (frames).",
+ "voice_run": 43436270866
 }
