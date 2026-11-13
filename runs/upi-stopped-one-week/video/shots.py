@@ -46,7 +46,7 @@ def s_week(c, t, t0):
 
 def s_who(c, t, t0):
     collage_bg(c, t)
-    c.saveLayer(None, skia.Paint(ColorFilter=skia.ColorFilters.Blend(col("#141016", 0.92), skia.BlendMode.kSrcATop)))
+    c.saveLayer(None, skia.Paint(ColorFilter=skia.ColorFilters.Blend(col("#3A2E26", 0.85), skia.BlendMode.kSrcATop)))
     cart(c, 960, 900, 1.2, t)
     person(c, 1500, 900, 1.15, t, color="#2B2B2B", key="sabzi")
     c.restore()
@@ -125,7 +125,7 @@ def s_apps(c, t, t0):
         torn_strip(c, x, 740, 320, 70, seed=20 + i)
         type_text(c, name, x, 740, 52)
         tf = T("minute_one", "failed", i + 2)
-        stamp(c, x, 500, "FAILED", span(t, tf, tf + 0.2), color="coral", rot=-14 + i * 8)
+        stamp(c, x + 70, 640, "FAILED", span(t, tf, tf + 0.2), color="coral", rot=-14 + i * 8)
 
 
 def s_myth(c, t, t0):
@@ -229,8 +229,8 @@ def s_home(c, t, t0):
     c.drawLine(1500 + dx, 170 + dy, 1500 + dx, 610 + dy, paint("#6B4A2B", stroke=14))
     x = 1100 - (t - t0) * 90
     person(c, x, 1010, 1.5, t, color="#3D5A80", key="walker", walk=1.0, phone_glow=True, flip=True)
-    headline(c, "A PHONE FULL OF MONEY", 620, 200, 52, span(t, T("hour_three", "holding") - 0.2, T("hour_three", "holding") + 0.8), seed=15)
-    type_text(c, "...that you can't use", 620, 310, 52, span(t, T("hour_three", "cant") - 0.2, T("hour_three", "cant") + 0.6), color=RED_INK)
+    headline(c, "A PHONE FULL OF MONEY", 620, 200, 64, span(t, T("hour_three", "holding") - 0.2, T("hour_three", "holding") + 0.8), seed=15)
+    type_text(c, "...that you can't use", 620, 330, 72, span(t, T("hour_three", "cant") - 0.2, T("hour_three", "cant") + 0.6), color=RED_INK)
 
 
 # ---------------------------------------------------------------- NIGHT ONE
@@ -240,9 +240,11 @@ def s_roads(c, t, t0):
     # thin roads
     for i, (name, y) in enumerate([("CARDS", 300), ("NET BANKING", 820)]):
         marker_line(c, [(150, y), (1770, y)], p, color="#7A6A50", width=26)
-        torn_strip(c, 420, y - 70, 340, 70, seed=40 + i)
-        type_text(c, name, 420, y - 70, 36, p)
-        big_text(c, "✓", 1650, y - 60, 90, span(t, t0 + 1.0 + i * 0.3, t0 + 1.3 + i * 0.3), "#2E8B57")
+        torn_strip(c, 480, y - 80, 520, 100, seed=40 + i)
+        type_text(c, name, 480, y - 80, 64, p)
+        q = span(t, t0 + 1.0 + i * 0.3, t0 + 1.5 + i * 0.3)
+        marker_line(c, [(1560, y - 90), (1610, y - 40), (1720, y - 170)], q, color="#2E8B57", width=20)
+        type_text(c, "STILL OPEN", 1180, y - 80, 44, q, color="#2E7D32")
     marker_line(c, [(150, 560), (1770, 560)], p, color="#3A3530", width=110)
     for i in range(10):
         c.drawLine(200 + i * 170, 560, 270 + i * 170, 560, paint("#F4EFE3", stroke=10))
@@ -255,8 +257,8 @@ def s_85(c, t, t0):
     collage_bg(c, t)
     pie(c, 640, 560, 280, 0.855, span(t, t0 + 0.1, t0 + 1.3), t, col1="#C0392B")
     headline(c, "85%", 1350, 400, 150, span(t, t0 + 0.4, t0 + 0.9), seed=17)
-    type_text(c, "of India's digital payments", 1350, 570, 57, span(t, t0 + 0.7, t0 + 1.5))
-    type_text(c, "go through UPI", 1350, 640, 57, span(t, t0 + 1.0, t0 + 1.8), color=RED_INK)
+    type_text(c, "of India's digital payments", 1390, 570, 50, span(t, t0 + 0.7, t0 + 1.5))
+    type_text(c, "go through UPI", 1390, 645, 57, span(t, t0 + 1.0, t0 + 1.8), color=RED_INK)
 
 
 def s_kirana(c, t, t0):
@@ -341,19 +343,20 @@ def s_5lakh(c, t, t0):
     collage_bg(c, t)
     v = keys(t, [(t0 + 0.2, 0), (t0 + 2.4, 5)], ease_out)
     headline(c, f"₹{v:.0f} LAKH CRORE", W / 2, 330, 96, 1.0, seed=25, rot=-1)
+    pop(c, W / 2, 580, "= 5 NORMAL DAYS OF UPI", t, t0 + 1.8, color="coral", size=56)
     type_text(c, "that didn't move the normal way", W / 2, 470, 42, span(t, t0 + 1.2, t0 + 2.2))
     for i in range(5):
         x = 360 + i * 300
-        person(c, x, 980, 0.6, t, color=["#3D5A80", "#9C4F2E", "#4F772D", "#6D597A", "#B5838D"][i], key=f"f5{i}")
-        red_string(c, [(W / 2, 520), (x, 760)], span(t, t0 + 1.6 + i * 0.15, t0 + 2.4 + i * 0.15))
+        person(c, x, 1000, 0.75, t, color=["#3D5A80", "#9C4F2E", "#4F772D", "#6D597A", "#B5838D"][i], key=f"f5{i}")
+        red_string(c, [(W / 2, 620), (x, 720)], span(t, t0 + 1.6 + i * 0.15, t0 + 2.4 + i * 0.15))
 
 
 def s_rider(c, t, t0):
     collage_bg(c, t)
     x = 700 + (t - t0) * 40
-    person(c, x, 980, 1.2, t, color="#264653", key="rider", bag=True)
+    person(c, x, 1020, 1.6, t, color="#264653", key="rider", bag=True)
     phone(c, 1400, 520, 0.75, t, key="riderph", screen="blank", rot=6)
-    type_text(c, "TODAY'S PAY", 1400, 470, 52, span(t, t0 + 0.4, t0 + 1.0))
+    type_text(c, "TODAY'S PAY", 1400, 300, 52, span(t, t0 + 0.4, t0 + 1.0))
     td = T("day_five", "didnt")
     stamp(c, 1400, 870, "NOT PAID", span(t, td, td + 0.25), color="coral", rot=-12)
 
@@ -389,7 +392,8 @@ def s_breathe(c, t, t0):
         r = 8 + 10 * pulse * (1 - still)
         c.drawCircle(x, y, r, paint("gold", 0.25 + 0.6 * (1 - still)))
     headline(c, "UPI ISN'T AN APP", 1520, 380, 54, span(t, T("day_five", "isnt") - 0.4, T("day_five", "isnt") + 0.6), seed=27)
-    type_text(c, "It's how India breathes.", 1520, 520, 57, span(t, tb - 0.6, tb + 0.4), color=RED_INK)
+    type_text(c, "It's how", 1520, 520, 57, span(t, tb - 0.9, tb - 0.4), color=RED_INK)
+    type_text(c, "India breathes.", 1520, 600, 57, span(t, tb - 0.6, tb + 0.4), color=RED_INK)
 
 
 def s_khata(c, t, t0):

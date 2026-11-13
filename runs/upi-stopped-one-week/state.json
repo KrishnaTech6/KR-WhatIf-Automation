@@ -1,11 +1,17 @@
 {
- "stage": "waiting_script",
+ "stage": "waiting_frames",
  "title": "What If UPI Stopped Working for One Week?",
  "fails": 0,
  "doc": "https://claude.ai/artifact/9QzD64nr29dJqr19Weoa2P",
  "style": "collage",
  "captions": "bold",
  "package": 1,
- "scores": {"hook": 9, "value": 8, "clarity": 9, "accuracy": 8, "retention": 8},
- "notes": "Checkpoint 1 sent 13 Nov 2026. Fact check: 10 PASS, 2 PARTIAL reworded. Session network blocked news/govt pages for WebFetch."
+ "scores": {
+  "hook": 9,
+  "value": 8,
+  "clarity": 9,
+  "accuracy": 8,
+  "retention": 8
+ },
+ "notes": "Checkpoint 2 sent. Voiceover NOT started yet: waiting for Krishna yes to push + run voiceover workflow (push/workflow were blocked pending his OK). Quality gate r2: scroll 8, boring 6, premium 7, stands out 7, clarity 7; r2 fixes applied after."
 }
