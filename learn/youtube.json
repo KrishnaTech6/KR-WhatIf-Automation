@@ -1,25 +1,25 @@
 {
- "fetched": "2026-11-12T18:53+00:00",
+ "fetched": "2026-11-13T18:19+00:00",
  "channel": "kr's what if explained",
- "subscribers": 10,
+ "subscribers": 11,
  "analytics": "HTTP 403: needs the yt-analytics.readonly permission (re-run scripts/youtube_auth.py)",
  "ctr": null,
  "videos": [
+  {
+   "id": "ek5GqPS1-SQ",
+   "title": "India Was Frozen 300 Million Years Ago #shorts",
+   "published": "2026-11-13T03:29:17Z",
+   "duration": 44,
+   "views": 948,
+   "likes": 5,
+   "comments": 0
+  },
   {
    "id": "bJlNFWDoPek",
    "title": "What If You Woke Up 300 Million Years Ago?",
    "published": "2026-11-12T15:30:11Z",
    "duration": 310,
-   "views": 0,
-   "likes": 0,
-   "comments": 0
-  },
-  {
-   "id": "UtKWjeWgW5k",
-   "title": "India Was Frozen 300 Million Years Ago #shorts",
-   "published": "2026-11-12T15:00:13Z",
-   "duration": 44,
-   "views": 4,
+   "views": 2,
    "likes": 0,
    "comments": 0
   },
@@ -28,7 +28,7 @@
    "title": "Don't Move. This Bug Has 70 cm Wings #shorts",
    "published": "2026-11-12T14:30:35Z",
    "duration": 59,
-   "views": 19,
+   "views": 35,
    "likes": 0,
    "comments": 0
   },
@@ -37,7 +37,7 @@
    "title": "The Sun Vanished. You Won't Know for 8 Minutes #shorts",
    "published": "2026-11-11T15:15:27Z",
    "duration": 41,
-   "views": 36,
+   "views": 38,
    "likes": 1,
    "comments": 0
   },
@@ -46,7 +46,7 @@
    "title": "Noon , but sky full of stars #whatif #reels",
    "published": "2026-11-11T15:00:06Z",
    "duration": 35,
-   "views": 187,
+   "views": 199,
    "likes": 1,
    "comments": 0
   },
@@ -64,7 +64,7 @@
    "title": "If Earth Had Rings, Delhi Nights Never Go Dark #shorts",
    "published": "2026-11-10T16:30:13Z",
    "duration": 36,
-   "views": 314,
+   "views": 315,
    "likes": 3,
    "comments": 0
   },
@@ -82,7 +82,7 @@
    "title": "What If the Himalayas Vanished Overnight? #shorts",
    "published": "2026-11-10T15:00:06Z",
    "duration": 45,
-   "views": 1014,
+   "views": 1016,
    "likes": 8,
    "comments": 0
   },
@@ -136,7 +136,7 @@
    "title": "What If the Whole World Lost the Internet for One Week?",
    "published": "2026-11-08T13:00:06Z",
    "duration": 306,
-   "views": 3,
+   "views": 8,
    "likes": 0,
    "comments": 0
   },
@@ -163,7 +163,7 @@
    "title": "What If the Moon Disappeared Tomorrow? | KR's What if Explained",
    "published": "2026-11-07T12:30:34Z",
    "duration": 376,
-   "views": 78,
+   "views": 85,
    "likes": 1,
    "comments": 1
   },
