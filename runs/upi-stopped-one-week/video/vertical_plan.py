@@ -4,9 +4,9 @@ from krwi.vertical import scene
 from krwi.timeline import T as MT, B as MB, E as ME  # noqa: F401  main-video times
 
 HOOK = {"short": "7 DAYS. NO UPI.", "reel": "DAY 3 WITHOUT UPI"}
-SUB = {"short": "NOT EVEN A ₹10 CHAI", "reel": "YOUR SABZIWALA IS BROKE"}
+SUB = {"short": "NOT EVEN A 10-RUPEE CHAI", "reel": "YOUR SABZIWALA IS BROKE"}
 FIX = {"u": "UPI", "p": "", "i": "", "q": "QR", "r": "", "k": "KR'S", "r's": "",
-       "seven": "7", "three": "3", "ten": "₹10", "rupee": "", "eighty-two": "82", "twenty": "20", "fifty": "50"}
+       "seven": "7", "three": "3", "ten": "10", "rupee": "RUPEE", "eighty-two": "82", "twenty": "20", "fifty": "50"}
 FULL = 1080 / 1920   # Krishna (13 Nov): show the whole frame in the verticals, never crop
 CAPTIONS = "bold"     # Short/Reel are number-led this time; the last video used standard captions
 

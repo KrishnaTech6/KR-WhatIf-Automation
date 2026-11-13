@@ -363,7 +363,7 @@ def s_rider(c, t, t0):
 
 def s_cook(c, t, t0):
     collage_bg(c, t)
-    person(c, 420, 980, 1.15, t, color="#B5838D", key="cook")
+    person(c, 420, 980, 1.15, t, color="#B5838D", key="cook", female=True)
     house(c, 1550, 900, 0.9, t, key="village")
     torn_strip(c, 1550, 960, 300, 70, seed=51)
     type_text(c, "HOME VILLAGE", 1550, 960, 44, 1.0)

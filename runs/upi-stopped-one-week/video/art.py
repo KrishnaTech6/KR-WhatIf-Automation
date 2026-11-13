@@ -111,7 +111,7 @@ def phone(c, x, y, s, t, key="phone", screen="failed", p=1.0, rot=-4):
     cutout(c, d)
 
 
-def person(c, x, y, s, t, color="#3D5A80", key="p", walk=0.0, bag=False, phone_glow=False, flip=False):
+def person(c, x, y, s, t, color="#3D5A80", key="p", walk=0.0, bag=False, phone_glow=False, flip=False, female=False):
     """Faceless paper figure, feet at (x, y). walk>0 swings the legs."""
     x, y, a = _j(key, t, x, y, 2.0)
     sw = math.sin(t * 7 + rng(hash(key) % 97) * 6) * 18 * walk
@@ -123,11 +123,24 @@ def person(c, x, y, s, t, color="#3D5A80", key="p", walk=0.0, bag=False, phone_g
         leg = paint("#2A2A33", stroke=26 * s)
         k.drawLine(x - 14 * s, y - 120 * s, x - 14 * s + sw * s, y, leg)
         k.drawLine(x + 14 * s, y - 120 * s, x + 14 * s - sw * s, y, leg)
-        k.drawRRect(rr(x - 48 * s, y - 280 * s, x + 48 * s, y - 110 * s, 30 * s), paint(color))
-        halftone(k, skia.Path().addRRect(rr(x - 48 * s, y - 280 * s, x + 48 * s, y - 110 * s, 30 * s)), "#000000", 0.25, step=14)
-        k.drawCircle(x, y - 320 * s, 40 * s, paint("#8D5A3B"))
-        k.drawCircle(x, y - 338 * s, 38 * s, paint("#1B1030")) if rng(hash(key) % 89) > 0.4 else None
-        k.drawCircle(x, y - 316 * s, 34 * s, paint("#A8704A"))
+        if female:
+            # long hair falling to the shoulders, a flared kurta and a dupatta across the chest
+            k.drawRRect(rr(x - 46 * s, y - 360 * s, x + 46 * s, y - 250 * s, 34 * s), paint("#1B1030"))
+            kurta = skia.Path(); kurta.moveTo(x - 46 * s, y - 280 * s); kurta.lineTo(x + 46 * s, y - 280 * s)
+            kurta.lineTo(x + 78 * s, y - 95 * s); kurta.lineTo(x - 78 * s, y - 95 * s); kurta.close()
+            k.drawPath(kurta, paint(color)); halftone(k, kurta, "#000000", 0.25, step=14)
+            k.drawLine(x - 44 * s, y - 270 * s, x + 50 * s, y - 175 * s, paint("#F2B44C", stroke=22 * s))
+            k.drawCircle(x, y - 320 * s, 40 * s, paint("#8D5A3B"))
+            k.drawCircle(x, y - 338 * s, 39 * s, paint("#1B1030"))
+            k.drawCircle(x, y - 316 * s, 34 * s, paint("#A8704A"))
+            k.drawCircle(x, y - 362 * s, 20 * s, paint("#1B1030"))          # bun
+            k.drawCircle(x, y - 300 * s, 4 * s, paint("#C0392B"))           # bindi
+        else:
+            k.drawRRect(rr(x - 48 * s, y - 280 * s, x + 48 * s, y - 110 * s, 30 * s), paint(color))
+            halftone(k, skia.Path().addRRect(rr(x - 48 * s, y - 280 * s, x + 48 * s, y - 110 * s, 30 * s)), "#000000", 0.25, step=14)
+            k.drawCircle(x, y - 320 * s, 40 * s, paint("#8D5A3B"))
+            k.drawCircle(x, y - 338 * s, 38 * s, paint("#1B1030")) if rng(hash(key) % 89) > 0.4 else None
+            k.drawCircle(x, y - 316 * s, 34 * s, paint("#A8704A"))
         if bag:
             k.drawRect(skia.Rect(x - 110 * s, y - 290 * s, x - 40 * s, y - 190 * s), paint("#E07A1F"))
             k.drawRect(skia.Rect(x - 110 * s, y - 290 * s, x - 40 * s, y - 270 * s), paint("#B85E10"))
