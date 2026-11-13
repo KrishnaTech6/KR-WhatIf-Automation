@@ -1,5 +1,5 @@
 {
- "stage": "waiting_frames",
+ "stage": "voiceover",
  "title": "What If UPI Stopped Working for One Week?",
  "fails": 0,
  "doc": "https://claude.ai/artifact/9QzD64nr29dJqr19Weoa2P",
@@ -13,6 +13,7 @@
   "accuracy": 8,
   "retention": 8
  },
- "notes": "Krishna said yes push (13 Nov). Voiceover workflow 43436270866 running on branch claude/wonderful-bell-wyvqf8. Waiting for OK on checkpoint 2 (frames).",
- "voice_run": 43436270866
+ "notes": "Checkpoint 2 OK (13 Nov). Voiceover run 43436270866 running. Thumbnail next.",
+ "voice_run": 43436270866,
+ "frames_ok": true
 }
