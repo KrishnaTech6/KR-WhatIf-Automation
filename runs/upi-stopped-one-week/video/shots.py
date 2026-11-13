@@ -655,7 +655,7 @@ def SHOTS():
         (T("day_seven", "growing") - 0.2, s_growth, "zoom"),
         (T("day_seven", "not") - 0.2, cont(s_both, bo, 1.2, 1300, 500), "cut"),
         (T("day_seven", "works") - 0.2, cont(s_123, p123, 1.15, 1000, 600), "cut"),
-        (T("payoff", "scan") - 0.2, cont(s_back, bk, 1.35, 1130, 520), "cut"),
+        (T("payoff", "scan") - 0.2, cont(s_back, bk, 1.3, 1130, 760), "cut"),
         (T("payoff", "and", 2) - 0.2, cont(s_world, wd, 1.15, 1300, 560), "cut"),
         (T("payoff", "but") - 0.2, cont(s_tease, T("payoff", "next") - 0.2, 1.15), "cut"),
     ]
