@@ -33,9 +33,16 @@
    ]
   },
   {
-   "name": "fix",
+   "name": "fixm",
    "kind": "main",
-   "script": "TITLE: UPI fix lines\nLANG: en\nKEY_BEATS:\nHARD_CUT_BEFORE:\n\n[main 2 fix 1 | neutral]\nUPI has stumbled before.\n\n[main 3 fix 2 | playful]\nMost of us think these apps are UPI.\n\n[main 3 fix 3 | playful]\nAlmost eight out of every ten UPI payments go through just two of these apps.\n\n[main 3 fix 4 | playful]\nBehind every door is the same house... UPI, run by N P C I.\n\n[main 4 fix 5 | tense]\nOn a normal day, UPI moves about one lakh crore rupees.\n\n[main 5 fix 6 | neutral]\nUPI is one road.\n\n[main 6 fix 7 | neutral]\nLast year, the average UPI payment at a shop was about six hundred rupees.\n\n[main 6 fix 8 | neutral]\nFor years, UPI made exact change.\n\n[main 6 fix 9 | playful]\nSorry... no change.\n\n[main 7 fix 10 | deep]\nFive days without UPI means about five lakh crore rupees that didn't move the normal way.\n\n[main 7 fix 11 | deep]\nThis is the moment you realise... UPI isn't an app.\n\n[main 8 fix 12 | neutral]\nEven while UPI exploded, we quietly kept more cash than ever.\n\n[main 8 fix 13 | neutral]\nAnd for people without a smartphone, there's even UPI one two three pay.\n\n[main 9 fix 14 | warm]\nUPI comes back.\n\n[short 1 fix 15 | dramatic]\nSeven days without UPI... and you can't even buy a ten rupee chai.\n\n[short 2 fix 16 | playful]\nBecause these apps aren't UPI.\n\n[short 3 fix 17 | dramatic]\nSorry, no change.\n\n[short 4 fix 18 | neutral]\nBecause one bad day without UPI... can easily turn into\n\n[reel 1 fix 19 | dramatic]\nThree days without UPI... and the man who sells you tomatoes is broke.\n\n[reel 3 fix 20 | warm]\nUPI isn't just an app.\n",
+   "script": "TITLE: UPI fix lines\nLANG: en\nKEY_BEATS:\nHARD_CUT_BEFORE:\n\n[main 2 fix 1 | neutral]\nUPI has stumbled before.\n\n[main 3 fix 2 | playful]\nMost of us think these apps are UPI.\n\n[main 3 fix 3 | playful]\nAlmost eight out of every ten UPI payments go through just two of these apps.\n\n[main 3 fix 4 | playful]\nBehind every door is the same house... UPI, run by N P C I.\n\n[main 4 fix 5 | tense]\nOn a normal day, UPI moves about one lakh crore rupees.\n\n[main 5 fix 6 | neutral]\nUPI is one road.\n\n[main 6 fix 7 | neutral]\nLast year, the average UPI payment at a shop was about six hundred rupees.\n\n[main 6 fix 8 | neutral]\nFor years, UPI made exact change.\n\n[main 6 fix 9 | playful]\nSorry... no change.\n\n[main 7 fix 10 | deep]\nFive days without UPI means about five lakh crore rupees that didn't move the normal way.\n\n[main 7 fix 11 | deep]\nThis is the moment you realise... UPI isn't an app.\n\n[main 8 fix 12 | neutral]\nEven while UPI exploded, we quietly kept more cash than ever.\n\n[main 8 fix 13 | neutral]\nAnd for people without a smartphone, there's even UPI one two three pay.\n\n[main 9 fix 14 | warm]\nUPI comes back.\n",
+   "strict": [],
+   "hard_cut_before": []
+  },
+  {
+   "name": "fixs",
+   "kind": "short",
+   "script": "TITLE: UPI fix lines\nLANG: en\nKEY_BEATS:\nHARD_CUT_BEFORE:\n\n[short 1 fix 15 | dramatic]\nSeven days without UPI... and you can't even buy a ten rupee chai.\n\n[short 2 fix 16 | playful]\nBecause these apps aren't UPI.\n\n[short 3 fix 17 | dramatic]\nSorry, no change.\n\n[short 4 fix 18 | neutral]\nBecause one bad day without UPI... can easily turn into\n\n[reel 1 fix 19 | dramatic]\nThree days without UPI... and the man who sells you tomatoes is broke.\n\n[reel 3 fix 20 | warm]\nUPI isn't just an app.\n",
    "strict": [],
    "hard_cut_before": []
   }
