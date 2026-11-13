@@ -25,7 +25,8 @@
    "publish_at": "2026-11-13T14:30:00Z",
    "schedule_kept": true,
    "file": "REEL.mp4",
-   "url": "https://youtube.com/shorts/ek5GqPS1-SQ"
+   "url": "https://youtube.com/shorts/ek5GqPS1-SQ",
+   "verified": "public"
   }
  ],
  "deleted_shorts": [
@@ -39,5 +40,6 @@
    "verified": "public",
    "deleted": "2026-11-13: deleted on YouTube by Krishna, re-uploaded"
   }
- ]
+ ],
+ "files_cleaned": true
 }
