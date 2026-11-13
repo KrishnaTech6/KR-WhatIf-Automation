@@ -1,0 +1,237 @@
+[{"stream_name":"stdout","time":0.889027966,"data":"✅ GPU 0: Tesla T4 (UUID: GPU-f106046f-8c6a-54ae-aa0b-b6f4f8a0314a)\n"}
+,{"stream_name":"stdout","time":0.889129914,"data":"GPU 1: Tesla T4 (UUID: GPU-7a16ae87-d598-c5c0-3870-e5cd4e1b9f0d)\n"}
+,{"stream_name":"stdout","time":0.890170574,"data":"$ pip -q install uv\n"}
+,{"stream_name":"stdout","time":7.097651555,"data":"$ uv venv /tmp/cbenv --python 3.11 --seed -q --allow-existing\n"}
+,{"stream_name":"stdout","time":8.821190785,"data":"$ uv pip install -q --python /tmp/cbenv/bin/python chatterbox-tts==0.1.7 \"setuptools\u003c81\" openai-whisper pyloudnorm soundfile\n"}
+,{"stream_name":"stdout","time":51.417211297,"data":"🎙️ voice samples: default\n"}
+,{"stream_name":"stdout","time":54.793069878,"data":"⏳ loading Chatterbox + Whisper ...\n"}
+,{"stream_name":"stdout","time":54.933664659,"data":"/tmp/cbenv/lib/python3.11/site-packages/perth/perth_net/__init__.py:1: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools\u003c81.\n"}
+,{"stream_name":"stdout","time":54.933692411,"data":"  from pkg_resources import resource_filename\n"}
+,{"stream_name":"stdout","time":72.672871758,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stdout","time":107.031529631,"data":"/tmp/cbenv/lib/python3.11/site-packages/diffusers/models/lora.py:393: FutureWarning: `LoRACompatibleLinear` is deprecated and will be removed in version 1.0.0. Use of `LoRACompatibleLinear` is deprecated. Please switch to PEFT backend by installing PEFT: `pip install peft`.\n"}
+,{"stream_name":"stdout","time":107.03159498,"data":"  deprecate(\"LoRACompatibleLinear\", \"1.0.0\", deprecation_message)\n"}
+,{"stream_name":"stdout","time":109.132550926,"data":"loaded PerthNet (Implicit) at step 250,000\n"}
+,{"stream_name":"stdout","time":109.25690884,"data":"\n"}
+,{"stream_name":"stdout","time":109.357261442,"data":"  0%|                                               | 0.00/461M [00:00\u003c?, ?iB/s]\n"}
+,{"stream_name":"stdout","time":109.459594763,"data":"  5%|█▊                                     | 21.5M/461M [00:00\u003c00:02, 225MiB/s]\n"}
+,{"stream_name":"stdout","time":109.594665615,"data":" 10%|███▊                                   | 44.6M/461M [00:00\u003c00:01, 232MiB/s]\n"}
+,{"stream_name":"stdout","time":109.703308693,"data":" 14%|█████▋                                 | 66.8M/461M [00:00\u003c00:02, 200MiB/s]\n"}
+,{"stream_name":"stdout","time":109.803304924,"data":" 19%|███████▎                               | 86.3M/461M [00:00\u003c00:02, 196MiB/s]\n"}
+,{"stream_name":"stdout","time":109.912808749,"data":" 24%|█████████▌                              | 110M/461M [00:00\u003c00:01, 213MiB/s]\n"}
+,{"stream_name":"stdout","time":110.0128068,"data":" 28%|███████████▎                            | 130M/461M [00:00\u003c00:01, 207MiB/s]\n"}
+,{"stream_name":"stdout","time":110.112801455,"data":" 34%|█████████████▌                          | 157M/461M [00:00\u003c00:01, 229MiB/s]\n"}
+,{"stream_name":"stdout","time":110.212888763,"data":" 39%|███████████████▋                        | 180M/461M [00:00\u003c00:01, 234MiB/s]\n"}
+,{"stream_name":"stdout","time":110.312863401,"data":" 45%|█████████████████▉                      | 208M/461M [00:00\u003c00:01, 250MiB/s]\n"}
+,{"stream_name":"stdout","time":110.412996748,"data":" 51%|████████████████████▏                   | 233M/461M [00:01\u003c00:00, 255MiB/s]\n"}
+,{"stream_name":"stdout","time":110.513452503,"data":" 57%|██████████████████████▉                 | 265M/461M [00:01\u003c00:00, 279MiB/s]\n"}
+,{"stream_name":"stdout","time":110.640267179,"data":" 64%|█████████████████████████▌              | 294M/461M [00:01\u003c00:00, 287MiB/s]\n"}
+,{"stream_name":"stdout","time":110.7586523,"data":" 70%|███████████████████████████▉            | 322M/461M [00:01\u003c00:00, 266MiB/s]\n"}
+,{"stream_name":"stdout","time":110.858708221,"data":" 75%|██████████████████████████████▏         | 347M/461M [00:01\u003c00:00, 254MiB/s]\n"}
+,{"stream_name":"stdout","time":110.95879018,"data":" 82%|████████████████████████████████▋       | 377M/461M [00:01\u003c00:00, 270MiB/s]\n"}
+,{"stream_name":"stdout","time":111.074637524,"data":" 88%|███████████████████████████████████     | 405M/461M [00:01\u003c00:00, 276MiB/s]\n"}
+,{"stream_name":"stdout","time":111.230342332,"data":" 94%|█████████████████████████████████████▍  | 431M/461M [00:01\u003c00:00, 264MiB/s]\n"}
+,{"stream_name":"stdout","time":111.248583837,"data":" 99%|███████████████████████████████████████▌| 457M/461M [00:01\u003c00:00, 229MiB/s]\n"}
+,{"stream_name":"stdout","time":111.248604438,"data":"100%|████████████████████████████████████████| 461M/461M [00:01\u003c00:00, 243MiB/s]\n"}
+,{"stream_name":"stdout","time":129.932263343,"data":"✅ ready\n"}
+,{"stream_name":"stdout","time":129.932344942,"data":"\n"}
+,{"stream_name":"stdout","time":129.932354054,"data":"🎬 main\n"}
+,{"stream_name":"stdout","time":129.932474715,"data":"\n"}
+,{"stream_name":"stdout","time":129.932564061,"data":"🎬 short\n"}
+,{"stream_name":"stdout","time":129.932722041,"data":"\n"}
+,{"stream_name":"stdout","time":129.932797033,"data":"🎬 reel\n"}
+,{"stream_name":"stdout","time":129.932951629,"data":"\n"}
+,{"stream_name":"stdout","time":129.934099878,"data":"🎬 fixm\n"}
+,{"stream_name":"stdout","time":130.006468125,"data":"/root/.local/share/uv/python/cpython-3.11.18-linux-x86_64-gnu/lib/python3.11/contextlib.py:105: FutureWarning: `torch.backends.cuda.sdp_kernel()` is deprecated. In the future, this context manager will be removed. Please see `torch.nn.attention.sdpa_kernel()` for the new context manager, with updated signature.\n"}
+,{"stream_name":"stdout","time":130.006498586,"data":"  self.gen = func(*args, **kwds)\n"}
+,{"stream_name":"stdout","time":130.016088192,"data":"`sdpa` attention does not support `output_attentions=True`. Please set your attention to `eager` if you want any of these features.\n"}
+,{"stream_name":"stdout","time":130.052498952,"data":"\n"}
+,{"stream_name":"stdout","time":130.153733956,"data":"Sampling:   0%|          | 0/1000 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":130.267938388,"data":"Sampling:   0%|          | 1/1000 [00:00\u003c01:40,  9.91it/s]\n"}
+,{"stream_name":"stdout","time":130.377432927,"data":"Sampling:   0%|          | 5/1000 [00:00\u003c00:39, 25.41it/s]\n"}
+,{"stream_name":"stdout","time":130.486149498,"data":"Sampling:   1%|          | 9/1000 [00:00\u003c00:32, 30.52it/s]\n"}
+,{"stream_name":"stdout","time":130.595911862,"data":"Sampling:   1%|▏         | 13/1000 [00:00\u003c00:29, 32.99it/s]\n"}
+,{"stream_name":"stdout","time":130.703680254,"data":"Sampling:   2%|▏         | 17/1000 [00:00\u003c00:28, 34.23it/s]\n"}
+,{"stream_name":"stdout","time":130.812358011,"data":"Sampling:   2%|▏         | 21/1000 [00:00\u003c00:27, 35.20it/s]\n"}
+,{"stream_name":"stdout","time":130.922669392,"data":"Sampling:   2%|▎         | 25/1000 [00:00\u003c00:27, 35.72it/s]\n"}
+,{"stream_name":"stdout","time":131.031266067,"data":"Sampling:   3%|▎         | 29/1000 [00:00\u003c00:27, 35.89it/s]\n"}
+,{"stream_name":"stdout","time":131.151462924,"data":"Sampling:   3%|▎         | 33/1000 [00:00\u003c00:26, 36.19it/s]\n"}
+,{"stream_name":"stdout","time":131.230003023,"data":"Sampling:   4%|▎         | 37/1000 [00:01\u003c00:27, 35.24it/s]\n"}
+,{"stream_name":"stdout","time":131.230026283,"data":"Sampling:   4%|▍         | 39/1000 [00:01\u003c00:29, 33.12it/s]\n"}
+,{"stream_name":"stdout","time":133.226884625,"data":"   ✅ fixm 01 main 3 fix 1 — 1.4s, 1 tries\n"}
+,{"stream_name":"stdout","time":133.226938782,"data":"\n"}
+,{"stream_name":"stdout","time":133.226943705,"data":"🎬 fixs\n"}
+,{"stream_name":"stdout","time":133.228558282,"data":"/root/.local/share/uv/python/cpython-3.11.18-linux-x86_64-gnu/lib/python3.11/contextlib.py:105: FutureWarning: `torch.backends.cuda.sdp_kernel()` is deprecated. In the future, this context manager will be removed. Please see `torch.nn.attention.sdpa_kernel()` for the new context manager, with updated signature.\n"}
+,{"stream_name":"stdout","time":133.228576663,"data":"  self.gen = func(*args, **kwds)\n"}
+,{"stream_name":"stdout","time":133.260699045,"data":"\n"}
+,{"stream_name":"stdout","time":133.378948448,"data":"Sampling:   0%|          | 0/1000 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":133.49184833,"data":"Sampling:   0%|          | 4/1000 [00:00\u003c00:29, 33.88it/s]\n"}
+,{"stream_name":"stdout","time":133.608690753,"data":"Sampling:   1%|          | 8/1000 [00:00\u003c00:28, 34.75it/s]\n"}
+,{"stream_name":"stdout","time":133.722023948,"data":"Sampling:   1%|          | 12/1000 [00:00\u003c00:28, 34.51it/s]\n"}
+,{"stream_name":"stdout","time":133.836592452,"data":"Sampling:   2%|▏         | 16/1000 [00:00\u003c00:28, 34.83it/s]\n"}
+,{"stream_name":"stdout","time":133.948267994,"data":"Sampling:   2%|▏         | 20/1000 [00:00\u003c00:28, 34.86it/s]\n"}
+,{"stream_name":"stdout","time":134.058483048,"data":"Sampling:   2%|▏         | 24/1000 [00:00\u003c00:27, 35.17it/s]\n"}
+,{"stream_name":"stdout","time":134.167311265,"data":"Sampling:   3%|▎         | 28/1000 [00:00\u003c00:27, 35.54it/s]\n"}
+,{"stream_name":"stdout","time":134.278153371,"data":"Sampling:   3%|▎         | 32/1000 [00:00\u003c00:26, 35.92it/s]\n"}
+,{"stream_name":"stdout","time":134.391830335,"data":"Sampling:   4%|▎         | 36/1000 [00:01\u003c00:26, 35.97it/s]\n"}
+,{"stream_name":"stdout","time":134.503441417,"data":"Sampling:   4%|▍         | 40/1000 [00:01\u003c00:26, 35.72it/s]\n"}
+,{"stream_name":"stdout","time":134.615881697,"data":"Sampling:   4%|▍         | 44/1000 [00:01\u003c00:26, 35.75it/s]\n"}
+,{"stream_name":"stdout","time":134.728366876,"data":"Sampling:   5%|▍         | 48/1000 [00:01\u003c00:26, 35.70it/s]\n"}
+,{"stream_name":"stdout","time":134.843585711,"data":"Sampling:   5%|▌         | 52/1000 [00:01\u003c00:26, 35.66it/s]\n"}
+,{"stream_name":"stdout","time":134.873560299,"data":"Sampling:   6%|▌         | 56/1000 [00:01\u003c00:26, 35.37it/s]\n"}
+,{"stream_name":"stdout","time":134.873577703,"data":"Sampling:   6%|▌         | 57/1000 [00:01\u003c00:26, 35.34it/s]\n"}
+,{"stream_name":"stdout","time":136.144489784,"data":"      ↻ retry 1: speed 0.5 words/s, 1 word(s) wrong/missing/extra · \"Pay T M.\"\n"}
+,{"stream_name":"stdout","time":136.145914339,"data":"/root/.local/share/uv/python/cpython-3.11.18-linux-x86_64-gnu/lib/python3.11/contextlib.py:105: FutureWarning: `torch.backends.cuda.sdp_kernel()` is deprecated. In the future, this context manager will be removed. Please see `torch.nn.attention.sdpa_kernel()` for the new context manager, with updated signature.\n"}
+,{"stream_name":"stdout","time":136.145937261,"data":"  self.gen = func(*args, **kwds)\n"}
+,{"stream_name":"stdout","time":136.178150332,"data":"\n"}
+,{"stream_name":"stdout","time":136.289449085,"data":"Sampling:   0%|          | 0/1000 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":136.403103908,"data":"Sampling:   0%|          | 4/1000 [00:00\u003c00:27, 35.99it/s]\n"}
+,{"stream_name":"stdout","time":136.515235185,"data":"Sampling:   1%|          | 8/1000 [00:00\u003c00:27, 35.50it/s]\n"}
+,{"stream_name":"stdout","time":136.636840558,"data":"Sampling:   1%|          | 12/1000 [00:00\u003c00:27, 35.58it/s]\n"}
+,{"stream_name":"stdout","time":136.74545095,"data":"Sampling:   2%|▏         | 16/1000 [00:00\u003c00:28, 34.48it/s]\n"}
+,{"stream_name":"stdout","time":136.85829628,"data":"Sampling:   2%|▏         | 20/1000 [00:00\u003c00:27, 35.28it/s]\n"}
+,{"stream_name":"stdout","time":136.966787258,"data":"Sampling:   2%|▏         | 24/1000 [00:00\u003c00:27, 35.33it/s]\n"}
+,{"stream_name":"stdout","time":137.078283628,"data":"Sampling:   3%|▎         | 28/1000 [00:00\u003c00:27, 35.83it/s]\n"}
+,{"stream_name":"stdout","time":137.186444869,"data":"Sampling:   3%|▎         | 32/1000 [00:00\u003c00:27, 35.84it/s]\n"}
+,{"stream_name":"stdout","time":137.295987447,"data":"Sampling:   4%|▎         | 36/1000 [00:01\u003c00:26, 36.19it/s]\n"}
+,{"stream_name":"stdout","time":137.380742939,"data":"Sampling:   4%|▍         | 40/1000 [00:01\u003c00:26, 36.28it/s]\n"}
+,{"stream_name":"stdout","time":137.38076008,"data":"Sampling:   4%|▍         | 43/1000 [00:01\u003c00:26, 35.76it/s]\n"}
+,{"stream_name":"stdout","time":138.629257764,"data":"      ↻ retry 2: speed 0.6 words/s, 2 word(s) wrong/missing/extra · \"Pay T M.\"\n"}
+,{"stream_name":"stdout","time":138.630832818,"data":"/root/.local/share/uv/python/cpython-3.11.18-linux-x86_64-gnu/lib/python3.11/contextlib.py:105: FutureWarning: `torch.backends.cuda.sdp_kernel()` is deprecated. In the future, this context manager will be removed. Please see `torch.nn.attention.sdpa_kernel()` for the new context manager, with updated signature.\n"}
+,{"stream_name":"stdout","time":138.630847111,"data":"  self.gen = func(*args, **kwds)\n"}
+,{"stream_name":"stdout","time":138.662404408,"data":"\n"}
+,{"stream_name":"stdout","time":138.776980557,"data":"Sampling:   0%|          | 0/1000 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":138.885426191,"data":"Sampling:   0%|          | 4/1000 [00:00\u003c00:28, 34.96it/s]\n"}
+,{"stream_name":"stdout","time":138.995529904,"data":"Sampling:   1%|          | 8/1000 [00:00\u003c00:27, 36.10it/s]\n"}
+,{"stream_name":"stdout","time":139.104308729,"data":"Sampling:   1%|          | 12/1000 [00:00\u003c00:27, 36.19it/s]\n"}
+,{"stream_name":"stdout","time":139.213493634,"data":"Sampling:   2%|▏         | 16/1000 [00:00\u003c00:27, 36.41it/s]\n"}
+,{"stream_name":"stdout","time":139.32156247,"data":"Sampling:   2%|▏         | 20/1000 [00:00\u003c00:26, 36.49it/s]\n"}
+,{"stream_name":"stdout","time":139.431467456,"data":"Sampling:   2%|▏         | 24/1000 [00:00\u003c00:26, 36.67it/s]\n"}
+,{"stream_name":"stdout","time":139.541045407,"data":"Sampling:   3%|▎         | 28/1000 [00:00\u003c00:26, 36.57it/s]\n"}
+,{"stream_name":"stdout","time":139.650642668,"data":"Sampling:   3%|▎         | 32/1000 [00:00\u003c00:26, 36.55it/s]\n"}
+,{"stream_name":"stdout","time":139.761006773,"data":"Sampling:   4%|▎         | 36/1000 [00:00\u003c00:26, 36.54it/s]\n"}
+,{"stream_name":"stdout","time":139.789898976,"data":"Sampling:   4%|▍         | 40/1000 [00:01\u003c00:26, 36.44it/s]\n"}
+,{"stream_name":"stdout","time":139.789916061,"data":"Sampling:   4%|▍         | 41/1000 [00:01\u003c00:26, 36.37it/s]\n"}
+,{"stream_name":"stdout","time":141.098561855,"data":"      ↻ retry 3: speed 0.7 words/s, 1 word(s) wrong/missing/extra · \"Pay T M.\"\n"}
+,{"stream_name":"stdout","time":141.100154042,"data":"/root/.local/share/uv/python/cpython-3.11.18-linux-x86_64-gnu/lib/python3.11/contextlib.py:105: FutureWarning: `torch.backends.cuda.sdp_kernel()` is deprecated. In the future, this context manager will be removed. Please see `torch.nn.attention.sdpa_kernel()` for the new context manager, with updated signature.\n"}
+,{"stream_name":"stdout","time":141.100168318,"data":"  self.gen = func(*args, **kwds)\n"}
+,{"stream_name":"stdout","time":141.133099772,"data":"\n"}
+,{"stream_name":"stdout","time":141.252354824,"data":"Sampling:   0%|          | 0/1000 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":141.362365013,"data":"Sampling:   0%|          | 3/1000 [00:00\u003c00:39, 25.17it/s]\n"}
+,{"stream_name":"stdout","time":141.470919525,"data":"Sampling:   1%|          | 7/1000 [00:00\u003c00:31, 31.52it/s]\n"}
+,{"stream_name":"stdout","time":141.5810744,"data":"Sampling:   1%|          | 11/1000 [00:00\u003c00:29, 33.89it/s]\n"}
+,{"stream_name":"stdout","time":141.69200715,"data":"Sampling:   2%|▏         | 15/1000 [00:00\u003c00:28, 34.85it/s]\n"}
+,{"stream_name":"stdout","time":141.802225607,"data":"Sampling:   2%|▏         | 19/1000 [00:00\u003c00:27, 35.29it/s]\n"}
+,{"stream_name":"stdout","time":141.911661833,"data":"Sampling:   2%|▏         | 23/1000 [00:00\u003c00:27, 35.63it/s]\n"}
+,{"stream_name":"stdout","time":142.018459594,"data":"Sampling:   3%|▎         | 27/1000 [00:00\u003c00:27, 35.93it/s]\n"}
+,{"stream_name":"stdout","time":142.124657485,"data":"Sampling:   3%|▎         | 31/1000 [00:00\u003c00:26, 36.41it/s]\n"}
+,{"stream_name":"stdout","time":142.230972261,"data":"Sampling:   4%|▎         | 35/1000 [00:00\u003c00:26, 36.79it/s]\n"}
+,{"stream_name":"stdout","time":142.336943492,"data":"Sampling:   4%|▍         | 39/1000 [00:01\u003c00:25, 37.05it/s]\n"}
+,{"stream_name":"stdout","time":142.444979569,"data":"Sampling:   4%|▍         | 43/1000 [00:01\u003c00:25, 37.25it/s]\n"}
+,{"stream_name":"stdout","time":142.554199517,"data":"Sampling:   5%|▍         | 47/1000 [00:01\u003c00:25, 37.18it/s]\n"}
+,{"stream_name":"stdout","time":142.635990346,"data":"Sampling:   5%|▌         | 51/1000 [00:01\u003c00:25, 37.01it/s]\n"}
+,{"stream_name":"stdout","time":142.63601146,"data":"Sampling:   5%|▌         | 54/1000 [00:01\u003c00:26, 35.93it/s]\n"}
+,{"stream_name":"stdout","time":143.904013474,"data":"      ↻ retry 4: speed 0.6 words/s, 1 word(s) wrong/missing/extra · \"Pay T M.\"\n"}
+,{"stream_name":"stdout","time":143.905614211,"data":"/root/.local/share/uv/python/cpython-3.11.18-linux-x86_64-gnu/lib/python3.11/contextlib.py:105: FutureWarning: `torch.backends.cuda.sdp_kernel()` is deprecated. In the future, this context manager will be removed. Please see `torch.nn.attention.sdpa_kernel()` for the new context manager, with updated signature.\n"}
+,{"stream_name":"stdout","time":143.90563305,"data":"  self.gen = func(*args, **kwds)\n"}
+,{"stream_name":"stdout","time":143.937794042,"data":"\n"}
+,{"stream_name":"stdout","time":144.051718423,"data":"Sampling:   0%|          | 0/1000 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":144.160012023,"data":"Sampling:   0%|          | 4/1000 [00:00\u003c00:28, 35.16it/s]\n"}
+,{"stream_name":"stdout","time":144.268643948,"data":"Sampling:   1%|          | 8/1000 [00:00\u003c00:27, 36.18it/s]\n"}
+,{"stream_name":"stdout","time":144.378636858,"data":"Sampling:   1%|          | 12/1000 [00:00\u003c00:27, 36.47it/s]\n"}
+,{"stream_name":"stdout","time":144.487381915,"data":"Sampling:   2%|▏         | 16/1000 [00:00\u003c00:27, 36.42it/s]\n"}
+,{"stream_name":"stdout","time":144.59823014,"data":"Sampling:   2%|▏         | 20/1000 [00:00\u003c00:26, 36.56it/s]\n"}
+,{"stream_name":"stdout","time":144.706081983,"data":"Sampling:   2%|▏         | 24/1000 [00:00\u003c00:26, 36.40it/s]\n"}
+,{"stream_name":"stdout","time":144.817853811,"data":"Sampling:   3%|▎         | 28/1000 [00:00\u003c00:26, 36.62it/s]\n"}
+,{"stream_name":"stdout","time":144.927143664,"data":"Sampling:   3%|▎         | 32/1000 [00:00\u003c00:26, 36.35it/s]\n"}
+,{"stream_name":"stdout","time":145.037749675,"data":"Sampling:   4%|▎         | 36/1000 [00:00\u003c00:26, 36.43it/s]\n"}
+,{"stream_name":"stdout","time":145.145433038,"data":"Sampling:   4%|▍         | 40/1000 [00:01\u003c00:26, 36.35it/s]\n"}
+,{"stream_name":"stdout","time":145.25374823800001,"data":"Sampling:   4%|▍         | 44/1000 [00:01\u003c00:26, 36.59it/s]\n"}
+,{"stream_name":"stdout","time":145.363120403,"data":"Sampling:   5%|▍         | 48/1000 [00:01\u003c00:25, 36.69it/s]\n"}
+,{"stream_name":"stdout","time":145.471020693,"data":"Sampling:   5%|▌         | 52/1000 [00:01\u003c00:25, 36.65it/s]\n"}
+,{"stream_name":"stdout","time":145.57990890600001,"data":"Sampling:   6%|▌         | 56/1000 [00:01\u003c00:25, 36.78it/s]\n"}
+,{"stream_name":"stdout","time":145.688780137,"data":"Sampling:   6%|▌         | 60/1000 [00:01\u003c00:25, 36.77it/s]\n"}
+,{"stream_name":"stdout","time":145.796602438,"data":"Sampling:   6%|▋         | 64/1000 [00:01\u003c00:25, 36.77it/s]\n"}
+,{"stream_name":"stdout","time":145.906256662,"data":"Sampling:   7%|▋         | 68/1000 [00:01\u003c00:25, 36.87it/s]\n"}
+,{"stream_name":"stdout","time":146.014638301,"data":"Sampling:   7%|▋         | 72/1000 [00:01\u003c00:25, 36.74it/s]\n"}
+,{"stream_name":"stdout","time":146.123010028,"data":"Sampling:   8%|▊         | 76/1000 [00:02\u003c00:25, 36.79it/s]\n"}
+,{"stream_name":"stdout","time":146.231551248,"data":"Sampling:   8%|▊         | 80/1000 [00:02\u003c00:24, 36.83it/s]\n"}
+,{"stream_name":"stdout","time":146.339065448,"data":"Sampling:   8%|▊         | 84/1000 [00:02\u003c00:24, 36.83it/s]\n"}
+,{"stream_name":"stdout","time":146.447250754,"data":"Sampling:   9%|▉         | 88/1000 [00:02\u003c00:24, 36.94it/s]\n"}
+,{"stream_name":"stdout","time":146.448462632,"data":"Sampling:   9%|▉         | 92/1000 [00:02\u003c00:24, 36.96it/s]\n"}
+,{"stream_name":"stdout","time":146.44847788,"data":"Sampling:   9%|▉         | 92/1000 [00:02\u003c00:24, 36.64it/s]\n"}
+,{"stream_name":"stdout","time":148.120496648,"data":"      ↻ retry 5: speed 0.3 words/s, 2 word(s) wrong/missing/extra · \"Pay-tee-em.\"\n"}
+,{"stream_name":"stdout","time":148.121887911,"data":"/root/.local/share/uv/python/cpython-3.11.18-linux-x86_64-gnu/lib/python3.11/contextlib.py:105: FutureWarning: `torch.backends.cuda.sdp_kernel()` is deprecated. In the future, this context manager will be removed. Please see `torch.nn.attention.sdpa_kernel()` for the new context manager, with updated signature.\n"}
+,{"stream_name":"stdout","time":148.121903005,"data":"  self.gen = func(*args, **kwds)\n"}
+,{"stream_name":"stdout","time":148.153729591,"data":"\n"}
+,{"stream_name":"stdout","time":148.263153693,"data":"Sampling:   0%|          | 0/1000 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":148.373188414,"data":"Sampling:   0%|          | 4/1000 [00:00\u003c00:27, 36.60it/s]\n"}
+,{"stream_name":"stdout","time":148.480548373,"data":"Sampling:   1%|          | 8/1000 [00:00\u003c00:27, 36.45it/s]\n"}
+,{"stream_name":"stdout","time":148.588492888,"data":"Sampling:   1%|          | 12/1000 [00:00\u003c00:26, 36.81it/s]\n"}
+,{"stream_name":"stdout","time":148.696355586,"data":"Sampling:   2%|▏         | 16/1000 [00:00\u003c00:26, 36.91it/s]\n"}
+,{"stream_name":"stdout","time":148.804208008,"data":"Sampling:   2%|▏         | 20/1000 [00:00\u003c00:26, 36.97it/s]\n"}
+,{"stream_name":"stdout","time":148.915036191,"data":"Sampling:   2%|▏         | 24/1000 [00:00\u003c00:26, 37.01it/s]\n"}
+,{"stream_name":"stdout","time":149.023226828,"data":"Sampling:   3%|▎         | 28/1000 [00:00\u003c00:26, 36.71it/s]\n"}
+,{"stream_name":"stdout","time":149.13344669,"data":"Sampling:   3%|▎         | 32/1000 [00:00\u003c00:26, 36.79it/s]\n"}
+,{"stream_name":"stdout","time":149.134613849,"data":"Sampling:   4%|▎         | 36/1000 [00:00\u003c00:26, 36.63it/s]\n"}
+,{"stream_name":"stdout","time":149.13462955,"data":"Sampling:   4%|▎         | 36/1000 [00:00\u003c00:26, 36.70it/s]\n"}
+,{"stream_name":"stdout","time":150.336751893,"data":"      ↻ retry 6: speed 0.8 words/s · \"Pay-tee-em.\"\n"}
+,{"stream_name":"stdout","time":150.338229687,"data":"/root/.local/share/uv/python/cpython-3.11.18-linux-x86_64-gnu/lib/python3.11/contextlib.py:105: FutureWarning: `torch.backends.cuda.sdp_kernel()` is deprecated. In the future, this context manager will be removed. Please see `torch.nn.attention.sdpa_kernel()` for the new context manager, with updated signature.\n"}
+,{"stream_name":"stdout","time":150.338248175,"data":"  self.gen = func(*args, **kwds)\n"}
+,{"stream_name":"stdout","time":150.371667414,"data":"\n"}
+,{"stream_name":"stdout","time":150.483680724,"data":"Sampling:   0%|          | 0/1000 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":150.595738728,"data":"Sampling:   0%|          | 4/1000 [00:00\u003c00:27, 35.76it/s]\n"}
+,{"stream_name":"stdout","time":150.706283508,"data":"Sampling:   1%|          | 8/1000 [00:00\u003c00:27, 35.72it/s]\n"}
+,{"stream_name":"stdout","time":150.815477728,"data":"Sampling:   1%|          | 12/1000 [00:00\u003c00:27, 35.93it/s]\n"}
+,{"stream_name":"stdout","time":150.929094863,"data":"Sampling:   2%|▏         | 16/1000 [00:00\u003c00:27, 36.21it/s]\n"}
+,{"stream_name":"stdout","time":151.038132417,"data":"Sampling:   2%|▏         | 20/1000 [00:00\u003c00:27, 35.84it/s]\n"}
+,{"stream_name":"stdout","time":151.154644654,"data":"Sampling:   2%|▏         | 24/1000 [00:00\u003c00:27, 36.12it/s]\n"}
+,{"stream_name":"stdout","time":151.282647149,"data":"Sampling:   3%|▎         | 28/1000 [00:00\u003c00:27, 35.51it/s]\n"}
+,{"stream_name":"stdout","time":151.390976917,"data":"Sampling:   3%|▎         | 32/1000 [00:00\u003c00:28, 34.05it/s]\n"}
+,{"stream_name":"stdout","time":151.499447813,"data":"Sampling:   4%|▎         | 36/1000 [00:01\u003c00:27, 34.89it/s]\n"}
+,{"stream_name":"stdout","time":151.607635958,"data":"Sampling:   4%|▍         | 40/1000 [00:01\u003c00:27, 35.48it/s]\n"}
+,{"stream_name":"stdout","time":151.71470283,"data":"Sampling:   4%|▍         | 44/1000 [00:01\u003c00:26, 35.92it/s]\n"}
+,{"stream_name":"stdout","time":151.822455398,"data":"Sampling:   5%|▍         | 48/1000 [00:01\u003c00:26, 36.35it/s]\n"}
+,{"stream_name":"stdout","time":151.930567213,"data":"Sampling:   5%|▌         | 52/1000 [00:01\u003c00:25, 36.57it/s]\n"}
+,{"stream_name":"stdout","time":152.039123314,"data":"Sampling:   6%|▌         | 56/1000 [00:01\u003c00:25, 36.70it/s]\n"}
+,{"stream_name":"stdout","time":152.147664368,"data":"Sampling:   6%|▌         | 60/1000 [00:01\u003c00:25, 36.75it/s]\n"}
+,{"stream_name":"stdout","time":152.255499251,"data":"Sampling:   6%|▋         | 64/1000 [00:01\u003c00:25, 36.78it/s]\n"}
+,{"stream_name":"stdout","time":152.363542611,"data":"Sampling:   7%|▋         | 68/1000 [00:01\u003c00:25, 36.88it/s]\n"}
+,{"stream_name":"stdout","time":152.474521384,"data":"Sampling:   7%|▋         | 72/1000 [00:01\u003c00:25, 36.92it/s]\n"}
+,{"stream_name":"stdout","time":152.52919537,"data":"Sampling:   8%|▊         | 76/1000 [00:02\u003c00:25, 36.65it/s]\n"}
+,{"stream_name":"stdout","time":152.529211594,"data":"Sampling:   8%|▊         | 78/1000 [00:02\u003c00:25, 36.15it/s]\n"}
+,{"stream_name":"stdout","time":154.137946923,"data":"      ↻ retry 7: speed 0.3 words/s, 4 word(s) wrong/missing/extra · \"Paytm.\"\n"}
+,{"stream_name":"stdout","time":154.139426104,"data":"/root/.local/share/uv/python/cpython-3.11.18-linux-x86_64-gnu/lib/python3.11/contextlib.py:105: FutureWarning: `torch.backends.cuda.sdp_kernel()` is deprecated. In the future, this context manager will be removed. Please see `torch.nn.attention.sdpa_kernel()` for the new context manager, with updated signature.\n"}
+,{"stream_name":"stdout","time":154.139442669,"data":"  self.gen = func(*args, **kwds)\n"}
+,{"stream_name":"stdout","time":154.171033508,"data":"\n"}
+,{"stream_name":"stdout","time":154.283348203,"data":"Sampling:   0%|          | 0/1000 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":154.397781103,"data":"Sampling:   0%|          | 4/1000 [00:00\u003c00:27, 35.66it/s]\n"}
+,{"stream_name":"stdout","time":154.516306857,"data":"Sampling:   1%|          | 8/1000 [00:00\u003c00:28, 35.25it/s]\n"}
+,{"stream_name":"stdout","time":154.631804265,"data":"Sampling:   1%|          | 12/1000 [00:00\u003c00:28, 34.54it/s]\n"}
+,{"stream_name":"stdout","time":154.744207478,"data":"Sampling:   2%|▏         | 16/1000 [00:00\u003c00:28, 34.58it/s]\n"}
+,{"stream_name":"stdout","time":154.858507341,"data":"Sampling:   2%|▏         | 20/1000 [00:00\u003c00:28, 34.93it/s]\n"}
+,{"stream_name":"stdout","time":154.967892882,"data":"Sampling:   2%|▏         | 24/1000 [00:00\u003c00:27, 34.95it/s]\n"}
+,{"stream_name":"stdout","time":155.087337426,"data":"Sampling:   3%|▎         | 28/1000 [00:00\u003c00:27, 35.46it/s]\n"}
+,{"stream_name":"stdout","time":155.200569816,"data":"Sampling:   3%|▎         | 32/1000 [00:00\u003c00:27, 34.82it/s]\n"}
+,{"stream_name":"stdout","time":155.310921031,"data":"Sampling:   4%|▎         | 36/1000 [00:01\u003c00:27, 34.98it/s]\n"}
+,{"stream_name":"stdout","time":155.311992714,"data":"Sampling:   4%|▍         | 40/1000 [00:01\u003c00:27, 35.35it/s]\n"}
+,{"stream_name":"stdout","time":155.312006455,"data":"Sampling:   4%|▍         | 40/1000 [00:01\u003c00:27, 35.06it/s]\n"}
+,{"stream_name":"stdout","time":156.592389508,"data":"      ↻ retry 8: speed 0.7 words/s, 1 word(s) wrong/missing/extra · \"Paytm.\"\n"}
+,{"stream_name":"stdout","time":156.593814979,"data":"/tmp/cbenv/lib/python3.11/site-packages/pyloudnorm/normalize.py:62: UserWarning: Possible clipped samples in output.\n"}
+,{"stream_name":"stdout","time":156.593829516,"data":"  warnings.warn(\"Possible clipped samples in output.\")\n"}
+,{"stream_name":"stdout","time":156.598802067,"data":"   ⚠️ fixs 01 short 2 fix 2 — 1.3s, 8 tries, 1 line(s) failed\n"}
+,{"stream_name":"stdout","time":156.599464063,"data":"⏭️  main: beats [1, 2, 3, 4, 5, 6, 7, 8, 9] not generated here, not assembled\n"}
+,{"stream_name":"stdout","time":156.599671135,"data":"⏭️  short: beats [1, 2, 3, 4] not generated here, not assembled\n"}
+,{"stream_name":"stdout","time":156.599890916,"data":"⏭️  reel: beats [1, 2, 3] not generated here, not assembled\n"}
+,{"stream_name":"stdout","time":156.609313612,"data":"🎧 fixm.wav · 0:02.5\n"}
+,{"stream_name":"stdout","time":156.611434825,"data":"/tmp/cbenv/lib/python3.11/site-packages/pyloudnorm/normalize.py:62: UserWarning: Possible clipped samples in output.\n"}
+,{"stream_name":"stdout","time":156.611448595,"data":"  warnings.warn(\"Possible clipped samples in output.\")\n"}
+,{"stream_name":"stdout","time":156.615376855,"data":"🎧 fixs.wav · 0:01.5\n"}
+,{"stream_name":"stdout","time":157.230645217,"data":"\n"}
+,{"stream_name":"stdout","time":157.230668738,"data":"🎉 done\n"}
+,{"stream_name":"stderr","time":161.032090613,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":161.032113878,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":161.367488083,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":161.367526966,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":162.318108883,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":163.345927623,"data":"[NbConvertApp] Writing 341199 bytes to __results__.html\n"}
+]

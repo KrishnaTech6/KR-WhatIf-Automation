@@ -1,0 +1,42 @@
+{
+ "fixm": {
+  "kind": "main",
+  "dur": 2.47,
+  "overall": 0.0,
+  "beats": [
+   {
+    "n": 1,
+    "name": "main 3 fix 1",
+    "start": 0.3,
+    "dur": 1.37,
+    "issues": []
+   }
+  ]
+ },
+ "fixs": {
+  "kind": "short",
+  "dur": 1.51,
+  "overall": 100.0,
+  "beats": [
+   {
+    "n": 1,
+    "name": "short 2 fix 2",
+    "start": 0.05,
+    "dur": 1.26,
+    "issues": [
+     {
+      "text": "Paytm.",
+      "heard": "paytm",
+      "why": "speed 0.8 words/s",
+      "lexicon_words": [
+       "paytm"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "_lexicon_hits": {
+  "paytm": "Pay T M"
+ }
+}
