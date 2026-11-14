@@ -1,0 +1,74 @@
+RELEASE TIMES (IST)
+MAIN : Sat 14 Nov, 06:00 PM IST
+SHORT: Sun 15 Nov, 09:00 AM IST (YouTube + Instagram)
+REEL : Sun 15 Nov, 08:00 PM IST (YouTube + Instagram)
+
+=== MAIN ===
+Title: What If UPI Stopped Working for One Week?
+
+Ten rupees, one chai, and your phone says: payment failed.
+Now imagine that for 82 crore UPI payments a day, for a whole week.
+
+Real numbers in this video:
+- In October 2026, UPI handled about 82 crore payments and about ₹1 lakh crore every single day (NPCI data).
+- Almost 8 in 10 UPI payments go through just two apps, PhonePe and Google Pay. The apps are front doors; UPI itself is run by NPCI.
+- UPI carries about 85% of India's digital payments by volume (RBI).
+- On 12 April 2025, UPI payments kept failing for about five hours.
+- India still holds about ₹43 lakh crore in notes and coins, and it's growing at its fastest pace in five years (RBI).
+- UPI 123PAY lets you pay with UPI from a basic phone, without internet.
+
+Chapters:
+0:00 Ten rupees, one chai
+0:32 Minute 1 · The chai stall
+1:06 Hour 3 · The ATM line
+1:44 Night 1 · The shops
+2:12 Day 3 · No change
+3:00 Day 5 · The slowdown
+3:39 Day 7 · The twist
+4:14 Day 8 · Back at the stall
+
+This is a thought experiment. A full week-long UPI shutdown has never happened; the numbers are real and the scenario is imagined from them.
+
+After this, would you keep more cash at home?
+
+Sources:
+NPCI data, October 2026 (via Entrepreneur India): https://india.entrepreneur.com/business-news/upi-hits-record-25-47-bn-transactions-in-october-daily-value-crosses-inr-1-l-cr
+Outlook Money, daily UPI value crosses ₹1 lakh crore: https://www.outlookmoney.com/banking/upi-average-daily-transaction-value-crosses-rs-1-lakh-crore-for-first-time-ever-in-october
+Outlook Business, PhonePe and Google Pay share: https://www.outlookbusiness.com/economy-and-policy/phonepe-google-pay-combined-upi-market-share-drops-below-80-for-first-time
+RBI Payment Systems Report: https://rbi.org.in/Scripts/PublicationsView.aspx?id=23813
+Outlook Money, April 2025 UPI outage: https://www.outlookmoney.com/banking/upi-outage-attributed-to-surge-in-api-calls-from-banks-says-npci
+Free Press Journal, currency in circulation (RBI data): https://www.freepressjournal.in/business/indias-currency-in-circulation-growth-hits-5-year-high-at-135
+NPCI, UPI 123PAY: https://www.npci.org.in/PDF/npci/upi-123pay/Product-Booklet.pdf
+ACI Worldwide, real-time payments: https://investor.aciworldwide.com/news-releases/news-release-details/global-real-time-payments-growth-sustainable-new-use-cases-push
+
+#whatif #upi #india
+
+Tags: what if, what if upi stopped working, upi down, upi outage, upi, npci, digital payments india, cash in india, phonepe, google pay, paytm, KR's What If Explained
+Comment: How much cash is in your wallet right now? Be honest.
+
+=== SHORT (YouTube) ===
+7 Days Without UPI, You Can't Even Buy Chai #shorts
+82 crore UPI payments a day, gone for a week.
+Full video: {MAIN_URL}
+
+=== REEL (YouTube Short) ===
+Day 3 Without UPI: Your Sabziwala Is Broke #shorts
+His customers stopped carrying cash years ago. Now UPI is down.
+Full video: {MAIN_URL}
+
+=== INSTAGRAM: SHORT caption ===
+82 crore UPI payments a day, gone for 7 days, and you can't even buy a ₹10 chai. What if UPI stopped working?
+Google Pay, PhonePe, Paytm. All fail. The apps aren't UPI, they're just doors to one house run by NPCI, and that house is closed. Your card mostly works. Your kirana? QR sticker only.
+Full story on YouTube, digital payments and all.
+Would you last a week on the cash in your wallet? Tell me in the comments.
+#whatif #upi #upidown #india
+
+=== INSTAGRAM: REEL caption ===
+Day 3 without UPI and your corner sabziwala can't sell you even one tomato. What if UPI stopped working for a week?
+Gone.
+82 crore UPI payments a day just stop, and his customers stopped carrying cash years ago. So they walk past. The delivery rider paid every evening? Nothing. The cook in Mumbai sending money home to her village? Stuck.
+Full story on YouTube, digital payments and all.
+Honestly, how much cash is in your wallet right now? Tell me in the comments.
+#whatif #upi #digitalpayments #india
+
+Studio: set both Shorts' 'Related video' = the main video (API can't).

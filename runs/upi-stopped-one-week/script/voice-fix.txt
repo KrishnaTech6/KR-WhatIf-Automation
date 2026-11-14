@@ -1,0 +1,64 @@
+TITLE: UPI fix lines
+LANG: en
+KEY_BEATS:
+HARD_CUT_BEFORE:
+
+[main 2 fix 1 | neutral]
+UPI has stumbled before.
+
+[main 3 fix 2 | playful]
+Most of us think these apps are UPI.
+
+[main 3 fix 3 | playful]
+Almost eight out of every ten UPI payments go through just two of these apps.
+
+[main 3 fix 4 | playful]
+Behind every door is the same house... UPI, run by N P C I.
+
+[main 4 fix 5 | tense]
+On a normal day, UPI moves about one lakh crore rupees.
+
+[main 5 fix 6 | neutral]
+UPI is one road.
+
+[main 6 fix 7 | neutral]
+Last year, the average UPI payment at a shop was about six hundred rupees.
+
+[main 6 fix 8 | neutral]
+For years, UPI made exact change.
+
+[main 6 fix 9 | playful]
+Sorry... no change.
+
+[main 7 fix 10 | deep]
+Five days without UPI means about five lakh crore rupees that didn't move the normal way.
+
+[main 7 fix 11 | deep]
+This is the moment you realise... UPI isn't an app.
+
+[main 8 fix 12 | neutral]
+Even while UPI exploded, we quietly kept more cash than ever.
+
+[main 8 fix 13 | neutral]
+And for people without a smartphone, there's even UPI one two three pay.
+
+[main 9 fix 14 | warm]
+UPI comes back.
+
+[short 1 fix 15 | dramatic]
+Seven days without UPI... and you can't even buy a ten rupee chai.
+
+[short 2 fix 16 | playful]
+Because these apps aren't UPI.
+
+[short 3 fix 17 | dramatic]
+Sorry, no change.
+
+[short 4 fix 18 | neutral]
+Because one bad day without UPI... can easily turn into
+
+[reel 1 fix 19 | dramatic]
+Three days without UPI... and the man who sells you tomatoes is broke.
+
+[reel 3 fix 20 | warm]
+UPI isn't just an app.
