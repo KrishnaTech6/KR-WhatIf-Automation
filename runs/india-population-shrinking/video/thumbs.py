@@ -52,11 +52,13 @@ def thumb(c):
         c.save(); c.rotate(-30 - i * 22, x, y - 40)
         cutout(c, lambda kk, x=x, y=y, i=i: figure(kk, x, y, 0.28, i=i + 3, female=i % 2 == 1), border=3, shadow=(3, 5))
         c.restore()
-    sx, sy, sw, shh = 70, 830, 640, 170
-    c.save(); c.rotate(-4, sx + sw / 2, sy + shh / 2)
+    sx, sy, sw, shh = cx - 420, cy - 20, 760, 200
+    c.save(); c.rotate(-12, sx + sw / 2, sy + shh / 2)
+    sh = paint("#000000", 0.55); sh.setMaskFilter(skia.MaskFilter.MakeBlur(skia.kNormal_BlurStyle, 18))
+    c.drawRRect(skia.RRect.MakeRectXY(skia.Rect(sx + 8, sy + 22, sx + sw + 18, sy + shh + 32), 36, 36), sh)
     c.drawRRect(skia.RRect.MakeRectXY(skia.Rect(sx - 10, sy - 10, sx + sw + 10, sy + shh + 10), 36, 36), paint("#FFFFFF"))
     c.drawRRect(skia.RRect.MakeRectXY(skia.Rect(sx, sy, sx + sw, sy + shh), 28, 28), paint("#D62828"))
-    outline_text(c, "−20 CRORE", sx + 40, sy + 128, 120, "gold", stroke=14)
+    outline_text(c, "−20 CRORE", sx + 45, sy + 152, 142, "gold", stroke=16)
     c.restore()
     # title, word for word, key word in gold
     words(c, [("WHAT IF ", "cream"), ("INDIA'S", "gold")], 60, 250, 132)
