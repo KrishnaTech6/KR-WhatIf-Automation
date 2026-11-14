@@ -1,0 +1,59 @@
+{
+ "slug": "phone-free-30-days",
+ "dry_run": false,
+ "privacy": "private",
+ "publish_at": null,
+ "synthetic": false,
+ "language": "en",
+ "main": {
+  "file": "MAIN.mp4",
+  "title": "What If You Didn't Use Your Phone for 30 Days?",
+  "description": "30 days without your phone gives you back 150 hours. Six full days.\nBut by day two, you're locked out of your own life. And the biggest change happens inside your head.\n\nReal numbers in this video:\n- The average Indian spends about 5 hours a day on a smartphone (EY media & entertainment report, 2025). 5 hours × 30 days = 150 hours, about 6 full days.\n- In one study, 89% of students had felt their phone vibrate when it hadn't (Drouin et al., 2012): phantom vibration.\n- Almost 9 in 10 reserved train tickets in India are now booked online (Indian Railways, 2025-26).\n- In a 2025 study (PNAS Nexus), 467 people blocked mobile internet on their phones for 2 weeks. Calls and texts still worked. Only about a quarter kept it up for 10 of the 14 days.\n- Their focus improved about as much as being 10 years younger, and 9 in 10 improved on mood, well-being or focus.\n- People who quit Facebook for 4 weeks kept using it less even after they came back (Allcott et al., American Economic Review, 2020).\n\nChapters:\n0:00 Thirty days, no phone\n0:29 Hour 1 · The reflex\n1:00 Day 2 · The wall\n1:45 Day 7 · Boredom\n2:21 Day 10 · The myth\n2:55 Day 14 · The brain\n3:26 Day 30 · The twist\n4:05 Day 31 · Back\n\nThis is a thought experiment: the numbers are real, the 30 days are imagined from them.\n\nWhat's the first thing you'd do with five free hours a day?\n\nSources:\nBloomberg, EY report on Indian smartphone time: https://www.bloomberg.com/news/articles/2025-03-27/indians-spent-1-1-trillion-hours-on-smartphones-in-2024-ey-says\nPsychology Today, phantom vibration studies: https://www.psychologytoday.com/us/blog/rewired-the-psychology-technology/201305/phantom-pocket-vibration-syndrome\nFree Press Journal, online train ticket share: https://www.freepressjournal.in/tech/irctc-online-bookings-soar-88-of-reserved-train-tickets-now-digital-as-govt-strengthens-passenger-friendly-systems\nNews-Medical, blocking mobile internet for two weeks (PNAS Nexus 2025): https://www.news-medical.net/news/20250219/Blocking-mobile-internet-for-two-weeks-improves-mental-health-and-well-being.aspx\nNPR, the same study: https://www.npr.org/2025/02/24/nx-s1-5304417/smartphone-break-digital-detox-screen-addiction\nNBER, The Welfare Effects of Social Media: https://www.nber.org/papers/w25514\n\n#whatif #digitaldetox #india",
+  "tags": [
+   "what if",
+   "what if you didn't use your phone for 30 days",
+   "no phone for 30 days",
+   "phone detox",
+   "digital detox",
+   "screen time",
+   "phone addiction",
+   "phantom vibration",
+   "30 day challenge",
+   "india",
+   "KR's What If Explained"
+  ],
+  "category": "27",
+  "thumbnail": "THUMB.jpg",
+  "comment": "What's the first thing you'd do with five free hours a day?",
+  "privacy": "private",
+  "publish_at": "2026-11-17T12:30:00Z"
+ },
+ "shorts": [
+  {
+   "file": "SHORT.mp4",
+   "title": "Your Phone's at Home. So Why Did Your Leg Buzz? #shorts",
+   "description": "30 days without your phone: lost in your own city by day 2, and your brain starts faking notifications.\nFull video: {MAIN_URL}",
+   "tags": [
+    "what if",
+    "phone detox",
+    "phantom vibration",
+    "shorts"
+   ],
+   "privacy": "private",
+   "publish_at": "2026-11-18T03:30:00Z"
+  },
+  {
+   "file": "REEL.mp4",
+   "title": "30 Days Without Your Phone = 6 Free Days #shorts",
+   "description": "150 hours back. The boredom comes first, then you look up.\nFull video: {MAIN_URL}",
+   "tags": [
+    "what if",
+    "digital detox",
+    "screen time",
+    "shorts"
+   ],
+   "privacy": "private",
+   "publish_at": "2026-11-18T14:30:00Z"
+  }
+ ]
+}
