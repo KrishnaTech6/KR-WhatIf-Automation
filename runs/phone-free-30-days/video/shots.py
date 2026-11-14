@@ -131,9 +131,11 @@ def s_pay(c, t, t0):
 
 def s_tickets(c, t, t0):
     explainer_bg(c, t, "deep")
+    c.save(); c.translate(W / 2, 560); c.scale(1.22, 1.22); c.translate(-W / 2, -560)
     ticket_row(c, W / 2, 560, t, span(t, S("day_two", "nine", -0.3), S("day_two", "nine", 1.2)))
+    c.restore()
     big_text(c, "~9 IN 10 TRAIN TICKETS", W / 2, 230, 74, span(t, S("day_two", "nine", 0), S("day_two", "nine", 0.4)), "gold")
-    label(c, "booked online (Indian Railways, 2025-26)", W / 2, 820, 42, "sand", "bold", span(t, S("day_two", "online", 0), S("day_two", "online", 0.4)))
+    label(c, "booked online (Indian Railways, 2025-26)", W / 2, 860, 46, "cream", "bold", span(t, S("day_two", "online", 0), S("day_two", "online", 0.4)))
 
 
 def s_lost(c, t, t0):
@@ -162,7 +164,7 @@ def s_shop(c, t, t0):
             c.drawRect(skia.Rect(120 + j * 220, 120 + k * 120, 300 + j * 220, 210 + k * 120), paint(["#2C2350", "#352A5E"][(j + k) % 2]))
     c.drawRect(skia.Rect(0, 760, W, H), paint("#5E3B26"))
     c.drawRect(skia.Rect(0, 760, W, 790), paint("#B07A52"))
-    keypad_phone(c, W / 2, 470, 0.9 * back_out(span(t, t0 + 0.3, t0 + 0.8)), t, "CALLS  SMS", lit=span(t, S("day_two", "keypad", -0.3), S("day_two", "keypad", 0.2)))
+    keypad_phone(c, W / 2, 420, 1.2 * back_out(span(t, t0 + 0.3, t0 + 0.8)), t, "CALLS  SMS", lit=span(t, S("day_two", "keypad", -0.3), S("day_two", "keypad", 0.2)))
     big_text(c, "THE ONE PHONE THAT CAN'T SCROLL", W / 2, 950, 58, span(t, S("day_two", "scroll", -0.2), S("day_two", "scroll", 0.3)), "gold")
 
 
@@ -195,6 +197,7 @@ def s_clock(c, t, t0):
     big_text(c, "5 HRS", 700, 600, 96, span(t, t0 + 1.0, t0 + 1.4), "coral")
     label(c, "a day, on a phone", 1350, 520, 54, "cream", "bold", span(t, t0 + 0.4, t0 + 0.9))
     label(c, "average Indian (EY, 2025)", 1350, 600, 38, "sand", "bold", span(t, t0 + 0.8, t0 + 1.2))
+    label(c, "≈ 1/3 of your waking hours", 1350, 680, 44, "coral", "bold", span(t, t0 + 1.6, t0 + 2.0))
     big_text(c, "EVERY. SINGLE. DAY.", 1350, 760, 56, span(t, S("day_seven", "single", -0.3), S("day_seven", "single", 0.2)), "gold")
 
 
@@ -230,7 +233,7 @@ def s_lake(c, t, t0):
 
 def s_study(c, t, t0):
     explainer_bg(c, t)
-    paper(c, W / 2, 560, 1.25, "PNAS Nexus · 2025", "467 people · 2 weeks offline", "teal", -2, span(t, t0, t0 + 0.5))
+    paper(c, W / 2, 560, 1.25, "PNAS Nexus · 2025", "467 people, 2 weeks", "teal", -2, span(t, t0, t0 + 0.5))
     label(c, "IN REAL LIFE", W / 2, 140, 54, "sand", "extrabold", span(t, t0, t0 + 0.3))
 
 
@@ -308,13 +311,13 @@ def s_scroll(c, t, t0):
 
 def s_fb(c, t, t0):
     explainer_bg(c, t)
-    paper(c, 640, 540, 1.1, "Allcott et al. · AER 2020", "quit Facebook, 4 weeks", "plum", -3, span(t, t0, t0 + 0.5))
+    paper(c, 640, 540, 1.1, "Allcott et al. · AER 2020", "4 weeks off Facebook", "plum", -3, span(t, t0, t0 + 0.5))
     tb = T("day_thirty", "less")
     for i, (lab, v) in enumerate([("NEVER QUIT", 1.0), ("QUIT FOR 4 WEEKS", 0.62)]):
         w = 560 * (v if i == 0 else 1 - (1 - v) * ease(span(t, tb, tb + 0.8)))
         c.drawRRect(skia.RRect.MakeRectXY(skia.Rect(1120, 420 + i * 200, 1120 + w, 520 + i * 200), 20, 20), paint(["sand", "teal"][i]))
         label(c, lab, 1120, 400 + i * 200, 36, "cream", "bold", 1.0, "left")
-    label(c, "Facebook use, weeks later", 1400, 860, 36, "sand", "bold", span(t, tb, tb + 0.4))
+    label(c, "Facebook use, weeks later", 1400, 860, 44, "cream", "bold", span(t, tb, tb + 0.4))
     big_text(c, "IT BREAKS THE HABIT", W / 2, 150, 68, span(t, S("day_thirty", "habit", -0.3), S("day_thirty", "habit", 0.1)), "gold")
 
 
@@ -342,14 +345,153 @@ def s_wait(c, t, t0):
 
 def s_tease(c, t, t0):
     explainer_bg(c, t, "plum")
-    piggy(c, W / 2, 680, 1.3, t, coin_p=(t - t0) % 1.4 / 1.4)
+    glow(c, W / 2 - 200, 700, 420, "amber", 0.35)
+    piggy(c, W / 2 - 200, 700, 1.2, t, coin_p=(t - t0) % 1.4 / 1.4)
+    for i in range(5):
+        coin_stack(c, 1180 + i * 130, 900, int(4 + i * 5 * span(t, t0 + 0.5, t0 + 3)), 1.0)
+    label(c, "OVER 20 YEARS...", 1440, 980, 40, "sand", "bold")
     big_text(c, "NEXT: ₹100 A DAY FOR 20 YEARS?", W / 2, 150, 64, span(t, t0 + 0.2, t0 + 0.7), "gold")
+
+
+# ---------------------------------------------------------------- round 2 (quality gate): hero scenes + pacing
+def s_hook_roof(c, t, t0):
+    rooftop(c, t)
+    with Cam(c, keys(t, [(t0, 1.08), (t0 + 6, 1.0)]), 480, 700, t=t):
+        person(c, 420, 1000, 1.7, "teal", phone=False, look_up=1.0)
+        phone_outline(c, 640, 560, 0.42, 0.9 + 0.1 * math.sin(t * 5), rot=12, color="gold")
+        xmark(c, 640, 560, 1.2, span(t, t0 + 0.4, t0 + 0.9))
+    big_text(c, "30 DAYS.", 1350, 330, 150, span(t, t0, t0 + 0.25), "gold")
+    big_text(c, "NO PHONE.", 1350, 500, 150, span(t, t0 + 0.2, t0 + 0.45), "cream")
+
+
+def s_hook_tiles(c, t, t0):
+    room_bg(c, t)
+    th = t0 + 0.3
+    counter_text(c, 0, 150, span(t, t0, t0 + 1.2), lambda v: f"{v:.0f} HOURS", W / 2, 260, 150, "gold")
+    big_text(c, "= 6 FULL DAYS BACK", W / 2, 400, 80, span(t, S("hook", "six", -0.1), S("hook", "six", 0.3)), "coral")
+    for i in range(6):
+        p = span(t, S("hook", "six", -0.2) + 0.12 * i, S("hook", "six", 0.3) + 0.12 * i)
+        day_tile(c, 360 + i * 240, 760 - 120 * (1 - ease_out(p)), 1.2, p, f"DAY {i + 1}")
+
+
+def s_wall(c, t, t0):
+    dusk_bg(c, t, 0.9)
+    person(c, 420, 1010, 1.4, "teal")
+    for r in range(4):
+        for k in range(6):
+            x = 760 + k * 190 + (95 if r % 2 else 0)
+            c.drawRect(skia.Rect(x, 300 + r * 150, x + 180, 440 + r * 150), paint("#7A3B2E"))
+            c.drawRect(skia.Rect(x, 300 + r * 150, x + 180, 440 + r * 150), paint("#4E2219", stroke=6))
+    c.drawLine(760, 300, 1900, 300, paint("amber", 0.6, stroke=6))
+    big_text(c, "THE PROBLEM NOBODY WARNS YOU ABOUT", W / 2, 160, 54, span(t, S("day_two", "nobody", -0.2), S("day_two", "nobody", 0.2)), "gold")
+
+
+def s_street_lost(c, t, t0):
+    dusk_bg(c, t, 1.0)
+    c.drawRect(skia.Rect(0, 900, W, H), paint("#2A2438"))
+    for k in range(12):
+        c.drawRect(skia.Rect(k * 180, 980, k * 180 + 90, 992), paint("sand", 0.6))
+    auto_rickshaw(c, 1650 - (t - t0) * 90, 960, 1.0)
+    signpost(c, 330, 960, 1.0, [("ANDHERI ?", 1), ("BANDRA ?", -1), ("???", 1)])
+    person(c, 960, 1000, 1.45, "teal")
+    big_text(c, "?", 1060, 450, 160, span(t, t0 + 0.4, t0 + 0.8), "gold")
+    big_text(c, "NO MAPS. NO IDEA WHERE YOU ARE.", W / 2, 150, 58, span(t, S("day_two", "maps", -0.1), S("day_two", "maps", 0.3)), "coral")
+
+
+def s_keypad_close(c, t, t0):
+    explainer_bg(c, t, "magenta")
+    keypad_phone(c, 620, 560, 1.5, t, "CALLS  SMS", rot=-6 + 2 * math.sin(t * 2))
+    pop(c, 1320, 420, "CALLS", t, S("day_two", "calls", -0.1), "teal", 70)
+    pop(c, 1320, 560, "SMS", t, S("day_two", "calls", 0.4), "teal", 70)
+    pop(c, 1320, 700, "THAT'S IT.", t, S("day_two", "calls", 1.0), "coral", 60)
+
+
+def s_never(c, t, t0):
+    rooftop(c, t, 0.9)
+    smartphone(c, W / 2, 560, 1.15, t, "lock", glow_a=0.8)
+    phone_outline(c, W / 2, 560, 1.32 + 0.04 * math.sin(t * 3), 0.7, color="gold")
+    big_text(c, "NEVER JUST A PHONE", W / 2, 150, 72, span(t, S("day_two", "never", 0), S("day_two", "never", 0.4)), "gold")
+
+
+def s_fill(c, t, t0):
+    explainer_bg(c, t)
+    for i in range(5):
+        p = span(t, t0 + 0.2 + 0.25 * i, t0 + 0.6 + 0.25 * i)
+        x = 360 + i * 300
+        c.drawRRect(skia.RRect.MakeRectXY(skia.Rect(x - 120, 420, x + 120, 700), 26, 26), dashed("sand", p, 6))
+        label(c, f"HOUR {i + 1}", x, 580, 40, "sand", "bold", p)
+    big_text(c, "5 EMPTY HOURS. EVERY DAY.", W / 2, 220, 76, span(t, t0, t0 + 0.4), "gold")
+    label(c, "almost 1/3 of your waking day", W / 2, 840, 46, "cream", "bold", span(t, t0 + 1.2, t0 + 1.6))
+
+
+def s_talk(c, t, t0):
+    rooftop(c, t, 1.2)
+    person(c, 760, 1000, 1.55, "teal")
+    person(c, 1160, 1000, 1.55, "#8A2A5C", female=True)
+    for i, (x, w) in enumerate([(820, "So then..."), (1100, "Haha, sach mein?")]):
+        if t > t0 + 0.3 + i * 0.9:
+            pill(c, x, 380 + i * 90, 1.0, w, ["teal", "magenta"][i], "cream", 40)
+    big_text(c, "A WHOLE CONVERSATION. NO CHECKING.", W / 2, 150, 56, span(t, t0, t0 + 0.4), "gold")
+
+
+def s_real(c, t, t0):
+    dusk_bg(c, t, 0.7)
+    for i, x in enumerate([420, 760, 1160, 1500]):
+        a = 1.0 if i == 1 else 1 - 0.75 * span(t, t0 + 0.6 + 0.2 * i, t0 + 1.2 + 0.2 * i)
+        person(c, x, 1000, 1.3, ["#3D5A80", "teal", "#8A2A5C", "#7A4E2D"][i], phone=i != 1)
+        if a < 1:
+            c.drawRect(skia.Rect(x - 120, 500, x + 120, 1010), paint("#140A26", 1 - a))
+    big_text(c, "IN REAL LIFE...", W / 2, 170, 80, span(t, t0, t0 + 0.4), "gold")
+
+
+def s_boredom(c, t, t0):
+    room_bg(c, t, 0.5)
+    clock_ring(c, 1300, 520, 230, 1, 1.0, t)
+    c.save(); c.rotate((t - t0) * 6, 1300, 520); c.drawLine(1300, 520, 1300, 340, paint("cream", stroke=10)); c.restore()
+    draw_kr(c, 640, 980, 1.5, "worried", t)
+    big_text(c, "BOREDOM... FEELS LIKE PAIN", W / 2, 140, 62, span(t, S("day_ten", "boredom", 0), S("day_ten", "boredom", 0.4)), "coral")
+
+
+def s_six(c, t, t0):
+    rooftop(c, t, 1.5)
+    person(c, 380, 1000, 1.4, "teal", look_up=1.0)
+    for i in range(6):
+        p = span(t, t0 + 0.15 * i, t0 + 0.5 + 0.15 * i)
+        day_tile(c, 760 + i * 190, 520 + 30 * math.sin(t * 2 + i), 1.0, p, f"DAY {i + 1}")
+    big_text(c, "6 FULL DAYS. HANDED BACK.", W / 2, 180, 76, span(t, t0, t0 + 0.4), "gold")
+    label(c, "almost a full week of holidays", W / 2, 820, 46, "cream", "bold", span(t, S("day_thirty", "holidays", -0.8), S("day_thirty", "holidays", -0.4)))
+
+
+def s_twist_head(c, t, t0):
+    c.drawRect(skia.Rect(0, 0, W, H), paint("#07051A"))
+    glow(c, W / 2, 560, 520, "magenta", 0.35)
+    smartphone(c, W / 2, 600, 1.0, t, "lock", glow_a=0.9)
+    big_text(c, "THEY NEVER GAVE UP THEIR PHONES", W / 2, 150, 62, span(t, S("day_thirty", "never", -0.1), S("day_thirty", "never", 0.3)), "gold")
+
+
+def s_habit(c, t, t0):
+    rooftop(c, t, 1.4)
+    person(c, 760, 1000, 1.6, "teal", look_up=1.0)
+    p = span(t, t0 + 0.3, t0 + 1.4)
+    for k in range(5):  # a chain of notification links snapping apart
+        x = 1250 + k * 110 + (k - 2) * 80 * ease(p)
+        y = 560 + (k - 2) ** 2 * 18 * ease(p)
+        c.drawOval(skia.Rect(x - 60, y - 34, x + 60, y + 34), paint("#9AA3BF", stroke=14))
+    big_text(c, "IT BREAKS THE HABIT", W / 2, 160, 84, span(t, S("day_thirty", "habit", -0.3), S("day_thirty", "habit", 0.1)), "gold")
+
+
+def s_calm(c, t, t0):
+    rooftop(c, t, 1.5)
+    person(c, 760, 1000, 1.7, "teal", look_up=1.0)
+    smartphone(c, 1240, 840, 0.28, t, "notifs", rot=-80, glow_a=0.5 * (0.5 + 0.5 * math.sin(t * 6)), notifs=120)
+    big_text(c, "YOU DON'T RUSH TO CHECK", W / 2, 160, 70, span(t, S("payoff", "rush", -0.2), S("payoff", "rush", 0.2)), "gold")
 
 
 # ---------------------------------------------------------------- the list: (start, shot, transition)
 def SHOTS():
     return [
-        (0.0, s_hook_drawer, "cut"),
+        (0.0, s_hook_roof, "cut"),
+        (S("hook", "hundred", -0.4), s_hook_tiles, "zoom"),
         (S("hook", "day", -0.25), s_hook_locked, "whip"),
         (S("hook", "biggest", -0.2), s_hook_head, "fade"),
         (E("hook") + 0.1, logo_sting(), "flash"),
@@ -365,45 +507,56 @@ def SHOTS():
         (S("hour_one", "says", -1.2), kr_react("worried", "IT'S BEEN 1 HOUR", line_at=S("hour_one", "been", 0)), "cut"),
 
         (B("day_two") - 0.6, card("DAY 2", "The wall"), "iris"),
-        (B("day_two") + 0.9, s_pay, "fade"),
+        (B("day_two") + 0.9, s_wall, "fade"),
+        (S("day_two", "pay", -0.4), s_pay, "whip"),
         (S("day_two", "train", -0.4), s_tickets, "whip"),
-        (S("day_two", "new", -0.4), s_lost, "whip"),
+        (S("day_two", "new", -0.4), s_street_lost, "whip"),
         (S("day_two", "bank", -0.4), s_otp, "cut"),
         (S("day_two", "walk", -0.4), s_shop, "fade"),
-        (S("day_two", "now", -0.3, 2), s_four, "zoom"),
+        (S("day_two", "calls", -0.3), s_keypad_close, "cut"),
+        (S("day_two", "now", -0.3, 2), s_never, "fade"),
+        (S("day_two", "wallet", -0.4), s_four, "zoom"),
         (S("day_two", "cash", -0.4), s_2005, "fade"),
 
         (B("day_seven") - 0.6, card("DAY 7", "Boredom"), "iris"),
         (S("day_seven", "average", -0.3), s_clock, "fade"),
+        (S("day_seven", "fill", -1.6), s_fill, "cut"),
         (S("day_seven", "metro", -0.3), s_metro, "whip"),
         (S("day_seven", "shampoo", -0.6), s_shampoo, "cut"),
         (S("day_seven", "slowly", -0.4), s_look_up, "fade"),
-        (S("day_seven", "quick", -0.2), comment_prompt("What would you do with 5 free hours a day?"), "fade"),
+        (S("day_seven", "conversation", -1.6), s_talk, "cut"),
+        (S("day_seven", "quick", -0.2), comment_prompt("What would you do with 5 free hours a day?", bg=lambda c, t: rooftop(c, t, 1.0)), "fade"),
 
         (B("day_ten") - 0.6, card("DAY 10", "The myth"), "iris"),
         (S("day_ten", "movies", -0.4), layer(s_lake, stamp_at("MYTH", S("day_ten", "perfect", 0.3))), "fade"),
-        (S("day_ten", "study", -0.4), s_study, "whip"),
+        (S("day_ten", "real", -0.3), s_real, "whip"),
+        (S("day_ten", "study", -0.4), s_study, "cut"),
         (S("day_ten", "quarter", -0.3), s_quarter, "cut"),
         (S("day_ten", "first", -0.3), s_pings, "fade"),
+        (S("day_ten", "boredom", -0.4), s_boredom, "cut"),
         (S("day_ten", "rare", -1.6), kr_react("happy", "ALREADY RARE", line_at=S("day_ten", "rare", 0)), "cut"),
 
         (B("day_fourteen") - 0.6, card("DAY 14", "The brain"), "iris"),
         (S("day_fourteen", "this", -0.2), s_dark_head, "fade"),
         (S("day_fourteen", "same", -0.3), s_focus, "fade"),
         (S("day_fourteen", "after", -0.3), s_age, "zoom"),
-        (S("day_fourteen", "pill", -1.0), statement("NO PILL. NO APP.", sub="Just... less scrolling.", at_t=S("day_fourteen", "pill", -0.6)), "cut"),
+        (S("day_fourteen", "pill", -1.0), statement("NO PILL. NO APP.", sub="Just... less scrolling.", at_t=S("day_fourteen", "pill", -0.6), bg=lambda c, t: (explainer_bg(c, t, "plum"), head_profile(c, W / 2, 820, 0.8, t, light=1.0))), "cut"),
         (S("day_fourteen", "nine", -0.3), s_nine, "fade"),
 
         (B("day_thirty") - 0.6, card("DAY 30", "The twist"), "iris"),
         (S("day_thirty", "five", -0.3), s_count, "fade"),
-        (S("day_thirty", "twist", -0.3), s_twist, "flash"),
+        (S("day_thirty", "six", -0.3), s_six, "fade"),
+        (S("day_thirty", "twist", -0.3), s_twist_head, "flash"),
+        (S("day_thirty", "calls", -0.5), s_twist, "cut"),
         (S("day_thirty", "problem", -0.8), s_scroll, "cut"),
         (S("day_thirty", "stanford", -1.0), s_fb, "whip"),
+        (S("day_thirty", "month", -0.4), s_habit, "fade"),
 
         (B("payoff") - 0.6, card("DAY 31", "Back"), "iris"),
         (S("payoff", "open", -0.6), s_drawer_back, "fade"),
+        (S("payoff", "first", -0.6), s_calm, "fade"),
         (S("payoff", "hand", -0.3), s_wait, "fade"),
-        (S("payoff", "tell", -0.4), comment_prompt("Could you last 30 days? Or even 3?"), "fade"),
+        (S("payoff", "tell", -0.4), comment_prompt("Could you last 30 days? Or even 3?", bg=lambda c, t: room_bg(c, t)), "fade"),
         (S("payoff", "next", -0.3), s_tease, "flash"),
         (E(LAST_BEAT) + 0.3, end_screen(), "fade"),
     ]

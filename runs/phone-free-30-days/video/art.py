@@ -473,3 +473,52 @@ def lake_scene(c, t, p):
             a = math.radians(200 + k * 10)
             c.drawLine(1480, 800, 1480 + math.cos(a) * 140, 800 + math.sin(a) * 140, paint("cream", 0.8, stroke=10))
     person(c, 300, 1000, 1.3, "teal", phone=False)
+
+
+def rooftop(c, t, warm=1.3):
+    """Atlas hero scene: a Mumbai-style rooftop at sunset, water tank, clothes line, parapet in the foreground."""
+    dusk_bg(c, t, warm)
+    c.drawRect(skia.Rect(0, 900, W, H), paint("#2A1838"))
+    c.drawRect(skia.Rect(0, 880, W, 910), paint("#4A2A4E"))
+    c.drawLine(0, 880, W, 880, paint("amber", 0.5, stroke=4))       # rim light on the parapet
+    c.drawLine(1300, 420, 1900, 470, paint("#140A26", stroke=4))
+    for k in range(4):
+        x = 1360 + k * 130
+        c.drawRect(skia.Rect(x, 430 + k * 13, x + 70, 540 + k * 13), paint(["#E76F51", "#2A9D8F", "#F2B44C", "#8A2A5C"][k], 0.85))
+
+
+def auto_rickshaw(c, x, y, s):
+    c.save(); c.translate(x, y); c.scale(s, s)
+    body = skia.Path(); body.moveTo(-150, 0); body.lineTo(-150, -150); body.quadTo(-120, -230, 20, -230)
+    body.lineTo(130, -230); body.lineTo(160, -60); body.lineTo(160, 0); body.close()
+    c.drawPath(body, paint("#F2C230"))
+    c.drawRect(skia.Rect(-150, -240, 140, -215), paint("#2E7D32"))
+    c.drawRect(skia.Rect(-90, -200, 60, -110), paint("#1A1236", 0.85))
+    c.drawPath(body, paint("amber", 0.6, stroke=4))
+    for wx in (-100, 110):
+        c.drawCircle(wx, 0, 40, paint("#1A1230")); c.drawCircle(wx, 0, 16, paint("#9AA3BF"))
+    glow(c, 160, -80, 60, "gold", 0.6)
+    c.restore()
+
+
+def signpost(c, x, y, s, labels):
+    c.save(); c.translate(x, y); c.scale(s, s)
+    c.drawLine(0, 0, 0, -420, paint("#5E3B26", stroke=16))
+    for i, (lab, d) in enumerate(labels):
+        yy = -400 + i * 90
+        p = skia.Path()
+        if d > 0:
+            p.moveTo(0, yy); p.lineTo(260, yy); p.lineTo(300, yy + 35); p.lineTo(260, yy + 70); p.lineTo(0, yy + 70)
+        else:
+            p.moveTo(0, yy); p.lineTo(-260, yy); p.lineTo(-300, yy + 35); p.lineTo(-260, yy + 70); p.lineTo(0, yy + 70)
+        p.close()
+        c.drawPath(p, paint(["teal", "coral", "plum"][i % 3]))
+        label(c, lab, 140 * d, yy + 48, 30, "cream", "bold")
+    c.restore()
+
+
+def coin_stack(c, x, y, n, s=1.0):
+    for k in range(n):
+        yy = y - k * 16 * s
+        c.drawOval(skia.Rect(x - 60 * s, yy - 14 * s, x + 60 * s, yy + 14 * s), paint("gold"))
+        c.drawOval(skia.Rect(x - 60 * s, yy - 14 * s, x + 60 * s, yy + 14 * s), paint("#B8862E", stroke=3))
