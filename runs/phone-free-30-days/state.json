@@ -1,0 +1,17 @@
+{
+ "stage": "waiting_script",
+ "title": "What If You Didn't Use Your Phone for 30 Days?",
+ "fails": 0,
+ "doc": "https://claude.ai/artifact/VhnFjhWs23z2RWczgW1jEG",
+ "style": "atlas",
+ "captions": "standard",
+ "package": 1,
+ "scores": {
+  "hook": 9,
+  "value": 8,
+  "clarity": 9,
+  "accuracy": 8,
+  "retention": 8
+ },
+ "notes": "Checkpoint 1 sent 14 Nov. Topic picked by Krishna (#3 of the list). Release slot from release_times.py: main Mon 16 Nov 6 PM IST, Short Tue 17 Nov 9 AM, Reel Tue 17 Nov 8 PM."
+}
