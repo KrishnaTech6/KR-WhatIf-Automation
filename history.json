@@ -64,9 +64,16 @@
   },
   {
    "title": "What If You Didn't Use Your Phone for 30 Days?",
-   "status": "in progress",
+   "status": "published",
    "slug": "phone-free-30-days",
-   "date": "2026-11-14"
+   "date": "2026-11-17",
+   "youtube": "https://youtu.be/jxfziPoeLOE",
+   "shorts": [
+    "https://youtube.com/shorts/tMOsJTgbpRE",
+    "https://youtube.com/shorts/Ph30AWvB6Ds"
+   ],
+   "instagram": [],
+   "note": "YouTube scheduled: main Tue 17 Nov 6 PM IST, Short Wed 18 Nov 9 AM, Reel Wed 18 Nov 8 PM. Instagram Short/Reel via scheduled tasks at the same times. Main comment failed (403 while private)."
   }
  ]
 }
