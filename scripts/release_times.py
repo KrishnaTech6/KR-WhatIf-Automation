@@ -8,7 +8,11 @@ Rule (Krishna, 13 Nov 2026): main first, so the Short and Reel can point viewers
   D1 = first day whose main slot is at least 1 h away and where neither D1 nor D2
        already has another video's release (runs/*/published.json), so no day gets two.
   D2 = the day after D1.
+Each slot then moves a few minutes past its hour (settings "release_jitter_minutes", e.g. 9:03,
+6:11), so uploads don't land on round times (Krishna, 14 Nov 2026). The minute comes from the
+slug, so re-running for the same video gives the same times.
 """
+import hashlib
 import json
 import sys
 from datetime import datetime, timedelta, timezone
@@ -42,14 +46,22 @@ def slot(day, spec):
     return datetime(day.year, day.month, day.day, h, m, tzinfo=IST) + timedelta(days=int(d[1:]) - 1)
 
 
+def jitter(slug, name, lo, hi):
+    """Stable minute offset in [lo, hi] for this video's slot."""
+    h = int(hashlib.sha256(f"{slug}:{name}".encode()).hexdigest(), 16)
+    return timedelta(minutes=lo + h % (hi - lo + 1))
+
+
 def release_times(slug, now):
-    sched = json.loads((ROOT / "settings.json").read_text())["release_schedule"]
+    settings = json.loads((ROOT / "settings.json").read_text())
+    sched = settings["release_schedule"]
+    lo, hi = settings.get("release_jitter_minutes", [0, 0])
     busy = busy_days(slug)
     day = now.astimezone(IST).date()
     for _ in range(30):
         main = slot(day, sched["main"])
         if main >= now + timedelta(hours=1) and not {day, day + timedelta(days=1)} & busy:
-            return {name: slot(day, spec) for name, spec in sched.items()}
+            return {name: slot(day, spec) + jitter(slug, name, lo, hi) for name, spec in sched.items()}
         day += timedelta(days=1)
     sys.exit("no free release days in the next 30 days")
 

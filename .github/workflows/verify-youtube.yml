@@ -2,7 +2,7 @@ name: verify-youtube
 
 # Scheduled uploads are private on purpose until their release time, so a video that YouTube
 # locked (Google project hasn't passed the API audit) looks normal at upload. This checks each
-# video on the evening of its release day (releases are 9 AM, 6 PM and 8 PM IST): still private = locked. Then it switches settings.json to
+# video on the evening of its release day (releases are ~9 AM, ~6 PM and ~8 PM IST, each 1-12 min past the hour): still private = locked. Then it switches settings.json to
 # "manual" (the next run hands you the files instead) and fails, so GitHub emails you.
 on:
   schedule:
@@ -52,7 +52,7 @@ jobs:
           EOF
       - name: Delete video files once everything is public
         # Krishna, 13 Nov 2026: the repo is public, so the mp4s and voice wavs should not stay.
-        # Runs after the day's last release (REEL 20:00 IST, Instagram posts at the same time).
+        # Runs after the day's last release (REEL ~20:00-20:12 IST, Instagram posts at the same time).
         # Only when main + every short is verified public; keeps files if anything is locked/missing.
         env:
           GH_TOKEN: ${{ github.token }}
