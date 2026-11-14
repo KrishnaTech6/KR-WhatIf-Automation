@@ -52,7 +52,7 @@ def thumb(c):
         c.save(); c.rotate(-30 - i * 22, x, y - 40)
         cutout(c, lambda kk, x=x, y=y, i=i: figure(kk, x, y, 0.28, i=i + 3, female=i % 2 == 1), border=3, shadow=(3, 5))
         c.restore()
-    sx, sy, sw, shh = 1355, 175, 468, 126
+    sx, sy, sw, shh = cx - 274, cy + 57, 468, 126
     c.save(); c.rotate(-12, sx + sw / 2, sy + shh / 2)
     sh = paint("#000000", 0.55); sh.setMaskFilter(skia.MaskFilter.MakeBlur(skia.kNormal_BlurStyle, 18))
     c.drawRRect(skia.RRect.MakeRectXY(skia.Rect(sx + 8, sy + 22, sx + sw + 18, sy + shh + 32), 36, 36), sh)
