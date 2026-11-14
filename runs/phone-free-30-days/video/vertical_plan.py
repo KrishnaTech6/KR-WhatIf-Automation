@@ -41,5 +41,5 @@ def plan_reel(vt):
         scene(w("somewhere"), MT("day_seven", "look") - 0.5, cx=960, zoom=FULL),
         scene(w("call"), MT("day_seven", "conversation") - 0.4, cx=960, zoom=FULL),
         scene(w("fourteen"), MT("day_fourteen", "strange") - 0.4, cx=960, zoom=FULL),
-        scene(w("full"), MT("day_thirty", "six") + 0.2, cx=960, zoom=FULL),       # 6 days handed back
+        scene(w("full", 2), MT("day_thirty", "six") + 0.2, cx=960, zoom=FULL),    # 6 days handed back
     ]
