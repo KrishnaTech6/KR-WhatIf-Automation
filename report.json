@@ -1,0 +1,229 @@
+{
+ "main": {
+  "kind": "main",
+  "dur": 325.47,
+  "overall": 98.4,
+  "beats": [
+   {
+    "n": 1,
+    "name": "Hook",
+    "start": 0.3,
+    "dur": 13.82,
+    "issues": [
+     {
+      "text": "Thirty days without your phone... and you get back a hundred and fifty hours. Six full days.",
+      "heard": "30 days without your phone and you get back 150 hours 6 full days",
+      "why": "1 word(s) wrong/missing/extra",
+      "lexicon_words": []
+     }
+    ]
+   },
+   {
+    "n": 2,
+    "name": "Promise - logo",
+    "start": 15.32,
+    "dur": 16.38,
+    "issues": []
+   },
+   {
+    "n": 3,
+    "name": "Hour one - the reflex",
+    "start": 32.91,
+    "dur": 37.25,
+    "issues": [
+     {
+      "text": "Thirty days, it says. Easy. It's been one hour.",
+      "heard": "30 days it says easy it has been one hour",
+      "why": "speed 1.0 words/s",
+      "lexicon_words": []
+     }
+    ]
+   },
+   {
+    "n": 4,
+    "name": "Day two - the wall",
+    "start": 71.35,
+    "dur": 49.33,
+    "issues": [
+     {
+      "text": "Day two. And India hits you with a problem nobody warns you about. You need to pay someone. Your UPI app is in the drawer. You need a train ticket. Almost nine out of ten reserved tickets are now booked online.",
+      "heard": "day 2 and india hits you with a problem nobody wants you about you need to pay someone your upi app is in the draw you need a train ticket almost 9 out of 10 reserved tickets are now booked online",
+      "why": "2 word(s) wrong/missing/extra",
+      "lexicon_words": [
+       "upi"
+      ]
+     },
+     {
+      "text": "You're in a new part of the city. No maps. No idea where you are. Then your bank sends an O T P... to a phone you can't touch.",
+      "heard": "you are in a new part of the city no maps no idea where you are then your bank sends an otp to a phone you can not touch",
+      "why": "1.8s stuck silence, 2 word(s) wrong/missing/extra",
+      "lexicon_words": []
+     }
+    ]
+   },
+   {
+    "n": 5,
+    "name": "Day seven - the boredom",
+    "start": 121.88,
+    "dur": 40.08,
+    "issues": []
+   },
+   {
+    "n": 6,
+    "name": "Day ten - the myth",
+    "start": 163.16,
+    "dur": 36.63,
+    "issues": [
+     {
+      "text": "The first week is the hardest. Your brain keeps asking for its little hits. And boredom... feels almost like pain. So if you're still going on day ten... you're already rare.",
+      "heard": "the 1st week is the hardest your brain keeps asking for its little hits and boredom feels almost like pain so if you are still going on day 10 you are already rare",
+      "why": "2.0s stuck silence",
+      "lexicon_words": []
+     }
+    ]
+   },
+   {
+    "n": 7,
+    "name": "Day fourteen - the brain",
+    "start": 202.19,
+    "dur": 40.7,
+    "issues": [
+     {
+      "text": "And this is where it gets strange. That same study tested people's focus. One boring task. Stay on it. Don't drift. After two weeks without mobile internet, their focus improved...",
+      "heard": "and this is where it gets strange that same study tested people is focus one boring task stay on it do not drift after 2 weeks without mobile internet their focus improved",
+      "why": "3.6s stuck silence, 1 word(s) wrong/missing/extra",
+      "lexicon_words": []
+     },
+     {
+      "text": "as much as being about ten years younger. Ten years. No pill. No app. Just... less scrolling.",
+      "heard": "as much as being about 10 years younger 10 years no pill no app just less scrolling",
+      "why": "2.4s stuck silence",
+      "lexicon_words": []
+     }
+    ]
+   },
+   {
+    "n": 8,
+    "name": "Day thirty - the twist",
+    "start": 244.1,
+    "dur": 42.2,
+    "issues": []
+   },
+   {
+    "n": 9,
+    "name": "Payoff - day thirty-one",
+    "start": 287.5,
+    "dur": 37.18,
+    "issues": [
+     {
+      "text": "So tell me honestly. Could you last thirty days? Or even three? Next time: what if you saved one hundred rupees every day for twenty years?",
+      "heard": "so tell me honestly could you last 30 days or even 3 next time what if you saved 100 rupees every day for 20 years",
+      "why": "2.4s stuck silence",
+      "lexicon_words": []
+     }
+    ]
+   }
+  ]
+ },
+ "short": {
+  "kind": "short",
+  "dur": 48.05,
+  "overall": 99.2,
+  "beats": [
+   {
+    "n": 1,
+    "name": "Hook",
+    "start": 0.05,
+    "dur": 4.36,
+    "issues": []
+   },
+   {
+    "n": 2,
+    "name": "Wall",
+    "start": 4.66,
+    "dur": 15.92,
+    "issues": [
+     {
+      "text": "You ask strangers for directions.",
+      "heard": "you are strangers for directions",
+      "why": "1 word(s) wrong/missing/extra",
+      "lexicon_words": []
+     }
+    ]
+   },
+   {
+    "n": 3,
+    "name": "Phantom",
+    "start": 20.82,
+    "dur": 16.3,
+    "issues": []
+   },
+   {
+    "n": 4,
+    "name": "Tease",
+    "start": 37.37,
+    "dur": 10.48,
+    "issues": [
+     {
+      "text": "And by day fourteen, something strange happens inside your head. Full video on K R's What If Explained. So think twice... before you lock away your phone...",
+      "heard": "and by day 14 something strange happens inside your head full video on krs what if explained so think twice before you lock away your phone",
+      "why": "3 word(s) wrong/missing/extra",
+      "lexicon_words": []
+     }
+    ]
+   }
+  ]
+ },
+ "reel": {
+  "kind": "short",
+  "dur": 38.33,
+  "overall": 95.3,
+  "beats": [
+   {
+    "n": 1,
+    "name": "Hook",
+    "start": 0.05,
+    "dur": 6.55,
+    "issues": [
+     {
+      "text": "Thirty days without your phone... and you get back a hundred and fifty hours. Six full days.",
+      "heard": "30 days without your phone and you get back 150 hours 6 full days",
+      "why": "1 word(s) wrong/missing/extra",
+      "lexicon_words": []
+     }
+    ]
+   },
+   {
+    "n": 2,
+    "name": "Boredom",
+    "start": 6.85,
+    "dur": 8.65,
+    "issues": []
+   },
+   {
+    "n": 3,
+    "name": "Feeling",
+    "start": 15.74,
+    "dur": 9.23,
+    "issues": []
+   },
+   {
+    "n": 4,
+    "name": "Tease",
+    "start": 25.22,
+    "dur": 12.91,
+    "issues": [
+     {
+      "text": "And day fourteen changes something you never expected. Full story on YouTube. K R's What If Explained. Link in bio. So tell me... what would you do with six free days?",
+      "heard": "and day 14 changes something you never expected full story on youtube k hours what if explained link in bio so tell me what would you do with 6 free days",
+      "why": "2 word(s) wrong/missing/extra",
+      "lexicon_words": []
+     }
+    ]
+   }
+  ]
+ },
+ "_lexicon_hits": {
+  "upi": "UPI"
+ }
+}
