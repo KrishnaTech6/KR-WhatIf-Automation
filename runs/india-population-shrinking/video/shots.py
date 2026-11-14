@@ -18,15 +18,16 @@ def photos(c, t, t0, beat="hook"):
     collage_bg(c, t)
     ty = T(beat, "yours")
     mv = ease(span(t, ty - 0.3, ty + 0.5))
-    family_photo(c, 960 - 470 * mv, 540 - 20 * mv, 1.0 - 0.25 * mv, t, 2, 6, sepia=True, key="old", rot=-3)
-    if beat == "hook":
-        pop(c, 960 - 470 * mv, 930 - 60 * mv, "6 KIDS", t, T("hook", "six") - 0.1, color="coral", size=56)
+    family_photo(c, 960 - 500 * mv, 600 - 40 * mv, 1.35 - 0.6 * mv, t, 2, 6, sepia=True, key="old", rot=-3)
+    marker_circle(c, 960 - 500 * mv, 760 - 110 * mv, 520 - 230 * mv, 120 - 50 * mv, 1.0 if beat == "hook" else span(t, t0, t0 + 0.6))
+    headline(c, "NANI'S FAMILY: 6 KIDS", 960 - 500 * mv, 110 + 10 * mv, 64 - 20 * mv, 1.0, seed=3)
     if t > ty - 0.2:
         peel = ease(span(t, T(beat, "one") - 0.1, T(beat, "one") + 0.6)) if beat == "hook" else 0.0
-        family_photo(c, 1400, 520, 0.75, t, 2, 2, key="new", rot=4, p=span(t, ty - 0.2, ty + 0.3), peel=peel)
-        pop(c, 1400, 900, "2 KIDS", t, ty + 0.2, color="teal", size=52)
-        if beat == "hook":
-            big_text(c, "1?", 1720, 330, 120, span(t, T(beat, "one") + 0.2, T(beat, "one") + 0.5), "coral")
+        family_photo(c, 1400, 540, 0.85, t, 2, 2, key="new", rot=4, p=span(t, ty - 0.2, ty + 0.3), peel=peel)
+        headline(c, "YOURS: 2 KIDS", 1400, 130, 50, span(t, ty, ty + 0.5), seed=5, rot=2)
+        q = span(t, ty + 0.3, ty + 0.8)
+        if q > 0:
+            headline(c, "6 KIDS > 2" + ("  > 1?" if beat == "hook" and t > T(beat, "one") else ""), W / 2, 980, 72, 1.0, seed=7, color="#FFF3C4", ink=RED_INK)
 
 
 def s_cold(c, t, t0):
@@ -37,19 +38,18 @@ def s_shrink(c, t, t0):
     collage_bg(c, t)
     p = ease(span(t, T("hook", "shrink") - 0.6, T("hook", "shrink") + 0.8))
     k = 30 - 5 * p
-    P = india_map(c, 900, 560, k)
-    # crowd dots thinning out
+    P = india_map(c, 760, 580, k)
     for i in range(90):
         if rng(i, 9) < 0.35 * p:
             continue
-        x = 900 + (rng(i, 2) - 0.5) * k * 18
-        y = 560 + (rng(i, 3) - 0.5) * k * 20
+        x = 760 + (rng(i, 2) - 0.5) * k * 18
+        y = 580 + (rng(i, 3) - 0.5) * k * 20
         c.drawCircle(x, y, 7, paint(INK, 0.55))
-    marker_line(c, [(1450, 300), (1450, 720)], span(t, t0 + 0.4, t0 + 1.0), width=16)
-    marker_line(c, [(1390, 650), (1450, 730), (1510, 650)], span(t, t0 + 0.9, t0 + 1.2), width=16)
     dx, dy = P(77.1, 28.6)
-    pop(c, dx + 70, dy - 10, "1.2", t, t0 + 0.2, color="teal", size=22)   # the twist's object, quietly early
-    headline(c, "INDIA STARTS TO SHRINK", W / 2, 120, 56, span(t, T("hook", "india") - 0.2, T("hook", "shrink") + 0.3), seed=4)
+    pop(c, dx + 90, dy - 10, "DELHI 1.2", t, t0 + 0.2, color="teal", size=26)   # the twist's object, quietly early
+    headline(c, "INDIA STARTS TO SHRINK", 1420, 380, 60, span(t, t0, T("hook", "shrink") + 0.2), seed=4, rot=3)
+    ts = T("hook", "shrink")
+    stamp(c, 1420, 640, "SHRINKING", span(t, ts - 0.1, ts + 0.15), color="coral", rot=-8)
 
 
 def s_where(c, t, t0):
@@ -57,14 +57,16 @@ def s_where(c, t, t0):
     c.saveLayer(None, skia.Paint(ColorFilter=skia.ColorFilters.Blend(col("#2B2420", 0.92), skia.BlendMode.kSrcATop)))
     desk_row(c, 960, 700, 1.0, t, 12, 0, key="hd")
     c.restore()
-    stamp(c, 960, 520, "?", span(t, T("hook", "first") - 0.1, T("hook", "first") + 0.2), color="coral", rot=-6)
-    headline(c, "WHERE YOU'D NEVER GUESS", W / 2, 150, 56, span(t, T("hook", "never") - 0.4, T("hook", "guess") + 0.2), seed=9)
+    person(c, 1500, 900, 0.9, t, key="lonekid", i=3, child=True, female=True)
+    glow(c, 1500, 820, 160, "gold", 0.45)
+    stamp(c, 820, 520, "?", span(t, T("hook", "first") - 0.1, T("hook", "first") + 0.2), color="coral", rot=-6)
+    headline(c, "WHERE'D THEY GO?", W / 2, 150, 64, span(t, t0, t0 + 0.6), seed=9)
 
 
 # ---------------------------------------------------------------- PROMISE
 def s_predict(c, t, t0):
     collage_bg(c, t)
-    headline(c, "THE EASIEST FUTURE TO PREDICT", W / 2, 400, 70, span(t, T("promise", "easiest") - 0.5, T("promise", "predict") + 0.2), seed=12)
+    headline(c, "THE EASIEST FUTURE TO PREDICT", W / 2, 400, 70, span(t, t0, t0 + 1.2), seed=12)
     stamp(c, W / 2, 680, "NOT FANTASY", span(t, T("promise", "fantasy") - 0.1, T("promise", "fantasy") + 0.15), color="coral", rot=-8)
     kr_cutout(c, lambda k: draw_kr(k, 1600, 950, 1.0, "pointing", t))
 
@@ -121,22 +123,23 @@ def s_replace(c, t, t0):
 
 def s_19(c, t, t0):
     collage_bg(c, t)
-    y21, y19 = 420, 560
-    marker_line(c, [(180, y21), (1740, y21)], span(t, t0, t0 + 0.6), color=INK, width=6)
-    type_text(c, "2.1  REPLACEMENT", 360, y21 - 50, 40, span(t, t0 + 0.2, t0 + 0.8))
+    y21 = 430
+    marker_line(c, [(160, y21), (1760, y21)], span(t, t0, t0 + 0.6), color=RED_INK, width=12)
+    headline(c, "2.1 = REPLACEMENT LINE", 520, y21 - 90, 42, span(t, t0 + 0.2, t0 + 0.8), seed=46)
     tn = T("today", "one", 2)
+    fall = ease(span(t, tn - 0.2, tn + 0.6))
     dx, dy, a = jit("c19", t)
-    if t > tn - 0.3:
-        index_card(c, 960 + dx, y19 + 90 + dy, 620, 240, rot=-4, seed=45)
-        type_text(c, "INDIA 1.9", 960 + dx, y19 + 90 + dy, 84, span(t, tn - 0.3, tn + 0.3), color=RED_INK)
+    cy = 280 + 380 * fall
+    index_card(c, 1100 + dx, cy + dy, 640, 250, rot=-4 + 6 * fall, seed=45)
+    type_text(c, "INDIA 1.9", 1100 + dx, cy + dy, 104, 1.0, color=RED_INK)
     tb = T("today", "below")
     for i, yr in enumerate(["2020", "2021", "2022", "2023", "2024"]):
         q = ease_out(span(t, T("today", "five") - 0.2 + i * 0.15, T("today", "five") + 0.1 + i * 0.15))
         if q > 0:
             x = 360 + i * 300
-            torn_strip(c, x, 920, 220 * q + 1, 80, seed=50 + i, color="#F4EFE3")
-            type_text(c, yr, x, 920, 44 * q + 1, 1.0)
-    stamp(c, 1480, 780, "BELOW THE LINE", span(t, tb - 0.1, tb + 0.15), color="coral", rot=-8)
+            torn_strip(c, x, 960, 220 * q + 1, 80, seed=50 + i, color="#F4EFE3")
+            type_text(c, yr, x, 960, 44 * q + 1, 1.0, color=RED_INK)
+    stamp(c, 480, 700, "BELOW THE LINE", span(t, tb - 0.1, tb + 0.15), color="coral", rot=-8)
 
 
 def s_myth(c, t, t0):
@@ -150,16 +153,23 @@ def s_myth(c, t, t0):
     kr_cutout(c, lambda k: draw_kr(k, 1500, 900, 1.3, "pointing", t))
     tg = T("today", "growing")
     if t > tg - 0.4:
-        headline(c, "STILL GROWING ↑", 1500, 300, 56, span(t, tg - 0.4, tg + 0.2), seed=48, color="#E5F4E4")
+        headline(c, "STILL GROWING", 1500, 300, 56, span(t, tg - 0.4, tg + 0.2), seed=48, color="#E5F4E4")
 
 
 def s_train(c, t, t0):
     collage_bg(c, t, tint="#EFE6D2")
     br = span(t, T("today", "brakes") - 0.2, T("today", "brakes") + 0.3)
-    train(c, 640, 1.0, t, t0, brake=br)
-    headline(c, "BRAKES ON...", 560, 200, 60, span(t, T("today", "brakes") - 0.3, T("today", "brakes") + 0.2), seed=51)
-    tr = T("today", "rolling")
-    pop(c, 1400, 220, "STILL ROLLING", t, tr - 0.1, color="coral", size=50)
+    train(c, 700, 1.0, t, t0, brake=br)
+    if t < T("today", "brakes") - 0.4:
+        headline(c, "INDIA = A VERY LONG TRAIN", W / 2, 170, 62, span(t, t0, t0 + 0.8), seed=50)
+    else:
+        headline(c, "BRAKES ON. STILL ROLLING.", W / 2, 170, 62, span(t, T("today", "brakes") - 0.4, T("today", "rolling") + 0.2), seed=51)
+    # speed gauge cut-out
+    gx, gy = 1640, 980
+    cutout(c, lambda k: k.drawPath(paper_circle(gx, gy - 40, 120, 21), paint("#F4EFE3")))
+    ang = math.radians(200 + 140 * (1 - 0.5 * br))
+    c.drawLine(gx, gy - 40, gx + 95 * math.cos(ang), gy - 40 + 95 * math.sin(ang), paint(RED_INK, stroke=10))
+    type_text(c, "SPEED", gx, gy + 40, 30, 1.0)
 
 
 def s_long(c, t, t0):
@@ -415,7 +425,26 @@ def s_2100(c, t, t0):
 
 
 def s_papers(c, t, t0):
-    papers(("UN 2024", "150 crore in 2100"), ("LANCET 2020", "109 crore in 2100"), T(SIX, "lancet"), headline="SCIENTISTS DISAGREE")(c, t, t0)
+    collage_bg(c, t)
+    tl = T(SIX, "lancet")
+    for i, (mast, head, num, x, w0) in enumerate([("UN WORLD POPULATION PROSPECTS 2024", "INDIA IN 2100", "150 CRORE", 560, t0),
+                                                 ("THE LANCET · 2020 STUDY", "INDIA IN 2100", "109 CRORE", 1360, tl - 0.6)]):
+        q = ease_out(span(t, w0, w0 + 0.5))
+        if q <= 0:
+            continue
+        dx, dy, a = jit(f"clip{i}", t)
+        torn_strip(c, x + dx, 560 + dy, 680 * q + 1, 720 * q + 1, seed=120 + i, color="#F2EDE0", rot=-3 + i * 6)
+        type_text(c, mast, x + dx, 270 + dy, 26 * q + 1, 1.0)
+        c.drawLine(x - 300 + dx, 300 + dy, x + 300 + dx, 300 + dy, paint(INK, stroke=3))
+        type_text(c, head, x + dx, 360 + dy, 56 * q + 1, 1.0)
+        ph = skia.Path().addRect(skia.Rect(x - 260 + dx, 410 + dy, x + 260 + dx, 640 + dy))
+        c.drawPath(ph, paint("#B8A889"))
+        for j in range(18):
+            c.drawCircle(x - 220 + dx + (j % 6) * 88, 450 + dy + (j // 6) * 80, 24, paint(SKIN[j % 4], 0.8))
+        halftone(c, ph, "#000000", 0.35, step=10)
+        type_text(c, num, x + dx, 730 + dy, 84 * q + 1, 1.0, color=RED_INK)
+        marker_circle(c, x + dx, 730 + dy, 260, 70, span(t, w0 + 0.6, w0 + 1.3))
+    headline(c, "SCIENTISTS DISAGREE", W / 2, 1000, 56, span(t, tl - 0.4, tl + 0.4), seed=125)
 
 
 # ---------------------------------------------------------------- TWIST
@@ -459,17 +488,22 @@ def s_south(c, t, t0):
 
 def s_cities(c, t, t0):
     collage_bg(c, t)
-    P = india_map(c, 960, 560, 28, a=0.9)
-    c.drawRect(skia.Rect(0, 0, W, H), paint("#120E1A", 0.55))
-    cities = [(77.1, 28.6), (72.9, 19.1), (77.6, 13.0), (80.3, 13.1), (88.4, 22.6), (76.3, 10.0), (78.5, 17.4), (73.9, 18.5)]
-    for i, (lon, lat) in enumerate(cities):
+    P = india_map(c, 820, 560, 28)
+    cities = [("DELHI", 77.1, 28.6, "1.2"), ("KOLKATA", 88.4, 22.6, "1.3"), ("MUMBAI", 72.9, 19.1, "1.4"),
+              ("CHENNAI", 80.3, 13.1, "1.3"), ("KOCHI", 76.3, 10.0, "1.3")]
+    pts = []
+    for i, (name, lon, lat, v) in enumerate(cities):
         x, y = P(lon, lat)
-        q = span(t, t0 + 0.3 + i * 0.25, t0 + 0.8 + i * 0.25)
-        glow(c, x, y, 110, "gold", 0.95 * q)
-        c.drawCircle(x, y, 16 * q + 0.1, paint("gold"))
-    headline(c, "ALREADY HERE", 1500, 200, 60, span(t, T("twist", "exists") - 0.4, T("twist", "exists") + 0.3), seed=109)
+        q = span(t, t0 + 0.3 + i * 0.35, t0 + 0.6 + i * 0.35)
+        if q > 0:
+            pin(c, x, y)
+            pts.append((x, y))
+    if len(pts) > 1:
+        red_string(c, pts, 1.0)
+    headline(c, "ALREADY HERE", 1500, 300, 66, span(t, T("twist", "exists") - 0.4, T("twist", "exists") + 0.3), seed=109)
     tn = T("twist", "noticed")
-    pop(c, 1500, 940, "WE JUST HAVEN'T NOTICED", t, tn - 0.3, color="teal", size=40)
+    stamp(c, 1500, 640, "OUR OWN CITIES", span(t, T("twist", "cities") - 0.1, T("twist", "cities") + 0.15), color="coral", rot=-6)
+    pop(c, 1500, 900, "WE JUST HAVEN'T NOTICED", t, tn - 0.3, color="teal", size=40)
 
 
 # ---------------------------------------------------------------- PAYOFF
@@ -504,12 +538,16 @@ def s_ready(c, t, t0):
 
 def s_tease(c, t, t0):
     collage_bg(c, t)
+    c.drawRect(skia.Rect(0, 620, W, 1000), paint("#5A5550"))
+    for i in range(8):
+        c.drawRect(skia.Rect(i * 260 + 40, 805, i * 260 + 180, 815), paint("#F4EFE3"))
     for i in range(18):
-        x = 160 + (i % 6) * 320 + (i // 6 % 2) * 140
-        y = 560 + (i // 6) * 190
+        x = 120 + (i % 6) * 330 + (i // 6 % 2) * 150
+        y = 700 + (i // 6) * 110
         dx, dy, a = jit(f"car{i}", t)
-        cutout(c, lambda k, x=x + dx, y=y + dy, i=i: car(k, x, y, 1.0, CLOTH[i % 8]), border=5, shadow=(4, 6))
-    headline(c, "NEXT: WHAT IF EVERY INDIAN FAMILY OWNED A CAR?", W / 2, 200, 48, span(t, t0, t0 + 1.2), seed=115)
+        cutout(c, lambda k, x=x + dx, y=y + dy, i=i: car(k, x, y, 0.85, CLOTH[i % 8]), border=5, shadow=(4, 6))
+    headline(c, "NEXT: WHAT IF EVERY INDIAN FAMILY OWNED A CAR?", W / 2, 200, 52, span(t, t0, t0 + 1.2), seed=115)
+    stamp(c, W / 2, 430, "COMING NEXT", span(t, t0 + 1.2, t0 + 1.45), color="coral", rot=-6)
 
 
 # ---------------------------------------------------------------- the list
@@ -562,7 +600,7 @@ def SHOTS():
         (T("payoff", "your", 2) - 0.2, s_grandkid, "fade"),
         (T("payoff", "thats") - 0.2, s_bright, "fade"),
         (T("payoff", "but") - 0.2, s_ready, "fade"),
-        (T("payoff", "so", 2) - 0.2, comment_prompt("One child, two, or none? What would you choose?"), "fade"),
+        (T("payoff", "so", 2) - 0.2, comment_prompt("One child, two, or none?"), "fade"),
         (T("payoff", "next") - 0.2, s_tease, "cut"),
         (E("payoff") + 0.3, end_screen(), "fade"),
     ]
@@ -578,7 +616,7 @@ def SHOTS():
         n = int((nxt - st) / 3.5)
         for j in range(1, n + 1):
             s2 = st + j * (nxt - st) / (n + 1)
-            cx = [760, 1160, 960][j % 3]
-            out.append((s2, cont(fn, st, 1.12 + 0.04 * (j % 2), cx, 540), "cut"))
+            cx, cy = [(760, 600), (1180, 580), (960, 640)][j % 3]
+            out.append((s2, cont(fn, st, 1.2 + 0.05 * (j % 2), cx, cy), "cut"))
     out.sort(key=lambda x: x[0])
     return out
