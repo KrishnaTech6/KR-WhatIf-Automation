@@ -1,0 +1,20 @@
+{
+ "stage": "done",
+ "title": "What If You Didn't Use Your Phone for 30 Days?",
+ "fails": 0,
+ "doc": "https://claude.ai/artifact/VhnFjhWs23z2RWczgW1jEG",
+ "style": "atlas",
+ "captions": "standard",
+ "package": 1,
+ "scores": {
+  "hook": 9,
+  "value": 8,
+  "clarity": 9,
+  "accuracy": 8,
+  "retention": 8
+ },
+ "notes": "Checkpoint 1 sent 14 Nov. Topic picked by Krishna (#3 of the list). Release slot from release_times.py: main Mon 16 Nov 6 PM IST, Short Tue 17 Nov 9 AM, Reel Tue 17 Nov 8 PM. ✅1 OK 14 Nov after Krishna's doc comments (hook line 1 option 1, no chai, keypad phone moved to Day 2, tease = ₹100/day for 20 years, Short title, IG max 3 hashtags). ✅2 sent 14 Nov: 62 shots, quality gate round 2 scores scroll 4 / boring 5 / premium 6 / stands out 5 / clarity 6, then its 5 weakest shots fixed. Voice run queued behind india-population-shrinking's voiceover (other session). ✅2 OK 14 Nov ('nice'). Krishna: release on 17 Nov (D1 = Tue 17 Nov; use release_times.py --now 2026-11-16T18:00:00Z). Voice OK (run 43556714598; audio from artifacts branch, trimmed 325->279 s, anchors 95/95/92%). Possible misreads to confirm at ✅3: main 'nobody warns' heard 'wants', short 'You ask strangers' heard 'you are strangers'. ✅3 sent 14 Nov: MAIN 4:43, SHORT 0:48, REEL 0:38, QA pass; thumbnail v3 (jar, chain + lock on lid). Published (scheduled) 14 Nov: main Tue 17 Nov 6 PM IST, Short/Reel Wed 18 Nov 9 AM / 8 PM. IG tasks trig_01ANrcbswVRQnCf1bALs3GPk (short) and trig_01U7gLnv3s1p19wt7HxdPSF7 (reel). Main comment failed 403 (the Short IG task retries it once). Release times moved to jittered 6:10 PM / 9:09 AM / 8:12 PM IST (Krishna changed them in Studio; IG tasks updated).",
+ "voice_run": 43556714598,
+ "frames_ok": true,
+ "release_d1": "2026-11-17"
+}

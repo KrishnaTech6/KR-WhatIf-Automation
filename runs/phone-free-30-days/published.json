@@ -1,0 +1,30 @@
+{
+ "main": {
+  "id": "jxfziPoeLOE",
+  "locked_private": false,
+  "publish_at": "2026-11-17T12:40:00Z",
+  "schedule_kept": true,
+  "url": "https://youtu.be/jxfziPoeLOE"
+ },
+ "thumbnail": true,
+ "comment": "failed: HTTP 403",
+ "shorts": [
+  {
+   "id": "tMOsJTgbpRE",
+   "locked_private": false,
+   "publish_at": "2026-11-18T03:39:00Z",
+   "schedule_kept": true,
+   "file": "SHORT.mp4",
+   "url": "https://youtube.com/shorts/tMOsJTgbpRE"
+  },
+  {
+   "id": "Ph30AWvB6Ds",
+   "locked_private": false,
+   "publish_at": "2026-11-18T14:42:00Z",
+   "schedule_kept": true,
+   "file": "REEL.mp4",
+   "url": "https://youtube.com/shorts/Ph30AWvB6Ds"
+  }
+ ],
+ "note": "publish_at changed by Krishna in YouTube Studio on 14 Nov to the jittered times (6:10 PM / 9:09 AM / 8:12 PM IST)"
+}

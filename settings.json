@@ -14,6 +14,8 @@
   "reel": "D2 20:00"
  },
  "_release_schedule": "IST. Main first, then the Short next morning and the Reel next evening, so something goes out daily and the verticals link to a live main video (Krishna, 13 Nov 2026; from general India data, re-check with the channel's own Studio data after ~3 weeks). scripts/release_times.py <slug> gives the exact times. YouTube and Instagram post the Short/Reel at the same times.",
+ "release_jitter_minutes": [1, 12],
+ "_release_jitter_minutes": "Each slot goes out a random 1-12 min past its hour (e.g. Short 9:03, main 6:11), fixed per video (Krishna, 14 Nov 2026).",
  "default_language": "en",
  "synthetic_label": false,
  "min_days_between_videos": 2,
@@ -21,5 +23,7 @@
  "kaggle_user": "krishnarana1412",
  "instagram_account_id": "29240610082246011",
  "thumbnail_rules": "brand/thumbnail_rules.md",
- "_thumbnail_rules": "Read before Stage 5 / A6. Overrides the skill: no KR in thumbnails, thumbnail text = the video title."
+ "_thumbnail_rules": "Read before Stage 5 / A6. Overrides the skill: no KR in thumbnails, thumbnail text = the video title.",
+ "instagram_hashtags": 3,
+ "_instagram_hashtags": "Max hashtags per Instagram caption (Instagram limit; Krishna 14 Nov 2026). Put as many natural search keywords as fit in the caption text instead."
 }

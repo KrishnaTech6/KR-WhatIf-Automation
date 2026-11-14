@@ -1,0 +1,36 @@
+{
+ "title": "What If You Didn't Use Your Phone for 30 Days?",
+ "lang": "en",
+ "tries": 4,
+ "jobs": [
+  {
+   "name": "main",
+   "kind": "main",
+   "script": "TITLE: What If You Didn't Use Your Phone for 30 Days?\nLANG: en\nKEY_BEATS: hook, fourteen, payoff\nHARD_CUT_BEFORE: fourteen\n\n[Hook | tense]\nThirty days without your phone... and you get back a hundred and fifty hours. Six full days. (beat)\nBy day two, you're locked out of your own life.\nAnd the biggest change... happens inside your head.\n\n[Promise - logo | neutral]\nThis is K R's What If Explained. Real numbers, simple words.\nHere's the deal. Your smartphone goes in a drawer. Locked. For thirty days.\nNo scrolling. No apps. No internet in your pocket.\n\n[Hour one - the reflex | playful]\nHour one. Your hand goes to your pocket. Nothing there.\nTen minutes later... again.\nYou're in a queue, and your thumb is scrolling... nothing. Just air.\nThen your leg buzzes. {deadpan} Your phone is in a drawer at home.\n{neutral} That's called phantom vibration. In one study, eighty-nine percent of students felt it.\nYour brain has been trained so well... it's now making up notifications.\n{deadpan} Thirty days, it says. Easy. It's been one hour.\n\n[Day two - the wall | tense]\nDay two. And India hits you with a problem nobody warns you about.\nYou need to pay someone. Your UPI app is in the drawer.\nYou need a train ticket. Almost nine out of ten reserved tickets are now booked online.\nYou're in a new part of the city. No maps. No idea where you are.\nThen your bank sends an O T P... to a phone you can't touch.\n{playful} So you walk into a mobile shop and buy the one phone that can't scroll. An old keypad phone. Calls and S M S. That's it.\n{neutral} But now you see it. Your phone was never just a phone.\nIt's your wallet, your ticket counter, your map and your bank.\nSo you carry cash. You ask strangers for directions. Like it's two thousand five.\n\n[Day seven - the boredom | neutral]\nDay seven. The hardest day.\nThe average Indian spends about five hours a day on a phone.\nThat's five hours you now have to fill. Every single day.\nThe metro feels longer. The lift feels longer. Even the bathroom feels longer.\n{deadpan} You start reading shampoo bottles.\n{neutral} But slowly, something else creeps in. You look up. You notice your own street. You finish a whole conversation without checking anything.\n{warm} Quick question. What's the first thing you'd do with five free hours a day? Tell me in the comments.\n\n[Day ten - the myth | playful]\nDay ten. Here's the myth.\nIn movies, someone throws their phone in a lake, smiles... and life is suddenly perfect.\n{neutral} In real life, most people don't even make it this far.\nIn a twenty twenty-five study, people blocked the internet on their phones for just two weeks.\nOnly about a quarter lasted even ten of those fourteen days.\nThe first week is the hardest. Your brain keeps asking for its little hits. And boredom... feels almost like pain.\nSo if you're still going on day ten... you're already rare.\n\n[Day fourteen - the brain | deep]\nDay fourteen. (beat)\nAnd this is where it gets strange.\nThat same study tested people's focus. One boring task. Stay on it. Don't drift.\nAfter two weeks without mobile internet, their focus improved... as much as being about ten years younger.\nTen years. No pill. No app.\nJust... less scrolling.\n{neutral} Nine out of ten people got better at something. Their mood, their focus, or how they felt about life.\n\n[Day thirty - the twist | wonder]\nDay thirty. Let's count.\nFive hours a day, for thirty days. That's a hundred and fifty hours.\nSix full days of your life... handed back.\nThat's almost a full week of holidays.\nAnd here's the twist.\nThe people in that study? They never gave up their phones.\nCalls worked. Texts worked. Only the internet was gone.\n{playful} The phone was never the problem. The endless scroll was.\n{neutral} And there's more. In a big Stanford study, people who quit Facebook for four weeks...\nkept using it less, even after they came back.\nA month doesn't just give you time back. It breaks the habit.\n\n[Payoff - day thirty-one | warm]\nDay thirty-one. You open the drawer.\nSame phone. Same lock screen. Hundreds of notifications.\nAnd for the first time in years... you don't rush to check them.\nYour hand goes to your pocket. And this time... it waits.\nSo tell me honestly. Could you last thirty days? Or even three?\nNext time: what if you saved one hundred rupees every day for twenty years? (beat)\nBut that story... is for the next What If.\n",
+   "strict": [
+    "hook",
+    "fourteen",
+    "payoff"
+   ],
+   "hard_cut_before": [
+    "fourteen"
+   ]
+  },
+  {
+   "name": "short",
+   "kind": "short",
+   "script": "TITLE: What If You Didn't Use Your Phone for 30 Days? — Short\nLANG: en\nKEY_BEATS: hook\nHARD_CUT_BEFORE:\n\n[Hook | dramatic]\nThirty days without your phone... and by day two, you're lost in your own city.\n\n[Wall | dramatic]\nNo maps. No UPI. You need a train ticket? Almost nine out of ten are booked online.\nYour phone was never just a phone. It's your wallet, your map, your bank and your ticket counter.\nSo you carry cash. You ask strangers for directions.\n\n[Phantom | playful]\nAnd your brain? It's worse.\nYour phone is in a drawer at home... and your leg buzzes.\nThat's phantom vibration. In one study, eighty-nine percent of students felt it.\nYour brain has been trained so well... it's now making up notifications.\n\n[Tease | neutral]\nAnd by day fourteen, something strange happens inside your head.\nFull video on K R's What If Explained.\nSo think twice... before you lock away your phone...\n",
+   "strict": [
+    "hook"
+   ]
+  },
+  {
+   "name": "reel",
+   "kind": "short",
+   "script": "TITLE: What If You Didn't Use Your Phone for 30 Days? — Reel\nLANG: en\nKEY_BEATS: hook\nHARD_CUT_BEFORE:\n\n[Hook | neutral]\nThirty days without your phone... and you get back a hundred and fifty hours. Six full days.\n\n[Boredom | playful]\nFor the first seven days, the metro feels longer. The lift feels longer.\n{deadpan} You start reading shampoo bottles.\n\n[Feeling | warm]\nAnd somewhere in that boredom... you look up.\nYou notice your own street. You call your mom. Not a text. A call.\n\n[Tease | wonder]\nAnd day fourteen changes something you never expected.\nFull story on YouTube. K R's What If Explained. Link in bio.\nSo tell me... what would you do with six free days?\n",
+   "strict": [
+    "hook"
+   ]
+  }
+ ]
+}
