@@ -44,7 +44,7 @@ def thumb(c):
     # a crowd on the map, thinning towards the south-east edge where people fall off
     for i in range(70):
         x = cx + (rng(i, 2) - 0.5) * k * 12 - 20
-        y = cy + (rng(i, 3) - 0.5) * k * 12 - 10
+        y = cy + (rng(i, 3) - 0.5) * k * 14 - 60
         cutout(c, lambda kk, x=x, y=y, i=i: figure(kk, x, y, 0.22, i=i, female=i % 2 == 0), border=3, shadow=(2, 3))
     for i in range(5):
         x = cx - 330 - i * 40
@@ -52,13 +52,13 @@ def thumb(c):
         c.save(); c.rotate(-30 - i * 22, x, y - 40)
         cutout(c, lambda kk, x=x, y=y, i=i: figure(kk, x, y, 0.28, i=i + 3, female=i % 2 == 1), border=3, shadow=(3, 5))
         c.restore()
-    sx, sy, sw, shh = 1315, 115, 520, 140
+    sx, sy, sw, shh = 1355, 175, 468, 126
     c.save(); c.rotate(-12, sx + sw / 2, sy + shh / 2)
     sh = paint("#000000", 0.55); sh.setMaskFilter(skia.MaskFilter.MakeBlur(skia.kNormal_BlurStyle, 18))
     c.drawRRect(skia.RRect.MakeRectXY(skia.Rect(sx + 8, sy + 22, sx + sw + 18, sy + shh + 32), 36, 36), sh)
     c.drawRRect(skia.RRect.MakeRectXY(skia.Rect(sx - 10, sy - 10, sx + sw + 10, sy + shh + 10), 36, 36), paint("#FFFFFF"))
     c.drawRRect(skia.RRect.MakeRectXY(skia.Rect(sx, sy, sx + sw, sy + shh), 28, 28), paint("#D62828"))
-    outline_text(c, "−20 CRORE", sx + 32, sy + 106, 98, "gold", stroke=12)
+    outline_text(c, "−20 CRORE", sx + 29, sy + 95, 88, "gold", stroke=11)
     c.restore()
     # title, word for word, key word in gold
     words(c, [("WHAT IF ", "cream"), ("INDIA'S", "gold")], 60, 250, 132)
