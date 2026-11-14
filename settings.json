@@ -14,6 +14,8 @@
   "reel": "D2 20:00"
  },
  "_release_schedule": "IST. Main first, then the Short next morning and the Reel next evening, so something goes out daily and the verticals link to a live main video (Krishna, 13 Nov 2026; from general India data, re-check with the channel's own Studio data after ~3 weeks). scripts/release_times.py <slug> gives the exact times. YouTube and Instagram post the Short/Reel at the same times.",
+ "release_jitter_minutes": [1, 12],
+ "_release_jitter_minutes": "Each slot goes out a random 1-12 min past its hour (e.g. Short 9:03, main 6:11), fixed per video (Krishna, 14 Nov 2026).",
  "default_language": "en",
  "synthetic_label": false,
  "min_days_between_videos": 2,
