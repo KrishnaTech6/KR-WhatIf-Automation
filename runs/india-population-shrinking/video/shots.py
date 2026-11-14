@@ -128,7 +128,7 @@ def s_19(c, t, t0):
     tn = T("today", "one", 2)
     fall = ease(span(t, tn - 0.2, tn + 0.6))
     dx, dy, a = jit("c19", t)
-    cy = 280 + 380 * fall
+    cy = 280 + 330 * fall
     index_card(c, 1100 + dx, cy + dy, 640, 250, rot=-4 + 6 * fall, seed=45)
     type_text(c, "INDIA 1.9", 1100 + dx, cy + dy, 104, 1.0, color=RED_INK)
     tb = T("today", "below")
@@ -136,9 +136,9 @@ def s_19(c, t, t0):
         q = ease_out(span(t, T("today", "five") - 0.2 + i * 0.15, T("today", "five") + 0.1 + i * 0.15))
         if q > 0:
             x = 360 + i * 300
-            torn_strip(c, x, 960, 220 * q + 1, 80, seed=50 + i, color="#F4EFE3")
-            type_text(c, yr, x, 960, 44 * q + 1, 1.0, color=RED_INK)
-    stamp(c, 760, 740, "BELOW THE LINE", span(t, tb - 0.1, tb + 0.15), color="coral", rot=-8)
+            torn_strip(c, x, 995, 220 * q + 1, 80, seed=50 + i, color="#F4EFE3")
+            type_text(c, yr, x, 995, 44 * q + 1, 1.0, color=RED_INK)
+    stamp(c, 1150, 830, "BELOW THE LINE", span(t, tb - 0.1, tb + 0.15), color="coral", rot=-3)
 
 
 def s_myth(c, t, t0):
@@ -183,8 +183,8 @@ def s_long(c, t, t0):
 # ---------------------------------------------------------------- 2036 KERALA
 def s_kerala(c, t, t0):
     collage_bg(c, t)
-    z = keys(t, [(t0, 1.0), (t0 + 1.4, 1.9)])
-    with Cam(c, z, 760, 860, t=t):
+    z = keys(t, [(t0, 1.0), (t0 + 1.4, 1.25)])
+    with Cam(c, z, 760, 760, t=t):
         india_map(c, 960, 560, 28, highlight=("Kerala",), hcol="#C0392B")
     for i in range(5):
         x = 1260 + i * 120
@@ -615,7 +615,7 @@ def SHOTS():
         (T("today", "indias") - 0.3, s_19, "whip"),
         (T("today", "heres") - 0.2, s_myth, "fade"),
         (T("today", "think") - 0.2, s_train, "fade"),
-        (T("today", "our") - 0.2, s_long, "zoom"),
+        (T("today", "our") - 0.2, s_long, "fade"),
         (B(KER) - 0.6, card_plus("2036", "Kerala", ic_house), "iris"),
         (T(KER, "go") - 0.2, s_kerala, "fade"),
         (T(KER, "picture") - 0.2, s_house, "fade"),
@@ -633,7 +633,7 @@ def SHOTS():
         (T(FIF, "pensions") - 0.3, s_bills, "fade"),
         (T(FIF, "and", 1) - 0.2, s_slice, "fade"),
         (T(FIF, "somebody") - 0.2, s_carers, "fade"),
-        (T(FIF, "and", 2) - 0.2, s_you, "zoom"),
+        (T(FIF, "and", 2) - 0.2, s_you, "fade"),
         (B(SIX) - 0.3, card_plus("EARLY 2060s", "The peak", ic_graph), "cut"),
         (T(SIX, "india") - 0.3, s_peak, "fade"),
         (T(SIX, "next") - 0.2, s_fewer, "fade"),
@@ -655,18 +655,13 @@ def SHOTS():
         (E("payoff") + 0.3, end_screen(), "fade"),
     ]
     L.sort(key=lambda x: x[0])
-    # long hero shots get a new framing (a slow push-in on the running shot) every ~3.5 s
+    # long hero shots: one very gentle push-in over the whole shot (Krishna 14 Nov: no visible zoom jumps, nothing cropped)
     out = []
     for i, (st, fn, tr) in enumerate(L):
-        out.append((st, fn, tr))
-        nxt = L[i + 1][0] if i + 1 < len(L) else st
+        nxt = L[i + 1][0] if i + 1 < len(L) else st + 6
         name = getattr(fn, "__name__", "")
-        if not name.startswith("s_") or nxt - st < 5.0:
-            continue
-        n = int((nxt - st) / 3.5)
-        for j in range(1, n + 1):
-            s2 = st + j * (nxt - st) / (n + 1)
-            cx, cy = [(760, 600), (1180, 580), (960, 640)][j % 3]
-            out.append((s2, cont(fn, st, 1.2 + 0.05 * (j % 2), cx, cy), "cut"))
+        if name.startswith("s_") and nxt - st >= 4.0:
+            fn = zoom(fn, 1.0, 1.035, 960, 540, max(nxt - st, 1.0))
+        out.append((st, fn, tr))
     out.sort(key=lambda x: x[0])
     return out
