@@ -475,12 +475,14 @@ def lake_scene(c, t, p):
     person(c, 300, 1000, 1.3, "teal", phone=False)
 
 
-def rooftop(c, t, warm=1.3):
+def rooftop(c, t, warm=1.3, clothes=True):
     """Atlas hero scene: a Mumbai-style rooftop at sunset, water tank, clothes line, parapet in the foreground."""
     dusk_bg(c, t, warm)
     c.drawRect(skia.Rect(0, 900, W, H), paint("#2A1838"))
     c.drawRect(skia.Rect(0, 880, W, 910), paint("#4A2A4E"))
     c.drawLine(0, 880, W, 880, paint("amber", 0.5, stroke=4))       # rim light on the parapet
+    if not clothes:
+        return
     c.drawLine(1300, 420, 1900, 470, paint("#140A26", stroke=4))
     for k in range(4):
         x = 1360 + k * 130
