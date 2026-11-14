@@ -124,13 +124,11 @@ What the data changed: retention data still isn't available (analytics permissio
 > Her son is in Dubai. Her daughter, in Bengaluru.
 >
 > On Sunday, the phone rings. That's the family visit.
->
-> Quick question. How many brothers and sisters do your parents have? And how many do you have? Tell me in the comments.
 
-- **Tone:** Warm, a little sad; friendly on the question.
-- **Scenes:** (1) Card: 2036 · Kerala. (2) India map, Kerala highlighted; 5 people icons, 1 turns grey with "60+". (3) A big Kerala house cut-out, three of four windows with paper padlocks. (4) Red strings from the house to "DUBAI" and "BENGALURU" tags. (5) An old phone cut-out ringing on a table. (6) KR cut-out with a family tree, comment prompt.
+- **Tone:** Warm, a little sad.
+- **Scenes:** (1) Card: 2036 · Kerala. (2) India map, Kerala highlighted; 5 people icons, 1 turns grey with "60+". (3) A big Kerala house cut-out, three of four windows with paper padlocks. (4) Red strings from the house to "DUBAI" and "BENGALURU" tags. (5) An old phone cut-out ringing on a table.
 - **Sound:** Soft piano; phone ring.
-- **On-screen text:** "KERALA 2036: 1 IN 5+ OVER 60"; comment question
+- **On-screen text:** "KERALA 2036: 1 IN 5+ OVER 60"
 
 ### Year 2046 - the classroom (1:47–2:30)
 
@@ -237,7 +235,7 @@ What the data changed: retention data still isn't available (analytics permissio
 
 - **Style: collage** (Paper Collage). This is about our families, our cities and what happens to us: family photos, headline strips, stamps ("MYTH", "−20 CRORE") and red string from cause to effect fit best. **Cinematic** could fit the slow countdown to the peak, but the feeling is personal, not danger.
 - **Short/Reel captions: standard.** The last video used bold, and these verticals are story-led.
-- KR moments: logo/promise, train myth-bust, comment question (siblings), "that somebody is you", outro.
+- KR moments: logo/promise, train myth-bust, Kerala grandmother, "that somebody is you", outro.
 - Visual threads: (1) the family photo from frame 0 returns in the payoff, same framing, now with one child; (2) a small red down-arrow on the India map sits in every map shot as the "shrinking" symbol; (3) a tiny Delhi 1.2 tag appears unnoticed on the map in "Today", before the twist.
 - Chapter cards: TODAY · The magic number / 2036 · Kerala / 2046 · The classroom / 2050 · Who pays / EARLY 2060s · The peak / TODAY · Already here / THE PHOTO · Back to nani.
 
@@ -250,11 +248,10 @@ What the data changed: retention data still isn't available (analytics permissio
 | 0:00 | Family-photo hook + open loop (where you'll see it first) |
 | 0:29 | Myth-bust: the train |
 | 1:07 | New chapter, human moment |
-| 1:40 | Comment prompt 1 (~37%) |
 | 1:47 | Open loop paid off: the classroom |
 | 3:05 | Hard silence → the peak (~66%) |
 | 3:44 | Twist: Delhi = Japan |
-| 4:10 | Callback to frame 0, comment prompt 2, tease |
+| 4:10 | Callback to frame 0, comment prompt, tease |
 
 ## YouTube Short
 
@@ -262,7 +259,7 @@ Angle: the shock (20 crore fewer, the train with the brakes on). ~44 s, 117 word
 
 | Time | Voiceover | Visual (9:16) | On-screen text |
 | --- | --- | --- | --- |
-| 0:00 | Your India loses 20 crore people. No war. No disaster. Just... fewer babies. | India map, crowd torn away, "−20 CRORE" stamp | "−20 CRORE INDIANS" |
+| 0:00 | India loses 20 crore people. No war. No disaster. Just... fewer babies. | India map, crowd torn away, "−20 CRORE" stamp | "−20 CRORE INDIANS" |
 | 0:06 | A woman in India today has, on average, fewer than two children. You need two just to replace mum and dad. We're already below that line... for five years now. | Mum, dad, two kids cut-outs; "1.9" card | "BELOW 2" |
 | 0:18 | So why is India still growing? Because a country is like a train with the brakes on. It keeps rolling... for kilometres. | Long paper train with sparks | "BRAKES ON" |
 | 0:27 | But somewhere in the early 2060s, the train stops. Then every single year... there are fewer of us. No war. No famine. India just... gets smaller. | Counter freezes at 170 crore, ticks back | "2060s: THE PEAK" |
@@ -272,13 +269,13 @@ Posting kit: title "India Will Lose 20 Crore People. No War. #shorts"; descripti
 
 ## Instagram Reel
 
-Angle: the feeling (the family photo, the grandmother in Kerala). ~34 s, 89 words, hook score 82. Ends on a tease (the city).
+Angle: the feeling (the family photo, Japan's empty classrooms). ~33 s, 86 words. Ends on a tease (the city).
 
 | Time | Voiceover | Visual (9:16) | On-screen text |
 | --- | --- | --- | --- |
 | 0:00 | Six kids in your nani's photo. In yours, maybe just one. Not enough. | Sepia photo with six kids, then a new photo with one | "6 KIDS → 1" |
-| 0:05 | In Kerala, more than one in five people will soon be over sixty. | Kerala on the map, 1 of 5 icons turns grey | "KERALA: 1 IN 5+ OVER 60" |
-| 0:10 | Picture a grandmother in a big house. Her son in Dubai. Her daughter in Bengaluru. On Sunday, the phone rings. That's the family visit. | House with padlocked windows, red strings, phone ringing | — |
-| 0:22 | Now do this across India, and one day... our population starts shrinking. But here's what surprised me. It has already begun... in a city you know very well. Full story on YouTube. KR's What If Explained. Link in bio. | Map with the red down-arrow; a city skyline in shadow | "WHICH CITY?" |
+| 0:05 | Fewer kids means... fewer classrooms. In Japan, about 450 schools close every year. Some shut the day their last two students graduate. | Classroom cut-out, desks emptying; two graduates walk out, "CLOSED" sign | "JAPAN: ~450 SCHOOLS SHUT A YEAR" |
+| 0:15 | The school bell still works. There's just nobody left to ring it for. | School bell on an empty desk row | — |
+| 0:20 | India is on the same road. One day, our population starts shrinking. But here's what surprised me. It has already begun... in a city you know very well. Full story on YouTube. KR's What If Explained. Link in bio. | India map with the red down-arrow; a city skyline in shadow | "WHICH CITY?" |
 
-Posting kit: caption written at the text stage (reach kit step 5); pinned comment: "How many brothers and sisters do your parents have? And you?"
+Posting kit: caption written at the text stage (reach kit step 5); pinned comment: "How many brothers and sisters did your nani have? And you?"

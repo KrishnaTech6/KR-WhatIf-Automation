@@ -6,12 +6,13 @@ HARD_CUT_BEFORE:
 [Hook | warm]
 Six kids in your nani's photo. In yours, maybe just one. Not enough.
 
-[Kerala | warm]
-In Kerala, more than one in five people will soon be over sixty.
-Picture a grandmother in a big house. Her son in Dubai. Her daughter in Bengaluru.
-{soft} On Sunday, the phone rings. That's the family visit.
+[Classroom | warm]
+Fewer kids means... fewer classrooms.
+In Japan, about four hundred and fifty schools close every year.
+Some shut the day their last two students graduate.
+{soft} The school bell still works. There's just nobody left to ring it for.
 
 [Tease | neutral]
-Now do this across India, and one day... our population starts shrinking.
+India is on the same road. One day, our population starts shrinking.
 But here's what surprised me. It has already begun... in a city you know very well.
 Full story on YouTube. K R's What If Explained. Link in bio.

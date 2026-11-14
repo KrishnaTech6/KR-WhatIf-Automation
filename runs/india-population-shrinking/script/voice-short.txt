@@ -4,7 +4,7 @@ KEY_BEATS: hook
 HARD_CUT_BEFORE:
 
 [Hook | dramatic]
-Your India loses twenty crore people. No war. No disaster. Just... fewer babies.
+India loses twenty crore people. No war. No disaster. Just... fewer babies.
 
 [Below two | neutral]
 A woman in India today has, on average, fewer than two children.
