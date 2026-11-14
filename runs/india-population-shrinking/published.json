@@ -1,0 +1,29 @@
+{
+ "main": {
+  "id": "8Et89Xt8enA",
+  "locked_private": false,
+  "publish_at": "2026-11-15T12:37:00Z",
+  "schedule_kept": true,
+  "url": "https://youtu.be/8Et89Xt8enA"
+ },
+ "thumbnail": true,
+ "comment": "failed: HTTP 403",
+ "shorts": [
+  {
+   "id": "6qtLlbcDHmw",
+   "locked_private": false,
+   "publish_at": "2026-11-16T03:34:00Z",
+   "schedule_kept": true,
+   "file": "SHORT.mp4",
+   "url": "https://youtube.com/shorts/6qtLlbcDHmw"
+  },
+  {
+   "id": "ln8WLM94qRs",
+   "locked_private": false,
+   "publish_at": "2026-11-16T14:36:00Z",
+   "schedule_kept": true,
+   "file": "REEL.mp4",
+   "url": "https://youtube.com/shorts/ln8WLM94qRs"
+  }
+ ]
+}
