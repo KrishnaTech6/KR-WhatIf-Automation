@@ -44,7 +44,7 @@ def thumb(c):
     # a crowd on the map, thinning towards the south-east edge where people fall off
     for i in range(70):
         x = cx + (rng(i, 2) - 0.5) * k * 12 - 20
-        y = cy + (rng(i, 3) - 0.5) * k * 14 - 60
+        y = cy + (rng(i, 3) - 0.5) * k * 12 - 10
         cutout(c, lambda kk, x=x, y=y, i=i: figure(kk, x, y, 0.22, i=i, female=i % 2 == 0), border=3, shadow=(2, 3))
     for i in range(5):
         x = cx - 330 - i * 40
@@ -52,7 +52,7 @@ def thumb(c):
         c.save(); c.rotate(-30 - i * 22, x, y - 40)
         cutout(c, lambda kk, x=x, y=y, i=i: figure(kk, x, y, 0.28, i=i + 3, female=i % 2 == 1), border=3, shadow=(3, 5))
         c.restore()
-    sx, sy, sw, shh = cx - 300, cy + 10, 520, 140
+    sx, sy, sw, shh = 1315, 115, 520, 140
     c.save(); c.rotate(-12, sx + sw / 2, sy + shh / 2)
     sh = paint("#000000", 0.55); sh.setMaskFilter(skia.MaskFilter.MakeBlur(skia.kNormal_BlurStyle, 18))
     c.drawRRect(skia.RRect.MakeRectXY(skia.Rect(sx + 8, sy + 22, sx + sw + 18, sy + shh + 32), 36, 36), sh)
