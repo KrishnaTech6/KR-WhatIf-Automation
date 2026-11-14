@@ -89,16 +89,19 @@ def jar_real(c, cx, cy):
 
 
 def chain_lock(c, cx, cy):
-    """A real chain wrapped around the jar's middle, ending in a heavy brass padlock below the jar's front."""
-    y = cy + 120
-    for i in range(14):
-        x = cx - 280 + i * 43
-        yy = y + 14 * math.sin(i * 0.4)
-        r = skia.Rect(x - 24, yy - 13, x + 24, yy + 13) if i % 2 == 0 else skia.Rect(x - 22, yy - 6, x + 22, yy + 6)
-        c.drawOval(r, paint("#2E3138", stroke=13))
-        c.drawOval(r, paint("#B9BFCA", stroke=8))
-    px, py = cx + 40, y + 120
-    # shackle
+    """The lid is what opens, so the lid is what gets locked: a chain wrapped round the screw lid and over its top,
+    and a heavy brass padlock hanging from it in front of the jar's shoulder."""
+    top = cy - 300
+    def link(x, yy, i, ang=0.0):
+        c.save(); c.translate(x, yy); c.rotate(ang)
+        r = skia.Rect(-24, -13, 24, 13) if i % 2 == 0 else skia.Rect(-22, -6, 22, 6)
+        c.drawOval(r, paint("#2E3138", stroke=13)); c.drawOval(r, paint("#B9BFCA", stroke=8))
+        c.restore()
+    # round the lid band
+    for row, yy in enumerate((top - 92, top - 40)):
+        for i in range(12):
+            link(cx - 236 + i * 43, yy + 5 * math.sin(i + row), i + row)
+    px, py = cx + 30, top + 40
     sh = skia.Path(); sh.addArc(skia.Rect(px - 52, py - 120, px + 52, py - 10), 180, 180)
     c.drawPath(sh, paint("#2E3138", stroke=26)); c.drawPath(sh, paint("#C9CED8", stroke=16))
     c.drawLine(px - 52, py - 65, px - 52, py - 10, paint("#C9CED8", stroke=16))
@@ -109,10 +112,9 @@ def chain_lock(c, cx, cy):
     c.drawLine(px - 60, py - 5, px + 50, py - 5, paint("#FFF1C4", 0.7, stroke=5))
     c.drawCircle(px, py + 45, 16, paint("#2A1A05")); c.drawRect(skia.Rect(px - 6, py + 45, px + 6, py + 90), paint("#2A1A05"))
 
-
 def thumb(c):
     lin(c, 0, 0, W, H, ["#0E2A5C", "#2B1460", "#7A1E5A"], [0, 0.55, 1])
-    cx, cy = 1490, 560
+    cx, cy = 1490, 600
     for i in range(18):
         a = i / 18 * 2 * math.pi
         p = skia.Path(); p.moveTo(cx, cy)
