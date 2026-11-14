@@ -1,8 +1,8 @@
 {
- "stage": "voice",
+ "stage": "waiting_frames",
  "title": "What If India's Population Started Shrinking?",
  "fails": 0,
- "notes": "\u27051 OK 14 Nov (his 3 comments applied: no mid-video question, Short hook 'India loses...', Reel without the grandmother)",
+ "notes": "Checkpoint 2 sent 14 Nov; frames fixed after 2 review rounds",
  "doc": "https://claude.ai/artifact/FbRDc6xir1BYoGZWbWLyW8",
  "style": "collage",
  "captions": "standard",
@@ -13,5 +13,13 @@
   "clarity": 9,
   "accuracy": 8,
   "retention": 8
+ },
+ "voice_run": 43555890321,
+ "frames_scores": {
+  "stop": 7,
+  "never_boring": 6,
+  "premium": 6,
+  "stands_out": 6,
+  "clarity": 6
  }
 }

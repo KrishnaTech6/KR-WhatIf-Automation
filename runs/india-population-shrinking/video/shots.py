@@ -42,12 +42,11 @@ def s_shrink(c, t, t0):
     for i in range(90):
         if rng(i, 9) < 0.35 * p:
             continue
-        x = 760 + (rng(i, 2) - 0.5) * k * 18
-        y = 580 + (rng(i, 3) - 0.5) * k * 20
+        x = 760 + (rng(i, 2) - 0.5) * k * 11 - 40
+        y = 580 + (rng(i, 3) - 0.5) * k * 15 - 40
         c.drawCircle(x, y, 7, paint(INK, 0.55))
     dx, dy = P(77.1, 28.6)
-    pop(c, dx + 90, dy - 10, "DELHI 1.2", t, t0 + 0.2, color="teal", size=26)   # the twist's object, quietly early
-    headline(c, "INDIA STARTS TO SHRINK", 1420, 380, 60, span(t, t0, T("hook", "shrink") + 0.2), seed=4, rot=3)
+    headline(c, "INDIA STARTS TO SHRINK", 1420, 380, 60, span(t, t0, t0 + 0.8), seed=4, rot=3)
     ts = T("hook", "shrink")
     stamp(c, 1420, 640, "SHRINKING", span(t, ts - 0.1, ts + 0.15), color="coral", rot=-8)
 
@@ -139,7 +138,7 @@ def s_19(c, t, t0):
             x = 360 + i * 300
             torn_strip(c, x, 960, 220 * q + 1, 80, seed=50 + i, color="#F4EFE3")
             type_text(c, yr, x, 960, 44 * q + 1, 1.0, color=RED_INK)
-    stamp(c, 480, 700, "BELOW THE LINE", span(t, tb - 0.1, tb + 0.15), color="coral", rot=-8)
+    stamp(c, 760, 740, "BELOW THE LINE", span(t, tb - 0.1, tb + 0.15), color="coral", rot=-8)
 
 
 def s_myth(c, t, t0):
@@ -323,10 +322,13 @@ def s_bills(c, t, t0):
 def s_slice(c, t, t0):
     collage_bg(c, t)
     ts = T(FIF, "smaller")
-    frac = 0.66 - 0.14 * ease(span(t, ts - 0.4, ts + 1.4))
-    pie(c, 760, 560, 330, frac, 1.0, t, col1="#2E8B57", col2="#E9D8A6")
-    pop(c, 1400, 420, "THE YOUNG", t, T(FIF, "young") - 0.2, color="teal", size=52)
-    marker_line(c, [(1300, 480), (1050, 520)], span(t, T(FIF, "young"), T(FIF, "young") + 0.5), width=9)
+    pie(c, 560, 560, 270, 0.45, 1.0, t, col1="#2E8B57", col2="#E9D8A6", key="pieA")
+    type_text(c, "TODAY", 560, 890, 52, 1.0)
+    q = span(t, ts - 0.5, ts + 0.6)
+    if q > 0:
+        pie(c, 1360, 560, 270, 0.45 - 0.2 * ease(q), 1.0, t, col1="#2E8B57", col2="#E9D8A6", key="pieB")
+        type_text(c, "LATER", 1360, 890, 52, 1.0)
+    pop(c, 960, 260, "GREEN = THE YOUNG", t, T(FIF, "young") - 0.2, color="teal", size=46)
     headline(c, "A SMALLER SLICE EVERY YEAR", W / 2, 1000, 50, span(t, ts - 0.3, ts + 0.6), seed=82)
 
 
@@ -360,7 +362,7 @@ def s_peak(c, t, t0):
     up = span(t, t0, T(SIX, "people") + 0.3)
     dn = span(t, T(SIX, "goes") - 0.4, T(SIX, "down") + 0.6)
     pts = P[:5] if dn <= 0 else P
-    p = up * 0.999 if dn <= 0 else 0.55 + 0.45 * dn
+    p = 1.0 if dn <= 0 and t > T(SIX, "people") + 0.3 else (up if dn <= 0 else 0.62 + 0.38 * dn)
     line_graph(c, 200, 260, 1520, 560, pts, p, width=14)
     marker_line(c, [(200, 830), (1720, 830)], 1.0, color=INK, width=5)
     for i, yr in enumerate(["2026", "2040", "2060s", "2080", "2100"]):
@@ -370,8 +372,11 @@ def s_peak(c, t, t0):
     if t > tp - 0.3:
         pin(c, pk[0], pk[1] - 10)
         counter_text(c, 0, 170, span(t, tp - 0.3, T(SIX, "crore") + 0.2), lambda v: f"{v:.0f} CRORE", pk[0], pk[1] - 90, 64)
+    type_text(c, "POPULATION", 260, 230, 34, 1.0)
+    if dn > 0.8:
+        pop(c, 1650, 380, "150 CR \u00b7 2100", t, T(SIX, "down") + 0.5, color="coral", size=40)
     tf = T(SIX, "first")
-    stamp(c, 1300, 640, "FIRST FALL IN 100 YEARS", span(t, tf - 0.1, tf + 0.2), color="coral", rot=-6)
+    stamp(c, 1000, 640, "FIRST FALL IN 100 YRS", span(t, tf - 0.1, tf + 0.2), color="coral", rot=-6)
 
 
 def s_fewer(c, t, t0):
@@ -410,7 +415,8 @@ def s_wedding(c, t, t0):
         a_ = 0.35 * sp
         c.drawCircle(140 + (i * 137) % 1700, 120 + (i * 53) % 260, 6, paint("gold", a_))
     headline(c, "NO HEADLINE", 520, 160, 52, span(t, T(SIX, "headline") - 0.3, T(SIX, "headline") + 0.2), seed=95)
-    pop(c, 140 + 3 * 180, 520, "ONE EMPTY CHAIR", t, te - 0.2, color="coral", size=42)
+    marker_circle(c, 140 + 3 * 180, 820, 90, 110, span(t, te - 0.2, te + 0.5))
+    pop(c, 140 + 3 * 180, 680, "ONE EMPTY CHAIR", t, te - 0.2, color="coral", size=42)
 
 
 def s_2100(c, t, t0):
@@ -421,6 +427,10 @@ def s_2100(c, t, t0):
     type_text(c, "2100 · UN", 700 + dx, 370 + dy, 50, span(t, t0, t0 + 0.4))
     v = 170 - 20 * ease(span(t, tv - 0.2, T(SIX, "crore") + 0.4))
     big_text(c, f"{v:.0f} CRORE", 700 + dx, 540 + dy, 120, 1.0, "coral")
+    gone = span(t, T(SIX, "twenty", 2) - 0.3, T(SIX, "twenty", 2) + 0.6)
+    for i in range(16):
+        out = i >= 14
+        person(c, 200 + i * 100, 1000 + (160 * gone if out else 0), 0.4, t, key=f"r{i}", i=i, female=i % 2 == 0)
     stamp(c, 1450, 560, "−20 CRORE", span(t, T(SIX, "twenty", 2) - 0.1, T(SIX, "twenty", 2) + 0.15), color="coral", rot=-10)
 
 
@@ -550,6 +560,46 @@ def s_tease(c, t, t0):
     stamp(c, W / 2, 430, "COMING NEXT", span(t, t0 + 1.2, t0 + 1.45), color="coral", rot=-6)
 
 
+def card_plus(value, name, icon):
+    f = card(value, name)
+
+    def g(c, t, t0):
+        f(c, t, t0)
+        icon(c, t, t0)
+    g.__dict__.update(f.__dict__)
+    g.__name__ = getattr(f, "__name__", "card")
+    return g
+
+
+def ic_family(c, t, t0):
+    family_photo(c, 1580, 860, 0.38, t, 2, 2, key="icf", rot=8)
+
+
+def ic_house(c, t, t0):
+    kerala_house(c, 1580, 1000, 0.42, t, locks=3, key="ich")
+
+
+def ic_bell(c, t, t0):
+    bell(c, 1600, 860, 0.7, t, key="icb")
+
+
+def ic_elder(c, t, t0):
+    person(c, 1600, 1020, 0.7, t, key="ice", i=1, old=True, female=True, cloth="#E9A23B")
+
+
+def ic_graph(c, t, t0):
+    index_card(c, 1580, 880, 360, 240, rot=6, seed=130)
+    line_graph(c, 1430, 790, 300, 170, [(0, 0.2), (0.5, 0.95), (1, 0.6)], 1.0, width=8)
+
+
+def ic_city(c, t, t0):
+    skyline(c, 1580, 1030, 0.4, t, "delhi", key="icc")
+
+
+def ic_old(c, t, t0):
+    family_photo(c, 1580, 860, 0.38, t, 2, 6, sepia=True, key="ico", rot=8)
+
+
 # ---------------------------------------------------------------- the list
 def SHOTS():
     L = [
@@ -559,43 +609,43 @@ def SHOTS():
         (E("hook") + 0.1, logo_sting(), "flash"),
         (T("promise", "and") - 0.2, s_predict, "fade"),
         (T("promise", "because") - 0.2, s_born, "fade"),
-        (B("today") - 0.6, card("TODAY", "The magic number"), "iris"),
+        (B("today") - 0.6, card_plus("TODAY", "The magic number", ic_family), "iris"),
         (T("today", "magic") - 0.3, s_21, "fade"),
         (T("today", "two", 2) - 0.3, s_replace, "fade"),
         (T("today", "indias") - 0.3, s_19, "whip"),
         (T("today", "heres") - 0.2, s_myth, "fade"),
         (T("today", "think") - 0.2, s_train, "fade"),
         (T("today", "our") - 0.2, s_long, "zoom"),
-        (B(KER) - 0.6, card("2036", "Kerala"), "iris"),
+        (B(KER) - 0.6, card_plus("2036", "Kerala", ic_house), "iris"),
         (T(KER, "go") - 0.2, s_kerala, "fade"),
         (T(KER, "picture") - 0.2, s_house, "fade"),
         (T(KER, "her") - 0.2, s_strings, "fade"),
         (T(KER, "on") - 0.2, s_phone, "fade"),
-        (B(CLS) - 0.6, card("2046", "The classroom"), "iris"),
+        (B(CLS) - 0.6, card_plus("2046", "The classroom", ic_bell), "iris"),
         (T(CLS, "not") - 0.2, s_notwhere, "fade"),
         (T(CLS, "around") - 0.2, s_scale, "fade"),
         (T(CLS, "and") - 0.2, s_desks, "fade"),
         (T(CLS, "japan") - 0.2, s_japan, "whip"),
         (T(CLS, "some") - 0.2, s_last2, "fade"),
         (T(CLS, "the", 2) - 0.2, s_bell, "fade"),
-        (B(FIF) - 0.6, card("2050", "Who pays"), "iris"),
+        (B(FIF) - 0.6, card_plus("2050", "Who pays", ic_elder), "iris"),
         (T(FIF, "one") - 0.3, s_one5, "fade"),
         (T(FIF, "pensions") - 0.3, s_bills, "fade"),
         (T(FIF, "and", 1) - 0.2, s_slice, "fade"),
         (T(FIF, "somebody") - 0.2, s_carers, "fade"),
         (T(FIF, "and", 2) - 0.2, s_you, "zoom"),
-        (B(SIX) - 0.3, card("EARLY 2060s", "The peak"), "cut"),
+        (B(SIX) - 0.3, card_plus("EARLY 2060s", "The peak", ic_graph), "cut"),
         (T(SIX, "india") - 0.3, s_peak, "fade"),
         (T(SIX, "next") - 0.2, s_fewer, "fade"),
         (T(SIX, "no") - 0.2, s_wedding, "fade"),
         (T(SIX, "by") - 0.2, s_2100, "fade"),
         (T(SIX, "and", 2) - 0.2, s_papers, "fade"),
-        (B("twist") - 0.6, card("TODAY", "Already here"), "iris"),
+        (B("twist") - 0.6, card_plus("TODAY", "Already here", ic_city), "iris"),
         (T("twist", "in", 1) - 0.2, s_delhi, "fade"),
         (T("twist", "japan") - 0.3, s_tokyo, "whip"),
         (T("twist", "kerala") - 0.5, s_south, "fade"),
         (T("twist", "shrinking") - 0.4, s_cities, "fade"),
-        (B("payoff") - 0.6, card("THE PHOTO", "Back to nani"), "iris"),
+        (B("payoff") - 0.6, card_plus("THE PHOTO", "Back to nani", ic_old), "iris"),
         (B("payoff") + 0.4, s_back, "fade"),
         (T("payoff", "your", 2) - 0.2, s_grandkid, "fade"),
         (T("payoff", "thats") - 0.2, s_bright, "fade"),
