@@ -4,7 +4,8 @@
   "locked_private": false,
   "publish_at": "2026-11-14T12:30:00Z",
   "schedule_kept": true,
-  "url": "https://youtu.be/TmdZ7zeFApI"
+  "url": "https://youtu.be/TmdZ7zeFApI",
+  "verified": "public"
  },
  "thumbnail": true,
  "comment": "failed: HTTP 403",
