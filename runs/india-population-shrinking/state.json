@@ -2,7 +2,7 @@
  "stage": "waiting_final",
  "title": "What If India's Population Started Shrinking?",
  "fails": 0,
- "notes": "Checkpoint 3 re-sent 14 Nov after fixes: gentle zoom only, below-the-line clear, crore one pronunciation; MAIN 4:45, SHORT 48 s, REEL 37 s, QA PASS",
+ "notes": "Checkpoint 3 re-sent 14 Nov after fixes: gentle zoom only, below-the-line clear, crore one pronunciation; MAIN 4:45, SHORT 48 s, REEL 37 s, QA PASS; release set by Krishna 14 Nov: main 15 Nov 18:07 IST, Short 16 Nov 09:04, Reel 16 Nov 20:06 (overrides release_times.py)",
  "doc": "https://claude.ai/artifact/FbRDc6xir1BYoGZWbWLyW8",
  "style": "collage",
  "captions": "standard",
