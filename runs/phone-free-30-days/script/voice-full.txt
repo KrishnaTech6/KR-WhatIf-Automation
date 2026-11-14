@@ -4,14 +4,14 @@ KEY_BEATS: hook, fourteen, payoff
 HARD_CUT_BEFORE: fourteen
 
 [Hook | tense]
-Thirty days without your phone... and you get six full days of your life back. (beat)
-But by day two, you can't even buy a cup of chai.
+Thirty days without your phone... and you get back a hundred and fifty hours. Six full days. (beat)
+By day two, you're locked out of your own life.
 And the biggest change... happens inside your head.
 
 [Promise - logo | neutral]
 This is K R's What If Explained. Real numbers, simple words.
-Here's the deal. Your smartphone goes in a drawer. For thirty days.
-You keep one old keypad phone. Calls and SMS. That's it.
+Here's the deal. Your smartphone goes in a drawer. Locked. For thirty days.
+No scrolling. No apps. No internet in your pocket.
 
 [Hour one - the reflex | playful]
 Hour one. Your hand goes to your pocket. Nothing there.
@@ -24,9 +24,11 @@ Your brain has been trained so well... it's now making up notifications.
 
 [Day two - the wall | tense]
 Day two. And India hits you with a problem nobody warns you about.
-You want to pay for chai. Your UPI app is in the drawer.
-You want a train ticket. Almost nine out of ten reserved tickets are now booked online.
-Your bank sends an OTP. {playful} Okay, that one still reaches the keypad phone. Thank God for SMS.
+You need to pay someone. Your UPI app is in the drawer.
+You need a train ticket. Almost nine out of ten reserved tickets are now booked online.
+You're in a new part of the city. No maps. No idea where you are.
+Then your bank sends an O T P... to a phone you can't touch.
+{playful} So you walk into a mobile shop and buy the one phone that can't scroll. An old keypad phone. Calls and S M S. That's it.
 {neutral} But now you see it. Your phone was never just a phone.
 It's your wallet, your ticket counter, your map and your bank.
 So you carry cash. You ask strangers for directions. Like it's two thousand five.
@@ -77,5 +79,5 @@ Same phone. Same lock screen. Hundreds of notifications.
 And for the first time in years... you don't rush to check them.
 Your hand goes to your pocket. And this time... it waits.
 So tell me honestly. Could you last thirty days? Or even three?
-Next time: what if every Indian got one crore rupees tomorrow? (beat)
+Next time: what if you saved one hundred rupees every day for twenty years? (beat)
 But that story... is for the next What If.

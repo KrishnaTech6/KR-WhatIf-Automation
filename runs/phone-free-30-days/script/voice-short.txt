@@ -4,10 +4,10 @@ KEY_BEATS: hook
 HARD_CUT_BEFORE:
 
 [Hook | dramatic]
-Thirty days without your phone... and on day two, you can't even buy chai.
+Thirty days without your phone... and by day two, you're lost in your own city.
 
 [Wall | dramatic]
-Your UPI app? In the drawer. You want a train ticket? Almost nine out of ten are booked online.
+No maps. No UPI. You need a train ticket? Almost nine out of ten are booked online.
 Your phone was never just a phone. It's your wallet, your map, your bank and your ticket counter.
 So you carry cash. You ask strangers for directions.
 

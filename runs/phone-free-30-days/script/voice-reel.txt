@@ -4,10 +4,10 @@ KEY_BEATS: hook
 HARD_CUT_BEFORE:
 
 [Hook | neutral]
-Thirty days without your phone... gives you six full days of your life back.
+Thirty days without your phone... and you get back a hundred and fifty hours. Six full days.
 
 [Boredom | playful]
-But first, day seven. The metro feels longer. The lift feels longer.
+For the first seven days, the metro feels longer. The lift feels longer.
 {deadpan} You start reading shampoo bottles.
 
 [Feeling | warm]
