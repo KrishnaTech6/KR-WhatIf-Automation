@@ -1,10 +1,10 @@
 {
- "stage": "render",
+ "stage": "waiting_final",
  "title": "What If You Stopped Paying Your EMI?",
  "fails": 0,
  "doc": "https://claude.ai/artifact/FJyidNkrCowKjjkAmkU4Cw",
  "style": "collage",
  "captions_short": "bold",
  "package": 1,
- "notes": "Chosen by Krishna 15 Nov 2026. Tease at end: What If India and Pakistan Never Split?. Checkpoint 1 sent 15 Nov 2026. Scores: hook 8, value 9, clarity 9, accuracy 8, retention 8. Krishna OK at ✅1 (aage chalo) 15 Nov 2026. ✅2 sent 15 Nov 2026 (quality gate round 2: scroll 6, boring 5, premium 6, stands out 5, clarity 7; fixes applied after). Voiceover run 43745115361 still running at send time. Voiceover run 43745115361 OK: main 97.7%, short 97.6%, reel 97.8% words, peaks -1.0 dBFS; silences trimmed (main 309 s). Quality gate round 4: 6/5/6/6/7. Krishna OK at ✅2 15 Nov 2026."
+ "notes": "Chosen by Krishna 15 Nov 2026. Tease at end: What If India and Pakistan Never Split?. Checkpoint 1 sent 15 Nov 2026. Scores: hook 8, value 9, clarity 9, accuracy 8, retention 8. Krishna OK at ✅1 (aage chalo) 15 Nov 2026. ✅2 sent 15 Nov 2026 (quality gate round 2: scroll 6, boring 5, premium 6, stands out 5, clarity 7; fixes applied after). Voiceover run 43745115361 still running at send time. Voiceover run 43745115361 OK: main 97.7%, short 97.6%, reel 97.8% words, peaks -1.0 dBFS; silences trimmed (main 309 s). Quality gate round 4: 6/5/6/6/7. Krishna OK at ✅2 15 Nov 2026. ✅3 sent: MAIN 5:46, SHORT 51 s, REEL 37 s; 2 thumbnail options (A newspaper, B dark spotlight) after Krishna asked for a new style; SEO text + longer captions. Boredom audit not run."
 }
