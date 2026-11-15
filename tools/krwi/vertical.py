@@ -216,7 +216,8 @@ def frame(c, job, vt, plan, t):
     lo, hi = starts[k], starts[k + 1] - 0.05             # stay inside the main shot the plan points at
     reframe(c, main_frame(min(max(fn(t - st), lo), hi)), cx, 540, z)
     hook_end = plan[1][0] - 0.25 if len(plan) > 1 else 2.5
-    bold = getattr(P, "CAPTIONS", "standard") == "bold"
+    cap = getattr(P, "CAPTIONS", "standard")          # a string, or {"short": ..., "reel": ...}
+    bold = (cap.get(job, "standard") if isinstance(cap, dict) else cap) == "bold"
     if t < hook_end:                                      # hook text from frame 0, then a small channel label
         if bold:
             from .style import bold_words
