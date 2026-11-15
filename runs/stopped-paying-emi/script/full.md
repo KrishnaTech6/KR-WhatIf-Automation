@@ -284,11 +284,11 @@ What the data changed: retention data still isn't available (analytics permissio
 
 ## YouTube Short
 
-Angle: the shock (the day-by-day clock). ~44 s, 120 words, hook score 83. Loops: "...the day you" → "Miss one EMI."
+Angle: the shock (the day-by-day clock). ~44 s, 120 words, hook score 86. Loops: "...the day you" → "Stop paying your EMI."
 
 | Time | Voiceover | Visual (9:16) | On-screen text |
 | --- | --- | --- | --- |
-| 0:00 | Miss one EMI. In 91 days, your home can be at risk. | Phone "EMI BOUNCED", house with dashed padlock | "1 EMI → 91 DAYS" |
+| 0:00 | Stop paying your EMI. In 91 days, your home can be at risk. | Phone "EMI BOUNCED", house with dashed padlock | "NO EMI → 91 DAYS" |
 | 0:04 | Day 1. That same night, the bank's computer marks you overdue. | Clock 12:00, OVERDUE stamp | "DAY 1" |
 | 0:09 | Day 30. The calls start. But by RBI rules... never before 8 in the morning. Never after 7 at night. | Phone ringing, clock window | "8 AM – 7 PM" |
 | 0:18 | Day 31. Your loan gets a label. And it lands on your credit report... where it's kept for at least 7 years. | SMA-1 tag, score needle | "7 YEARS" |
@@ -296,7 +296,7 @@ Angle: the shock (the day-by-day clock). ~44 s, 120 words, hook score 83. Loops:
 | 0:31 | Then a letter. Then bank officers at your door. Then your name... in the newspaper. | Letter, door, newspapers | "YOUR NAME IN PRINT" |
 | 0:36 | And the scariest part? It's a paper you signed on day 1. Full video on KR's What If Explained. And it all starts... the day you | Circled signature | "THE SCARIEST PART?" |
 
-Posting kit: title "Miss One EMI. In 91 Days, This Happens #shorts"; description: "Day 1 to Day 91 after a missed EMI, by RBI rules. Full video: (main video link)".
+Posting kit: title "Stop Paying Your EMI? Day 1 to Day 91 #shorts"; description: "Day 1 to Day 91 after a missed EMI, by RBI rules. Full video: (main video link)".
 
 ## Instagram Reel
 

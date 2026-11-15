@@ -4,7 +4,7 @@ KEY_BEATS: hook
 HARD_CUT_BEFORE:
 
 [Hook | dramatic]
-Miss one E M I. In ninety-one days, your home can be at risk.
+Stop paying your E M I. In ninety-one days, your home can be at risk.
 
 [Day one | neutral]
 Day one. That same night, the bank's computer marks you overdue.
