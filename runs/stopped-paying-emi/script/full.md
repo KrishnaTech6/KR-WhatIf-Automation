@@ -159,7 +159,7 @@ What the data changed: retention data still isn't available (analytics permissio
 >
 > The bank can go straight to him... and his credit score falls with yours.
 >
-> He never borrowed a rupee.
+> He never took a single rupee of that loan. But now... he owes it too.
 
 - **Tone:** Soft, personal.
 - **Scenes:** (1) Card: DAY 60 · Dad's phone. (2) An old keypad phone on a table, ringing; a father's silhouette cut-out. (3) A loan form, the “GUARANTOR” signature circled. (4) Red string from your score meter to his; both needles drop together. (5) Empty wallet in his hand.
