@@ -563,7 +563,7 @@ def newspaper(c, x, y, s, t, mast, head, p, key="news", rot=-4, hindi=False):
     cutout(c, d)
     type_text(c, mast, x, y - 300 * s, 58 * s)
     torn_strip(c, x, y - 180 * s, 520 * s, 110 * s, seed=hash(head) % 40, color="#FFF3C4", rot=rot)
-    type_text(c, head, x, y - 180 * s, 36 * s, p, color=RED_INK)
+    type_text(c, head, x, y - 180 * s, min(36, 900 / max(1, len(head))) * s, p, color=RED_INK)
 
 
 def court(c, x, y, s, t, key="court"):
@@ -602,7 +602,10 @@ def handcuffs(c, x, y, s, t, key="cuffs"):
     def d(k):
         for side in (-1, 1):
             k.drawCircle(x + side * 110 * s, y, 85 * s, paint("#8A9098", stroke=30 * s))
-        k.drawLine(x - 30 * s, y - 10 * s, x + 30 * s, y - 10 * s, paint("#6A7078", stroke=14 * s))
+        for i in range(3):
+            k.drawOval(skia.Rect(x - 45 * s + i * 30 * s, y - 100 * s, x - 15 * s + i * 30 * s, y - 70 * s), paint("#6A7078", stroke=9 * s))
+        k.drawLine(x - 110 * s, y - 85 * s, x - 45 * s, y - 85 * s, paint("#6A7078", stroke=9 * s))
+        k.drawLine(x + 45 * s, y - 85 * s, x + 110 * s, y - 85 * s, paint("#6A7078", stroke=9 * s))
     cutout(c, d, border=7)
 
 

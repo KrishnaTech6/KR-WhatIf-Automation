@@ -21,10 +21,14 @@ def s_cold(c, t, t0):
     """Frame 0: the phone already says EMI NOT PAID; behind it the house with the dashed padlock (thumbnail echo)."""
     collage_bg(c, t)
     with CamC(c, keys(t, [(t0, 1.0), (t0 + 4, 1.08)]), 960, 540, t=t):
-        house_lock(c, 1400, 1000, 1.75, t)
-        smartphone(c, 600, 560, 1.4, t, [("EMI DUE\n₹26,035", BANKBLUE), ("NOT PAID", "#C0392B")],
-                   span(t, t0, t0 + 0.8), title="BANK ALERT", buzz=1 - span(t, t0 + 1.2, t0 + 2.0))
-    headline(c, "EMI STOPPED", 1400, 150, 84, span(t, t0 + 0.3, t0 + 1.0), seed=3)
+        house_lock(c, 1280, 1060, 2.3, t)
+        bob = math.sin(t * 5) * 8
+        c.save(); c.translate(0, bob)
+        stamp(c, 1280, 640, "AUCTION?", 1.0, rot=-8)
+        c.restore()
+        smartphone(c, 520, 600, 1.3, t, [("EMI DUE\n₹26,035", BANKBLUE), ("NOT PAID", "#C0392B")],
+                   1.0, title="BANK ALERT", buzz=1 - span(t, t0 + 1.2, t0 + 2.0))
+    headline(c, "EMI STOPPED", 1280, 120, 96, 1.0, seed=3)
 
 
 def s_91(c, t, t0):
@@ -93,6 +97,7 @@ def s_loan(c, t, t0):
 def s_dont(c, t, t0):
     collage_bg(c, t)
     wallet(c, 640, 640, 1.2, t)
+    type_text(c, "WALLET: ₹0", 640, 830, 56, 1.0, color=RED_INK)
     kr(c, 1380, 940, 1.35, "worried", t)
     headline(c, "THIS MONTH: ₹0", 640, 260, 70, span(t, t0 + 0.2, t0 + 0.9), seed=14)
 
@@ -133,9 +138,9 @@ def s_computer(c, t, t0):
     to = T("day_one", "overdue")
     stamp(c, 830, 540, "OVERDUE", span(t, to - 0.1, to + 0.15), rot=-6)
     tm = T("day_one", "manager")
-    headline(c, "NOT A MANAGER.", 1460, 400, 54, span(t, tm - 0.3, tm + 0.3), seed=22)
+    headline(c, "NOT A MANAGER.", 1460, 400, 54, span(t, min(t0 + 0.6, tm - 0.3), tm + 0.3), seed=22)
     tc = T("day_one", "computer", 2)
-    headline(c, "A COMPUTER.", 1460, 560, 66, span(t, tc - 0.3, tc + 0.3), seed=23, color="#FFF3C4")
+    headline(c, "A COMPUTER.", 1460, 560, 66, span(t, min(t0 + 1.2, tc - 0.3), tc + 0.3), seed=23, color="#FFF3C4")
 
 
 def s_sms(c, t, t0):
@@ -173,16 +178,16 @@ def s_fear(c, t, t0):
             r = 4 + i * 1.8
             pth.lineTo(cx + r * math.cos(an + t), cy + r * math.sin(an + t))
         c.drawPath(pth, paint(RED_INK, 1 - cut, stroke=9))
-        type_text(c, "interest on interest on...", cx, 900, 40, span(t, t0, t0 + 0.8))
+        type_text(c, "interest on interest on...", cx, 180, 54, span(t, t0, t0 + 0.8), color=RED_INK)
     if cut > 0:
-        torn_strip(c, cx, cy, 520 * ease_out(cut) + 1, 140, seed=26, color="#FFF3C4", rot=-3)
-        type_text(c, "FLAT PENAL CHARGE", cx, cy, 46, cut)
+        torn_strip(c, cx, 880, 560 * ease_out(cut) + 1, 140, seed=26, color="#FFF3C4", rot=-3)
+        type_text(c, "FLAT PENAL CHARGE", cx, 880, 50, cut)
     if t < tc:
         stamp(c, cx, 280, "FEAR", span(t, t0 + 0.4, t0 + 0.6), rot=-8)
     ts = T("day_one", "since")
     dx, dy, a = jit("rbi24", t)
     index_card(c, 1420 + dx, 520 + dy, 620, 420, rot=3, seed=27)
-    type_text(c, "RBI RULE · 2024", 1420 + dx, 400 + dy, 50, span(t, ts - 0.2, ts + 0.5), color=BANKBLUE)
+    type_text(c, "RBI RULE · 2024", 1420 + dx, 400 + dy, 50, span(t, min(t0 + 0.5, ts - 0.2), ts + 0.5), color=BANKBLUE)
     type_text(c, "ONE flat charge", 1420 + dx, 510 + dy, 48, span(t, ts + 0.3, ts + 1.0))
     type_text(c, "NO interest on it", 1420 + dx, 600 + dy, 48, span(t, ts + 0.9, ts + 1.6), color=RED_INK)
 
@@ -192,7 +197,7 @@ def s_still(c, t, t0):
     wallet(c, 760, 640, 1.3, t, key="wallet2")
     kr(c, 1420, 940, 1.35, "neutral", t)
     te = T("day_one", "empty", 2)
-    headline(c, "STILL EMPTY", 760, 260, 70, span(t, te - 0.3, te + 0.3), seed=28)
+    headline(c, "STILL EMPTY", 760, 260, 70, span(t, t0 + 0.2, t0 + 0.8), seed=28)
 
 
 # ---------------------------------------------------------------- DAY 30
@@ -217,13 +222,14 @@ def s_goons(c, t, t0):
     dx, dy, a = jit("poster", t)
     c.drawRect(skia.Rect(420 + dx, 120 + dy, 1500 + dx, 980 + dy), paint("#2A2A33"))
     type_text(c, "IN MOVIES...", 960 + dx, 210 + dy, 70, 1.0, color="#F2B44C")
-    door(c, 760, 900, 1.6, t, "#6B4A2B", "", key="mdoor")
+    door(c, 760, 900, 1.6, t, "#6B4A2B", "FLAT 4B", key="mdoor")
     kick = math.sin(min(1, (t - t0) * 2) * math.pi) * 40
     person(c, 1150 + kick, 920, 1.5, t, color="#1B1B1B", key="goon1", walk=0.6)
     person(c, 1330, 920, 1.4, t, color="#2B2B2B", key="goon2")
     c.restore()
     if tear > 0.6:
-        headline(c, "IN REAL LIFE: RULES", W / 2, 540, 80, span(t, tr, tr + 0.6), seed=30)
+        headline(c, "IN REAL LIFE:", W / 2, 400, 96, span(t, tr, tr + 0.4), seed=30)
+        stamp(c, W / 2, 640, "RBI RULES", span(t, tr + 0.3, tr + 0.5), rot=-6)
 
 
 def s_rule(c, t, t0):
@@ -288,7 +294,7 @@ def s_report(c, t, t0):
     red_string(c, [(560, 520), (1160, 520)], span(t, t0 + 0.2, t0 + 1.2))
     pin(c, 560, 520); pin(c, 1160, 520)
     tw = T("day_thirty_one", "two")
-    pop(c, 860, 760, "EVERY 2 WEEKS", t, tw - 0.2, color="coral", size=50)
+    pop(c, 860, 330, "EVERY 2 WEEKS", t, min(t0 + 0.8, tw - 0.2), color="coral", size=50)
 
 
 def s_meter(c, t, t0):
@@ -347,9 +353,9 @@ def s_dadphone(c, t, t0):
     collage_bg(c, t, tint="#E9DCC4")
     ring = 1.0 if (t - t0) % 1.6 < 1.1 else 0.0
     old_phone(c, 700, 700, 1.5, t, ring=ring)
-    figure(c, 1400, 980, 1.6, t, key="dad", color="#6D597A", old=True)
+    figure(c, 1420, 1040, 2.2, t, key="dad", color="#6D597A", old=True)
     tf = T("day_sixty", "fathers")
-    headline(c, "YOUR FATHER'S PHONE", W / 2, 160, 62, span(t, tf - 0.3, tf + 0.4), seed=61)
+    headline(c, "YOUR FATHER'S PHONE", W / 2, 160, 62, span(t, t0 + 0.3, t0 + 1.0), seed=61)
 
 
 def s_guarantor(c, t, t0):
@@ -358,7 +364,7 @@ def s_guarantor(c, t, t0):
     with CamC(c, keys(t, [(t0, 1.0), (tg + 0.5, 1.15)]), 1050, 760, t=t):
         signature_form(c, 900, 560, 1.0, t, "LOAN AGREEMENT", sig_p=1.0, circle=span(t, tg - 0.2, tg + 0.5),
                        key="form1", label="GUARANTOR")
-    figure(c, 1580, 1000, 1.2, t, key="dad2", color="#6D597A", old=True)
+    figure(c, 1560, 1040, 1.9, t, key="dad2", color="#6D597A", old=True)
 
 
 def s_same(c, t, t0):
@@ -375,7 +381,7 @@ def s_same(c, t, t0):
 
 def s_never(c, t, t0):
     collage_bg(c, t, tint="#E9DCC4")
-    figure(c, 700, 1000, 1.7, t, key="dad3", color="#6D597A", old=True)
+    figure(c, 700, 960, 1.6, t, key="dad3", color="#6D597A", old=True)
     dx, dy, a = jit("dadcard", t)
     index_card(c, 1350 + dx, 420 + dy, 640, 220, rot=-3, seed=63)
     type_text(c, "BORROWED: ₹0", 1350 + dx, 420 + dy, 66, span(t, t0, t0 + 0.6))
@@ -438,7 +444,7 @@ def s_letter(c, t, t0):
     lines = [("FROM: YOUR BANK", 34, BANKBLUE), ("NOTICE · SECTION 13(2)", 40, INK),
              ("PAY IN 60 DAYS", 56, RED_INK), ("or we take possession", 36, INK)]
     with CamC(c, keys(t, [(t0, 1.0), (t6 + 0.5, 1.2)]), 960, 420, t=t):
-        typed_letter(c, 960, 560, 1.15, t, lines, span(t, t0 + 0.2, t6 + 0.6))
+        typed_letter(c, 960, 540, 1.0, t, lines, span(t, t0 + 0.2, t6 + 0.6))
     big_text(c, "polite.", 1600, 360, 60, span(t, T("month_four", "polite") - 0.2, T("month_four", "polite") + 0.2), "sand")
 
 
@@ -468,21 +474,24 @@ def s_door(c, t, t0):
 def s_notice(c, t, t0):
     collage_bg(c, t, tint="#C9B99A")
     dx, dy, a = jit("pnotice", t)
-    index_card(c, 960 + dx, 520 + dy, 760, 600, rot=-1, seed=80)
+    door(c, 960, 1080, 2.6, t, "#5A3A22", "", key="ndoor")
+    index_card(c, 960 + dx, 520 + dy, 900, 640, rot=-1, seed=80)
     type_text(c, "POSSESSION NOTICE", 960 + dx, 300 + dy, 58, span(t, t0, t0 + 0.6), color=RED_INK)
     type_text(c, "Under SARFAESI Act, 2002", 960 + dx, 400 + dy, 40, span(t, t0 + 0.3, t0 + 0.9))
     type_text(c, "This property is now in", 960 + dx, 520 + dy, 44, span(t, t0 + 0.6, t0 + 1.2))
     type_text(c, "possession of the bank", 960 + dx, 590 + dy, 44, span(t, t0 + 0.9, t0 + 1.5))
-    tape(c, 620, 230, 170, 50, -14); tape(c, 1300, 230, 170, 50, 14)
+    tape(c, 560, 220, 170, 50, -14); tape(c, 1360, 220, 170, 50, 14)
+    stamp(c, 1250, 760, "SEALED", span(t, t0 + 2.2, t0 + 2.4), rot=-10)
 
 
 def s_papers2(c, t, t0):
     collage_bg(c, t)
     tn = T("month_six", "newspapers")
-    newspaper(c, 640, 560, 1.0, t, "THE DAILY NEWS", "NOTICE: <YOUR NAME>, <YOUR ADDRESS>", span(t, t0 + 0.3, t0 + 1.4), key="np1")
+    newspaper(c, 640, 560, 1.0, t, "THE DAILY NEWS", "DEFAULTER: R. SHARMA, FLAT 4B", span(t, t0 + 0.3, t0 + 1.4), key="np1")
     if t > tn - 0.5:
-        newspaper(c, 1300, 580, 1.0, t, "दैनिक समाचार", "सूचना: <YOUR NAME>",
+        newspaper(c, 1300, 580, 1.0, t, "DAINIK SAMACHAR", "SUCHNA: R. SHARMA, FLAT 4B",
                   span(t, tn - 0.3, tn + 0.6), key="np2", rot=4)
+    marker_circle(c, 640, 380, 300, 70, span(t, t0 + 1.0, t0 + 1.6))
     tl = T("month_six", "language")
     pop(c, 1300, 1000, "ONE IN YOUR OWN LANGUAGE", t, tl - 0.4, color="teal", size=44)
 
@@ -490,7 +499,7 @@ def s_papers2(c, t, t0):
 def s_colony(c, t, t0):
     collage_bg(c, t, tint="#F2E3C6")
     for i, x in enumerate((420, 960, 1500)):
-        newspaper(c, x, 520, 0.6, t, "THE DAILY NEWS", "<YOUR NAME>", 1.0, key=f"cn{i}", rot=(i - 1) * 5)
+        newspaper(c, x, 520, 0.6, t, "THE DAILY NEWS", "R. SHARMA, FLAT 4B", 1.0, key=f"cn{i}", rot=(i - 1) * 5)
         chai(c, x + 130, 900, 0.7, t, key=f"cchai{i}")
     tc = T("month_six", "chai")
     headline(c, "THE WHOLE COLONY READS IT", W / 2, 150, 58, span(t, t0, t0 + 0.8), seed=84)
@@ -502,7 +511,8 @@ def s_auction(c, t, t0):
     ta = T("month_six", "auction")
     with CamC(c, keys(t, [(t0, 1.0), (ta + 0.4, 1.15)]), 960, 560, t=t):
         house_lock(c, 960, 960, 1.9, t, lock_p=1.0, key="hl3")
-        stamp(c, 960, 520, "AUCTION", span(t, ta - 0.1, ta + 0.15), rot=-10)
+        stamp(c, 960, 520, "AUCTION", span(t, min(t0 + 0.8, ta - 0.1), min(t0 + 1.0, ta + 0.15)), rot=-10)
+    headline(c, "BANK AUCTION NOTICE", 1480, 900, 50, span(t, t0 + 1.2, t0 + 1.9), seed=87, color="#FFF3C4")
     headline(c, "30 DAYS LATER", 420, 160, 60, span(t, t0, t0 + 0.7), seed=86)
 
 
@@ -511,11 +521,12 @@ def s_surplus(c, t, t0):
     house(c, 440, 900, 1.2, t, key="h_s")
     dx, dy, a = jit("sur", t)
     index_card(c, 1100 + dx, 360 + dy, 640, 200, rot=-2, seed=88)
-    type_text(c, "SOLD FOR MORE THAN YOU OWE?", 1100 + dx, 360 + dy, 36, span(t, t0, t0 + 0.8))
+    type_text(c, "EXAMPLE: SOLD ₹42 LAKH", 1100 + dx, 320 + dy, 40, span(t, t0, t0 + 0.6))
+    type_text(c, "OWED ₹28 LAKH", 1100 + dx, 390 + dy, 40, span(t, t0 + 0.4, t0 + 1.0), color=RED_INK)
     p = ease(span(t, T("month_six", "extra") - 0.3, T("month_six", "extra") + 0.9))
     for i in range(3):
         rupee_note(c, 1500 - 600 * p + i * 40, 720 + i * 30, 0.8, t, key=f"sn{i}", rot=-10 + i * 8)
-    big_text(c, "→ BACK TO YOU", 1400, 960, 60, span(t, T("month_six", "back") - 0.2, T("month_six", "back") + 0.3), "teal")
+    big_text(c, "₹14 LAKH BACK TO YOU", 1300, 960, 64, span(t, T("month_six", "back") - 0.2, T("month_six", "back") + 0.3), "teal")
 
 
 # ---------------------------------------------------------------- TWIST
@@ -525,6 +536,7 @@ def s_notcrime(c, t, t0):
     tn = T("twist", "crime")
     xmark(c, 600, 560, 2.8, span(t, tn - 0.1, tn + 0.3))
     headline(c, "NOT A CRIME", 1360, 400, 84, span(t, tn - 0.3, tn + 0.3), seed=90)
+    stamp(c, 600, 300, "JAIL?", span(t, t0 + 0.2, t0 + 0.4), rot=-8)
     signature_form(c, 1400, 760, 0.45, t, "AGREEMENT", sig_p=1.0, circle=1.0, key="form2")
 
 
@@ -582,7 +594,9 @@ def s_unlock(c, t, t0):
         stamp(c, 760, 520, "AUCTION", 1.0, rot=-10)
         c.restore()
     tm = T("payoff", "money")
-    headline(c, "IT WANTS ITS MONEY", 1420, 260, 60, span(t, tm - 0.4, tm + 0.3), seed=101, color="#FFF3C4")
+    headline(c, "IT WANTS ITS MONEY", 1420, 260, 60, span(t, t0 + 0.2, t0 + 0.9), seed=101, color="#FFF3C4")
+    if peel > 0.3:
+        padlock(c, 760 + 300 * ease(peel), 880 - 400 * ease(peel), 1.6, t, key="pop_lock")
 
 
 def s_callbank(c, t, t0):
@@ -609,7 +623,8 @@ def s_badmonth(c, t, t0):
     tm = T("payoff", "month")
     tl = T("payoff", "life")
     headline(c, "A BAD MONTH.", W / 2, 400, 104, span(t, min(t0 + 0.2, tm - 0.3), tm + 0.3), seed=107)
-    headline(c, "NOT A BAD LIFE.", W / 2, 640, 104, span(t, tl - 0.4, tl + 0.3), seed=108, color="#FFF3C4")
+    headline(c, "NOT A BAD LIFE.", W / 2, 640, 104, span(t, min(t0 + 0.8, tl - 0.4), tl + 0.3), seed=108, color="#FFF3C4")
+    marker_line(c, [(520, 720), (760, 720)], span(t, min(t0 + 1.4, tl), min(t0 + 1.8, tl + 0.4)))
 
 
 def s_pickup(c, t, t0):
@@ -626,13 +641,14 @@ def s_pickup(c, t, t0):
 
 def s_tease(c, t, t0):
     collage_bg(c, t, tint="#2A2630")
-    p = ease(span(t, t0 + 0.3, t0 + 1.4))
+    p = 1 - ease(span(t, t0 + 0.2, t0 + 1.0)) + ease(span(t, t0 + 1.6, t0 + 2.6))
     for side in (-1, 1):
         dx = side * (40 + 160 * (1 - p))
         torn_strip(c, 960 + dx + side * 230, 600, 460, 380, seed=110 + side, color="#EDE6D3", rot=side * 4 * (1 - p))
     type_text(c, "1947", 960, 600, 120, 1.0, color=INK)
-    if p > 0.9:
+    if p > 0.9 and t > t0 + 2:
         tape(c, 960, 480, 180, 54, -10); tape(c, 960, 720, 180, 54, 12)
+        marker_circle(c, 960, 600, 300, 200, span(t, t0 + 2.6, t0 + 3.4))
     headline(c, "NEXT: WHAT IF INDIA AND PAKISTAN NEVER SPLIT?", W / 2, 160, 50, span(t, t0, t0 + 1.2), seed=112)
 
 
@@ -672,7 +688,7 @@ def SHOTS():
         (T("day_thirty_one", "that", 1) - 0.2, s_rejected, "whip"),
         (T("day_thirty_one", "and", 3) - 0.2, s_7yrs, "fade"),
         (T("day_thirty_one", "quick") - 0.3, s_breathe, "fade"),
-        (T("day_thirty_one", "so", 2) - 0.2, comment_prompt("If your EMI bounced tomorrow, who would you call first?"), "fade"),
+        (T("day_thirty_one", "so", 2) - 0.2, comment_prompt("EMI bounced tomorrow: who do you call first?"), "fade"),
         # DAY 60
         (B("day_sixty") - 0.6, card("DAY 60", "Dad's phone"), "iris"),
         (T("day_sixty", "a") - 0.2, s_dadphone, "fade"),
@@ -717,7 +733,7 @@ def SHOTS():
     return _split_long(L)
 
 
-FRAMES = [(1.16, 760, 520), (1.2, 1200, 600), (1.14, 960, 420), (1.22, 1100, 700)]
+FRAMES = [(1.12, 820, 520), (1.14, 1100, 580), (1.1, 960, 460), (1.15, 1040, 640)]
 
 
 def _split_long(L, every=3.6):
