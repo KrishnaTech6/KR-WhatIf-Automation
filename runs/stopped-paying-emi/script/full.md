@@ -92,15 +92,15 @@ What the data changed: retention data still isn't available (analytics permissio
 
 ### Day one - the bounce (0:35–1:10)
 
-> Day 1. Midnight. The auto-debit hits your account... and finds it empty.
+> Day 1. Midnight. You're asleep. The auto-debit knocks on your account... and finds it empty.
 >
 > That same night, the bank's computer marks you overdue. Not a manager. A computer.
 >
-> In the morning, a fine for that failed debit. A bounce charge. At a big bank like HDFC, about ₹500. Plus GST.
+> You wake up to two SMS. One: EMI bounced. Two: a ₹500 fine for that failed debit, plus GST. That's the bounce charge, at a big bank like HDFC.
 >
-> Old myth: the bank secretly piles extra interest on your penalty.
+> Your first fear: now they'll pile interest on top of this fine too.
 >
-> Not anymore. Since 2024, RBI says: a flat penal charge. No interest on top of it.
+> They can't. Since 2024, RBI says: a flat penal charge. No interest on top of it.
 >
 > Small mercy. Your account is still empty.
 
