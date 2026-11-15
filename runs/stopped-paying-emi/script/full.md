@@ -96,7 +96,7 @@ What the data changed: retention data still isn't available (analytics permissio
 >
 > That same night, the bank's computer marks you overdue. Not a manager. A computer.
 >
-> In the morning, a bounce charge. At a big bank like HDFC, about ₹500. Plus GST.
+> In the morning, a fine for that failed debit. A bounce charge. At a big bank like HDFC, about ₹500. Plus GST.
 >
 > Old myth: the bank secretly piles extra interest on your penalty.
 >
