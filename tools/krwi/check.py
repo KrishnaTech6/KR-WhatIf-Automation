@@ -53,6 +53,126 @@ def _first_sentence(lines):
     return (m.group(1) if m else txt).split()
 
 
+HIGH = {"tense", "dramatic", "deep", "wonder"}            # a reveal or escalation; the rest are breathers
+TITLE_STOP = {"the", "a", "an", "of", "and", "to", "in", "on", "is", "it", "its", "your", "you", "what", "if", "why",
+              "how", "for", "with", "from", "at", "by", "be", "was", "were", "did", "do", "does", "had", "has", "have",
+              "would", "will", "could", "got", "became", "started", "india", "indias", "indian", "every", "all"}
+EFFORT = re.compile(r"\bi (went through|checked|read|ran|worked|calculated|crunched|dug|looked at|counted|pulled|"
+                    r"studied|compared|asked|tracked)\b|\b(reports|studies|surveys|datasets|papers|sources)\b")
+
+
+def _timed(bt):
+    """Estimated timing of the main script, same rules as the timeline's estimate mode.
+    -> words [(beat_index, token, t)], spans [(t0, t1)] per beat, total."""
+    from .script import norm
+    t, words, spans = 0.0, [], []
+    for i, (k, toks) in enumerate(zip(bt.keys, bt.toks())):
+        if k == bt.hard_cut:
+            t += 1.2
+        t0 = t
+        for tok in toks:
+            if tok == "(beat)":
+                t += 1.0; continue
+            if norm(tok):
+                words.append((i, tok, t))
+            t += 0.4 + (0.15 if tok.endswith(("...", "?", ".")) else 0.0)
+        spans.append((t0, t)); t += 1.2
+    return words, spans, t
+
+
+def _segments(beat):
+    """A beat split at its {mood} switches -> [(mood, seconds)]."""
+    segs, mood, cur = [], beat["mood"], []
+    for l in beat["lines"]:
+        m = re.match(r"\s*\{(\w+)\}", l)
+        if m and cur:
+            segs.append((mood, _est_seconds(cur, 150))); cur = []
+        if m:
+            mood = m.group(1).lower()
+        cur.append(l)
+    if cur:
+        segs.append((mood, _est_seconds(cur, 150)))
+    return segs
+
+
+def _retention(R, bt, beats):
+    """Retention rules from the MrBeast breakdown (Krishna, 15 Nov 2026). All WARN: look, then decide."""
+    from .script import norm
+    words, spans, total = _timed(bt)
+    # title said in plain words within 5 s, not read out as a question
+    title = bt.headers.get("TITLE", "")
+    keys = [w for w in (norm(x) for x in title.split()) if w and not w.isdigit() and w not in TITLE_STOP]
+    early = [norm(tok) for _, tok, t in words if t <= 5.0]
+    stem = lambda w: w[:5]
+    hit = [k for k in keys if any(stem(e) == stem(k) for e in early)]
+    need = (len(keys) + 1) // 2
+    R.ok(not keys or len(hit) >= need, "title echo", f"{len(hit)}/{len(keys)} title words said by 0:05 "
+         f"({', '.join(hit) or '-'}; need {need}: say the title's promise in plain words)", "WARN")
+    first = " ".join(_spoken_words(beats[0]["lines"][:1])).lower()
+    R.ok(not first.startswith("what if"), "hook opener", "starts with the consequence, not the title as a question"
+         if not first.startswith("what if") else "opens with 'What if...?': say it as something already happening", "WARN")
+    # story starts by 0:20 (logo sting short, channel line merged into the setup)
+    ch = next((n for n, (i, tok, t) in enumerate(words) if norm(tok) == "explained"), None)
+    if ch is None:
+        R.line("WARN", "story start", "no 'What If Explained' channel line found")
+    else:
+        bi = words[ch][0]
+        nxt = next((n for n in range(ch, len(words)) if words[n][1].endswith(("...", "?", ".", "!"))), None)
+        story = words[nxt + 1][2] if nxt is not None and nxt + 1 < len(words) else spans[bi][1]
+        R.ok(story <= 20.0, "story start", f"~{story:.1f} s (by 0:20: short sting, channel line merged into the setup)", "WARN")
+    # one effort beat in the first 60 s; "I ran the numbers" at most once
+    first60 = " ".join(tok for _, tok, t in words if t <= 60.0).lower()
+    m = EFFORT.search(re.sub(r"[^a-z' ]", " ", first60))
+    R.ok(m is not None, "effort beat", f"found {m.group(0)!r} in the first 60 s" if m else
+         "nothing in the first 60 s shows the work (sources checked, the number crunched)", "WARN")
+    alltext = " ".join(_spoken_words([l for b in beats for l in b["lines"]])).lower()
+    n_ran = len(re.findall(r"i ran the numbers|i worked it out", alltext))
+    R.ok(n_ran <= 1, "ran the numbers", f"'I ran the numbers' / 'I worked it out' x{n_ran} (max 1)", "WARN")
+    # energy curve, from the beat after the channel line to the end
+    start = (words[ch][0] + 1) if ch is not None else 2
+    segs = []                                            # (beat_index, t0, t1, high)
+    for i in range(start, len(beats)):
+        t = spans[i][0]
+        for mood, s in _segments(beats[i]):
+            segs.append((i, t, t + s, mood in HIGH)); t += s
+    if segs:
+        dom = {}
+        for i, a, b, h in segs:
+            dom.setdefault(i, [0.0, 0.0])[h] += b - a
+        lvl = [(i, dom[i][1] > dom[i][0]) for i in sorted(dom)]
+        pairs = [(bt.keys[a], bt.keys[b]) for (a, ha), (b, hb) in zip(lvl, lvl[1:]) if ha and hb]
+        R.ok(not pairs, "energy peaks", "no two high beats back to back" if not pairs else
+             f"high beats back to back: {pairs[0][0]} -> {pairs[0][1]} (put a breather between)", "WARN")
+        longest, run0, where = 0.0, None, None
+        for i, a, b, h in segs + [(None, segs[-1][2], segs[-1][2], True)]:
+            if h:
+                if run0 is not None and a - run0 > longest:
+                    longest, where = a - run0, run0
+                run0 = None
+            elif run0 is None:
+                run0 = a
+        R.ok(longest <= 60.0, "energy lows", f"longest low stretch ~{longest:.0f} s" + (f" from {where:.0f} s" if where is not None else "")
+             + " (max 60 s without a reveal or escalation)", "WARN")
+        peak = next((a for i, a, b, h in segs if h), None)
+        gap = (peak - segs[0][1]) if peak is not None else None
+        R.ok(gap is not None and gap <= 45.0, "first peak", f"~{gap:.0f} s after the setup starts (cycles short early, max 45 s)"
+             if gap is not None else "no high beat after the setup at all", "WARN")
+    # bonus beat and a short outro after the twist
+    kb = [bt.alias.get(w.strip().lower()) for w in bt.headers.get("KEY_BEATS", "").split(",")]
+    tw = next((k for k in kb if k and any(x in k for x in ("payoff", "twist"))), None) or \
+        next((k for k, b in zip(bt.keys, beats) if re.search(r"payoff|twist", b["name"], re.I)), None)
+    if tw is None:
+        R.line("WARN", "twist beat", "no beat named 'payoff' or 'twist' (name it so the outro can be checked)")
+    else:
+        ti = bt.keys.index(tw)
+        after = total - 1.2 - spans[ti][1]
+        R.ok(after <= 30.0, "after twist", f"~{after:.0f} s after the {tw} beat (max 30 s)", "WARN")
+        later = _segments(beats[ti])[1:] + [s for b in beats[ti + 1:] for s in _segments(b)]
+        bonus = any(m in ("warm", "playful", "deadpan") for m, _ in later[:-1] or later)
+        R.ok(bonus, "bonus beat", "a warm/playful line after the twist" if bonus else
+             "nothing warm or funny after the twist: end on a high note before the sign-off", "WARN")
+
+
 def _run(tool, *args):
     r = subprocess.run([sys.executable, "-I", os.path.join(VENDOR, tool)] + list(args), capture_output=True, text=True)
     return r.stdout + r.stderr
@@ -102,6 +222,7 @@ def script(R):
     last = " ".join(beats[-1]["lines"]).lower()
     R.ok("next" in last and "what if" in last, "sign-off", "fixed sign-off with the next What If" if "next" in last and "what if" in last
          else "last beat has no 'Next time ... next What If' sign-off", "WARN")
+    _retention(R, bt, beats)
     # verticals
     for job, (a, b) in VERTICAL_WORDS.items():
         if not os.path.exists(os.path.join(ctx.SCRIPT, f"voice-{job}.txt")):
@@ -183,6 +304,13 @@ def shots(R):
         right_after = abs(logo[0] - hook_end) <= 0.8
         R.line("FAIL" if not right_after or logo[0] > 17.5 else "WARN" if logo[0] > 16.0 else "PASS", "logo sting",
                f"at {logo[0]:.1f} s, hook ends {hook_end:.1f} s (right after the hook, by 0:16)")
+        li = next(i for i, (s, fn, tr) in enumerate(L) if s == logo[0])
+        dur = (L[li + 1][0] if li + 1 < len(L) else TOTAL) - logo[0]
+        R.ok(dur <= 2.6, "sting length", f"{dur:.1f} s on screen (2 s max, then the setup)", "WARN")
+    early = [getattr(fn, "__name__", "") for s, fn, tr in L if s <= 60.0]
+    eff = [n for n in early if "papers" in n or "counter" in n]
+    R.ok(bool(eff), "effort shot", f"{eff[0]} in the first 60 s" if eff else
+         "no papers/counter shot in the first 60 s for the effort beat", "WARN")
     cards = [st for st, fn, tr in L if getattr(fn, "kind", None) == "card" or getattr(fn, "__name__", "") == "f"]
     R.ok(len(cards) >= 3, "chapter cards", f"{len(cards)} (every chapter gets one)", "WARN")
     long = [(i, L[i + 1][0] - st) for i, (st, fn, tr) in enumerate(L[:-1]) if L[i + 1][0] - st > 8.0]

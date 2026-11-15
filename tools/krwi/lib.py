@@ -49,7 +49,7 @@ def logo_sting(bg=None):
     """The KR logo sting, right after the hook."""
     def f(c, t, t0):
         (bg or (lambda c, t: night_sky(c, W, H, t)))(c, t)
-        draw_logo(c, W / 2, H / 2, 1.25, span(t, t0, t0 + 2.5), t)
+        draw_logo(c, W / 2, H / 2, 1.25, span(t, t0, t0 + 2.0), t)
     return _named(f, "logo_sting", "logo")
 
 

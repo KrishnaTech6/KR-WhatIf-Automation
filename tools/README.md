@@ -25,9 +25,9 @@ python3 tools/wi.py <slug> check [part]      # every rule as code -> PASS / WARN
 
 | Part | Checks |
 | --- | --- |
-| script | digits / `"""` / moods in the voice scripts, length band, hook <= 15 s, first sentence short, KEY_BEATS and HARD_CUT_BEFORE resolve, hard cut ~65-75% in, sign-off, Short 115-145 and Reel 80-105 words, hook scores |
+| script | digits / `"""` / moods in the voice scripts, length band, hook <= 15 s, first sentence short, KEY_BEATS and HARD_CUT_BEFORE resolve, hard cut ~65-75% in, sign-off; retention (all WARN): title's words said by 0:05, no 'What if...?' opener, story starts by 0:20, an effort line in the first 60 s, 'I ran the numbers' max once, energy curve (no two high beats in a row, no low stretch over 60 s, first peak within 45 s of the setup), 30 s max after the payoff/twist beat with a warm or playful line in it; Short 115-145 and Reel 80-105 words, hook scores |
 | audio | `audio/report.json`: word match (main >= 97%), every ⚠️ line with its time; wav peaks <= -1 dBFS; lengths vs word count |
-| shots | shot list order, frame 0 shot, logo sting right after the hook and by 0:16, chapter cards, shots over 8 s, end card, anchor match % |
+| shots | shot list order, frame 0 shot, logo sting right after the hook and by 0:16, sting on screen 2 s max, a papers/counter shot in the first 60 s (effort beat), chapter cards, shots over 8 s, end card, anchor match % |
 | video | QA of MAIN/SHORT/REEL.mp4 (-14 LUFS, true peak, black frames, length), thumbnail size |
 | text | Instagram caption lint + human score (vendored `tools/vendor/ig`), main title <= 60, chapters start 0:00 (>= 3), Shorts link the main video |
 
