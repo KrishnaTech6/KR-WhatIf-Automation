@@ -16,7 +16,8 @@
    "publish_at": "2026-11-15T03:30:00Z",
    "schedule_kept": true,
    "file": "SHORT.mp4",
-   "url": "https://youtube.com/shorts/P8twkS6UrQA"
+   "url": "https://youtube.com/shorts/P8twkS6UrQA",
+   "verified": "public"
   },
   {
    "id": "TsuFIdqzL2A",
@@ -24,7 +25,9 @@
    "publish_at": "2026-11-15T14:30:00Z",
    "schedule_kept": true,
    "file": "REEL.mp4",
-   "url": "https://youtube.com/shorts/TsuFIdqzL2A"
+   "url": "https://youtube.com/shorts/TsuFIdqzL2A",
+   "verified": "public"
   }
- ]
+ ],
+ "files_cleaned": true
 }
