@@ -1,0 +1,60 @@
+{
+ "slug": "stopped-paying-emi",
+ "dry_run": false,
+ "privacy": "private",
+ "publish_at": null,
+ "synthetic": false,
+ "language": "en",
+ "main": {
+  "file": "MAIN.mp4",
+  "title": "What If You Stopped Paying Your EMI?",
+  "description": "You stopped paying your EMI. In 91 days, the bank marks you a defaulter, and it doesn't need a court to come for your home.\nHere's exactly what happens, day by day, by RBI rules and Indian law. And the scariest part is a paper you signed on day 1.\n\nReal rules in this video:\n- An EMI that isn't paid is marked overdue the same night, in the bank's day-end process (RBI, Nov 2021). After 90 days overdue, the loan becomes an NPA.\n- Since 2024, lenders can only add a flat penal charge for a missed EMI, with no interest on top of it (RBI, Aug 2023 circular).\n- Recovery agents can't call before 8 AM or after 7 PM, and can't threaten or shame you (RBI, Aug 2022).\n- Lenders update credit bureaus like CIBIL every two weeks, and credit records are kept for at least 7 years.\n- A guarantor owes the same as the borrower (Indian Contract Act, s.128). Under the SARFAESI Act, a bank can take possession of a home after a 60-day notice, without going to court.\n- Not repaying is not a crime by itself (Supreme Court, 2019). But a bounced auto-debit mandate can be punished like a bounced cheque, with up to 2 years in jail (Payment and Settlement Systems Act, s.25). Rare, but real.\n\nChapters:\n0:00 EMI stopped\n0:32 Day 1 · The bounce\n1:22 Day 30 · The calls\n1:54 Day 31 · The score\n2:42 Day 60 · Dad's phone\n3:10 Day 91 · Bad loan\n3:34 Month 4 · The letter\n3:51 Month 6 · The keys\n4:29 Day 1 · The signature\n4:59 The call\n\nThis is a thought experiment, not legal or financial advice. Rules, charges and timelines vary by lender and loan; if you're struggling with an EMI, talk to your bank early.\n\nIf your EMI bounced tomorrow, who would you call first?\n\nSources:\nRBI IRACP clarification, Nov 2021: https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=12194\nRBI penal charges circular via Business Standard: https://business-standard.com/finance/news/lenders-can-impose-penalty-on-defaults-only-as-penal-charges-rbi-123081800191_1.html\nRBI recovery agent rules via Business Standard: https://business-standard.com/amp/article/finance/rbi-directs-loan-recovery-agents-not-to-intimidate-borrowers-no-calling-before-8am-after-7pm-122081201144_1.html\nRBI fortnightly credit reporting via ThePrint: https://theprint.in/economy/lenders-to-share-credit-information-on-fortnightly-basis-instead-of-monthly-from-january-2025/2214939\nHDFC Bank service charges via Free Press Journal: https://www.freepressjournal.in/business/hdfc-bank-revises-service-charges-effective-august-1-2025-reduced-free-transactions-higher-fees-for-neft-rtgs-imps-ecsach-returns\nSARFAESI s.31 (Courtbook): https://courtbook.in/sarfaesi/section-31\nSale notice under SARFAESI (Nishith Desai): https://www.nishithdesai.com/research-and-articles/hotline/financial-service-update/sc-statutory-notice-of-sale-of-secured-asset-mandatory-under-sarfaesi-4909\nSupreme Court 2019 on loan default and cheating (LawStreet): https://lawstreet.co/judiciary/mere-failure-to-repay-loan-would-not-amount-to-criminal-offence-in-absence-of-criminal-intent-sc-read-judgment\nPayment and Settlement Systems Act s.25: https://www.advocatekhoj.com/library/bareacts/paymentandsettlement/25.php\nIndian Contract Act s.128: https://thelegalschool.in/blog/section-128-indian-contract-act\n\n#whatif #emi #homeloan",
+  "tags": [
+   "what if",
+   "what if you stopped paying your emi",
+   "emi not paid",
+   "emi bounce",
+   "home loan default",
+   "what happens if emi is not paid",
+   "npa",
+   "sarfaesi act",
+   "cibil score",
+   "loan guarantor",
+   "recovery agent rules",
+   "KR's What If Explained"
+  ],
+  "category": "27",
+  "thumbnail": "THUMB.jpg",
+  "comment": "If your EMI bounced tomorrow, who would you call first?",
+  "privacy": "private",
+  "publish_at": "2026-11-19T12:37:00Z"
+ },
+ "shorts": [
+  {
+   "file": "SHORT.mp4",
+   "title": "Stop Paying Your EMI? Day 1 to Day 91 #shorts",
+   "description": "Day 1 to Day 91 after you stop paying your EMI, by RBI rules.\nFull video: {MAIN_URL}",
+   "tags": [
+    "what if",
+    "emi",
+    "home loan",
+    "shorts"
+   ],
+   "privacy": "private",
+   "publish_at": "2026-11-20T03:38:00Z"
+  },
+  {
+   "file": "REEL.mp4",
+   "title": "Your Dad Never Borrowed. The Bank Still Calls. #shorts",
+   "description": "Signed as a loan guarantor? You owe what the borrower owes.\nFull video: {MAIN_URL}",
+   "tags": [
+    "what if",
+    "emi",
+    "loan guarantor",
+    "shorts"
+   ],
+   "privacy": "private",
+   "publish_at": "2026-11-20T14:31:00Z"
+  }
+ ]
+}
