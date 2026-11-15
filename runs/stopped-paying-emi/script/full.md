@@ -111,20 +111,22 @@ What the data changed: retention data still isn't available (analytics permissio
 
 ### Day thirty - the calls (1:10–1:36)
 
-> Day 30. The calls start.
+> Day 30. You're at your desk when your phone lights up. Unknown number.
 >
-> In movies, this is where the goons kick down the door.
+> You don't pick up. It rings again. And again.
+>
+> In movies, this is where goons kick down your door.
 >
 > In real life, RBI has rules.
 >
-> A recovery agent can't call you before 8 in the morning... or after 7 at night.
+> That recovery agent can't call you before 8 in the morning... or after 7 at night.
 >
 > No threats. No shouting. No shaming you in front of your family or friends.
 >
-> So the first call comes at 8:01.
+> So the next morning... the first call comes at 8:01.
 
 - **Tone:** Playful, deadpan joke.
-- **Scenes:** (1) Card: DAY 30 · The calls. (2) Movie-style goons kicking a door (exaggerated cut-outs) → torn away. (3) RBI rule strip: “8 AM – 7 PM only”, a clock with a window shaded. (4) Three crossed-out stamps: threats, shouting, shaming. (5) Phone rings, clock at 8:01. KR cut-out deadpan.
+- **Scenes:** (1) Card: DAY 30 · The calls. (1b) Your phone on a desk, “UNKNOWN NUMBER” ringing, missed-call counter 1→2→3. (2) Movie-style goons kicking a door (exaggerated cut-outs) → torn away. (3) RBI rule strip: “8 AM – 7 PM only”, a clock with a window shaded. (4) Three crossed-out stamps: threats, shouting, shaming. (5) Phone rings, clock at 8:01. KR cut-out deadpan.
 - **Sound:** Bouncy plucks; phone ring.
 - **On-screen text:** “8 AM – 7 PM” · “8:01”
 
