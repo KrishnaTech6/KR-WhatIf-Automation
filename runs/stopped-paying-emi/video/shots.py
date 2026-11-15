@@ -148,7 +148,7 @@ def s_sms(c, t, t0):
     tb = T("day_one", "bounced")
     tf = T("day_one", "fine")
     lines = [("EMI BOUNCED", "#C0392B"), ("FINE ₹500\n+ GST", "#7A4B2A")]
-    p = 0.5 * span(t, tb - 0.3, tb + 0.2) + 0.5 * span(t, tf - 0.3, tf + 0.2)
+    p = max(0.5 * span(t, t0, t0 + 0.4), 0.5 * span(t, tb - 0.3, tb + 0.2)) + 0.5 * span(t, min(t0 + 1.4, tf - 0.3), min(t0 + 1.8, tf + 0.2))
     smartphone(c, 760, 560, 1.15, t, lines, p, title="2 NEW SMS", key="sp2", rot=3)
     kr(c, 1450, 960, 1.3, "shocked", t)
     pop(c, 1450, 260, "GOOD MORNING...", t, t0 + 0.2, color="coral", size=48)
@@ -170,7 +170,7 @@ def s_fear(c, t, t0):
     collage_bg(c, t)
     tc = T("day_one", "cant")
     cut = span(t, tc - 0.1, tc + 0.6)
-    cx, cy = 640, 560
+    cx, cy = 760, 560
     if cut < 1:
         pth = skia.Path(); pth.moveTo(cx, cy)
         for i in range(1, 160):
@@ -179,17 +179,18 @@ def s_fear(c, t, t0):
             pth.lineTo(cx + r * math.cos(an + t), cy + r * math.sin(an + t))
         c.drawPath(pth, paint(RED_INK, 1 - cut, stroke=9))
         type_text(c, "interest on interest on...", cx, 180, 54, span(t, t0, t0 + 0.8), color=RED_INK)
-    if cut > 0:
+    if cut > 0.15:
         torn_strip(c, cx, 880, 560 * ease_out(cut) + 1, 140, seed=26, color="#FFF3C4", rot=-3)
         type_text(c, "FLAT PENAL CHARGE", cx, 880, 50, cut)
     if t < tc:
         stamp(c, cx, 960, "FEAR", span(t, t0 + 0.4, t0 + 0.6), rot=-8)
     ts = T("day_one", "since")
     dx, dy, a = jit("rbi24", t)
-    index_card(c, 1420 + dx, 520 + dy, 620, 420, rot=3, seed=27)
-    type_text(c, "RBI RULE · 2024", 1420 + dx, 400 + dy, 50, span(t, min(t0 + 0.5, ts - 0.2), ts + 0.5), color=BANKBLUE)
-    type_text(c, "ONE flat charge", 1420 + dx, 510 + dy, 48, span(t, min(t0 + 0.8, ts + 0.3), ts + 1.0))
-    type_text(c, "NO interest on it", 1420 + dx, 600 + dy, 48, span(t, min(t0 + 1.1, ts + 0.9), ts + 1.6), color=RED_INK)
+    index_card(c, 1300 + dx, 560 + dy, 620, 420, rot=3, seed=27)
+    pin(c, 1300 + dx, 360 + dy)
+    type_text(c, "RBI RULE · 2024", 1300 + dx, 440 + dy, 50, span(t, min(t0 + 0.5, ts - 0.2), ts + 0.5), color=BANKBLUE)
+    type_text(c, "ONE flat charge", 1300 + dx, 550 + dy, 48, span(t, min(t0 + 0.8, ts + 0.3), ts + 1.0))
+    type_text(c, "NO interest on it", 1300 + dx, 640 + dy, 48, span(t, min(t0 + 1.1, ts + 0.9), ts + 1.6), color=RED_INK)
 
 
 def s_still(c, t, t0):
@@ -202,22 +203,31 @@ def s_still(c, t, t0):
 
 # ---------------------------------------------------------------- DAY 30
 def s_desk(c, t, t0):
+    """Missed calls pile up: the counter escalates and the call slips stack on the desk."""
     collage_bg(c, t)
     dx, dy, a = jit("desk", t)
     c.drawRect(skia.Rect(0, 760 + dy, W, H), paint("#8B5E3C"))
     halftone(c, skia.Path().addRect(skia.Rect(0, 760, W, H)), "#3A2010", 0.25)
     ring = 1.0 if (t - t0) % 1.6 < 1.1 else 0.0
-    smartphone(c, 900, 500, 0.95, t, [("UNKNOWN\nNUMBER", GREY)], 1.0, key="sp3", rot=-2, buzz=ring, avatar=True)
-    ta, tg = T("day_thirty", "again"), T("day_thirty", "again", 2)
-    n = 1 + (t > ta) + (t > tg)
-    pop(c, 1500, 320, f"MISSED CALLS: {n}", t, t0 + 0.6, color="coral", size=54)
-    chai(c, 1450, 700, 0.8, t, key="deskchai")
+    smartphone(c, 760, 500, 0.95, t, [("UNKNOWN\nNUMBER", GREY)], 1.0, key="sp3", rot=-2, buzz=ring, avatar=True)
+    n = int(keys(t, [(t0, 1), (t0 + 2.5, 7), (t0 + 6.5, 23)], ease))
+    for i in range(min(n, 23)):
+        x = 1260 + (rng(i, 3) - 0.5) * 360
+        y = 900 - i * 14
+        index_card(c, x, y, 260, 90, rot=(rng(i, 4) - 0.5) * 24, seed=200 + i)
+        type_text(c, "MISSED CALL", x, y, 30, 1.0, color=RED_INK)
+    headline(c, f"MISSED CALLS: {n}", 1300, 200, 70, 1.0, seed=29)
+    chai(c, 1700, 640, 0.75, t, key="deskchai", steam=t < t0 + 4)
 
 
 def s_goons(c, t, t0):
     collage_bg(c, t)
     tr = T("day_thirty", "real")
     tear = span(t, tr - 0.2, tr + 0.4)
+    if tear >= 1:
+        headline(c, "IN REAL LIFE:", W / 2, 400, 96, 1.0, seed=30)
+        stamp(c, W / 2, 640, "RBI RULES", span(t, tr + 0.3, tr + 0.5), rot=-6)
+        return
     c.save(); c.translate(0, 900 * ease(tear)); c.rotate(-12 * tear, 960, 540)
     dx, dy, a = jit("poster", t)
     c.drawRect(skia.Rect(420 + dx, 120 + dy, 1500 + dx, 980 + dy), paint("#2A2A33"))
@@ -265,7 +275,7 @@ def s_801(c, t, t0):
     ring = 1.0 if (t - t0) % 1.4 < 1.0 else 0.0
     smartphone(c, 1100, 560, 0.85, t, [("AGENT\nCALLING...", GREY)], 1.0, key="sp4", rot=4, buzz=ring, avatar=True)
     kr(c, 1600, 960, 1.25, "neutral", t)
-    headline(c, "8:01 AM", 560, 160, 80, span(t, T("day_thirty", "eight", 2) - 0.2, T("day_thirty", "eight", 2) + 0.4), seed=36)
+    headline(c, "8:01 AM", 560, 160, 80, span(t, t0 + 0.2, t0 + 0.8), seed=36)
 
 
 # ---------------------------------------------------------------- DAY 31
@@ -300,8 +310,11 @@ def s_report(c, t, t0):
 def s_meter(c, t, t0):
     collage_bg(c, t)
     tf = T("day_thirty_one", "fall")
-    v = keys(t, [(t0, 0.78), (tf - 0.2, 0.78), (tf + 1.2, 0.42)], ease)
+    t1 = min(t0 + 1.0, tf - 0.2)
+    v = keys(t, [(t0, 0.78), (t1, 0.78), (t1 + 1.6, 0.42)], ease)
     score_meter(c, 960, 680, 1.5, t, v)
+    marker_line(c, [(1300, 420), (1360, 640)], span(t, t1, t1 + 0.6), width=14)
+    big_text(c, "FALLING", 1420, 380, 60, span(t, t1 + 0.3, t1 + 0.8), "coral")
     headline(c, "YOUR SCORE", 960, 160, 66, span(t, t0, t0 + 0.7), seed=43)
 
 
@@ -338,12 +351,12 @@ def s_breathe(c, t, t0):
     collage_bg(c, t, tint="#F6E7C8")
     kr(c, 560, 960, 1.45, "happy", t)
     th = T("day_thirty_one", "breathe")
-    headline(c, "BREATHE.", 1300, 300, 96, span(t, th - 0.3, th + 0.3), seed=58, color="#FFF3C4")
+    headline(c, "BREATHE.", 1300, 300, 96, span(t, t0 + 0.2, t0 + 0.8), seed=58, color="#FFF3C4")
     ta = T("day_thirty_one", "almost")
     dx, dy, a = jit("hope", t)
     index_card(c, 1300 + dx, 640 + dy, 760, 300, rot=-2, seed=59)
-    type_text(c, "Almost all of this", 1300 + dx, 590 + dy, 50, span(t, ta - 0.2, ta + 0.6))
-    type_text(c, "CAN STILL BE STOPPED", 1300 + dx, 690 + dy, 56, span(t, ta + 0.5, ta + 1.2), color=CIBILGRN)
+    type_text(c, "Almost all of this", 1300 + dx, 590 + dy, 50, span(t, min(t0 + 0.8, ta - 0.2), ta + 0.6))
+    type_text(c, "CAN STILL BE STOPPED", 1300 + dx, 690 + dy, 56, span(t, min(t0 + 1.4, ta + 0.5), ta + 1.2), color=CIBILGRN)
 
 
 # ---------------------------------------------------------------- DAY 60
@@ -385,7 +398,7 @@ def s_never(c, t, t0):
     type_text(c, "BORROWED: ₹0", 1350 + dx, 420 + dy, 66, span(t, t0, t0 + 0.6))
     tb = T("day_sixty", "but")
     index_card(c, 1350, 720, 640, 220, rot=3, seed=64)
-    type_text(c, "OWES: ALL OF IT", 1350, 720, 62, span(t, tb - 0.2, tb + 0.6), color=RED_INK)
+    type_text(c, "OWES: ALL OF IT", 1350, 720, 62, span(t, min(t0 + 0.8, tb - 0.2), tb + 0.6), color=RED_INK)
 
 
 # ---------------------------------------------------------------- DAY 91
@@ -397,39 +410,45 @@ def s_npa(c, t, t0):
     tp = T("day_ninety_one", "nonperforming")
     dx, dy, a = jit("npacard", t)
     index_card(c, 1460 + dx, 440 + dy, 600, 240, rot=3, seed=66)
-    type_text(c, "NON-PERFORMING", 1460 + dx, 410 + dy, 48, span(t, tp - 0.2, tp + 0.5))
-    type_text(c, "ASSET", 1460 + dx, 480 + dy, 48, span(t, tp + 0.2, tp + 0.7))
+    type_text(c, "NON-PERFORMING", 1460 + dx, 410 + dy, 48, span(t, min(t0 + 0.6, tp - 0.2), tp + 0.5))
+    type_text(c, "ASSET", 1460 + dx, 480 + dy, 48, span(t, min(t0 + 1.0, tp + 0.2), tp + 0.7))
     tb = T("day_ninety_one", "bad")
-    headline(c, "= A BAD LOAN", 1460, 760, 70, span(t, tb - 0.3, tb + 0.3), seed=67)
+    headline(c, "= A BAD LOAN", 1460, 760, 70, span(t, min(t0 + 1.4, tb - 0.3), tb + 0.3), seed=67)
 
 
 def s_trays(c, t, t0):
+    """The bank's ledger: your loan moves from GOOD LOANS to BAD LOANS."""
     collage_bg(c, t)
-    for i, (lab, x) in enumerate((("CUSTOMERS", 520), ("PROBLEMS", 1400))):
-        dx, dy, a = jit("tray" + lab, t)
-
-        def d(k, x=x + dx, y=820 + dy):
-            k.drawRect(skia.Rect(x - 300, y - 60, x + 300, y + 40), paint("#7A5A3A"))
-            halftone(k, skia.Path().addRect(skia.Rect(x - 300, y - 60, x + 300, y + 40)), "#2A1A0A", 0.3)
-        cutout(c, d)
-        torn_strip(c, x, 930, 360, 80, seed=70 + i, color="#FFF3C4" if i == 0 else "#F4C7C0")
-        type_text(c, lab, x, 930, 50, 1.0, color=INK if i == 0 else RED_INK)
+    dx, dy, a = jit("ledger", t)
+    index_card(c, 960 + dx, 600 + dy, 1500, 760, rot=-1, seed=71)
+    c.drawLine(960 + dx, 300 + dy, 960 + dx, 940 + dy, paint(INK, stroke=6))
+    type_text(c, "GOOD LOANS", 590 + dx, 300 + dy, 64, 1.0, color=CIBILGRN)
+    type_text(c, "BAD LOANS", 1330 + dx, 300 + dy, 64, 1.0, color=RED_INK)
+    for i in range(4):
+        type_text(c, f"loan #{4402 + i * 13}", 590 + dx, 420 + dy + i * 90, 40, 1.0)
     tp = T("day_ninety_one", "problem")
-    p = ease(span(t, tp - 0.6, tp + 0.2))
-    fx = 520 + 880 * p
-    fy = 640 - 260 * math.sin(math.pi * p)
-    loan_file(c, fx, fy, 0.7, t, "YOUR LOAN", key="file4", rot=-3 + 20 * math.sin(math.pi * p))
-    headline(c, "BANK BALANCE SHEET", W / 2, 150, 56, span(t, t0, t0 + 0.8), seed=72)
+    p = ease(span(t, min(t0 + 0.8, tp - 0.6), min(t0 + 1.8, tp + 0.2)))
+    fx = 590 + 740 * p
+    fy = 760 - 200 * math.sin(math.pi * p)
+    loan_file(c, fx, fy, 0.9, t, "YOUR LOAN", key="file4", rot=-3 + 20 * math.sin(math.pi * p))
+    stamp(c, 1330, 820, "NPA", span(t, min(t0 + 1.9, tp + 0.2), min(t0 + 2.1, tp + 0.4)), rot=-10)
+    headline(c, "THE BANK'S BOOKS", W / 2, 110, 60, span(t, t0, t0 + 0.8), seed=72)
 
 
 def s_sarfaesi(c, t, t0):
     collage_bg(c, t)
-    headline(c, "THE SARFAESI ACT, 2002", W / 2, 200, 78, span(t, t0, t0 + 1.0), seed=74)
-    type_text(c, "one of India's toughest loan laws", W / 2, 330, 46, span(t, t0 + 0.6, t0 + 1.3))
+    headline(c, "THE SARFAESI ACT, 2002", W / 2, 150, 78, span(t, t0, t0 + 1.0), seed=74)
+    type_text(c, "one of India's toughest loan laws", W / 2, 270, 46, span(t, t0 + 0.6, t0 + 1.3))
     tj = T("day_ninety_one", "judge")
-    court(c, 960, 1000, 0.9, t, key="court2")
-    marker_line(c, [(620, 980), (1300, 560)], span(t, min(t0 + 1.4, tj - 0.3), min(t0 + 1.8, tj + 0.1)), width=22)
-    stamp(c, 960, 780, "NO JUDGE NEEDED", span(t, min(t0 + 1.8, tj), min(t0 + 2.0, tj + 0.2)), rot=-6)
+    court(c, 620, 900, 0.75, t, key="court2")
+    xmark(c, 620, 700, 2.6, span(t, min(t0 + 1.4, tj - 0.3), min(t0 + 1.8, tj + 0.1)))
+    torn_strip(c, 1380, 560, 640, 150, seed=75, color="#FFF3C4", rot=3)
+    type_text(c, "NO JUDGE NEEDED", 1380, 560, 58, span(t, min(t0 + 1.6, tj - 0.2), min(t0 + 2.2, tj + 0.4)), color=RED_INK)
+    house(c, 1380, 1000, 0.8, t, key="h_sf")
+    p = ease(span(t, t0 + 3.0, t0 + 4.2))
+    if p > 0:
+        torn_strip(c, 1380 + 120 * p, 820, 220, 70, seed=76, color="#F4C7C0", rot=-8)
+        type_text(c, "BANK", 1380 + 120 * p, 820, 40, 1.0, color=RED_INK)
 
 
 # ---------------------------------------------------------------- MONTH 4
@@ -453,8 +472,8 @@ def s_drawer(c, t, t0):
         halftone(k, skia.Path().addRect(skia.Rect(500, 640, 1420, 1040)), "#3A2010", 0.35)
     cutout(c, back)
     for i in range(4):   # older unopened notices already inside
-        index_card(c, 760 + i * 120, 700 - i * 8, 300, 160, rot=(rng(i, 9) - 0.5) * 20, seed=120 + i)
-        type_text(c, "NOTICE", 760 + i * 120, 690 - i * 8, 34, 1.0, color=RED_INK)
+        index_card(c, 650 + i * 210, 690 - (i % 2) * 30, 240, 140, rot=(rng(i, 9) - 0.5) * 16, seed=120 + i)
+        type_text(c, "NOTICE", 650 + i * 210, 680 - (i % 2) * 30, 38, 1.0, color=RED_INK)
     typed_letter(c, 960, 380 + 360 * p, 0.55, t, [("NOTICE", 40, RED_INK)], 1.0, key="letter2", rot=-8 + 6 * p)
 
     def front(k):
@@ -524,23 +543,24 @@ def s_auction(c, t, t0):
 
 
 def s_surplus(c, t, t0):
+    """Example sale: a ₹42 lakh pile splits into ₹28 lakh for the bank and ₹14 lakh back to you (to scale)."""
     collage_bg(c, t)
-    headline(c, "EXAMPLE", 300, 140, 50, 1.0, seed=88)
-    p1 = ease_out(span(t, t0 + 0.2, t0 + 0.9))
-    p2 = ease_out(span(t, t0 + 1.0, t0 + 1.7))
+    headline(c, "EXAMPLE: HOUSE SOLD FOR ₹42 LAKH", W / 2, 120, 58, span(t, t0, t0 + 0.8), seed=88)
     tb = T("month_six", "extra")
-    p3 = ease(span(t, min(t0 + 1.8, tb - 0.3), min(t0 + 2.6, tb + 0.6)))
-    x0, wfull = 260, 1400
-    torn_strip(c, x0 + wfull * p1 / 2, 360, wfull * p1 + 1, 150, seed=90, color="#FDFCF7")
-    type_text(c, "HOUSE SOLD: ₹42 LAKH", x0 + 700, 360, 56, p1)
-    w28 = wfull * 28 / 42
-    torn_strip(c, x0 + w28 * p2 / 2, 580, w28 * p2 + 1, 150, seed=91, color="#F4C7C0")
-    type_text(c, "TO THE BANK: ₹28 LAKH", x0 + w28 / 2, 580, 52, p2, color=RED_INK)
-    w14 = wfull - w28
-    xx = x0 + w28 + w14 / 2 - 420 * p3
-    torn_strip(c, xx, 800 + 60 * p3, w14 + 1, 150, seed=92, color="#CDE8C4", rot=-3 * p3)
-    type_text(c, "₹14 LAKH", xx, 800 + 60 * p3, 58, span(t, t0 + 1.0, t0 + 1.6), color=CIBILGRN)
-    big_text(c, "BACK TO YOU", xx, 990, 64, p3, "teal")
+    sp = ease(span(t, t0 + 1.2, t0 + 2.4))
+    back = ease(span(t, min(t0 + 2.4, tb - 0.3), min(t0 + 3.4, tb + 0.6)))
+    n_bank, n_you = 14, 7
+    xb = 960 - 380 * sp
+    xy = 960 + 380 * sp + 250 * back
+    note_stack(c, xb, 900, 0.9, n_bank, t, key="bk")
+    note_stack(c, xy, 900 - n_bank * 23 * (1 - sp), 0.9, n_you, t, key="yu")
+    if sp > 0.5:
+        torn_strip(c, xb, 980, 380, 90, seed=93, color="#F4C7C0")
+        type_text(c, "BANK: ₹28 LAKH", xb, 980, 44, 1.0, color=RED_INK)
+        torn_strip(c, xy, 980, 380, 90, seed=94, color="#CDE8C4")
+        type_text(c, "YOU: ₹14 LAKH", xy, 980, 44, 1.0, color=CIBILGRN)
+    if back > 0.5:
+        big_text(c, "BACK TO YOU", xy, 380, 60, back, "teal")
 
 
 # ---------------------------------------------------------------- TWIST
@@ -549,7 +569,7 @@ def s_notcrime(c, t, t0):
     handcuffs(c, 600, 560, 1.6, t)
     tn = T("twist", "crime")
     xmark(c, 600, 560, 2.8, span(t, tn - 0.1, tn + 0.3))
-    headline(c, "NOT A CRIME", 1360, 400, 84, span(t, tn - 0.3, tn + 0.3), seed=90)
+    headline(c, "NOT A CRIME", 1360, 400, 84, span(t, min(t0 + 0.4, tn - 0.3), tn + 0.3), seed=90)
     stamp(c, 600, 300, "JAIL?", span(t, t0 + 0.2, t0 + 0.4), rot=-8)
     signature_form(c, 1400, 760, 0.45, t, "AGREEMENT", sig_p=1.0, circle=1.0, key="form2")
 
@@ -620,9 +640,9 @@ def s_callbank(c, t, t0):
     index_card(c, 620 + dx, 480 + dy, 760, 520, rot=-2, seed=103)
     type_text(c, "CALL BEFORE DAY 90", 620 + dx, 330 + dy, 54, span(t, t0, t0 + 0.6), color=CIBILGRN)
     tt = T("payoff", "time")
-    type_text(c, "+ ask for more time", 620 + dx, 460 + dy, 46, span(t, tt - 0.3, tt + 0.3))
+    type_text(c, "+ ask for more time", 620 + dx, 460 + dy, 46, span(t, min(t0 + 0.6, tt - 0.3), tt + 0.3))
     ts = T("payoff", "smaller")
-    type_text(c, "+ ask for a smaller EMI", 620 + dx, 550 + dy, 46, span(t, ts - 0.3, ts + 0.3))
+    type_text(c, "+ ask for a smaller EMI", 620 + dx, 550 + dy, 46, span(t, min(t0 + 1.2, ts - 0.3), ts + 0.3))
 
 
 def s_climb(c, t, t0):
