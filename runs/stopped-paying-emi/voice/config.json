@@ -1,0 +1,36 @@
+{
+ "title": "What If You Stopped Paying Your EMI?",
+ "lang": "en",
+ "tries": 4,
+ "jobs": [
+  {
+   "name": "main",
+   "kind": "main",
+   "script": "TITLE: What If You Stopped Paying Your EMI?\nLANG: en\nKEY_BEATS: hook, keys, twist\nHARD_CUT_BEFORE: keys\n\n[Hook | tense]\nYou stopped paying your E M I.\nIn ninety-one days, the bank marks you a defaulter.\nNo court needed... the bank can come for your home.\nAnd the scariest part? A paper you signed... on day one.\n\n[Promise - logo | neutral]\nThis is K R's What If Explained. I went through fourteen R B I rules, laws and Supreme Court judgments for this.\nSay you took a home loan of thirty lakh rupees.\nYour E M I is about twenty-six thousand a month.\nAnd this month... you just don't pay.\n\n[Day one - the bounce | tense]\nDay one. Midnight. You're asleep. The auto-debit knocks on your account... and finds it empty.\nThat same night, the bank's computer marks you overdue. Not a manager. A computer.\nYou wake up to two S M S. One: E M I bounced. Two: a five hundred rupee fine for that failed debit, plus G S T. That's the bounce charge, at a big bank like H D F C.\n{playful} Your first fear: now they'll pile interest on top of this fine too.\nThey can't. Since twenty twenty-four, R B I says: a flat penal charge. No interest on top of it.\n{deadpan} That helps a little. But your account... is still empty.\n\n[Day thirty - the calls | playful]\nDay thirty. You're at your desk when your phone lights up. Unknown number.\nYou don't pick up. It rings again. And again.\nIn movies, this is where goons kick down your door.\nIn real life, R B I has rules.\nThat recovery agent can't call you before eight in the morning... or after seven at night.\nNo threats. No shouting. No shaming you in front of your family or friends.\n{deadpan} So the next morning... the first call comes at eight oh one.\n\n[Day thirty-one - the score | tense]\nDay thirty-one. You've missed a full E M I, and your loan gets a label. S M A one. Special Mention Account.\nEvery two weeks, lenders send updates to credit bureaus like CIBIL.\nSo now your report shows it. And your score starts to fall.\nThat new phone on no-cost E M I? Rejected. The credit card upgrade? Rejected.\nAnd that record... is kept for at least seven years.\n{warm} Quick pause. If this is your life right now... breathe.\nAlmost everything you'll see next can still be stopped. Especially if you act early.\n{neutral} So tell me in the comments: if your E M I bounced tomorrow... who would you call first?\n\n[Day sixty - dad's phone | soft]\nDay sixty. A phone rings again. But not yours.\nIt's your father's. Remember? He signed as your guarantor.\nIn Indian law, a guarantor owes exactly what you owe.\nThe bank can go straight to him... and his credit score falls with yours.\nHe never took a single rupee of that loan. But now... he owes it too.\n\n[Day ninety-one - bad loan | dramatic]\nDay ninety-one. Your loan gets a new name. N P A. Non-performing asset.\nIn plain words... a bad loan.\nYou're not a customer anymore. You're a problem on the bank's balance sheet.\nAnd now the bank can use one of India's toughest laws. The SARFAESI Act.\nRemember? No judge needed.\n\n[Month four - the letter | neutral]\nMonth four. A letter arrives. It's polite. And it's very clear.\nSixty days. Pay everything you owe... or the bank takes the house.\nYou read it twice. Then you put it in a drawer.\n\n[Month six - the keys | deep]\nMonth six. (pause 0.4)\nBank officers at your door. They take possession. A notice goes up on your wall. (pause 0.4)\nYour name. Your address. Printed in two newspapers... one in your own language. (pause 0.4)\nThe whole colony reads it... with their morning chai. (pause 0.5)\nThirty days later, your home can go to auction.\n{neutral} One fair rule: if it sells for more than you owe, the extra money usually comes back to you.\n\n[Twist - the signature | soft]\nHere's the twist. That paper from day one.\nNot paying a loan is not a crime.\nThe Supreme Court said it in twenty nineteen: being unable to repay is not cheating.\n{dramatic} But on day one, you signed an auto-debit mandate. And when that bounces... the law treats it like a bounced cheque.\nIt can mean up to two years in jail. Rare. But real.\n{deadpan} The loan can't put you in jail. Your signature can.\n\n[Payoff - the call | warm]\nNow the good part. The bank doesn't want your house. It wants its money.\nSo call the bank before day ninety. Ask for more time, or a smaller E M I.\nStart paying on time again... and your score slowly climbs back.\nOne bounced E M I is a bad month. Not a bad life.\nSo next time the phone buzzes... you call them first.\nEver got that bounce S M S? Yes or no?\nNext time: what if India and Pakistan never split? (beat)\nBut that story... is for the next What If.\n",
+   "strict": [
+    "hook",
+    "keys",
+    "twist"
+   ],
+   "hard_cut_before": [
+    "keys"
+   ]
+  },
+  {
+   "name": "short",
+   "kind": "short",
+   "script": "TITLE: What If You Stopped Paying Your EMI? — Short\nLANG: en\nKEY_BEATS: hook\nHARD_CUT_BEFORE:\n\n[Hook | dramatic]\nStop paying your E M I. In ninety-one days, your home can be at risk.\n\n[Day one | neutral]\nDay one. That same night, the bank's computer marks you overdue.\nDay thirty. The calls start. But by R B I rules... never before eight in the morning. Never after seven at night.\n\n[Day thirty-one | dramatic]\nDay thirty-one. Your loan gets a label. And it lands on your credit report... where it's kept for at least seven years.\nDay ninety-one. You're not a customer anymore. You're a bad loan.\n\n[The door | dramatic]\nThen a letter. Then bank officers at your door. Then your name... in the newspaper.\nAnd the scariest part? It's a paper you signed on day one.\n\n[Loop | neutral]\nFull video on K R's What If Explained.\nAnd it all starts... the day you\n",
+   "strict": [
+    "hook"
+   ]
+  },
+  {
+   "name": "reel",
+   "kind": "short",
+   "script": "TITLE: What If You Stopped Paying Your EMI? — Reel\nLANG: en\nKEY_BEATS: hook\nHARD_CUT_BEFORE:\n\n[Hook | dramatic]\nYour dad never borrowed a rupee. The bank still calls him.\n\n[The paper | neutral]\nYears ago, he signed one paper for you. As your guarantor.\nNow you've stopped paying your E M I.\nAnd in Indian law... a guarantor owes exactly what you owe.\nThe bank doesn't have to chase you first. It can go straight to him.\n\n[The fall | wonder]\nHis credit score falls with yours.\n{soft} All because of one signature.\n\n[Tease | neutral]\nAnd that's not even the scariest paper in this story.\nFull story on YouTube. K R's What If Explained. Link in bio.\n",
+   "strict": [
+    "hook"
+   ]
+  }
+ ]
+}
