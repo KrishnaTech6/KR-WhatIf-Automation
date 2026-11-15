@@ -64,14 +64,14 @@ What the data changed: retention data still isn't available (analytics permissio
 
 > You stopped paying your EMI.
 >
-> In 91 days, you're a bad loan.
+> In 91 days, the bank marks you a defaulter.
 >
 > No court needed... the bank can come for your home.
 >
 > And the scariest part? A paper you signed... on day 1.
 
 - **Tone:** Tense, close, quiet. Like a friend telling you what's coming.
-- **Scenes:** (1) Frame 0: paper cut-out phone on a torn red strip, screen stamped “EMI BOUNCED”, buzzing (jit); behind it a cut-out house with a dashed padlock outline. (2) A paper calendar; a red marker counts to 91, a red “BAD LOAN” stamp lands on a loan file. (3) A courtroom cut-out torn away; the house cut-out, a red “AUCTION?” stamp hovers, not landing. (4) A signature on a form, circled in red marker; the camera pulls away before we can read it.
+- **Scenes:** (1) Frame 0: paper cut-out phone on a torn red strip, screen stamped “EMI BOUNCED”, buzzing (jit); behind it a cut-out house with a dashed padlock outline. (2) A paper calendar; a red marker counts to 91, a red “DEFAULTER” stamp lands on a loan file. (3) A courtroom cut-out torn away; the house cut-out, a red “AUCTION?” stamp hovers, not landing. (4) A signature on a form, circled in red marker; the camera pulls away before we can read it.
 - **Sound:** Ticking + low heartbeat; phone buzz SFX; stamp thud held back.
 - **On-screen text:** “EMI STOPPED” · “91 DAYS” · “NO COURT”
 
@@ -280,7 +280,7 @@ What the data changed: retention data still isn't available (analytics permissio
 | 3:33 | Twist: not a crime, but the mandate can be | low → high |
 | 4:06 | Bonus: bank wants money, call first; callback to frame 0; comment prompt 2; tease | low |
 
-20-second test: **context** "You stopped paying your EMI" (0:01) · **stakes** "you're a bad loan... the bank can come for your home" (0:03–0:08) · **curiosity gap** "A paper you signed... on day one" (0:12). Effort beat at ~0:18 ("I went through 14 RBI rules, laws and Supreme Court judgments").
+20-second test: **context** "You stopped paying your EMI" (0:01) · **stakes** "the bank marks you a defaulter... the bank can come for your home" (0:03–0:08) · **curiosity gap** "A paper you signed... on day one" (0:12). Effort beat at ~0:18 ("I went through 14 RBI rules, laws and Supreme Court judgments").
 
 ## YouTube Short
 
