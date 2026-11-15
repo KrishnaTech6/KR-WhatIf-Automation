@@ -4,9 +4,9 @@ KEY_BEATS: hook, keys, twist
 HARD_CUT_BEFORE: keys
 
 [Hook | tense]
-Your phone buzzes. E M I bounced.
-You've stopped paying. A ninety-day clock just started.
-When it runs out... the bank can come for your home.
+You stopped paying your E M I.
+In ninety-one days, you're a bad loan.
+No court needed... the bank can come for your home.
 And the scariest part? A paper you signed... on day one.
 
 [Promise - logo | neutral]
@@ -51,7 +51,7 @@ Day ninety-one. Your loan gets a new name. N P A. Non-performing asset.
 In plain words... a bad loan.
 You're not a customer anymore. You're a problem on the bank's balance sheet.
 And now the bank can use one of India's toughest laws. The SARFAESI Act.
-No court case needed.
+Remember? No judge needed.
 
 [Month four - the letter | neutral]
 Month four. A letter arrives. It's polite. And it's very clear.
