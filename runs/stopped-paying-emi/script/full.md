@@ -102,7 +102,7 @@ What the data changed: retention data still isn't available (analytics permissio
 >
 > They can't. Since 2024, RBI says: a flat penal charge. No interest on top of it.
 >
-> Small mercy. Your account is still empty.
+> That helps a little. But your account... is still empty.
 
 - **Tone:** Tense, then playful myth-bust, deadpan close.
 - **Scenes:** (1) Card: DAY 1 · The bounce. (2) Clock cut-out at 12:00; a NACH arrow hits an empty bank-account cut-out, bounces off. (3) A typed ledger line: “OVERDUE” stamped by a paper computer (no person). (4) Index card ₹500 + GST. (5) MYTH stamp over a tangled interest spiral; RBI 2024 strip slides in, spiral cut straight into one flat tag “PENAL CHARGE”. (6) Empty wallet again.
