@@ -39,7 +39,7 @@ Fact check: research agent + a separate fact-check agent re-checked 17 claims: 1
 
 ## Structure, voice and sound
 
-Countdown ladder: Day 1 → Day 30 → Day 31 → Day 60 → Day 91 → Month 4 → Month 6 (hard silence) → twist: the day-1 signature → payoff: call the bank. English, 656 words, ~4:35.
+Countdown ladder: Day 1 → Day 30 → Day 31 → Day 60 → Day 91 → Month 4 → Month 6 (hard silence) → twist: the day-1 signature → payoff: call the bank. English, 765 words, ~5:20.
 
 What the data changed: retention data still isn't available (analytics permission missing). The best Shorts opened on "you"/a number in the first words, so both verticals do; the Reel opens on a family person (the "nani" pattern that worked last time).
 
@@ -142,6 +142,10 @@ What the data changed: retention data still isn't available (analytics permissio
 >
 > And that record... is kept for at least 7 years.
 >
+> Quick pause. If this is your life right now... breathe.
+>
+> Almost everything you'll see next can still be stopped. Especially if you act early.
+>
 > So tell me in the comments: if your EMI bounced tomorrow... who would you call first?
 
 - **Tone:** Tense, then neutral for the comment ask.
@@ -217,13 +221,11 @@ What the data changed: retention data still isn't available (analytics permissio
 
 ### Twist - the signature (3:33–4:06)
 
-> Now, that paper from day 1. Here's the twist.
+> Here's the twist. That paper from day 1.
 >
 > Not paying a loan is not a crime.
 >
 > The Supreme Court said it in 2019: being unable to repay is not cheating.
->
-> You can't go to jail for being broke.
 >
 > But on day 1, you signed an auto-debit mandate. And when that bounces... the law treats it like a bounced cheque.
 >
@@ -238,9 +240,13 @@ What the data changed: retention data still isn't available (analytics permissio
 
 ### Payoff - the call (4:06–4:34)
 
-> Good news: the bank doesn't want your house. It wants its money.
+> Now the good part. The bank doesn't want your house. It wants its money.
 >
-> Call the bank before day 90. Ask for time, or a smaller EMI.
+> So call the bank before day 90. Ask for more time, or a smaller EMI.
+>
+> Start paying on time again... and your score slowly climbs back.
+>
+> One bounced EMI is a bad month. Not a bad life.
 >
 > So next time the phone buzzes... you call them first.
 >
@@ -266,7 +272,7 @@ What the data changed: retention data still isn't available (analytics permissio
 
 ## Retention map and runtime
 
-656 words, ~4:35. Cut first if long: the HDFC charge line, then "You read it twice."
+765 words, ~5:20. Positive beats added (Day 31 pause, payoff). Cut first if long: the HDFC charge line, then "You read it twice."
 
 | Time | Mechanic | Energy |
 | --- | --- | --- |
