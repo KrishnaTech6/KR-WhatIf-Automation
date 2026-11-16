@@ -4,50 +4,51 @@ KEY_BEATS: hook, gums, twist
 HARD_CUT_BEFORE: gums
 
 [Hook | tense]
+Packet number two hundred and ten.
 You've eaten only Maggi for thirty days. Breakfast, lunch, dinner.
-Two hundred and ten packets.
 Every day, about three times the salt your body should get.
 {soft} And salt... isn't even the scary part.
 
 [Promise - logo | neutral]
 This is K R's What If Explained. I went through twelve nutrition labels, studies and health reports for this one.
-Here's the deal. An adult needs about two thousand one hundred calories a day.
-One packet gives you about three hundred.
-So to survive on Maggi alone... you need seven packets. Every. Single. Day.
+So... how did you get here?
+{playful} Thirty days ago, your roommate Rohan laughed at you. Bet you can't eat only Maggi for a month. Five thousand rupees.
+{neutral} You did the maths. An adult needs about two thousand one hundred calories a day. One packet gives about three hundred.
+So, seven packets. Every. Single. Day. You shook his hand.
 
 [Day one - the dream | playful]
-Day one. Hostel room. Seven packets lined up like trophies.
+Day one. You line up seven packets on your hostel shelf like trophies. Rohan films it for the group chat.
 You're not alone, by the way. India ate over six hundred crore servings of Maggi in just fifteen months.
-Total cost? Around a hundred rupees a day. Cheaper than one pizza.
-Two minutes each, they say. {deadpan} Seven times. That's your whole day, sorted.
-Honestly? Day one feels amazing.
+Your whole day costs around a hundred rupees. Cheaper than one pizza.
+{deadpan} Two minutes a packet. Seven times. Easiest five thousand rupees of your life.
 
 [Day three - the salt | tense]
-Day three. You wake up... and your face looks puffy.
-Your rings feel tight. You're thirsty all the time.
+Day three. You look in the mirror... and your face looks puffy.
+Your ring won't slide off. You've finished two bottles of water before lunch.
 That's the salt. Each packet carries more than a third of your daily limit.
 Seven packets... and your body holds on to extra water just to dilute it.
 {neutral} Your blood pressure has to work harder. You can't feel it. But it's happening.
 
 [Week one - the wax myth | playful]
-Week one. You hit the bathroom... and nothing happens.
+Week one. Twenty minutes in the bathroom. Nothing.
 Maggi has very little fibre. Your gut has almost nothing to push with.
-{playful} Now, your cousin on WhatsApp says: Maggi is coated in wax. It stays in your stomach for days.
+Then your mom calls. She's heard about the bet.
+{playful} Beta, Maggi is coated in wax! It stays in your stomach for days!
 Fact-checkers have checked that one again and again. No wax. Nestle says the same.
-{deadpan} The problem isn't what's in the packet. It's what isn't.
+{deadpan} Mom's wrong about the wax. But she's right to worry. The problem isn't what's in the packet. It's what isn't.
 
 [Day ten - the bacteria | wonder]
 Day ten. And the ones suffering most... aren't you.
-They're the trillions of bacteria living in your gut. They eat fibre. And you've stopped feeding them.
-In twenty fifteen, a scientist in London, Tim Spector, had his son eat only fast food for ten days.
+Inside your gut live trillions of bacteria. They eat fibre. And for ten days, you've fed them nothing.
+In twenty fifteen, a scientist in London, Tim Spector, tried this on his own son. Only fast food, for ten days.
 By the end, about forty percent of the bacteria types in his gut... were gone.
-{neutral} So here's my question. What's the longest you've ever survived on just Maggi? Tell me in the comments.
+{neutral} Rohan is sure you'll quit before day fifteen. Would you? What's the longest you've ever survived on just Maggi? Tell me in the comments.
 
 [Day twenty - the surprise | neutral]
-Day twenty. Here's something nobody expects.
-Protein? You're actually not doing that badly. Seven packets give you around forty grams. You need about fifty-four.
+Day twenty. You're still going. And here's the surprise.
+Protein? Not that bad. Seven packets give you around forty grams. You need about fifty-four.
 Calories? Fine. You're not even hungry.
-{tense} But you feel tired. Heavy. Like your phone stuck at five percent.
+{tense} But in class, you read the same line five times. Heavy. Like your phone stuck at five percent.
 Because full... is not the same as fed.
 {neutral} And this isn't only a thirty-day problem. A twenty fourteen study of over ten thousand Korean adults found something odd.
 Women who ate instant noodles twice a week or more had higher odds of metabolic syndrome. Belly fat, high blood sugar, high blood pressure... together.
@@ -55,9 +56,9 @@ Women who ate instant noodles twice a week or more had higher odds of metabolic 
 
 [Day thirty - gums | deep]
 Day thirty. (pause 0.4)
-You wake up tired. Again. Your legs ache on the stairs. (pause 0.4)
-Small things. Easy to ignore. (pause 0.4)
-But in thirty days of Maggi... you've had almost zero vitamin C. (pause 0.5)
+The last packet. You've won. (pause 0.4)
+But you're so tired, you climb the stairs one step at a time. Your legs ache. (pause 0.4)
+In thirty days of Maggi... you've had almost zero vitamin C. (pause 0.5)
 Keep going a few more weeks... and your gums start to bleed. Bruises show up from nowhere. Small cuts stop healing.
 
 [Twist - the sailors | neutral]
@@ -65,14 +66,12 @@ Here's the twist. This has a name.
 {dramatic} Scurvy.
 The disease that killed sailors on long sea voyages, hundreds of years ago.
 With little or no vitamin C, the tiredness can start within weeks. The bleeding... within one to three months.
-{soft} And it's not just history. In twenty sixteen, doctors in Sydney found scurvy in twelve patients.
-Some of them were overweight. They looked well fed.
+{soft} And it's not just history. In twenty sixteen, doctors in Sydney found scurvy in twelve patients. Some were overweight. They looked well fed.
 {deadpan} You can be full every day... and still be starving.
 
 [Payoff - the lemon | warm]
-The good news? Give your body vitamin C again, and the signs usually start fading within days.
-So, back to that hostel room. Same Maggi.
-Add peas. An egg. One squeeze of lemon.
+Rohan pays up. And the good news? With vitamin C again, the signs usually start fading within days.
+Back on that hostel shelf: add peas. An egg. One squeeze of lemon.
 {playful} Same two minutes. Completely different month.
 What's your secret Maggi add-on?
 {neutral} Next time: What if you walked ten thousand steps every day for a year? But that story... is for the next What If.
