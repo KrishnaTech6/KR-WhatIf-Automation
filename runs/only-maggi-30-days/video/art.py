@@ -13,6 +13,15 @@ WOOD, WOOD_D, WOOD_L = "#7A4A2E", "#4E2E1C", "#A06A44"
 NIGHT = "#241843"
 COOL = "#7FB2FF"
 SKIN = "#C98B5E"
+PRESETS = {
+    "you": dict(shirt="#3E5BA8", shirt_d="#26386E", pants="#23305A", hair="short", top="hoodie", cap="#E0A030"),
+    "mate": dict(shirt="#C2582F", shirt_d="#7A321A", pants="#3A3A4C", hair="cap", top="tee", cap="#E0A030"),
+    "her": dict(shirt="#8A2A5C", shirt_d="#561838", pants="#2E2A48", hair="long", top="tee", cap="#E0A030"),
+    "kid": dict(shirt="#2E8B6A", shirt_d="#1B5A44", pants="#2A3050", hair="short", top="tee", cap="#E0A030"),
+}
+SKIN_L, SKIN_D = "#DFA270", "#A86A40"
+
+
 
 
 def rr(x0, y0, x1, y1, r):
@@ -267,7 +276,7 @@ def packet(c, x, y, s, t=0.0, rot=0.0, a=1.0, torn=0.0, dimmed=0.0, glow_a=0.0, 
     sh = paint("space", 0.45); sh.setMaskFilter(skia.MaskFilter.MakeBlur(skia.kNormal_BlurStyle, 16))
     c.drawRRect(rr(-170, -200, 196, 250, 40), sh)
     body = _pouch_path()
-    c.drawPath(body, hgrad(-200, 200, [YEL_D, YEL, YEL_L, YEL, YEL_D], [0, 0.2, 0.45, 0.8, 1]))
+    c.drawPath(body, hgrad(-200, 200, ["#D9820E", "#F6B21C", "#FFD54A", "#F2A41C", "#C8700C"], [0, 0.2, 0.45, 0.8, 1]))
     ellipse(c, -60, -90, 90, 150, paint("white", 0.16))   # pillow sheen
 
     def crimp(y0, sign):
@@ -321,10 +330,10 @@ def packet(c, x, y, s, t=0.0, rot=0.0, a=1.0, torn=0.0, dimmed=0.0, glow_a=0.0, 
     # wavy banner
     ban = skia.Path(); ban.moveTo(-176, 40)
     ban.cubicTo(-90, 18, 90, 62, 176, 40); ban.lineTo(176, 118); ban.cubicTo(90, 140, -90, 96, -176, 118); ban.close()
-    c.drawPath(ban, paint("#7A2E12"))
-    c.drawPath(ban, paint("#F7E2A8", 0.7, stroke=3))
+    c.drawPath(ban, paint("#2E8B45"))
+    c.drawPath(ban, paint("#CFF0B0", 0.7, stroke=3))
     text(c, "MASALA", 0, 102, font("extrabold", 58), paint("#FFE9B0"))
-    text(c, "NOODLES", 0, 182, font("extrabold", 46), paint("#7A2E12"))
+    text(c, "NOODLES", 0, 182, font("extrabold", 46), paint("#1F5E30"))
     # chilli + spice dots
     ch = skia.Path(); ch.moveTo(118, 150); ch.quadTo(150, 170, 128, 196); ch.quadTo(132, 172, 110, 160); ch.close()
     c.drawPath(ch, paint("#D8342E"))
@@ -382,78 +391,69 @@ def shelf(c, x, y, w, t, n=7, shows=None, lemon_a=1.0, lemon_glow=0.0, ps=0.42):
 
 
 # ---------------------------------------------------------------- people (faceless silhouettes)
-def figure(c, x, y, s, a=1.0, arm_l=110, arm_r=70, lean=0.0, belly=0.0, rim="amber", fill=NIGHT, head_tilt=0.0,
-           seated=False, hair="short", top="hoodie", shirt=None, slump=0.0):
-    """Faceless silhouette, feet at (x, y), ~600 px tall at s=1. Arm angles in degrees (0 = right, 90 = down).
-    Two-tone rim light (warm left, cool right), hair shape, hoodie/tee, shoes, hands. slump bows the head+shoulders."""
+def figure(c, x, y, s, a=1.0, arm_l=110, arm_r=70, lean=0.0, belly=0.0, rim="amber", fill=None, head_tilt=0.0,
+           seated=False, hair=None, top=None, shirt=None, slump=0.0, who="you", expr="neutral", back=False, puff=0.0, look=0.0):
+    """Cartoon person (stylised, faceless of any real person), feet at (x, y), ~620 px tall at s=1.
+    who: you | mate | her | kid presets; filled, shaded clothes, two-tone rim light, a face with an expression."""
     if a <= 0:
         return
+    P = dict(PRESETS.get(who, PRESETS["you"]))
+    if hair:
+        P["hair"] = hair
+    if top:
+        P["top"] = top
+    if shirt:
+        P["shirt"] = shirt
     c.save(); c.translate(x, y); c.scale(s, s); c.rotate(lean)
     if a < 1:
         c.saveLayerAlpha(None, int(255 * a))
-    glow(c, 0, -400, 330, rim, 0.22)
-    shirt = shirt or ("#3A2A6A" if fill == NIGHT else fill)
-    pants = "#16102C"
+    glow(c, 0, -400, 340, rim, 0.2)
+    sh = paint("space", 0.4); sh.setMaskFilter(skia.MaskFilter.MakeBlur(skia.kNormal_BlurStyle, 14))
+    ellipse(c, 10, 0, 130, 22, sh)
     sy = 30 * slump
     legs = skia.Path()
     if not seated:
-        legs.addPath(_limb(-30, -230, -36, -14, 48)); legs.addPath(_limb(30, -230, 36, -14, 48))
-        feet = [(-44, -8), (44, -8)]
+        legs.addPath(_limb(-32, -235, -38, -18, 54)); legs.addPath(_limb(32, -235, 38, -18, 54))
+        feet = [(-46, -10), (46, -10)]
     else:
-        legs.addPath(_limb(-30, -215, 90, -215, 48)); legs.addPath(_limb(90, -215, 96, -24, 46))
-        legs.addPath(_limb(30, -215, 110, -205, 48)); legs.addPath(_limb(110, -205, 120, -24, 46))
-        feet = [(104, -16), (128, -16)]
-    c.drawPath(legs, paint(pants))
+        legs.addPath(_limb(-32, -215, 90, -215, 54)); legs.addPath(_limb(90, -215, 96, -24, 50))
+        legs.addPath(_limb(32, -215, 112, -205, 54)); legs.addPath(_limb(112, -205, 122, -24, 50))
+        feet = [(104, -14), (130, -14)]
+    c.drawPath(legs, hgrad(-60, 140, [P["pants"], "#151A36"]))
     for fx, fy in feet:
-        ellipse(c, fx + 8, fy, 38, 16, paint("#0A0716"))
-        ellipse(c, fx + 8, fy - 4, 34, 8, paint("cream", 0.25))
-    bw = 82 + 60 * belly
-    torso = skia.Path(); torso.moveTo(-74, -440 + sy); torso.cubicTo(-90 - 40 * belly, -340, -bw, -270, -70, -205)
-    torso.lineTo(70, -205); torso.cubicTo(bw, -270, 90 + 40 * belly, -340, 74, -440 + sy); torso.close()
-    c.drawPath(torso, vgrad(-440, -205, [shirt, fill]))
-    if top == "hoodie":
-        hood = skia.Path(); hood.addArc(skia.Rect(-60, -470 + sy, 60, -400 + sy), 180, -180)
-        c.drawPath(hood, paint(fill, stroke=18))
-        c.drawLine(-14, -420 + sy, -18, -350 + sy, paint("cream", 0.35, stroke=4)); c.drawLine(14, -420 + sy, 18, -350 + sy, paint("cream", 0.35, stroke=4))
-        c.drawRRect(rr(-50, -300, 50, -250, 16), paint(fill, 0.8))
+        c.drawRRect(rr(fx - 30, fy - 18, fx + 46, fy + 12, 12), paint("#E8E4DA"))
+        c.drawRRect(rr(fx - 30, fy + 2, fx + 46, fy + 12, 6), paint("#9A94A8"))
+    bw = 86 + 64 * belly
+    torso = skia.Path(); torso.moveTo(-80, -448 + sy); torso.cubicTo(-96 - 44 * belly, -340, -bw, -270, -74, -205)
+    torso.lineTo(74, -205); torso.cubicTo(bw, -270, 96 + 44 * belly, -340, 80, -448 + sy); torso.close()
+    c.drawPath(torso, hgrad(-bw, bw, [P["shirt"], P["shirt"], P["shirt_d"]], [0, 0.45, 1]))
+    if P["top"] == "hoodie":
+        hood = skia.Path(); hood.addArc(skia.Rect(-66, -478 + sy, 66, -400 + sy), 180, -180)
+        c.drawPath(hood, paint(P["shirt_d"], stroke=20))
+        c.drawLine(-16, -425 + sy, -20, -350 + sy, paint("cream", 0.8, stroke=5)); c.drawLine(16, -425 + sy, 20, -350 + sy, paint("cream", 0.8, stroke=5))
+        c.drawRRect(rr(-56, -305, 56, -250, 18), paint(P["shirt_d"], 0.8))
     else:
-        v = skia.Path(); v.moveTo(-26, -440 + sy); v.lineTo(0, -405 + sy); v.lineTo(26, -440 + sy)
-        c.drawPath(v, paint("cream", 0.3, stroke=4))
+        v = skia.Path(); v.moveTo(-30, -448 + sy); v.quadTo(0, -405 + sy, 30, -448 + sy)
+        c.drawPath(v, paint(P["shirt_d"], stroke=8))
+        c.drawRect(skia.Rect(-60, -330, 60, -300), paint("cream", 0.12))
+    c.drawRect(skia.Rect(-74, -225, 74, -205), paint("#1A1430", 0.6))
     arms = skia.Path(); hands = []
-    for ang, sx in ((arm_l, -66), (arm_r, 66)):
+    for ang, sx in ((arm_l, -70), (arm_r, 70)):
         r = math.radians(ang)
-        ex, ey = sx + 200 * math.cos(r), -415 + sy + 200 * math.sin(r)
-        arms.addPath(_limb(sx, -415 + sy, ex, ey, 40)); hands.append((ex, ey))
-    c.drawPath(arms, paint(shirt))
+        ex, ey = sx + 205 * math.cos(r), -420 + sy + 205 * math.sin(r)
+        arms.addPath(_limb(sx, -420 + sy, ex, ey, 46)); hands.append((ex, ey))
+    c.drawPath(arms, hgrad(-280, 280, [P["shirt"], P["shirt_d"]]))
     for hx, hy in hands:
-        c.drawCircle(hx, hy, 22, paint(SKIN, 0.85)); c.drawCircle(hx, hy, 22, paint("space", 0.35))
-    # head + hair
-    c.save(); c.translate(0, -440 + sy); c.rotate(head_tilt + 20 * slump)
-    c.drawRRect(rr(-20, -40, 20, 8, 10), paint(SKIN, 0.6))
-    c.drawCircle(0, -88, 58, paint("#5A3A2E"))
-    c.drawCircle(0, -88, 58, paint("space", 0.45))
-    hp = skia.Path()
-    if hair == "long":
-        hp.addRRect(rr(-66, -152, 66, 10, 50))
-    elif hair == "bun":
-        hp.addArc(skia.Rect(-62, -152, 62, -30), 180, 180); hp.addCircle(0, -158, 30)
-    elif hair == "cap":
-        hp.addArc(skia.Rect(-62, -150, 62, -40), 180, 180); hp.addRRect(rr(10, -100, 96, -84, 8))
-    else:
-        hp.moveTo(-62, -92); hp.cubicTo(-66, -170, 60, -172, 64, -96); hp.lineTo(44, -118); hp.lineTo(30, -104)
-        hp.lineTo(10, -126); hp.lineTo(-10, -110); hp.lineTo(-34, -124); hp.close()
-    c.drawPath(hp, paint("hair"))
-    for path_, clipx, colr, al in ((hp, -1, rim, 0.9), (hp, 1, COOL, 0.7)):
-        c.save(); c.clipRect(skia.Rect(-200 if clipx < 0 else 0, -300, 0 if clipx < 0 else 200, 100))
-        c.drawPath(path_, paint(colr, al, stroke=5))
-        hd = skia.Path(); hd.addCircle(0, -88, 58); c.drawPath(hd, paint(colr, al * 0.8, stroke=4))
-        c.restore()
-    c.restore()
-    for clipx, colr, al in ((-1, rim, 0.85), (1, COOL, 0.6)):
+        c.drawCircle(hx, hy, 25, hgrad(hx - 25, hx + 25, [SKIN_L, SKIN_D]))
+    for clipx, colr, al in ((-1, rim, 0.9), (1, COOL, 0.6)):
         c.save(); c.clipRect(skia.Rect(-400 if clipx < 0 else 0, -700, 0 if clipx < 0 else 400, 50))
-        for path_, k_ in ((torso, 1.0), (arms, 1.0), (legs, 0.45)):
-            c.drawPath(path_, paint(colr, al * k_, stroke=5 if k_ == 1 else 3))
+        for path_, k_ in ((torso, 1.0), (arms, 1.0), (legs, 0.6)):
+            c.drawPath(path_, paint(colr, al * k_, stroke=5))
         c.restore()
+    c.save(); c.translate(0, -448 + sy); c.rotate(head_tilt + 20 * slump)
+    c.drawRRect(rr(-22, -36, 22, 10, 10), paint(SKIN_D))
+    cartoon_head(c, 0, -96, 66, expr, P["hair"], puff=puff, look=look, cap=P["cap"], back=back, rim=rim)
+    c.restore()
     if a < 1:
         c.restore()
     c.restore()
@@ -956,7 +956,7 @@ def empty_pouch(c, x, y, s, rot=0.0, a=1.0, shade=0.0):
     c.drawLine(-120, -60, 100, 120, paint(YEL_D, 0.6 * a, stroke=6))
     c.drawLine(-40, -120, 60, 160, paint(YEL_L, 0.4 * a, stroke=4))
     ban = skia.Path(); ban.moveTo(-170, 40); ban.cubicTo(-80, 20, 80, 60, 170, 40); ban.lineTo(170, 100); ban.cubicTo(80, 120, -80, 80, -170, 100); ban.close()
-    c.drawPath(ban, paint("#6A2810", a * (1 - shade)))
+    c.drawPath(ban, paint("#24703A", a * (1 - shade)))
     c.restore()
 
 
@@ -1077,3 +1077,151 @@ def xray_heart(c, x, y, r, t, a=1.0):
     heart(c, x, y + 10, r / 300, t, rate=2.0, a=a)
     c.restore()
     c.drawCircle(x, y, r, paint("cream", 0.9 * a, stroke=8))
+
+
+def cartoon_head(c, x, y, r, expr="neutral", hair="short", puff=0.0, look=0.0, cap="#E0A030", back=False, rim="amber"):
+    """Stylised cartoon head (not a real person): skin shading, ears, hair, big eyes, brows, mouth by expression.
+    expr: neutral | happy | laugh | tired | worried | shock | smug. back=True draws the back of the head."""
+    c.save(); c.translate(x, y)
+    hc = col("hair")
+    if hair == "long":
+        c.drawRRect(rr(-r * 1.08, -r * 0.9, r * 1.08, r * 1.25, r * 0.6), paint("hair"))
+    for sx in (-1, 1):
+        c.drawCircle(sx * r * 0.98, r * 0.08, r * 0.22, paint(SKIN_D if sx > 0 else SKIN_L))
+    rx = r * (1 + 0.28 * puff)
+    head = skia.Path(); head.addOval(skia.Rect(-rx, -r * 1.02, rx, r * (1.02 + 0.08 * puff)))
+    c.drawPath(head, hgrad(-rx, rx, [SKIN_L, "#C98B5E", SKIN_D], [0, 0.55, 1]))
+    if back:
+        c.drawPath(head, paint("hair"))
+    else:
+        # cheeks (swell with puff)
+        for sx in (-1, 1):
+            c.drawCircle(sx * r * (0.52 + 0.2 * puff), r * 0.32, r * (0.16 + 0.14 * puff), paint("coral", 0.22 + 0.2 * puff))
+        # eyes
+        lid = {"tired": 0.45, "smug": 0.35}.get(expr, 0.0)
+        er = r * (0.2 if expr == "shock" else 0.17)
+        for sx in (-1, 1):
+            ex, ey = sx * r * 0.36, -r * 0.05
+            ellipse(c, ex, ey, er * 0.85, er, paint("white"))
+            c.drawCircle(ex + look * er * 0.4, ey + er * 0.15, er * 0.5, paint("ink"))
+            c.drawCircle(ex + look * er * 0.4 - er * 0.18, ey - er * 0.1, er * 0.16, paint("white"))
+            if lid > 0:
+                c.drawRect(skia.Rect(ex - er, ey - er * 1.1, ex + er, ey - er + 2 * er * lid), paint("#C98B5E"))
+                c.drawLine(ex - er * 0.9, ey - er + 2 * er * lid, ex + er * 0.9, ey - er + 2 * er * lid, paint("#6A3A20", stroke=r * 0.05))
+            # brows
+            tilt = {"worried": 0.18, "tired": 0.12, "shock": -0.05, "smug": -0.1, "laugh": -0.05}.get(expr, 0.0)
+            by = ey - er * 1.5 - (r * 0.08 if expr == "shock" else 0)
+            c.drawLine(ex - sx * r * 0.14, by - sx * 0 - tilt * r * 0.6 * 1, ex + sx * r * 0.14, by + tilt * r * 0.6,
+                       paint("hair", stroke=r * 0.08))
+        # mouth
+        my = r * 0.5
+        if expr in ("happy", "smug"):
+            m = skia.Path(); m.addArc(skia.Rect(-r * 0.28, my - r * 0.22, r * 0.28, my + r * 0.12), 20, 140)
+            c.drawPath(m, paint("#5A1E1E", stroke=r * 0.07))
+        elif expr == "laugh":
+            m = skia.Path(); m.moveTo(-r * 0.32, my - r * 0.08); m.quadTo(0, my + r * 0.45, r * 0.32, my - r * 0.08); m.close()
+            c.drawPath(m, paint("#5A1E1E")); ellipse(c, 0, my + r * 0.14, r * 0.13, r * 0.07, paint("#E76F51"))
+            c.drawRect(skia.Rect(-r * 0.24, my - r * 0.08, r * 0.24, my - r * 0.01), paint("white"))
+        elif expr == "shock":
+            ellipse(c, 0, my + r * 0.05, r * 0.12, r * 0.16, paint("#5A1E1E"))
+        elif expr == "worried":
+            m = skia.Path(); m.addArc(skia.Rect(-r * 0.22, my, r * 0.22, my + r * 0.3), 200, 140)
+            c.drawPath(m, paint("#5A1E1E", stroke=r * 0.07))
+        elif expr == "tired":
+            m = skia.Path(); m.moveTo(-r * 0.2, my + r * 0.05)
+            m.cubicTo(-r * 0.07, my - r * 0.03, r * 0.07, my + r * 0.12, r * 0.2, my + r * 0.04)
+            c.drawPath(m, paint("#5A1E1E", stroke=r * 0.06))
+        else:
+            c.drawLine(-r * 0.16, my + r * 0.04, r * 0.16, my + r * 0.04, paint("#5A1E1E", stroke=r * 0.07))
+    # hair on top
+    hp = skia.Path()
+    if hair == "cap":
+        hp.addArc(skia.Rect(-r * 1.05, -r * 1.12, r * 1.05, r * 0.25), 180, 180)
+        c.drawPath(hp, paint(cap))
+        c.drawRRect(rr(-r * 0.2 if not back else -r * 1.2, -r * 0.42, r * 1.35 if not back else r * 0.2, -r * 0.24, r * 0.09), paint(cap))
+        c.drawPath(hp, paint("#8A5A10", 0.5, stroke=r * 0.05))
+    elif hair == "bun":
+        hp.addArc(skia.Rect(-r * 1.04, -r * 1.08, r * 1.04, r * 0.3), 180, 180); hp.addCircle(0, -r * 1.12, r * 0.38)
+        c.drawPath(hp, paint("hair"))
+    else:
+        hp.moveTo(-r * 1.04, -r * 0.05); hp.cubicTo(-r * 1.15, -r * 1.25, r * 1.1, -r * 1.3, r * 1.05, -r * 0.1)
+        hp.lineTo(r * 0.7, -r * 0.5); hp.lineTo(r * 0.45, -r * 0.32); hp.lineTo(r * 0.15, -r * 0.6); hp.lineTo(-r * 0.2, -r * 0.4)
+        hp.lineTo(-r * 0.55, -r * 0.62); hp.lineTo(-r * 0.8, -r * 0.3); hp.close()
+        c.drawPath(hp, paint("hair"))
+    # rim light
+    for clip_l, colr, al in ((True, rim, 0.9), (False, COOL, 0.6)):
+        c.save(); c.clipRect(skia.Rect(-3 * r if clip_l else 0, -3 * r, 0 if clip_l else 3 * r, 3 * r))
+        c.drawPath(head, paint(colr, al, stroke=r * 0.06)); c.restore()
+    c.restore()
+
+
+def iris_closeup(c, t, cx, cy, r, inner, bg=None):
+    """Room scene behind, a circular close-up window (iris) at (cx, cy) radius r; inner(c) draws inside it."""
+    (bg or (lambda c, t: room_bg(c, t)))(c, t)
+    mask = skia.Path(); mask.setFillType(skia.PathFillType.kEvenOdd)
+    mask.addRect(skia.Rect(0, 0, W, H)); mask.addCircle(cx, cy, r)
+    c.drawPath(mask, paint("space", 0.55))
+    c.save(); cl = skia.Path(); cl.addCircle(cx, cy, r); c.clipPath(cl, doAntiAlias=True)
+    c.drawRect(skia.Rect(cx - r, cy - r, cx + r, cy + r), vgrad(cy - r, cy + r, ["#2A1A48", "#3A2450", WOOD_D]))
+    glow(c, cx - r * 0.5, cy - r * 0.5, r, "amber", 0.3)
+    inner(c)
+    c.restore()
+    c.drawCircle(cx, cy, r, paint("gold", 0.85, stroke=8))
+
+
+def sleeve_hand(c, x, y, s, rot=0.0, shirt="#3E5BA8"):
+    """A palm + sleeve whose fingers point to +x from (x, y): used to attach fingers/arms to a body."""
+    c.save(); c.translate(x, y); c.rotate(rot); c.scale(s, s)
+    c.drawRRect(rr(-900, -150, -160, 150, 70), hgrad(-900, -160, [shirt, "#26386E"]))
+    c.drawRRect(rr(-900, -150, -160, 150, 70), paint("amber", 0.5, stroke=5))
+    c.drawRRect(rr(-200, -130, 40, 130, 90), paint(SKIN))
+    c.drawRRect(rr(-200, -130, 40, 130, 90), paint("#8A5634", stroke=5))
+    c.restore()
+
+
+def skyline(c, city, x0, base, s=1.0, a=1.0):
+    """City silhouette along the bottom: london (clock tower, wheel, bridge) | sydney (opera house sails, harbour bridge)."""
+    colr = "#120A26"
+    c.save(); c.translate(x0, base); c.scale(s, s)
+    glow(c, 900, -100, 900, "sunset", 0.3 * a)
+    c.drawRect(skia.Rect(-100, -60, 2000, 200), paint(colr, a))
+    for k in range(18):
+        h = 80 + 160 * rng(k, 91)
+        c.drawRect(skia.Rect(k * 110, -h, k * 110 + 90, 0), paint(colr, a))
+        for j in range(int(h // 50)):
+            c.drawRect(skia.Rect(k * 110 + 20, -h + 20 + j * 46, k * 110 + 34, -h + 38 + j * 46), paint("amber", 0.35 * a))
+    if city == "london":
+        c.drawRect(skia.Rect(300, -520, 380, 0), paint(colr, a))
+        p = skia.Path(); p.moveTo(290, -520); p.lineTo(340, -640); p.lineTo(390, -520); p.close(); c.drawPath(p, paint(colr, a))
+        c.drawCircle(340, -440, 30, paint("gold", 0.9 * a))
+        c.drawCircle(1300, -260, 230, paint(colr, a, stroke=10))
+        for k in range(12):
+            ang = k * math.pi / 6
+            c.drawLine(1300, -260, 1300 + 230 * math.cos(ang), -260 + 230 * math.sin(ang), paint(colr, a, stroke=4))
+            c.drawCircle(1300 + 230 * math.cos(ang), -260 + 230 * math.sin(ang), 12, paint(colr, a))
+        for tx in (700, 1000):
+            c.drawRect(skia.Rect(tx - 30, -360, tx + 30, 0), paint(colr, a))
+        c.drawLine(670, -200, 1030, -200, paint(colr, a, stroke=24))
+    else:
+        for k, (sx, h) in enumerate([(380, 300), (470, 380), (560, 330), (650, 260)]):
+            p = skia.Path(); p.moveTo(sx - 90, 0); p.quadTo(sx - 60, -h, sx + 40, -h * 0.95); p.quadTo(sx + 10, -h * 0.4, sx + 60, 0); p.close()
+            c.drawPath(p, paint("cream", 0.85 * a)); c.drawPath(p, paint(COOL, 0.5 * a, stroke=4))
+        ar = skia.Path(); ar.addArc(skia.Rect(1000, -380, 1700, 300), 180, 180)
+        c.drawPath(ar, paint(colr, a, stroke=36))
+        c.drawLine(960, -40, 1740, -40, paint(colr, a, stroke=26))
+        for k in range(9):
+            xx = 1050 + k * 70
+            c.drawLine(xx, -40, xx, -40 - 300 * math.sin(math.pi * (xx - 1000) / 700) * 0.95, paint(colr, a, stroke=5))
+    c.restore()
+
+
+def plate_meal(c, x, y, s, a=1.0):
+    """A thali plate: dal bowl, a boiled egg, paneer cubes, roti."""
+    c.save(); c.translate(x, y); c.scale(s, s)
+    ellipse(c, 0, 0, 260, 90, paint("#C9CCD6", a)); ellipse(c, 0, -6, 230, 74, paint("#E4E6EE", a))
+    ellipse(c, -90, -20, 80, 30, paint("#8A5A2A", a)); ellipse(c, -90, -24, 66, 22, paint("#E8B33A", a))
+    ellipse(c, 60, -30, 46, 30, paint("white", a)); ellipse(c, 60, -30, 22, 15, paint("#F5B21E", a))
+    for k in range(4):
+        c.drawRRect(rr(110 + (k % 2) * 34, -4 + (k // 2) * 28, 138 + (k % 2) * 34, 22 + (k // 2) * 28, 4), paint("#F8F0DC", a))
+    ellipse(c, -10, 30, 70, 22, paint("#D8A860", a))
+    c.restore()

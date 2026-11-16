@@ -56,7 +56,7 @@ Because full... is not the same as fed.
 
 [Day thirty - gums | deep]
 Day thirty. (pause 0.4)
-Maggi... Maggi... Maggi. (pause 0.4)
+Maggi. (pause 0.3) Maggi. (pause 0.3) Maggi. (pause 0.4)
 The last packet. Your roommate hands over the five thousand. (pause 0.4)
 You won the bet. (pause 0.4)
 But your body lost it. You climb the stairs one step at a time. Your legs ache. (pause 0.5)

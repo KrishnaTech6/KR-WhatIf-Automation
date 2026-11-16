@@ -32,17 +32,17 @@ def s_hook_bowl(c, t, t0):
             mh = 330 * (1 - (2 * u) ** 2)
             pts.append((720 + u * 1150, 760 - rng(i, 2) * mh, (rng(i, 3) - 0.5) * 70, i))
         for x_, y_, r_, i in sorted(pts, key=lambda q: -q[1]):
-            empty_pouch(c, x_, y_, 0.42, r_, shade=0.2 + 0.35 * rng(i, 4))
-        pill(c, 300, 380, 1.0, "209 EMPTY", "plum", "cream", 38)
+            empty_pouch(c, x_, y_, 0.42, r_, shade=0.45 + 0.3 * rng(i, 4))
         table_top(c, 860)
         bowl(c, 740, 740, 1.15, t, warn=1.0)
         # salt heap: 3x the daily limit
         lim = 150
         salt_heap(c, 1530, 940, 3 * lim, 380, t)
         c.drawLine(1180, 940 - lim, 1780, 940 - lim, dashed("cream", 0.95, 5, 16, 10))
-        label(c, "DAILY LIMIT", 1330, 940 - lim - 16, 32, "cream", "extrabold", align="right")
-        big_text(c, "3×", 1530, 940 - 3 * lim - 30, 90, 1.0, "coral")
-        calendar_page(c, 1690, 290, 0.7, "DAY", "30", rot=8)
+        c.drawRRect(rr(1120, 940 - lim - 62, 1360, 940 - lim - 12, 24), paint("#0E0A1C", 0.85))
+        label(c, "DAILY LIMIT", 1240, 940 - lim - 24, 34, "cream", "extrabold")
+        big_text(c, "3×", 1530, 940 - 3 * lim - 30, 140, 1.0, "coral")
+        calendar_page(c, 1760, 240, 0.5, "DAY", "30", rot=8)
     pill(c, W / 2, 110, 1.0, "PACKET #210", "coral", "cream", 64)
 
 
@@ -151,7 +151,7 @@ def s_roommate(c, t, t0):
     room_bg(c, t)
     bunk(c, 1450, 900, 0.9)
     shake = math.sin(t * 18) * 4 * span(t, S("promise", "laughed", -0.2), S("promise", "laughed", 0.3))
-    figure(c, 760 + shake, 960, 1.15, arm_l=110, arm_r=70, head_tilt=-16 + shake * 2)
+    figure(c, 760 + shake, 960, 1.15, arm_l=110, arm_r=70, head_tilt=-16 + shake * 2, who="mate", expr="laugh")
     bubble(c, 1220, 300, 760, 150, "BET YOU CAN'T!", 64, a=span(t, S("promise", "bet", -0.1), S("promise", "bet", 0.3)), tail=-1)
     big_text(c, "HA HA HA", 760, 200, 56, span(t, S("promise", "laughed", -0.1), S("promise", "laughed", 0.3)) - span(t, S("promise", "bet", -0.2), S("promise", "bet", 0.1)), "sand")
 
@@ -191,14 +191,16 @@ def s_calories(c, t, t0):
     """Body as a fuel tank: 2,100 kcal needed; one packet = 300 fills a seventh."""
     explainer_bg(c, t, "deep")
     tn = S("promise", "two", -0.1, 1)
-    tp = S("promise", "packet", -0.2)
-    body_outline(c, 620, 1000, 1.1, water=0.0, t=t)
-    meter(c, 1300, 940, 180, 640, span(t, tp, tp + 0.6) / 7, "gold", "2,100 kcal / DAY", None, a=span(t, tn, tn + 0.4))
+    tp = S("promise", "packet", -0.4)
+    body_outline(c, 560, 1000, 1.1, water=0.0, t=t)
+    meter(c, 1100, 940, 180, 640, span(t, tp, tp + 0.6) / 7, "gold", "2,100 kcal / DAY", None, a=span(t, tn, tn + 0.4))
     for k in range(1, 7):
-        c.drawLine(1210, 940 - 8 - (624) * k / 7, 1390, 940 - 8 - 624 * k / 7, dashed("sand", 0.5 * span(t, tn, tn + 0.4), 3, 10, 8))
-    if t > tp:
-        packet(c, 1620, 820, 0.45, t)
-        pop(c, 1620, 1000, "1 PACKET ≈ 300", t, tp, "plum", 40)
+        c.drawLine(1010, 940 - 8 - 624 * k / 7, 1190, 940 - 8 - 624 * k / 7, dashed("sand", 0.5 * span(t, tn, tn + 0.4), 3, 10, 8))
+    pa = span(t, tp, tp + 0.3)
+    if pa > 0:
+        packet(c, 1560, 560, 0.75 * back_out(pa), t)
+        big_text(c, "1 PACKET", 1560, 900, 64, pa, "cream")
+        big_text(c, "≈ 300 kcal", 1560, 990, 64, pa, "gold")
     headline(c, t, "YOUR BODY NEEDS", t0 + 0.1, 110, 60, "sand", t_out=tn + 0.2)
 
 
@@ -220,9 +222,9 @@ def s_handshake(c, t, t0):
     room_bg(c, t)
     p = span(t, t0, S("promise", "shook", 0.2))
     shake = 12 * math.sin(t * 12) * span(t, S("promise", "shook", 0), S("promise", "hand", 0.4))
-    figure(c, 640, 980, 1.2, arm_l=150, arm_r=-8 + 10 * ease(p), rim="amber")
-    figure(c, 1280, 980, 1.2, arm_l=188 - 10 * ease(p), arm_r=60, rim="amber", hair="cap", top="tee")
-    c.drawCircle(W / 2, 520 + shake, 46, paint(NIGHT))
+    figure(c, 640, 980, 1.2, arm_l=150, arm_r=-8 + 10 * ease(p), expr="smug")
+    figure(c, 1280, 980, 1.2, arm_l=188 - 10 * ease(p), arm_r=60, who="mate", expr="happy")
+    c.drawCircle(W / 2, 520 + shake, 40, paint(SKIN))
     glow(c, W / 2, 520, 200, "gold", 0.35 * p)
     headline(c, t, "DEAL.", S("promise", "shook", 0), 160, 96, "gold")
 
@@ -321,30 +323,45 @@ def s_two_min(c, t, t0):
 
 
 def maggi_beat(beat, words, slow=False):
-    """Three packet-tear pops, one per spoken 'Maggi'. slow=True: Day 30 version (dim, heavy, no labels)."""
+    """Three packet-tear pops, one per spoken 'Maggi'. slow=True: Day 30 version (dim, heavy); #210 drops in hard."""
     def s_maggi_beat(c, t, t0):
         if slow:
-            room_bg(c, t, lamp=0.3, moon=0.4)
-            dim(c, 0.55)
+            room_bg(c, t, mode="dark")
+            dim(c, 0.35)
         else:
             explainer_bg(c, t, "magenta")
         names = ["BREAKFAST", "LUNCH", "DINNER"]
-        for i in range(3):   # dashed empty slots wait for each packet
+        for i in range(3):
             x = 400 + i * 560
             c.drawRRect(rr(x - 180, 560 - 230, x + 180, 560 + 230, 24), dashed("sand", 0.35 if slow else 0.6, 5, 16, 12))
         for i, tw in enumerate(words):
+            x = 400 + i * 560
+            if slow and i == 2:   # the last packet slams down from above
+                p = span(t, tw - 0.35, tw)
+                if p <= 0:
+                    continue
+                yy = 560 - 700 * (1 - p * p)
+                shake = 8 * math.sin(t * 70) * (1 - span(t, tw, tw + 0.4)) if p >= 1 else 0
+                if p >= 1:
+                    for k in range(2):
+                        rp = span(t, tw + 0.1 * k, tw + 0.6 + 0.1 * k)
+                        if 0 < rp < 1:
+                            c.drawCircle(x, 560, 200 + 260 * rp, paint("gold", 0.6 * (1 - rp), stroke=8))
+                    glow(c, x, 560, 360, "gold", 0.45 * (1 - span(t, tw, tw + 0.8)))
+                packet(c, x + shake, yy, 0.95, t, rot=5, glow_a=0.5)
+                pill(c, x, 960, 1.0, "#210", "coral", "cream", 60)
+                continue
             p = span(t, tw - 0.15, tw + (0.35 if slow else 0.15))
             if p <= 0:
                 continue
-            x = 400 + i * 560
             k = back_out(p) if not slow else ease_out(p)
             torn = span(t, tw, tw + (0.9 if slow else 0.4))
-            packet(c, x, 560, 0.95 * k, t, rot=(i - 1) * 7, torn=torn, dimmed=0.6 if slow else 0.0)
+            packet(c, x, 560, 0.95 * k, t, rot=(i - 1) * 7, torn=torn, dimmed=0.5 if slow else 0.0)
             if not slow:
                 glow(c, x, 560, 300, "gold", 0.4 * (1 - span(t, tw, tw + 0.5)))
                 pop(c, x, 960, names[i], t, tw - 0.45, ["teal", "plum", "magenta"][i], 50)
             else:
-                label(c, f"#{208 + i}", x, 960, 56, "cream", "extrabold", 0.9 * p)
+                pill(c, x, 960, 1.0, f"#{208 + i}", "plum", "cream", 56)
         if not slow:
             headline(c, t, "MAGGI. MAGGI. MAGGI.", t0 + 0.1, 120, 64, "gold")
     return s_maggi_beat
@@ -352,22 +369,33 @@ def maggi_beat(beat, words, slow=False):
 
 # ================================================================ DAY 3
 def s_mirror(c, t, t0):
+    """You in the foreground (back view); the reflection shows the puffy face."""
     room_bg(c, t, mode="morning")
-    ellipse(c, W / 2, 540, 400, 480, paint("#8A6A4A"))
-    ellipse(c, W / 2, 540, 370, 450, paint("#1E2A50"))
-    glow(c, W / 2, 400, 360, COOL, 0.2)
-    c.save(); cl = skia.Path(); cl.addOval(skia.Rect(W / 2 - 370, 90, W / 2 + 370, 990)); c.clipPath(cl, doAntiAlias=True)
-    head_outline(c, W / 2, 520, 1.25, puff=span(t, S("day_three", "face", -0.3), S("day_three", "puffy", 0.4)), t=t)
+    puff = span(t, S("day_three", "face", -0.3), S("day_three", "puffy", 0.4))
+    ellipse(c, 1080, 470, 360, 430, paint("#8A6A4A"))
+    ellipse(c, 1080, 470, 332, 402, paint("#22305A"))
+    c.save(); cl = skia.Path(); cl.addOval(skia.Rect(1080 - 332, 68, 1080 + 332, 872)); c.clipPath(cl, doAntiAlias=True)
+    glow(c, 1080, 400, 360, COOL, 0.25)
+    c.drawRRect(rr(870, 640, 1290, 900, 120), hgrad(870, 1290, ["#3E5BA8", "#26386E"]))
+    c.drawRect(skia.Rect(1050, 560, 1110, 660), paint(SKIN_D))
+    cartoon_head(c, 1080, 450, 150, "worried" if puff > 0.5 else "neutral", "short", puff=puff)
+    for k in range(3):
+        c.drawCircle(1080 + (k - 1) * 210, 470 + (k % 2) * 40, 26, paint("#7FC4FF", 0.6 * puff))
     c.restore()
-    hl = skia.Path(); hl.addArc(skia.Rect(W / 2 - 330, 140, W / 2 + 330, 940), 200, 40)
+    hl = skia.Path(); hl.addArc(skia.Rect(1080 - 300, 110, 1080 + 300, 830), 200, 40)
     c.drawPath(hl, paint("white", 0.25, stroke=14))
-    pop(c, 1550, 300, "PUFFY", t, S("day_three", "puffy", -0.1), "coral", 56)
+    figure(c, 560, 1260, 1.25, arm_l=100, arm_r=60, back=True)
+    pop(c, 1620, 220, "PUFFY", t, S("day_three", "puffy", -0.1), "coral", 60)
 
 
 def s_ring(c, t, t0):
-    explainer_bg(c, t, "deep")
-    finger_ring(c, W / 2 + 40, 560, 1.6, t, swell=span(t, t0, t0 + 1.0), tug=span(t, S("day_three", "slide", -0.3), S("day_three", "slide", 0)))
-    headline(c, t, "STUCK", S("day_three", "wont", -0.1), 200, 90, "coral")
+    def inner(c):
+        c.save(); c.translate(W / 2 + 170, 500); c.rotate(-22)
+        sleeve_hand(c, -400 * 0.95, 0, 0.95)
+        finger_ring(c, 0, 0, 0.95, t, swell=span(t, t0, t0 + 1.0), tug=span(t, S("day_three", "slide", -0.3), S("day_three", "slide", 0)))
+        c.restore()
+    iris_closeup(c, t, W / 2, 600, 430, inner, bg=lambda c, t: room_bg(c, t, mode="morning"))
+    headline(c, t, "STUCK", S("day_three", "wont", -0.1), 110, 90, "coral")
 
 
 def s_bottles(c, t, t0):
@@ -464,10 +492,12 @@ def s_mom_call(c, t, t0):
 
 def s_wax(c, t, t0):
     desk_bg(c, t, lamp=0.8)
-    phone(c, 520, 560, 0.95, t, "call", ring=0.0)
-    bubble(c, 1260, 330, 820, 260, "WAX!!", 150, "cream", "coral", span(t, S("week_one", "wax", -0.2), S("week_one", "wax", 0.1)), tail=-1)
-    label(c, "\"Maggi is coated in wax!\"", 1200, 570, 46, "cream", "bold", span(t, S("week_one", "beta", -0.1), S("week_one", "beta", 0.3)))
-    label(c, "\"It stays in your stomach for days!\"", 1200, 640, 42, "cream", "bold", span(t, S("week_one", "stays", -0.1), S("week_one", "stays", 0.3)))
+    phone(c, 420, 560, 0.95, t, "call", ring=0.0)
+    bubble(c, 1180, 280, 820, 240, "WAX!!", 150, "cream", "coral", span(t, S("week_one", "wax", -0.2), S("week_one", "wax", 0.1)), tail=-1)
+    qa = span(t, S("week_one", "beta", -0.3), S("week_one", "beta", 0.0))
+    c.drawRRect(rr(700, 470, 1700, 690, 30), paint("#0E0A1C", 0.8 * qa))
+    big_text(c, "\"Maggi is coated in wax!\"", 1200, 555, 56, qa, "cream")
+    big_text(c, "\"It stays in your stomach for days!\"", 1200, 645, 48, span(t, S("week_one", "stays", -0.3), S("week_one", "stays", 0.0)), "gold")
 
 
 def s_factcheck(c, t, t0):
@@ -522,7 +552,7 @@ def s_gut_zoom(c, t, t0):
     p = span(t, tz, tz + 1.0)
     q = span(t, tz + 1.0, tz + 1.6)
     if p < 1:
-        figure(c, W / 2, 1060, 1.5, arm_l=105, arm_r=75, hair="short")
+        figure(c, W / 2, 1060, 1.5, arm_l=105, arm_r=75)
         glow(c, W / 2, 640, 160, "magenta", 0.7)
         r = 1150 - 890 * ease(p)
         mask = skia.Path(); mask.setFillType(skia.PathFillType.kEvenOdd)
@@ -549,13 +579,14 @@ def s_gut_hungry(c, t, t0):
 
 
 def s_london(c, t, t0):
-    explainer_bg(c, t, "plum")
-    loc_card(c, W / 2, 520, 1.25, "LONDON", "2015", "Prof. Tim Spector + his son", pin_p=span(t, S("day_ten", "london", -0.3), S("day_ten", "london", 0.2)))
+    explainer_bg(c, t, "deep")
+    skyline(c, "london", 0, 1080, 1.0)
+    loc_card(c, W / 2, 420, 1.1, "LONDON", "2015", "Prof. Tim Spector + his son", pin_p=span(t, S("day_ten", "london", -0.3), S("day_ten", "london", 0.2)))
 
 
 def s_fastfood(c, t, t0):
     room_bg(c, t, mode="dusk")
-    figure(c, 560, 1000, 1.1, arm_l=160, arm_r=20)
+    figure(c, 560, 1000, 1.1, arm_l=160, arm_r=20, who="kid", expr="happy")
     for i in range(10):
         a = span(t, t0 + 0.15 * i, t0 + 0.15 * i + 0.25)
         x, y = 1000 + (i % 5) * 160, 380 + (i // 5) * 260
@@ -589,7 +620,7 @@ def s_forty(c, t, t0):
 
 def s_quit_bet(c, t, t0):
     room_bg(c, t)
-    figure(c, 560, 1000, 1.1, arm_l=150, arm_r=-40)
+    figure(c, 560, 1000, 1.1, arm_l=150, arm_r=-40, who="mate", expr="smug")
     calendar_page(c, 1300, 500, 1.4, "QUIT BY", "15?", rot=6)
     bubble(c, 760, 230, 560, 120, "DAY 15. MAX.", 50, a=span(t, S("day_ten", "quit", -0.3), S("day_ten", "quit", 0)), tail=-1)
 
@@ -598,8 +629,8 @@ def s_quit_bet(c, t, t0):
 def s_biryani(c, t, t0):
     room_bg(c, t, lamp=0.7)
     bunk(c, 420, 1000, 0.95)
-    figure(c, 330, 800, 0.62, arm_l=110, arm_r=70, seated=True, fill="#2A1E4A")
-    figure(c, 1520, 1000, 0.95, arm_l=150, arm_r=200, seated=True, fill="#2A1E4A", head_tilt=-6)
+    figure(c, 330, 800, 0.62, arm_l=110, arm_r=70, seated=True, expr="worried", look=1)
+    figure(c, 1520, 1000, 0.95, arm_l=150, arm_r=200, seated=True, who="mate", expr="happy", head_tilt=-6)
     biryani_box(c, 1060, 900, 0.95, t, open_p=span(t, S("day_twenty", "biryani", -0.2), S("day_twenty", "biryani", 0.6)))
     pill(c, 1650, 130, 1.0, "9:00 PM", "plum", "cream", 46)
     headline(c, t, "BIRYANI. RIGHT NEXT TO YOU.", S("day_twenty", "eats", -0.2), 140, 56, "gold")
@@ -607,7 +638,7 @@ def s_biryani(c, t, t0):
 
 def s_smell(c, t, t0):
     room_bg(c, t, lamp=0.7)
-    figure(c, 460, 1000, 1.15, arm_l=110, arm_r=70, head_tilt=14)
+    figure(c, 460, 1000, 1.15, arm_l=110, arm_r=70, head_tilt=8, expr="worried", look=1)
     biryani_box(c, 1450, 860, 1.05, t, open_p=1.0, smell=span(t, t0, t0 + 1.4))
     headline(c, t, "YOU ALMOST QUIT", S("day_twenty", "almost", -0.2), 140, 64, "coral")
 
@@ -621,46 +652,60 @@ def s_not_hungry(c, t, t0):
 
 
 def s_protein(c, t, t0):
-    explainer_bg(c, t, "deep")
-    tf = S("day_twenty", "forty", -0.2)
-    tn = S("day_twenty", "fiftyfour", -0.2)
-    # one protein bar, filled 40 of 54
-    x0, x1, y = 300, 1620, 540
-    c.drawRRect(rr(x0, y - 90, x1, y + 90, 40), paint("#1C1238"))
-    f = (40 / 54) * span(t, tf, tf + 0.8)
-    if f > 0:
-        c.drawRRect(rr(x0 + 10, y - 80, x0 + 10 + (x1 - x0 - 20) * f, y + 80, 34), paint("teal"))
-        glow(c, x0 + (x1 - x0) * f, y, 120, "teal", 0.3)
-    c.drawRRect(rr(x0, y - 90, x1, y + 90, 40), paint("cream", stroke=6))
-    big_text(c, "40 g", x0 + (x1 - x0) * 40 / 54 * 0.5, y + 30, 80, span(t, tf, tf + 0.4), "cream")
-    label(c, "NEED 54 g", x1 - 20, y - 130, 50, "gold", "extrabold", span(t, tn, tn + 0.3), align="right")
-    c.drawLine(x1 - 6, y - 110, x1 - 6, y + 110, paint("gold", span(t, tn, tn + 0.3), stroke=6))
-    headline(c, t, "PROTEIN: NOT THAT BAD", t0 + 0.1, 150, 64, "gold")
-    label(c, "7 packets a day", x0 + 20, y + 170, 42, "sand", "bold", span(t, tf, tf + 0.4), align="left")
+    """7 pouches = ~40 g of protein; a plate of dal + egg + paneer shows the 54 g target."""
+    room_bg(c, t, lamp=0.8)
+    table_top(c, 820)
+    tf = S("day_twenty", "forty", -0.4)
+    tn = S("day_twenty", "fiftyfour", -0.4)
+    for i in range(7):
+        a_ = span(t, t0 + 0.1 * i, t0 + 0.1 * i + 0.3)
+        packet(c, 220 + (i % 4) * 150, 470 + (i // 4) * 230, 0.36, t, a=a_, rot=(i - 3) * 3)
+    label(c, "7 packets a day", 450, 220, 52, "cream", "extrabold", span(t, t0 + 0.2, t0 + 0.6))
+    big_text(c, "≈ 40 g", 450, 960, 96, span(t, tf, tf + 0.3), "gold")
+    c.drawLine(W / 2 + 40, 200, W / 2 + 40, 1000, paint("cream", 0.3, stroke=4))
+    pa = span(t, tn - 0.6, tn)
+    k_ = 1.25 + 0.25 * back_out(pa)
+    plate_meal(c, 1430, 640, k_, a=0.45 + 0.55 * pa)
+    label(c, "dal + egg + paneer", 1430, 220, 52, "cream", "extrabold", 0.6 + 0.4 * pa)
+    big_text(c, "NEED 54 g", 1430, 960, 96, span(t, tn, tn + 0.3), "teal")
+    headline(c, t, "PROTEIN: NOT THAT BAD", t0 + 0.1, 110, 60, "gold")
 
 
 def s_class(c, t, t0):
+    """Classroom, wide: rows of students, you slumped at the front desk; the same line, five times."""
     blackboard(c, t)
     tr = S("day_twenty", "read", -0.2)
     rp = span(t, tr, S("day_twenty", "times", 0.2))
     n = 1 + int(4 * rp)
-    book(c, W / 2 - 200, 790, 0.85, t, hl_line=3)
-    for k in range(1, n):   # the same line, again and again
-        yy = 600 - k * 90
-        c.drawRRect(rr(420, yy - 22, 900, yy + 18, 10), paint("#FFE57A", 0.75 - 0.1 * k))
-        c.drawLine(440, yy, 880, yy, paint("#9A8FA8", stroke=8))
-    label(c, "SAME LINE...", 1300, 220, 64, "cream", "extrabold", span(t, tr, tr + 0.3))
-    label(c, f"×{n}", 1450, 420, 140, "gold", "extrabold", span(t, tr, tr + 0.3) - span(t, S("day_twenty", "times", -0.2), S("day_twenty", "times", 0.1)))
-    c.save(); c.translate(1450, 780); c.scale(1.8, 1.8); c.translate(-1450, -780)
-    stamp(c, 1450, 780, "×5", span(t, S("day_twenty", "times", -0.1), S("day_twenty", "times", 0.25)), "coral", -10)
+    for k in range(n):
+        yy = 170 + k * 80
+        c.drawRRect(rr(260, yy - 26, 1000, yy + 18, 10), paint("#FFE57A", 0.55))
+        label(c, "the same line again...", 280, yy + 6, 34, "#1E3A30", "extrabold", align="left")
+    label(c, f"×{n}", 1400, 360, 150, "cream", "extrabold", span(t, tr, tr + 0.3) - span(t, S("day_twenty", "times", -0.2), S("day_twenty", "times", 0.1)))
+    c.save(); c.translate(1400, 330); c.scale(2.0, 2.0); c.translate(-1400, -330)
+    stamp(c, 1400, 330, "×5", span(t, S("day_twenty", "times", -0.1), S("day_twenty", "times", 0.25)), "coral", -10)
     c.restore()
-    pop(c, 1650, 990, "HEAVY", t, S("day_twenty", "heavy", -0.1), "plum", 50)
+    for k, xx in enumerate([230, 560, 1360, 1690]):   # classmates, side rows
+        figure(c, xx, 900, 0.5, arm_l=120, arm_r=60, who=["kid", "her", "mate", "her"][k], expr="neutral", seated=True)
+        c.drawRect(skia.Rect(xx - 110, 790, xx + 170, 812), paint(WOOD_L))
+    # you, front and centre, slumped over the desk
+    figure(c, 900, 1120, 0.85, arm_l=60, arm_r=120, slump=1.0, expr="tired", seated=True)
+    c.drawRect(skia.Rect(700, 905, 1240, 945), paint(WOOD_L))
+    c.drawRect(skia.Rect(720, 945, 740, 1080), paint(WOOD_D)); c.drawRect(skia.Rect(1200, 945, 1220, 1080), paint(WOOD_D))
+    pop(c, 1650, 1000, "HEAVY", t, S("day_twenty", "heavy", -0.1), "plum", 54)
 
 
 def s_battery(c, t, t0):
-    desk_bg(c, t, lamp=0.6)
-    phone(c, W / 2 + 80, 600, 1.25, t, "battery", pct=5, ring=0.0)
-    headline(c, t, "STUCK AT 5%", S("day_twenty", "phone", -0.3), 120, 64, "coral")
+    """Night, the bunk: you lying awake, drained; a 5% battery floats above like your energy."""
+    room_bg(c, t, lamp=0.2, moon=1.0)
+    bunk(c, 860, 1020, 1.25)
+    c.drawRRect(rr(500, 700, 1220, 770, 30), paint("#5A4A8A"))
+    c.save(); c.translate(1170, 690); c.rotate(-90)
+    figure(c, 0, 0, 0.75, arm_l=95, arm_r=85, expr="tired", who="you")
+    c.restore()
+    phone(c, 1480, 480, 0.9, t, "battery", pct=5, ring=0.0)
+    c.drawLine(1300, 520, 1060, 640, dashed("coral", 0.6, 4, 12, 10))
+    headline(c, t, "STUCK AT 5%", S("day_twenty", "phone", -0.3), 120, 72, "coral")
 
 
 def s_korea(c, t, t0):
@@ -763,7 +808,7 @@ def s_stairs(c, t, t0):
     sub = (st * 3) % 1
     x = W / 2 - 600 + 85 + k * 170 + 170 * ease(sub) * 0.0
     y = 820 - k * 90
-    figure(c, x, y, 0.62, arm_l=120, arm_r=60, lean=10, head_tilt=18)
+    figure(c, x, y, 0.62, arm_l=120, arm_r=60, lean=10, head_tilt=10, expr="tired")
     headline(c, t, "ONE STEP AT A TIME", S("day_thirty", "one", -0.2), 120, 64, "cream")
     pop(c, 1580, 860, "LEGS ACHE", t, S("day_thirty", "legs", -0.1), "coral", 46)
 
@@ -772,10 +817,10 @@ def s_vitc(c, t, t0):
     explainer_bg(c, t, "deep")
     tz = S("day_thirty", "zero", -0.3)
     p = 1 - span(t, t0, tz + 0.4)
-    meter(c, 760, 960, 230, 680, p * 0.9, "#F59A2A", "VITAMIN C", "≈ 0" if t > tz else None)
+    meter(c, 560, 960, 230, 680, p * 0.9, "#F59A2A", "VITAMIN C", "≈ 0" if t > tz else None)
     for i in range(6):
-        packet(c, 1250 + (i % 3) * 190, 330 + (i // 3) * 270, 0.36, t)
-    label(c, "VITAMIN C IN A PACKET: 0", 1430, 960, 40, "sand", "bold", span(t, tz, tz + 0.4))
+        packet(c, 1100 + (i % 3) * 230, 330 + (i // 3) * 290, 0.42, t)
+    big_text(c, "VITAMIN C IN A PACKET: 0", 1330, 990, 52, span(t, t0 + 0.3, t0 + 0.7), "cream")
     headline(c, t, "30 DAYS · ALMOST ZERO", tz, 110, 56, "coral")
 
 
@@ -788,15 +833,27 @@ def s_gums(c, t, t0):
 
 
 def s_bruise(c, t, t0):
-    c.drawRect(skia.Rect(0, 0, W, H), paint("#0E0A1C"))
-    arm_bruise(c, W / 2, 560, 1.0, span(t, t0, t0 + 0.8))
-    headline(c, t, "BRUISES FROM NOWHERE", t0 + 0.1, 180, 64, "#B48AE0")
+    def inner(c):
+        c.save(); c.translate(W / 2 + 40, 600); c.rotate(-18)
+        c.drawRRect(rr(-1100, -80, -330, 80, 60), hgrad(-1100, -330, ["#3E5BA8", "#26386E"]))
+        c.drawRRect(rr(-1100, -80, -330, 80, 60), paint("amber", 0.5, stroke=5))
+        arm_bruise(c, 0, 0, 0.55, span(t, t0, t0 + 0.8))
+        c.drawCircle(400, 0, 70, paint(SKIN)); c.drawCircle(400, 0, 70, paint("#8A5634", stroke=4))
+        for k in range(4):
+            c.drawRRect(rr(440, -60 + k * 34, 520, -34 + k * 34, 12), paint(SKIN))
+        c.restore()
+    iris_closeup(c, t, W / 2, 560, 440, inner, bg=lambda c, t: room_bg(c, t, mode="dark"))
+    headline(c, t, "BRUISES FROM NOWHERE", t0 + 0.1, 90, 64, "#C9A2F0")
 
 
 def s_cut(c, t, t0):
-    c.drawRect(skia.Rect(0, 0, W, H), paint("#0E0A1C"))
-    finger_cut(c, W / 2, 560, 1.1, t)
-    headline(c, t, "CUTS STOP HEALING", t0 + 0.1, 180, 64, "coral")
+    def inner(c):
+        c.save(); c.translate(W / 2 + 200, 500); c.rotate(-22)
+        sleeve_hand(c, -560 * 0.75, 0, 0.75)
+        finger_cut(c, 0, 0, 0.75, t)
+        c.restore()
+    iris_closeup(c, t, W / 2, 560, 440, inner, bg=lambda c, t: room_bg(c, t, mode="dark"))
+    headline(c, t, "CUTS STOP HEALING", t0 + 0.1, 90, 64, "coral")
 
 
 # ================================================================ TWIST
@@ -854,19 +911,21 @@ def s_timeline(c, t, t0):
 
 
 def s_sydney(c, t, t0):
-    explainer_bg(c, t, "plum")
-    loc_card(c, 620, 520, 1.0, "SYDNEY", "2016", "Westmead Institute", pin_p=span(t, S("twist", "sydney", -0.3), S("twist", "sydney", 0.2)), colr="coral")
+    explainer_bg(c, t, "deep")
+    skyline(c, "sydney", 0, 1080, 1.0)
+    loc_card(c, 600, 400, 0.95, "SYDNEY", "2016", "Westmead Institute", pin_p=span(t, S("twist", "sydney", -0.3), S("twist", "sydney", 0.2)), colr="coral")
     tp = S("twist", "twelve", -0.2)
     for i in range(12):
         a = span(t, tp + 0.07 * i, tp + 0.07 * i + 0.25)
-        figure(c, 1210 + (i % 6) * 100, 520 + (i // 6) * 300, 0.4, a=a, belly=0.6 if i in (1, 4, 7, 9, 10) else 0.0, arm_l=110, arm_r=70, hair=["short", "long", "bun", "cap"][i % 4])
-    big_text(c, "12 PATIENTS", 1460, 1000, 64, span(t, tp, tp + 0.3), "gold")
-    pop(c, 1460, 120, "SOME OVERWEIGHT", t, S("twist", "overweight", -0.2), "coral", 44)
+        figure(c, 1200 + (i % 6) * 112, 470 + (i // 6) * 300, 0.42, a=a, belly=0.6 if i in (1, 4, 7, 9, 10) else 0.0,
+               arm_l=110, arm_r=70, who=["you", "her", "kid", "mate"][i % 4], expr="tired")
+    big_text(c, "12 PATIENTS", 1480, 120, 64, span(t, tp, tp + 0.3), "gold")
+    pop(c, 600, 760, "SOME OVERWEIGHT", t, S("twist", "overweight", -0.2), "coral", 48)
 
 
 def s_wellfed(c, t, t0):
     room_bg(c, t, mode="dusk")
-    figure(c, 700, 1040, 1.35, belly=0.9, arm_l=120, arm_r=60, hair="bun", top="tee")
+    figure(c, 700, 1040, 1.35, belly=0.9, arm_l=120, arm_r=60, who="her", hair="bun", expr="neutral")
     meter(c, 1400, 940, 200, 640, 0.02, "#F59A2A", "VITAMIN C", "EMPTY")
     headline(c, t, "LOOKED WELL FED", S("twist", "looked", -0.2), 120, 64, "gold")
 
@@ -1046,12 +1105,15 @@ LAST_BEAT = BEAT_KEYS[-1]
 
 
 def scene_card(value, name, backdrop):
-    """Chapter card over its own scene backdrop (dimmed), in the brand card's type and dashed ring."""
+    """Chapter card over its own scene backdrop (blurred + dimmed), in the brand card's type and dashed ring."""
     def f(c, t, t0):
         p = span(t, t0, t0 + 1.4)
+        bp = skia.Paint(); bp.setImageFilter(skia.ImageFilters.Blur(14, 14))
+        c.saveLayer(None, bp)
         backdrop(c, t)
+        c.restore()
         g = skia.Paint(AntiAlias=True)
-        g.setShader(skia.GradientShader.MakeRadial(skia.Point(W / 2, H / 2), 900, [col("space", 0.55), col("space", 0.85)]))
+        g.setShader(skia.GradientShader.MakeRadial(skia.Point(W / 2, H / 2), 900, [col("space", 0.72), col("space", 0.88)]))
         c.drawRect(skia.Rect(0, 0, W, H), g)
         cx, cy = W / 2, H / 2 - 30
         glow(c, cx, cy, 420, "plum", 0.45)
@@ -1113,7 +1175,7 @@ def bd_twist(c, t):
 def s_cant_feel(c, t, t0):
     """Calm figure; an X-ray inset shows the heart straining."""
     room_bg(c, t, mode="dusk")
-    figure(c, 560, 1000, 1.1, arm_l=100, arm_r=80, seated=True, hair="short")
+    figure(c, 560, 1000, 1.1, arm_l=100, arm_r=80, seated=True, expr="happy")
     xa = span(t, t0 + 0.2, t0 + 0.7)
     c.drawLine(590, 600, 1150, 520, dashed("cream", 0.6 * xa, 4, 12, 10))
     c.drawCircle(590, 600, 14, paint("coral", xa))
@@ -1128,7 +1190,7 @@ def s_cant_feel(c, t, t0):
 def s_full_fed(c, t, t0):
     """Full is not fed: a stuffed belly next to an empty fuel gauge."""
     room_bg(c, t, lamp=0.8)
-    figure(c, 560, 1040, 1.2, belly=1.0, arm_l=120, arm_r=60, hair="short")
+    figure(c, 560, 1040, 1.2, belly=1.0, arm_l=120, arm_r=60, expr="tired")
     pop(c, 860, 700, "FULL", t, t0 + 0.2, "#3BB273", 54)
     ga = span(t, S("day_twenty", "fed", -0.6), S("day_twenty", "fed", -0.2))
     fuel_gauge(c, 1340, 600, 280, 0.9 - 0.85 * ga, "NUTRIENTS")
@@ -1142,7 +1204,7 @@ def s_stages(c, t, t0):
     room_bg(c, t, mode="dark")
     s1 = span(t, tt, tt + 0.8)
     s2 = span(t, tb, tb + 0.8)
-    figure(c, 640, 1050, 1.45, arm_l=100 + 6 * s1, arm_r=80 - 6 * s1, slump=0.7 * s1, hair="short", lean=-4 * s1)
+    figure(c, 640, 1050, 1.45, arm_l=100 + 6 * s1, arm_r=80 - 6 * s1, slump=0.7 * s1, lean=-4 * s1, expr="worried" if s2 > 0.3 else ("tired" if s1 > 0.3 else "neutral"))
     glow(c, 640, 600, 400, "coral", 0.3 * s2)
     if s2 > 0:
         for k, (bx, by) in enumerate([(560, 520), (740, 600), (520, 700), (700, 420)]):
