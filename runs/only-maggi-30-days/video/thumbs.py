@@ -83,6 +83,27 @@ def photo_sticker(c, cx, cy, w, rot):
     pp = skia.Paint(AntiAlias=True); pp.setColorFilter(skia.ColorFilters.Matrix(m))
     c.save(); c.clipRRect(skia.RRect.MakeRectXY(skia.Rect(-w / 2, -h / 2, w / 2, h / 2), 30, 30), True)
     c.drawImageRect(img, src, skia.Rect(-w / 2, -h / 2, w / 2, h / 2), skia.SamplingOptions(skia.CubicResampler.Mitchell()), pp)
+    # frosted-glass patch over the brand wordmark (oval logo + '2-Minute noodles'), following the packet's angle
+    kk = w / src.width()
+    px, py = -w / 2 + 375 * kk, -h / 2 + (262 - 10) * kk
+    patch = skia.Path(); patch.addRRect(skia.RRect.MakeRectXY(skia.Rect(-160 * kk, -92 * kk, 160 * kk, 92 * kk), 26, 26))
+    mtx = skia.Matrix(); mtx.setTranslate(px, py); mtx.preRotate(-33); patch.transform(mtx)
+    shp = paint("#000000", 0.45); shp.setMaskFilter(skia.MaskFilter.MakeBlur(skia.kNormal_BlurStyle, 10))
+    c.save(); c.translate(6, 8); c.drawPath(patch, shp); c.restore()
+    c.save(); c.clipPath(patch, doAntiAlias=True)
+    bp = skia.Paint(AntiAlias=True); bp.setImageFilter(skia.ImageFilters.Blur(22, 22)); bp.setColorFilter(skia.ColorFilters.Matrix(m))
+    c.drawImageRect(img, src, skia.Rect(-w / 2, -h / 2, w / 2, h / 2), skia.SamplingOptions(skia.CubicResampler.Mitchell()), bp)
+    tg = skia.Paint(AntiAlias=True)
+    tg.setShader(skia.GradientShader.MakeLinear([skia.Point(px - 180 * kk, py - 100 * kk), skia.Point(px + 180 * kk, py + 100 * kk)],
+                 [col("#FF6A4A", 0.64), col("#C2185B", 0.64), col("#5A2A9A", 0.64)]))
+    c.drawRect(skia.Rect(-w, -h, w, h), tg)
+    c.restore()
+    c.drawPath(patch, paint("white", 0.9, stroke=4))
+    c.save(); c.translate(px, py); c.rotate(-33)
+    tf = font("extrabold", 120 * kk * 1.4)
+    text(c, "?", 4, 44 * kk * 1.4 + 4, tf, paint("#120A24", 0.5))
+    text(c, "?", 0, 44 * kk * 1.4, tf, paint("#FFD23A"))
+    c.restore()
     c.restore()
     c.drawRRect(skia.RRect.MakeRectXY(skia.Rect(-w / 2 - 22, -h / 2 - 22, w / 2 + 22, h / 2 + 22), 44, 44), paint("#FFD9A0", 0.9, stroke=6))
     # torn DAY 30 tag + tape on the top-right corner
