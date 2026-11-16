@@ -96,7 +96,7 @@ def photo_sticker(c, cx, cy, w, rot):
 def thumb(c):
     background(c)
     # Krishna's own packet photo as a tilted sticker, right side (thumbnail only, never the video)
-    photo_sticker(c, 1500, 430, 690, -8)
+    photo_sticker(c, 1500, 440, 660, -8)
     # salt heap, 3x over the daily-limit line, red glow
     base, lim = 1040, 125
     salt_heap(c, 1160, base, 3 * lim, 380, T0, red=1.0)
@@ -104,7 +104,7 @@ def thumb(c):
     c.drawLine(930, base - lim, 1400, base - lim, dashed("#120A24", 1.0, 6, 26, 18))
     c.drawRRect(skia.RRect.MakeRectXY(skia.Rect(1250, base - lim + 16, 1530, base - lim + 76), 26, 26), paint("#120A24", 0.9))
     text(c, "DAILY LIMIT", 1390, base - lim + 60, font("extrabold", 38), paint("white"))
-    outline_text(c, "3×", 1290, base - 3 * lim + 40, 150, "#FF4A3A", stroke=22)
+    outline_text(c, "3×", 1290, base - 3 * lim + 210, 150, "#FF4A3A", stroke=22)
     # hero bowl, big, with sticker outline
     glow(c, 560, 860, 640, "#FF1A1A", 0.6)
     sticker_bowl(c, 560, 720, 1.32)
