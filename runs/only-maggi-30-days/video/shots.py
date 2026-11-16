@@ -1075,7 +1075,7 @@ def SHOTS():
     ]
     day30 = [
         (E("day_twenty") + 0.1, s_silence, "cut"),
-        (B("day_thirty") - 0.6, scene_card("DAY 30", "You won", bd_day30), "cut"),
+        (max(B("day_thirty") - 0.6, E("day_twenty") + 0.5), scene_card("DAY 30", "You won", bd_day30), "cut"),
         (S("day_thirty", "maggi", -0.4), maggi_beat("day_thirty", [T("day_thirty", "maggi", 1), T("day_thirty", "maggi", 2), T("day_thirty", "maggi", 3)], slow=True), "fade"),
         (S("day_thirty", "the", -0.3), s_last_packet, "fade"),
         (S("day_thirty", "your", -0.3), s_money, "cut"),
