@@ -96,7 +96,9 @@ Told as one story: your roommate bets you ₹5,000 you can't eat only Maggi for 
 >
 > Your whole day costs around a hundred rupees. Cheaper than one pizza.
 >
-> Two minutes a packet. Seven times. Easiest five thousand rupees of your life.
+> Two minutes a packet. Breakfast, Maggi. Lunch, Maggi. Dinner, Maggi.
+>
+> Easiest five thousand rupees of your life.
 
 ### Day three - the salt
 
@@ -165,6 +167,8 @@ Told as one story: your roommate bets you ₹5,000 you can't eat only Maggi for 
 **Voiceover:**
 
 > Day thirty.
+>
+> Maggi... Maggi... Maggi.
 >
 > The last packet. Your roommate hands over the five thousand.
 >
@@ -262,3 +266,7 @@ Posting kit: title "7 Maggi Packets a Day for a Month? #shorts" · description: 
 | 0:29 | And by day thirty... something even stranger starts in your body. What's your go-to Maggi add-on? Full story on YouTube. Link in bio. | DAY 30 page, end card | FULL STORY ON YOUTUBE |
 
 Posting kit: caption in `caption_reel.txt` (made at the text stage) · hashtags #whatif #maggi #guthealth #india · pinned comment: "What's your go-to Maggi add-on?"
+
+## Sound note: the Maggi beat (Krishna, 16 Nov)
+
+Our own drum loop + a hit on every spoken "Maggi": Day 1 fast and happy ("Breakfast, Maggi. Lunch, Maggi. Dinner, Maggi."), Day 30 the same chant slowed and broken ("Maggi... Maggi... Maggi."). Never the TV ad jingle's melody or audio (Content ID).
