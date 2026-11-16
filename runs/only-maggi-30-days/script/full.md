@@ -70,7 +70,7 @@ Told as one story: your roommate Rohan bets you ₹5,000 you can't eat only Magg
 >
 > Every day, about three times the salt your body should get.
 >
-> And salt... isn't even the scary part.
+> And the real damage... isn't printed anywhere on the packet.
 
 ### Promise - logo
 
@@ -221,7 +221,7 @@ Told as one story: your roommate Rohan bets you ₹5,000 you can't eat only Magg
 
 | Time | Mechanic | Energy |
 | --- | --- | --- |
-| 0:00 | Hook: 210 packets, 3× salt, open loop "isn't even the scary part" | high |
+| 0:00 | Hook: 210 packets, 3× salt, open loop "isn't printed on the packet" | high |
 | 0:15 | Logo + effort beat (12 sources) + the 7-packet maths | low |
 | 0:40 | Day 1 joke | low |
 | 1:06 | Day 3 salt, visible body change | high |
@@ -232,7 +232,7 @@ Told as one story: your roommate Rohan bets you ₹5,000 you can't eat only Magg
 | 3:42 | Twist: scurvy, Sydney 2016 | high → low |
 | 4:13 | Bonus beat (fix in days), callback, comment prompt 2, tease | low/warm |
 
-20-second test: **context** "You've eaten only Maggi for thirty days" (0:00) · **stakes** "about three times the salt your body should get" (0:07) · **curiosity gap** "salt isn't even the scary part" (0:11). Effort beat at ~0:17 (papers + counter, 12 sources).
+20-second test: **context** "You've eaten only Maggi for thirty days" (0:00) · **stakes** "about three times the salt your body should get" (0:07) · **curiosity gap** "the real damage isn't printed on the packet" (0:11). Effort beat at ~0:17 (papers + counter, 12 sources).
 
 ## 7. YouTube Short (shock angle: 7 packets a day and what your body does)
 
@@ -245,7 +245,7 @@ Told as one story: your roommate Rohan bets you ₹5,000 you can't eat only Magg
 | 0:11 | Day three. Your face looks puffy. Your rings feel tight. Because seven packets give you about three times the salt you should eat in a day. Your body holds on to water just to dilute it. | Face swelling, salt jar overflowing | 3× SALT |
 | 0:25 | Week one. The bathroom stops working. There's almost no fibre in a packet. | Fibre meter empty | WEEK 1 |
 | 0:31 | Day ten. The tiny bacteria in your gut start disappearing. They lived on vegetables. You stopped feeding them. | Gut city fading | DAY 10 |
-| 0:39 | And the scariest part? It starts around day thirty. And it has nothing to do with salt. | DAY 30 calendar page, red glow | DAY 30… |
+| 0:39 | But on day thirty, something starts that no label warns you about. | DAY 30 calendar page, red glow | DAY 30… |
 | 0:45 | Full video on K R's What If Explained. Because to live on Maggi alone... | Back to the bowl (loop) | |
 
 Posting kit: title "7 Maggi Packets a Day for a Month? #shorts" · description: "Day 3 your face changes. Day 30 is worse. Full video: {MAIN_URL}"
