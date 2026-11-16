@@ -83,34 +83,19 @@ def photo_sticker(c, cx, cy, w, rot):
     pp = skia.Paint(AntiAlias=True); pp.setColorFilter(skia.ColorFilters.Matrix(m))
     c.save(); c.clipRRect(skia.RRect.MakeRectXY(skia.Rect(-w / 2, -h / 2, w / 2, h / 2), 30, 30), True)
     c.drawImageRect(img, src, skia.Rect(-w / 2, -h / 2, w / 2, h / 2), skia.SamplingOptions(skia.CubicResampler.Mitchell()), pp)
-    # frosted-glass patch over the brand wordmark (oval logo + '2-Minute noodles'), following the packet's angle
+    # soften only the red oval logo a little: feathered gaussian blur limited to the oval
     kk = w / src.width()
-    px, py = -w / 2 + 375 * kk, -h / 2 + (262 - 10) * kk
-    patch = skia.Path(); patch.addRRect(skia.RRect.MakeRectXY(skia.Rect(-160 * kk, -92 * kk, 160 * kk, 92 * kk), 26, 26))
-    mtx = skia.Matrix(); mtx.setTranslate(px, py); mtx.preRotate(-33); patch.transform(mtx)
-    shp = paint("#000000", 0.45); shp.setMaskFilter(skia.MaskFilter.MakeBlur(skia.kNormal_BlurStyle, 10))
-    c.save(); c.translate(6, 8); c.drawPath(patch, shp); c.restore()
-    c.save(); c.clipPath(patch, doAntiAlias=True)
-    bp = skia.Paint(AntiAlias=True); bp.setImageFilter(skia.ImageFilters.Blur(22, 22)); bp.setColorFilter(skia.ColorFilters.Matrix(m))
-    c.drawImageRect(img, src, skia.Rect(-w / 2, -h / 2, w / 2, h / 2), skia.SamplingOptions(skia.CubicResampler.Mitchell()), bp)
-    tg = skia.Paint(AntiAlias=True)
-    tg.setShader(skia.GradientShader.MakeLinear([skia.Point(px - 180 * kk, py - 100 * kk), skia.Point(px + 180 * kk, py + 100 * kk)],
-                 [col("#FF6A4A", 0.64), col("#C2185B", 0.64), col("#5A2A9A", 0.64)]))
-    c.drawRect(skia.Rect(-w, -h, w, h), tg)
-    c.restore()
-    c.drawPath(patch, paint("white", 0.9, stroke=4))
-    c.save(); c.translate(px, py); c.rotate(-33)
-    tf = font("extrabold", 120 * kk * 1.4)
-    text(c, "?", 4, 44 * kk * 1.4 + 4, tf, paint("#120A24", 0.5))
-    text(c, "?", 0, 44 * kk * 1.4, tf, paint("#FFD23A"))
-    c.restore()
+    ox, oy = -w / 2 + 342 * kk, -h / 2 + (222 - 10) * kk
+    bp = skia.Paint(AntiAlias=True); bp.setImageFilter(skia.ImageFilters.Blur(6, 6)); bp.setColorFilter(skia.ColorFilters.Matrix(m))
+    for i, (sx, a) in enumerate(((1.18, 0.35), (1.08, 0.6), (1.0, 1.0))):   # feathered: soft rings, full blur inside
+        ov = skia.Path(); ov.addOval(skia.Rect(-100 * kk * sx, -58 * kk * sx, 100 * kk * sx, 58 * kk * sx))
+        mt = skia.Matrix(); mt.setTranslate(ox, oy); mt.preRotate(-38); ov.transform(mt)
+        c.save(); c.clipPath(ov, doAntiAlias=True)
+        bp.setAlphaf(a)
+        c.drawImageRect(img, src, skia.Rect(-w / 2, -h / 2, w / 2, h / 2), skia.SamplingOptions(skia.CubicResampler.Mitchell()), bp)
+        c.restore()
     c.restore()
     c.drawRRect(skia.RRect.MakeRectXY(skia.Rect(-w / 2 - 22, -h / 2 - 22, w / 2 + 22, h / 2 + 22), 44, 44), paint("#FFD9A0", 0.9, stroke=6))
-    # torn DAY 30 tag + tape on the top-right corner
-    calendar_page(c, w / 2 - 40, -h / 2 + 10, 0.42, "DAY", "30", rot=14)
-    c.save(); c.translate(w / 2 - 40, -h / 2 - 60); c.rotate(-30)
-    c.drawRect(skia.Rect(-70, -18, 70, 18), paint("#F4F1E8", 0.75))
-    c.restore()
     c.restore()
 
 
@@ -118,6 +103,8 @@ def thumb(c):
     background(c)
     # Krishna's own packet photo as a tilted sticker, right side (thumbnail only, never the video)
     photo_sticker(c, 1500, 440, 660, -8)
+    # a clean torn DAY 30 page between the bowl and the photo
+    calendar_page(c, 985, 545, 0.66, "DAY", "30", rot=-7)
     # salt heap, 3x over the daily-limit line, red glow
     base, lim = 1040, 125
     salt_heap(c, 1160, base, 3 * lim, 380, T0, red=1.0)
