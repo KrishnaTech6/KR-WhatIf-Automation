@@ -1,0 +1,36 @@
+{
+ "title": "What If You Ate Only Maggi for 30 Days?",
+ "lang": "en",
+ "tries": 4,
+ "jobs": [
+  {
+   "name": "main",
+   "kind": "main",
+   "script": "TITLE: What If You Ate Only Maggi for 30 Days?\nLANG: en\nKEY_BEATS: hook, gums, twist\nHARD_CUT_BEFORE: gums\n\n[Hook | tense]\nPacket number two hundred and ten.\nYou've eaten only Maggi for thirty days. Breakfast, lunch, dinner.\nEvery day, about three times the salt your body should get.\n{soft} And the real damage... isn't printed anywhere on the packet.\n\n[Promise - logo | neutral]\nThis is K R's What If Explained. I went through twelve nutrition labels, studies and health reports for this one.\nSo... how did you get here?\n{playful} Thirty days ago, your roommate laughed at you. Bet you can't eat only Maggi for a month. Five thousand rupees.\n{neutral} One rule: no skipping meals. So how many packets is that? Your body needs about two thousand one hundred calories a day. One packet gives about three hundred.\nSo, seven packets. Every. Single. Day. You shook his hand.\n\n[Day one - the dream | playful]\nDay one. You line up seven packets on your hostel shelf like trophies. Your roommate films it for the group chat.\nYou're not alone, by the way. India ate over six hundred crore servings of Maggi in just fifteen months.\nYour whole day costs around a hundred rupees. Cheaper than one pizza.\nTwo minutes a packet. Breakfast, Maggi. Lunch, Maggi. Dinner, Maggi.\n{deadpan} Easiest five thousand rupees of your life.\n\n[Day three - the salt | tense]\nDay three. You look in the mirror... and your face looks puffy.\nYour ring won't slide off. You've finished two bottles of water before lunch.\nThat's the salt. Each packet carries more than a third of your daily limit.\nSeven packets... and your body holds on to extra water just to dilute it.\n{neutral} Your blood pressure has to work harder. You can't feel it. But it's happening.\n\n[Week one - the wax myth | playful]\nWeek one. Twenty minutes in the bathroom. Nothing.\nMaggi has very little fibre. Your gut has almost nothing to push with.\nThen your mom calls. She's heard about the bet.\n{playful} Beta, Maggi is coated in wax! It stays in your stomach for days!\nFact-checkers have checked that one again and again. No wax. Nestle says the same.\n{deadpan} Mom's wrong about the wax. But she's right to worry. The problem isn't what's in the packet. It's what isn't.\n\n[Day ten - the bacteria | wonder]\nDay ten. And the ones suffering most... aren't you.\nInside your gut live trillions of bacteria. They eat fibre. And for ten days, you've fed them nothing.\nIn twenty fifteen, a scientist in London, Tim Spector, tried this on his own son. Only fast food, for ten days.\nBy the end, about forty percent of the bacteria types in his gut... were gone.\n{neutral} Your roommate is sure you'll quit before day fifteen. Would you? What's the longest you've ever survived on just Maggi? Tell me in the comments.\n\n[Day twenty - the biryani | neutral]\nDay twenty. Nine p.m. Your roommate orders biryani... and eats it right next to you.\nThe smell fills the room. You almost quit.\nAnd here's the surprise. You're not even hungry. Protein? Not that bad. Seven packets give you around forty grams. You need about fifty-four.\n{tense} But in class, you read the same line five times. Heavy. Like your phone stuck at five percent.\nBecause full... is not the same as fed.\n{neutral} A study of over ten thousand Korean adults found women eating instant noodles just twice a week had higher odds of belly fat, high blood sugar and high blood pressure... together.\n{deadpan} You're on seven a day.\n\n[Day thirty - gums | deep]\nDay thirty. (pause 0.4)\nMaggi... Maggi... Maggi. (pause 0.4)\nThe last packet. Your roommate hands over the five thousand. (pause 0.4)\nYou won the bet. (pause 0.4)\nBut your body lost it. You climb the stairs one step at a time. Your legs ache. (pause 0.5)\nIn thirty days of Maggi... you've had almost zero vitamin C.\nKeep going a few more weeks... and your gums start to bleed. Bruises show up from nowhere. Small cuts stop healing.\n\n[Twist - the sailors | neutral]\nHere's the twist. This has a name.\n{dramatic} Scurvy.\nThe disease of old sailing ships... showing up in a hostel room.\nWith little or no vitamin C, the tiredness can start within weeks. The bleeding... within one to three months.\n{soft} And it's not just history. In twenty sixteen, doctors in Sydney found scurvy in twelve patients. Some were overweight. They looked well fed.\n{deadpan} You can be full every day... and still be starving.\n\n[Payoff - the lemon | warm]\nThe good news? With vitamin C again, the signs usually start fading within days.\nSo spend a little of your winnings: add peas. An egg. One squeeze of lemon.\n{playful} Same two minutes. Completely different month.\nWhat's your secret Maggi add-on?\n{neutral} Next time: What if you walked ten thousand steps every day for a year? But that story... is for the next What If.\n",
+   "strict": [
+    "hook",
+    "gums",
+    "twist"
+   ],
+   "hard_cut_before": [
+    "gums"
+   ]
+  },
+  {
+   "name": "short",
+   "kind": "short",
+   "script": "TITLE: What If You Ate Only Maggi for 30 Days? — Short\nLANG: en\nKEY_BEATS: hook\nHARD_CUT_BEFORE:\n\n[Hook | dramatic]\nYou ate seven Maggi packets a day. For a month. Your face changes first.\n\n[Day one | playful]\nDay one feels amazing. Two minutes a packet. Around a hundred rupees a day.\n\n[Day three | dramatic]\nDay three. Your face looks puffy. Your rings feel tight.\nBecause seven packets give you about three times the salt you should eat in a day.\nYour body holds on to water just to dilute it.\n\n[Week one | neutral]\nWeek one. The bathroom stops working. There's almost no fibre in a packet.\n\n[Day ten | neutral]\nDay ten. The tiny bacteria in your gut start disappearing. They lived on vegetables. You stopped feeding them.\n\n[Tease | dramatic]\nBut on day thirty, something starts that no label warns you about.\n\n[Loop | neutral]\nFull video on YouTube.\nBecause to live on Maggi alone...\n",
+   "strict": [
+    "hook"
+   ]
+  },
+  {
+   "name": "reel",
+   "kind": "short",
+   "script": "TITLE: What If You Ate Only Maggi for 30 Days? — Reel\nLANG: en\nKEY_BEATS: hook\nHARD_CUT_BEFORE:\n\n[Hook | dramatic]\nTen days of only Maggi... and part of you starts dying.\n\n[The roommates | neutral]\nNot your heart. Not your brain.\nYour gut is home to trillions of tiny bacteria. And they eat fibre... from dal, sabzi, fruit.\nMaggi gives them almost nothing.\n\n[The experiment | wonder]\nIn London, a scientist's son ate only fast food for ten days.\nWhen they checked his gut... around forty percent of the bacteria types were gone.\n{soft} You feel full. They're starving.\n\n[Tease | neutral]\nAnd by day thirty... something even stranger starts in your body.\nWhat's your go-to Maggi add-on?\nFull story on YouTube. Link in bio.\n",
+   "strict": [
+    "hook"
+   ]
+  }
+ ]
+}
