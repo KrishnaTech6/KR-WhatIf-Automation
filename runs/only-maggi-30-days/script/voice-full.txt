@@ -6,7 +6,7 @@ HARD_CUT_BEFORE: gums
 [Hook | tense]
 You've eaten only Maggi for thirty days. Breakfast, lunch, dinner.
 Two hundred and ten packets.
-Every day, nearly three times the salt your body should get.
+Every day, about three times the salt your body should get.
 {soft} And salt... isn't even the scary part.
 
 [Promise - logo | neutral]

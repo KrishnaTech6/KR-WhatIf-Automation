@@ -64,7 +64,7 @@ Voice: talk to one friend at night, close to the mic, ~150 wpm, slower on number
 >
 > Two hundred and ten packets.
 >
-> Every day, nearly three times the salt your body should get.
+> Every day, about three times the salt your body should get.
 >
 > And salt... isn't even the scary part.
 
@@ -262,7 +262,7 @@ Voice: talk to one friend at night, close to the mic, ~150 wpm, slower on number
 | 3:42 | Twist: scurvy, Sydney 2016 | high → low |
 | 4:13 | Bonus beat (fix in days), callback, comment prompt 2, tease | low/warm |
 
-20-second test: **context** "You've eaten only Maggi for thirty days" (0:00) · **stakes** "nearly three times the salt your body should get" (0:07) · **curiosity gap** "salt isn't even the scary part" (0:11). Effort beat at ~0:17 (papers + counter, 12 sources).
+20-second test: **context** "You've eaten only Maggi for thirty days" (0:00) · **stakes** "about three times the salt your body should get" (0:07) · **curiosity gap** "salt isn't even the scary part" (0:11). Effort beat at ~0:17 (papers + counter, 12 sources).
 
 ## 7. YouTube Short (shock angle: 7 packets a day and what your body does)
 
@@ -272,7 +272,7 @@ Voice: talk to one friend at night, close to the mic, ~150 wpm, slower on number
 | --- | --- | --- | --- |
 | 0:00 | You ate seven Maggi packets a day. For a month. Your face changes first. | Hero bowl, 7 packets fan in | 7 PACKETS A DAY |
 | 0:05 | Day one feels amazing. Two minutes a packet. Around a hundred rupees a day. | Hostel shelf, ₹100 | DAY 1 |
-| 0:11 | Day three. Your face looks puffy. Your rings feel tight. Because seven packets give you nearly three times the salt you should eat in a day. Your body holds on to water just to dilute it. | Face swelling, salt jar overflowing | 3× SALT |
+| 0:11 | Day three. Your face looks puffy. Your rings feel tight. Because seven packets give you about three times the salt you should eat in a day. Your body holds on to water just to dilute it. | Face swelling, salt jar overflowing | 3× SALT |
 | 0:25 | Week one. The bathroom stops working. There's almost no fibre in a packet. | Fibre meter empty | WEEK 1 |
 | 0:31 | Day ten. The tiny bacteria in your gut start disappearing. They lived on vegetables. You stopped feeding them. | Gut city fading | DAY 10 |
 | 0:39 | And the scariest part? It starts around day thirty. And it has nothing to do with salt. | DAY 30 calendar page, red glow | DAY 30… |
