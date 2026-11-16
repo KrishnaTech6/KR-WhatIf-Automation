@@ -80,9 +80,9 @@ Told as one story: your roommate Rohan bets you ₹5,000 you can't eat only Magg
 >
 > So... how did you get here?
 >
-> Thirty days ago, your roommate Rohan laughed at you. Bet you can't eat only Maggi for a month. Five thousand rupees.
+> Thirty days ago, your roommate laughed at you. Bet you can't eat only Maggi for a month. Five thousand rupees.
 >
-> You did the maths. An adult needs about two thousand one hundred calories a day. One packet gives about three hundred.
+> One rule: no skipping meals. So how many packets is that? Your body needs about two thousand one hundred calories a day. One packet gives about three hundred.
 >
 > So, seven packets. Every. Single. Day. You shook his hand.
 
@@ -90,7 +90,7 @@ Told as one story: your roommate Rohan bets you ₹5,000 you can't eat only Magg
 
 **Voiceover:**
 
-> Day one. You line up seven packets on your hostel shelf like trophies. Rohan films it for the group chat.
+> Day one. You line up seven packets on your hostel shelf like trophies. Your roommate films it for the group chat.
 >
 > You're not alone, by the way. India ate over six hundred crore servings of Maggi in just fifteen months.
 >
@@ -140,7 +140,7 @@ Told as one story: your roommate Rohan bets you ₹5,000 you can't eat only Magg
 >
 > By the end, about forty percent of the bacteria types in his gut... were gone.
 >
-> Rohan is sure you'll quit before day fifteen. Would you? What's the longest you've ever survived on just Maggi? Tell me in the comments.
+> Your roommate is sure you'll quit before day fifteen. Would you? What's the longest you've ever survived on just Maggi? Tell me in the comments.
 
 ### Day twenty - the surprise
 
@@ -196,7 +196,7 @@ Told as one story: your roommate Rohan bets you ₹5,000 you can't eat only Magg
 
 **Voiceover:**
 
-> Rohan pays up. And the good news? With vitamin C again, the signs usually start fading within days.
+> Your roommate pays up. And the good news? With vitamin C again, the signs usually start fading within days.
 >
 > Back on that hostel shelf: add peas. An egg. One squeeze of lemon.
 >
