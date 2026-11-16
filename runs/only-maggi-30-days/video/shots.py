@@ -416,15 +416,38 @@ def s_jar_one(c, t, t0):
 
 
 def s_jar_seven(c, t, t0):
-    explainer_bg(c, t, "deep")
-    tp = S("day_three", "seven", -0.2)
-    f = span(t, tp, tp + 1.2)
-    salt_jar(c, W / 2, 1000, 1.05, min(1.0, f * 2.52), over=max(0.0, f * 2.52 - 1) / 1.52)
+    """Seven pouches tip salt into the daily-limit jar one after another; it rises past the line and spills."""
+    room_bg(c, t, lamp=0.9)
+    table_top(c, 900)
+    ts = S("day_three", "seven", -0.25)
+    te = S("day_three", "holds", -0.4)
+    dt = max(0.18, (te - ts - 0.3) / 7)
+    k_now = clamp((t - ts) / (dt * 7))
+    fill = min(1.0, 0.08 + 2.52 * 0.4 * k_now)   # 1 packet = 36% of the limit line (line at 85% of the jar)
+    over = max(0.0, (0.08 + 2.52 * 0.4 * k_now - 1.0) / 0.1)
+    jx, jb = 700, 900
+    open_jar(c, jx, jb, 1.15, fill, over, t)
+    spill = clamp(over / 0.8)
+    salt_pile(c, jx - 290, jb, 380 * spill, 150 * spill, t, seed=1)
+    salt_pile(c, jx + 290, jb, 320 * spill, 120 * spill, t, seed=2)
     for i in range(7):
-        a = span(t, tp + 0.1 * i, tp + 0.1 * i + 0.25) - span(t, tp + 0.3 + 0.1 * i, tp + 0.6 + 0.1 * i)
-        packet(c, W / 2 + (i - 3) * 160, 180, 0.3, t, a=max(0, a), rot=180)
-    big_text(c, "7 × 36% = 252%", 1500, 520, 64, span(t, tp + 0.6, tp + 0.9), "coral")
-    big_text(c, "≈ 3× THE LIMIT", 1500, 620, 52, span(t, tp + 1.0, tp + 1.3), "gold")
+        a0 = ts + i * dt
+        p = span(t, a0, a0 + dt * 1.3)
+        if t < a0 - 0.05:
+            continue
+        if p < 1:
+            tilt = 130 * ease(span(p, 0.0, 0.4))
+            px, py = jx + 50, 200
+            packet(c, px, py, 0.45, t, rot=tilt, torn=1.0)
+            if p > 0.3:   # salt stream
+                for k in range(14):
+                    v = (k / 14 + t * 3) % 1
+                    c.drawRect(skia.Rect(px - 20 + 10 * rng(k, 21), py + 70 + v * 120, px - 14 + 10 * rng(k, 21), py + 76 + v * 120), paint("white", 0.9))
+        else:   # empties pile up on the table, left
+            packet(c, 170 + (i % 4) * 50, 860 - (i // 4) * 30, 0.2, t, rot=-70 + i * 12, torn=1.0, dimmed=0.3)
+    big_text(c, "7 PACKETS", 1420, 600, 104, span(t, ts, ts + 0.3), "gold")
+    big_text(c, "≈ 3× THE LIMIT", 1420, 720, 80, span(t, ts + 0.5 * (te - ts), ts + 0.5 * (te - ts) + 0.3), "coral")
+    label(c, "7 × 36% = 252%", 1420, 800, 44, "sand", "bold", span(t, ts + 0.6 * (te - ts), ts + 0.6 * (te - ts) + 0.3))
 
 
 def s_hold_water(c, t, t0):
@@ -481,12 +504,28 @@ def s_bathroom(c, t, t0):
 
 
 def s_fibre(c, t, t0):
-    explainer_bg(c, t, "deep")
+    """FIBRE IN A DAY: a day of Maggi (7 pouches + bowl) with a tiny fibre bar vs a proper thali with a full one."""
+    room_bg(c, t, lamp=1.0)
+    table_top(c, 700)
     tf = S("week_one", "fibre", -0.3)
-    meter(c, 720, 940, 200, 600, 2.0 / 30 * span(t, tf, tf + 0.6), "coral", "1 PACKET", "≈ 2 g", a=span(t, t0, t0 + 0.3))
-    meter(c, 1200, 940, 200, 600, span(t, tf + 0.4, tf + 1.2), "#9BE07A", "YOU NEED", "≈ 30 g", a=span(t, tf + 0.2, tf + 0.5))
-    headline(c, t, "FIBRE", tf, 120, 80, "gold")
-    label(c, "nothing to push with", 1620, 600, 40, "sand", "bold", span(t, S("week_one", "push", -0.3), S("week_one", "push", 0.1)))
+    grow = span(t, tf, tf + 0.9)
+    for i in range(7):
+        packet(c, 200 + i * 52, 560 - (i % 2) * 14, 0.3, t, rot=-8 + i * 3)
+    bowl(c, 470, 720, 0.7, t, steam_a=0.6)
+    thali(c, 1420, 720, 1.2, t)
+    c.save(); c.translate(1790, 600)
+    c.rotate(-20)
+    ellipse(c, 0, 0, 38, 46, paint("#D8342E")); ellipse(c, -12, -14, 10, 14, paint("#FF9A8A", 0.7))
+    c.drawLine(0, -44, 6, -66, paint("#5A3A1A", stroke=6))
+    c.restore()
+    c.drawLine(W / 2, 240, W / 2, 1040, paint("cream", 0.25, stroke=4))
+    fibre_bar(c, 470, 920, 600, 0.28 * grow, "coral")
+    fibre_bar(c, 1420, 920, 600, 1.0 * grow, "#9BE07A")
+    big_text(c, "under 1/3 of what you need", 470, 1020, 48, span(t, tf + 0.3, tf + 0.6), "coral")
+    big_text(c, "~30 g a day", 1420, 1015, 52, span(t, tf + 0.3, tf + 0.6), "#9BE07A")
+    label(c, "A DAY OF MAGGI", 470, 300, 46, "cream", "extrabold")
+    label(c, "A PROPER THALI", 1420, 300, 46, "cream", "extrabold")
+    headline(c, t, "FIBRE IN A DAY", t0 + 0.1, 150, 80, "gold")
 
 
 def s_mom_call(c, t, t0):
@@ -1233,3 +1272,101 @@ def glow_bottle(c, x, y, s, fill=1.0, a=1.0, rot=0.0):
     glow(c, 0, -170 * s, 220 * s, "#4FA3E0", 0.45 * a * fill)
     water_bottle(c, 0, 0, s, fill, a=a)
     c.restore()
+
+
+def salt_pile(c, cx, base, w, h, t, seed=0, a=1.0):
+    """A messy, granular heap of spilled salt on the table, with a soft shadow and rim light."""
+    if h <= 2 or w <= 4:
+        return
+    sh = paint("space", 0.45 * a); sh.setMaskFilter(skia.MaskFilter.MakeBlur(skia.kNormal_BlurStyle, 12))
+    ellipse(c, cx + 10, base + 8, w * 0.6, 16, sh)
+    p = skia.Path(); p.moveTo(cx - w / 2, base)
+    for k in range(13):
+        u = k / 12
+        xx = cx - w / 2 + u * w
+        yy = base - h * math.sin(math.pi * u) ** 1.3 * (0.85 + 0.15 * rng(k, 300 + seed))
+        p.lineTo(xx, yy)
+    p.close()
+    c.drawPath(p, hgrad(cx - w / 2, cx + w / 2, ["#FFE9D6", "#F4F1E8", "#C9D3F0"]))
+    for k in range(int(30 + w * 0.25)):
+        u = rng(k, 310 + seed)
+        xx = cx - w / 2 + u * w
+        top = base - h * math.sin(math.pi * u) ** 1.3
+        yy = top + rng(k, 320 + seed) * (base - top)
+        sz = 2.5 + 3.5 * rng(k, 330 + seed)
+        c.drawRect(skia.Rect(xx - sz, yy - sz, xx + sz, yy + sz), paint("white" if k % 3 else "#BFC6DA", a))
+    for k in range(18):   # loose grains on the table
+        xx = cx + (rng(k, 340 + seed) - 0.5) * w * 1.5
+        c.drawRect(skia.Rect(xx - 3, base - 3, xx + 3, base + 3), paint("#E8E6EE", 0.9 * a))
+    ar = skia.Path(); ar.moveTo(cx - w / 2, base); ar.quadTo(cx - w * 0.25, base - h * 1.05, cx, base - h)
+    c.drawPath(ar, paint("amber", 0.6 * a, stroke=4))
+
+
+def open_jar(c, x, base, s, fill, over, t):
+    """The daily-limit jar from #29, lid off (lying beside it), red limit line; salt rises and spills over the rim."""
+    c.save(); c.translate(x, base); c.scale(s, s)
+    glow(c, 0, -260, 360, COOL, 0.15)
+    jar = rr(-170, -520, 170, 0, 40)
+    c.drawRRect(jar, paint("#2A3A6A", 0.35))
+    c.save(); c.clipRRect(jar)
+    fh = 520 * clamp(fill)
+    c.drawRect(skia.Rect(-170, -fh, 170, 0), paint("#F4F1E8", 0.95))
+    for k in range(int(110 * clamp(fill))):
+        c.drawCircle(-160 + rng(k, 5) * 320, -rng(k, 6) * fh, 3, paint("#C9C3B8"))
+    c.restore()
+    if over > 0:   # mound just above the rim, and grains running down the outside
+        e = ease_out(min(1, over))
+        mp = skia.Path(); mp.moveTo(-180, -520)
+        for k in range(11):
+            u = k / 10
+            mp.lineTo(-180 + 360 * u, -520 - 60 * e * math.sin(math.pi * u) * (0.8 + 0.4 * rng(k, 7)))
+        mp.close()
+        c.drawPath(mp, paint("#F4F1E8"))
+        for side in (-1, 1):
+            for k in range(int(40 * e)):
+                v = rng(k, 11 + side)
+                yy = -520 + v * 520 * e
+                xx = side * (176 + 10 * math.sin(v * 9 + k)) + side * 6 * rng(k, 13)
+                c.drawRect(skia.Rect(xx - 4, yy - 4, xx + 4, yy + 4), paint("white", 0.95))
+    c.drawRRect(jar, paint("#BFD4FF", 0.85, stroke=7))
+    c.drawLine(-150, -440, 150, -440, paint("coral", 0.95, stroke=6))
+    label(c, "LIMIT", 0, -455, 30, "coral", "extrabold")
+    hl = skia.Path(); hl.moveTo(-140, -400); hl.lineTo(-140, -80)
+    c.drawPath(hl, paint("white", 0.35, stroke=10))
+    c.save(); c.translate(300, -24); c.rotate(-8)   # the lid, off, on the table
+    c.drawRRect(rr(-130, -26, 130, 24, 10), paint("#8A93B8")); c.drawRRect(rr(-130, -26, 130, 24, 10), paint("amber", 0.5, stroke=3))
+    c.restore()
+    c.restore()
+
+
+def thali(c, x, y, s, t, a=1.0):
+    """A proper Indian thali: dal, sabzi, roti, salad, curd, with rim light."""
+    c.save(); c.translate(x, y); c.scale(s, s)
+    sh = paint("space", 0.45); sh.setMaskFilter(skia.MaskFilter.MakeBlur(skia.kNormal_BlurStyle, 16))
+    ellipse(c, 10, 30, 330, 100, sh)
+    ellipse(c, 0, 0, 330, 110, hgrad(-330, 330, ["#E8ECF4", "#B8BECC", "#8A92A8"]))
+    ellipse(c, 0, -6, 300, 94, hgrad(-300, 300, ["#D8DCE6", "#A8AEBE"]))
+    ellipse(c, 0, 0, 330, 110, paint("amber", 0.6, stroke=4))
+
+    def katori(kx, ky, colr, top):
+        ellipse(c, kx, ky + 14, 80, 30, paint("#7A8098"))
+        ellipse(c, kx, ky, 80, 28, paint("#C9CEDA"))
+        ellipse(c, kx, ky + 2, 68, 22, paint(colr))
+        top(kx, ky)
+    katori(-170, -30, "#E8B33A", lambda kx, ky: [c.drawCircle(kx - 20 + 18 * k, ky + (k % 2) * 6, 4, paint("#B8862E")) for k in range(3)])
+    katori(-20, -55, "#4E8A2E", lambda kx, ky: [c.drawRRect(rr(kx - 40 + 26 * k, ky - 8, kx - 24 + 26 * k, ky + 6, 3), paint(["#F07A2A", "#9BE07A", "#F4D27A"][k % 3])) for k in range(4)])
+    katori(130, -40, "#F4F1E8", lambda kx, ky: c.drawCircle(kx + 10, ky, 6, paint("#9BE07A")))
+    for k in range(3):   # rotis
+        ellipse(c, -110 + k * 10, 50 - k * 8, 95, 32, paint("#D8A860")); ellipse(c, -110 + k * 10, 50 - k * 8, 95, 32, paint("#A87838", stroke=3))
+        c.drawCircle(-130 + k * 10, 44 - k * 8, 6, paint("#8A5A2A", 0.6))
+    for k in range(4):   # salad: cucumber, tomato, onion
+        ellipse(c, 100 + k * 34, 50, 22, 10, paint(["#9BE07A", "#D8342E", "#E8D0F0", "#9BE07A"][k]))
+    c.restore()
+
+
+def fibre_bar(c, x, y, w, p, colr, a=1.0):
+    c.drawRRect(rr(x - w / 2, y - 30, x + w / 2, y + 30, 30), paint("#0E0A1C", 0.9 * a))
+    if p > 0:
+        c.drawRRect(rr(x - w / 2 + 6, y - 24, x - w / 2 + 6 + (w - 12) * p, y + 24, 24), paint(colr, a))
+        glow(c, x - w / 2 + (w - 12) * p, y, 80, colr, 0.35 * a)
+    c.drawRRect(rr(x - w / 2, y - 30, x + w / 2, y + 30, 30), paint("cream", 0.8 * a, stroke=4))
