@@ -52,27 +52,50 @@ def dim(c, a):
 
 
 # ---------------------------------------------------------------- backgrounds
-def room_bg(c, t, lamp=1.0, moon=1.0, warn=0.0):
-    """Hostel room at night: warm desk-lamp glow on the left, cool moonlit window on the right."""
-    c.drawRect(skia.Rect(0, 0, W, H), vgrad(0, H, ["#1C1238", "#24164A", "#1A1034"]))
-    c.drawRect(skia.Rect(0, H * 0.78, W, H), paint("#120A24"))
+def room_bg(c, t, lamp=1.0, moon=1.0, warn=0.0, mode="night"):
+    """Hostel room. mode: night (desk lamp + moonlit window), morning (sunrise window, light shafts, lamp off),
+    dark (Day 30: moon only, near black), dusk (sunset window, purple wall)."""
+    if mode == "morning":
+        c.drawRect(skia.Rect(0, 0, W, H), vgrad(0, H, ["#3B2A5C", "#5A3A62", "#4A2E52"]))
+        c.drawRect(skia.Rect(0, H * 0.78, W, H), paint("#2A1A3A"))
+        c.drawLine(0, H * 0.78, W, H * 0.78, paint("#6A4A6A", stroke=4))
+        c.drawRRect(rr(1460, 110, 1820, 470, 10), vgrad(110, 470, ["#F6B26B", "#F48A6A", "#C85A7A"]))
+        c.drawCircle(1600, 380, 60, paint("#FFE2A0"))
+        glow(c, 1600, 380, 260, "gold", 0.5)
+        c.drawRRect(rr(1460, 110, 1820, 470, 10), paint("#6A4A6A", stroke=14))
+        c.drawLine(1640, 110, 1640, 470, paint("#6A4A6A", stroke=10))
+        for k in range(3):   # light shafts across the room
+            sh = skia.Path(); x0 = 1470 + k * 120
+            sh.moveTo(x0, 130 + k * 100); sh.lineTo(x0 + 100, 130 + k * 100); sh.lineTo(x0 - 700, 1080); sh.lineTo(x0 - 900, 1080); sh.close()
+            c.drawPath(sh, paint("gold", 0.06 + 0.02 * math.sin(t + k)))
+        c.drawRRect(rr(120, 140, 360, 460, 6), paint("#5A3A6A"))
+        c.drawCircle(240, 270, 70, paint("sunset", 0.5)); c.drawRect(skia.Rect(150, 380, 330, 400), paint("sand", 0.4))
+        glow(c, 1100, 900, 700, "amber", 0.15)
+        vignette(c, W, H, 0.35)
+        return
+    dark = mode == "dark"
+    wall = ["#120C24", "#160F2E", "#100A20"] if dark else (["#2A1640", "#3A1C4A", "#24143A"] if mode == "dusk" else ["#1C1238", "#24164A", "#1A1034"])
+    c.drawRect(skia.Rect(0, 0, W, H), vgrad(0, H, wall))
+    c.drawRect(skia.Rect(0, H * 0.78, W, H), paint("#0E0820" if dark else "#120A24"))
     c.drawLine(0, H * 0.78, W, H * 0.78, paint("#2E1E52", stroke=4))
-    # window with moonlight
-    c.drawRRect(rr(1460, 110, 1820, 470, 10), paint("#101C3E"))
-    glow(c, 1700, 200, 220, COOL, 0.22 * moon)
-    c.drawCircle(1720, 190, 34, paint("#DCE8FF", 0.85 * moon))
-    for k in range(18):
-        c.drawCircle(1470 + rng(k, 9) * 340, 120 + rng(k, 10) * 330, 1.5 + rng(k, 11) * 2, paint("cream", 0.5))
+    if mode == "dusk":
+        c.drawRRect(rr(1460, 110, 1820, 470, 10), vgrad(110, 470, ["#4E1C5E", "#8A2A5C", "#D9573D"]))
+    else:
+        c.drawRRect(rr(1460, 110, 1820, 470, 10), paint("#101C3E"))
+        glow(c, 1700, 200, 220, COOL, 0.22 * moon)
+        c.drawCircle(1720, 190, 34, paint("#DCE8FF", 0.85 * moon))
+        for k in range(18):
+            c.drawCircle(1470 + rng(k, 9) * 340, 120 + rng(k, 10) * 330, 1.5 + rng(k, 11) * 2, paint("cream", 0.5))
     c.drawRRect(rr(1460, 110, 1820, 470, 10), paint("#3A2A5E", stroke=14))
     c.drawLine(1640, 110, 1640, 470, paint("#3A2A5E", stroke=10))
-    glow(c, 1600, 700, 600, COOL, 0.10 * moon)
-    # poster
-    c.drawRRect(rr(120, 140, 360, 460, 6), paint("#3A1F55"))
-    c.drawCircle(240, 270, 70, paint("magenta", 0.5)); c.drawRect(skia.Rect(150, 380, 330, 400), paint("sand", 0.3))
-    glow(c, 260, 520, 760, "amber", 0.20 * lamp)
+    glow(c, 1600, 700, 600, COOL, (0.16 if dark else 0.10) * moon)
+    if not dark:
+        c.drawRRect(rr(120, 140, 360, 460, 6), paint("#3A1F55"))
+        c.drawCircle(240, 270, 70, paint("magenta", 0.5)); c.drawRect(skia.Rect(150, 380, 330, 400), paint("sand", 0.3))
+        glow(c, 260, 520, 760, "amber", 0.20 * lamp)
     if warn > 0:
         glow(c, W / 2, H * 0.6, 900, "coral", 0.25 * warn)
-    vignette(c, W, H, 0.5)
+    vignette(c, W, H, 0.6 if dark else 0.5)
 
 
 def table_top(c, y=820, a=1.0):
@@ -232,78 +255,88 @@ def lemon(c, x, y, s, a=1.0, wedge=False, glow_a=0.0, outline=False):
 
 # ---------------------------------------------------------------- the packet (our own drawing)
 def packet(c, x, y, s, t=0.0, rot=0.0, a=1.0, torn=0.0, dimmed=0.0, glow_a=0.0, num=None):
-    """Yellow instant-noodle pouch centred at (x, y), 360x480 at s=1. torn 0..1 rips the top strip off."""
+    """Yellow pillow pouch of instant masala noodles (our own design: a drawn noodle block, a wavy brown
+    banner reading MASALA NOODLES; no oval, no wordmark), centred at (x, y), ~380x490 at s=1."""
     if a <= 0:
         return
     c.save(); c.translate(x, y); c.rotate(rot); c.scale(s, s)
+    if a < 1:
+        c.saveLayerAlpha(None, int(255 * a))
     if glow_a > 0:
-        glow(c, 0, 0, 360, "gold", 0.35 * glow_a * a)
-    sh = paint("space", 0.45 * a); sh.setMaskFilter(skia.MaskFilter.MakeBlur(skia.kNormal_BlurStyle, 16))
-    c.drawRRect(rr(-170, -220, 190, 250, 20), sh)
-    body = skia.Path()
-    body.moveTo(-180, -205)
-    body.cubicTo(-196, -60, -196, 60, -180, 205)
-    body.lineTo(180, 205)
-    body.cubicTo(196, 60, 196, -60, 180, -205)
-    body.close()
-    p = hgrad(-190, 190, [YEL_D, YEL, YEL_L, YEL, YEL_D], [0, 0.22, 0.5, 0.78, 1]); p.setAlphaf(a)
-    c.drawPath(body, p)
-    # crimp bands (zigzag edges)
-    def band(y0, y1, edge_y, k_off=0.0):
-        b = skia.Path(); b.moveTo(-180, y0)
-        n = 18
-        for i in range(n + 1):
-            xx = -180 + 360 * i / n
-            b.lineTo(xx, edge_y + (8 if i % 2 else -8))
-        b.lineTo(180, y0); b.close()
-        bp = paint("#E9B210", a); c.drawPath(b, bp)
-        for i in range(1, 24):
-            xx = -180 + 360 * i / 24
-            c.drawLine(xx, min(y0, edge_y) + 6, xx, max(y0, edge_y) - 6, paint(YEL_D, 0.5 * a, stroke=3))
-    band(205, 205, 244)
+        glow(c, 0, 0, 380, "gold", 0.35 * glow_a)
+    sh = paint("space", 0.45); sh.setMaskFilter(skia.MaskFilter.MakeBlur(skia.kNormal_BlurStyle, 16))
+    c.drawRRect(rr(-170, -200, 196, 250, 40), sh)
+    body = _pouch_path()
+    c.drawPath(body, hgrad(-200, 200, [YEL_D, YEL, YEL_L, YEL, YEL_D], [0, 0.2, 0.45, 0.8, 1]))
+    ellipse(c, -60, -90, 90, 150, paint("white", 0.16))   # pillow sheen
+
+    def crimp(y0, sign):
+        b = skia.Path(); b.moveTo(-176, y0)
+        for i in range(21):
+            xx = -176 + 352 * i / 20
+            b.lineTo(xx, y0 + sign * (34 + (9 if i % 2 else -3)))
+        b.lineTo(176, y0); b.close()
+        c.drawPath(b, paint("#E8AE0E"))
+        for i in range(1, 22):
+            xx = -176 + 352 * i / 22
+            c.drawLine(xx, y0 + sign * 4, xx, y0 + sign * 28, paint(YEL_D, 0.55, stroke=3))
+    crimp(205, 1)
     if torn < 1:
         c.save()
         if torn > 0:
             e = ease_out(torn)
             c.translate(60 * e, -90 * e); c.rotate(-14 * e)
         if torn < 0.7:
-            c.saveLayerAlpha(None, int(255 * a * (1 - torn / 0.7)))
-            band(-205, -205, -244)
+            c.saveLayerAlpha(None, int(255 * (1 - torn / 0.7)))
+            crimp(-205, -1)
             c.restore()
         c.restore()
-    if torn > 0:
-        c.drawLine(-180, -205, 180, -205, paint(YEL_D, a, stroke=4))
-        if torn < 0.6:   # noodle bits flying out
-            for k in range(6):
-                v = torn / 0.6
-                c.drawCircle(-80 + k * 32, -215 - 160 * v * (0.5 + rng(k, 3)), 7, paint(NOOD, a * (1 - v)))
-    # red oval label with our wordmark
-    c.save(); c.translate(0, -88)
-    ellipse(c, 0, 0, 150, 82, paint("#FFE14D", a))
-    ellipse(c, 0, 0, 140, 73, paint(RED, a))
-    ellipse(c, 0, 0, 140, 73, paint(RED_D, a, stroke=4))
-    ellipse(c, -40, -36, 70, 16, paint("#FF7A7A", 0.35 * a))
-    text(c, "MAGGI", 0, 22, font("extrabold", 62), paint("#FFE14D", a))
+    if 0 < torn < 0.6:
+        v = torn / 0.6
+        for k in range(6):
+            c.drawCircle(-80 + k * 32, -215 - 160 * v * (0.5 + rng(k, 3)), 7, paint(NOOD, 1 - v))
+    # the noodle block (drawn, our illustration)
+    c.save(); c.rotate(-6)
+    c.drawRRect(rr(-128, -170, 128, -6, 34), paint("#F3C24A"))
+    c.save(); c.clipRRect(rr(-128, -170, 128, -6, 34))
+    for r_ in range(7):
+        yy = -158 + r_ * 24
+        p_ = skia.Path(); p_.moveTo(-140, yy)
+        for k in range(30):
+            xx = -140 + k * 10
+            p_.lineTo(xx, yy + 7 * math.sin(xx * 0.18 + r_ * 1.3))
+        c.drawPath(p_, paint(NOOD_D, 0.9, stroke=6)); c.drawPath(p_, paint(NOOD_L, 0.9, stroke=2.4))
     c.restore()
-    # window with a little bowl of noodles
-    c.drawRRect(rr(-130, 30, 130, 180, 24), paint("#E7A10E", a))
-    c.save(); c.clipRRect(rr(-130, 30, 130, 180, 24))
-    ellipse(c, 0, 118, 108, 30, paint(RED_D, a))
-    c.translate(0, 112); c.scale(0.36, 0.36)
-    cl = skia.Path(); cl.addOval(skia.Rect(-280, -64, 280, 76)); c.clipPath(cl, doAntiAlias=True)
-    ellipse(c, 0, 8, 280, 70, paint("#C26A1C", a))
-    noodle_tangle(c, 270, 66, seed=3, n=22)
+    c.drawRRect(rr(-128, -170, 128, -6, 34), paint(NOOD_D, stroke=5))
+    for k in range(3):   # loose strands curling out
+        p_ = skia.Path(); x0 = 100 + k * 8; p_.moveTo(x0, -40 + k * 30)
+        p_.cubicTo(x0 + 40, -60 + k * 30, x0 + 30, -10 + k * 30, x0 + 60, -20 + k * 30)
+        c.drawPath(p_, paint(NOOD_D, stroke=6))
     c.restore()
-    label(c, "MASALA", 0, 160 + 34, 26, RED_D, "extrabold", a)
-    # rim light: warm left, cool right
-    c.drawLine(-182, -190, -192, 190, paint("amber", 0.55 * a, stroke=5))
-    c.drawLine(182, -190, 192, 190, paint(COOL, 0.45 * a, stroke=5))
-    if num is not None:
-        pill(c, 0, 300, 1.0, num, "coral", "cream", 40)
-    c.restore()
+    # steam curls above the block
+    for k in range(3):
+        p_ = skia.Path(); bx = -50 + k * 50; p_.moveTo(bx, -178)
+        p_.cubicTo(bx - 16, -186, bx + 16, -196, bx, -204)
+        c.drawPath(p_, paint("white", 0.75, stroke=5))
+    # wavy banner
+    ban = skia.Path(); ban.moveTo(-176, 40)
+    ban.cubicTo(-90, 18, 90, 62, 176, 40); ban.lineTo(176, 118); ban.cubicTo(90, 140, -90, 96, -176, 118); ban.close()
+    c.drawPath(ban, paint("#7A2E12"))
+    c.drawPath(ban, paint("#F7E2A8", 0.7, stroke=3))
+    text(c, "MASALA", 0, 102, font("extrabold", 58), paint("#FFE9B0"))
+    text(c, "NOODLES", 0, 182, font("extrabold", 46), paint("#7A2E12"))
+    # chilli + spice dots
+    ch = skia.Path(); ch.moveTo(118, 150); ch.quadTo(150, 170, 128, 196); ch.quadTo(132, 172, 110, 160); ch.close()
+    c.drawPath(ch, paint("#D8342E"))
+    c.drawLine(-160, -190, -192, 180, paint("amber", 0.55, stroke=5))
+    c.drawLine(160, -190, 194, 180, paint(COOL, 0.45, stroke=5))
     if dimmed > 0:
-        c.save(); c.translate(x, y); c.rotate(rot); c.scale(s, s)
-        c.drawPath(body, paint("space", dimmed * a)); c.restore()
+        c.drawPath(body, paint("space", dimmed))
+    if num is not None:
+        pill(c, 0, 310, 1.0, num, "coral", "cream", 40)
+    if a < 1:
+        c.restore()
+    c.restore()
 
 
 def calendar_page(c, x, y, s, top, big, rot=0.0, a=1.0, tear=0.0, red=True):
@@ -349,37 +382,80 @@ def shelf(c, x, y, w, t, n=7, shows=None, lemon_a=1.0, lemon_glow=0.0, ps=0.42):
 
 
 # ---------------------------------------------------------------- people (faceless silhouettes)
-def figure(c, x, y, s, a=1.0, arm_l=200, arm_r=-20, lean=0.0, belly=0.0, rim="amber", fill=NIGHT, head_tilt=0.0, seated=False):
-    """Faceless silhouette, feet at (x, y), ~560 px tall at s=1. Arm angles in degrees (0 = right, 90 = down)."""
+def figure(c, x, y, s, a=1.0, arm_l=110, arm_r=70, lean=0.0, belly=0.0, rim="amber", fill=NIGHT, head_tilt=0.0,
+           seated=False, hair="short", top="hoodie", shirt=None, slump=0.0):
+    """Faceless silhouette, feet at (x, y), ~600 px tall at s=1. Arm angles in degrees (0 = right, 90 = down).
+    Two-tone rim light (warm left, cool right), hair shape, hoodie/tee, shoes, hands. slump bows the head+shoulders."""
     if a <= 0:
         return
     c.save(); c.translate(x, y); c.scale(s, s); c.rotate(lean)
-    glow(c, 0, -380, 330, rim, 0.22 * a)
-    fp = paint(fill, a)
-    rimp = paint(rim, 0.75 * a, stroke=5)
+    if a < 1:
+        c.saveLayerAlpha(None, int(255 * a))
+    glow(c, 0, -400, 330, rim, 0.22)
+    shirt = shirt or ("#3A2A6A" if fill == NIGHT else fill)
+    pants = "#16102C"
+    sy = 30 * slump
+    legs = skia.Path()
     if not seated:
-        c.drawLine(-28, -220, -34, 0, paint(fill, a, stroke=44))
-        c.drawLine(28, -220, 34, 0, paint(fill, a, stroke=44))
+        legs.addPath(_limb(-30, -230, -36, -14, 48)); legs.addPath(_limb(30, -230, 36, -14, 48))
+        feet = [(-44, -8), (44, -8)]
     else:
-        c.drawLine(-28, -200, 80, -200, paint(fill, a, stroke=44)); c.drawLine(80, -200, 90, -40, paint(fill, a, stroke=44))
-    bw = 78 + 60 * belly
-    torso = skia.Path(); torso.moveTo(-70, -430); torso.cubicTo(-80 - 40 * belly, -330, -bw, -260, -66, -200)
-    torso.lineTo(66, -200); torso.cubicTo(bw, -260, 80 + 40 * belly, -330, 70, -430); torso.close()
-    c.drawPath(torso, fp)
-    for ang, sx in ((arm_l, -62), (arm_r, 62)):
+        legs.addPath(_limb(-30, -215, 90, -215, 48)); legs.addPath(_limb(90, -215, 96, -24, 46))
+        legs.addPath(_limb(30, -215, 110, -205, 48)); legs.addPath(_limb(110, -205, 120, -24, 46))
+        feet = [(104, -16), (128, -16)]
+    c.drawPath(legs, paint(pants))
+    for fx, fy in feet:
+        ellipse(c, fx + 8, fy, 38, 16, paint("#0A0716"))
+        ellipse(c, fx + 8, fy - 4, 34, 8, paint("cream", 0.25))
+    bw = 82 + 60 * belly
+    torso = skia.Path(); torso.moveTo(-74, -440 + sy); torso.cubicTo(-90 - 40 * belly, -340, -bw, -270, -70, -205)
+    torso.lineTo(70, -205); torso.cubicTo(bw, -270, 90 + 40 * belly, -340, 74, -440 + sy); torso.close()
+    c.drawPath(torso, vgrad(-440, -205, [shirt, fill]))
+    if top == "hoodie":
+        hood = skia.Path(); hood.addArc(skia.Rect(-60, -470 + sy, 60, -400 + sy), 180, -180)
+        c.drawPath(hood, paint(fill, stroke=18))
+        c.drawLine(-14, -420 + sy, -18, -350 + sy, paint("cream", 0.35, stroke=4)); c.drawLine(14, -420 + sy, 18, -350 + sy, paint("cream", 0.35, stroke=4))
+        c.drawRRect(rr(-50, -300, 50, -250, 16), paint(fill, 0.8))
+    else:
+        v = skia.Path(); v.moveTo(-26, -440 + sy); v.lineTo(0, -405 + sy); v.lineTo(26, -440 + sy)
+        c.drawPath(v, paint("cream", 0.3, stroke=4))
+    arms = skia.Path(); hands = []
+    for ang, sx in ((arm_l, -66), (arm_r, 66)):
         r = math.radians(ang)
-        ex, ey = sx + 200 * math.cos(r), -410 + 200 * math.sin(r)
-        c.drawLine(sx, -410, ex, ey, paint(fill, a, stroke=36))
-    c.save(); c.translate(0, -430); c.rotate(head_tilt)
-    c.drawLine(0, 0, 0, -30, paint(fill, a, stroke=40))
-    c.drawCircle(0, -82, 60, fp)
-    arc = skia.Path(); arc.addArc(skia.Rect(-60, -142, 60, -22), 120, 110)
-    c.drawCircle(0, -82, 60, paint(COOL, 0.25 * a, stroke=3))
-    c.drawPath(arc, rimp)
-    arc2 = skia.Path(); arc2.addArc(skia.Rect(-60, -142, 60, -22), -60, 80)
-    c.drawPath(arc2, paint(COOL, 0.55 * a, stroke=4))
+        ex, ey = sx + 200 * math.cos(r), -415 + sy + 200 * math.sin(r)
+        arms.addPath(_limb(sx, -415 + sy, ex, ey, 40)); hands.append((ex, ey))
+    c.drawPath(arms, paint(shirt))
+    for hx, hy in hands:
+        c.drawCircle(hx, hy, 22, paint(SKIN, 0.85)); c.drawCircle(hx, hy, 22, paint("space", 0.35))
+    # head + hair
+    c.save(); c.translate(0, -440 + sy); c.rotate(head_tilt + 20 * slump)
+    c.drawRRect(rr(-20, -40, 20, 8, 10), paint(SKIN, 0.6))
+    c.drawCircle(0, -88, 58, paint("#5A3A2E"))
+    c.drawCircle(0, -88, 58, paint("space", 0.45))
+    hp = skia.Path()
+    if hair == "long":
+        hp.addRRect(rr(-66, -152, 66, 10, 50))
+    elif hair == "bun":
+        hp.addArc(skia.Rect(-62, -152, 62, -30), 180, 180); hp.addCircle(0, -158, 30)
+    elif hair == "cap":
+        hp.addArc(skia.Rect(-62, -150, 62, -40), 180, 180); hp.addRRect(rr(10, -100, 96, -84, 8))
+    else:
+        hp.moveTo(-62, -92); hp.cubicTo(-66, -170, 60, -172, 64, -96); hp.lineTo(44, -118); hp.lineTo(30, -104)
+        hp.lineTo(10, -126); hp.lineTo(-10, -110); hp.lineTo(-34, -124); hp.close()
+    c.drawPath(hp, paint("hair"))
+    for path_, clipx, colr, al in ((hp, -1, rim, 0.9), (hp, 1, COOL, 0.7)):
+        c.save(); c.clipRect(skia.Rect(-200 if clipx < 0 else 0, -300, 0 if clipx < 0 else 200, 100))
+        c.drawPath(path_, paint(colr, al, stroke=5))
+        hd = skia.Path(); hd.addCircle(0, -88, 58); c.drawPath(hd, paint(colr, al * 0.8, stroke=4))
+        c.restore()
     c.restore()
-    c.drawPath(torso, paint(rim, 0.6 * a, stroke=6))
+    for clipx, colr, al in ((-1, rim, 0.85), (1, COOL, 0.6)):
+        c.save(); c.clipRect(skia.Rect(-400 if clipx < 0 else 0, -700, 0 if clipx < 0 else 400, 50))
+        for path_, k_ in ((torso, 1.0), (arms, 1.0), (legs, 0.45)):
+            c.drawPath(path_, paint(colr, al * k_, stroke=5 if k_ == 1 else 3))
+        c.restore()
+    if a < 1:
+        c.restore()
     c.restore()
 
 
@@ -789,7 +865,7 @@ def finger_cut(c, x, y, s, t, a=1.0):
 
 
 # ---------------------------------------------------------------- the twist
-def ship_scene(c, t, a=1.0, lantern=1.0):
+def ship_scene(c, t, a=1.0, lantern=1.0, ship_x=None, ship_s=1.0):
     """An old sailing ship at night on a dark sea; the stern lantern sits where the desk lamp was."""
     if a <= 0:
         return
@@ -801,7 +877,7 @@ def ship_scene(c, t, a=1.0, lantern=1.0):
         c.drawCircle(rng(k, 1) * W, rng(k, 2) * 500, 1.5 + rng(k, 3) * 2, paint("cream", 0.6))
     bob = 10 * math.sin(t * 1.2)
     rot = 1.5 * math.sin(t * 0.9)
-    c.save(); c.translate(W / 2, 760 + bob); c.rotate(rot)
+    c.save(); c.translate(ship_x if ship_x is not None else W / 2, 760 + bob); c.rotate(rot); c.scale(ship_s, ship_s)
     hull = skia.Path(); hull.moveTo(-620, -60); hull.lineTo(560, -60); hull.lineTo(700, -140); hull.lineTo(560, 120); hull.lineTo(-520, 120); hull.lineTo(-660, -150); hull.close()
     c.drawPath(hull, paint("#24142E"))
     c.drawPath(hull, paint("amber", 0.4, stroke=4))
@@ -841,3 +917,163 @@ def desk_lamp(c, x, y, s, a=1.0, on=1.0):
     c.drawPath(sh, paint("#5A4A8A", a))
     c.drawCircle(95, 15, 16, paint("gold", on * a))
     c.restore()
+
+
+def desk_bg(c, t, lamp=1.0, mode="night"):
+    """Close-up on the study desk: wall, desk lamp pool of light, books, a steel tumbler."""
+    c.drawRect(skia.Rect(0, 0, W, H), vgrad(0, H, ["#1E1338", "#2A1A48"] if mode == "night" else ["#3B2A5C", "#5A3A62"]))
+    glow(c, 330, 600, 700, "amber", 0.35 * lamp)
+    c.drawRect(skia.Rect(0, 760, W, H), vgrad(760, H, [WOOD_L, WOOD_D]))
+    c.drawLine(0, 760, W, 760, paint("amber", 0.5, stroke=5))
+    desk_lamp(c, 230, 560, 1.3, on=lamp)
+    for i, (w_, colr) in enumerate([(300, "#3A6A8A"), (280, "#8A2A5C"), (320, "#2A9D8F")]):
+        c.drawRRect(rr(1660 - w_ / 2, 740 - i * 46, 1660 + w_ / 2, 786 - i * 46, 6), paint(colr))
+        c.drawLine(1660 - w_ / 2 + 20, 763 - i * 46, 1660 + w_ / 2 - 20, 763 - i * 46, paint("cream", 0.3, stroke=3))
+    c.drawRRect(rr(1300, 660, 1380, 780, 10), hgrad(1300, 1380, ["#9AA2B8", "#E4E8F0", "#7A8298"]))
+    vignette(c, W, H, 0.5)
+
+
+def _pouch_path():
+    p = skia.Path()
+    p.moveTo(-172, -205)
+    p.quadTo(0, -228, 172, -205)
+    p.cubicTo(204, -80, 204, 80, 172, 205)
+    p.quadTo(0, 228, -172, 205)
+    p.cubicTo(-204, 80, -204, -80, -172, -205)
+    p.close()
+    return p
+
+
+def empty_pouch(c, x, y, s, rot=0.0, a=1.0, shade=0.0):
+    """A flattened, torn, empty pouch for the 'pile of 209'."""
+    c.save(); c.translate(x, y); c.rotate(rot); c.scale(s, s)
+    p = skia.Path(); p.moveTo(-170, -150)
+    for i in range(9):
+        p.lineTo(-170 + i * 42, -150 + (14 if i % 2 else -10))
+    p.quadTo(200, 0, 170, 180); p.lineTo(-170, 190); p.quadTo(-200, 20, -170, -150); p.close()
+    c.drawPath(p, paint("#D9A514", a))
+    c.drawPath(p, paint("space", shade * a))
+    c.drawLine(-120, -60, 100, 120, paint(YEL_D, 0.6 * a, stroke=6))
+    c.drawLine(-40, -120, 60, 160, paint(YEL_L, 0.4 * a, stroke=4))
+    ban = skia.Path(); ban.moveTo(-170, 40); ban.cubicTo(-80, 20, 80, 60, 170, 40); ban.lineTo(170, 100); ban.cubicTo(80, 120, -80, 80, -170, 100); ban.close()
+    c.drawPath(ban, paint("#6A2810", a * (1 - shade)))
+    c.restore()
+
+
+def salt_heap(c, x, base, h, w, t, a=1.0, red=1.0):
+    """A heap of salt crystals (bottom-centre x, base y), lit by a red warning glow."""
+    if h <= 2:
+        return
+    glow(c, x, base - h * 0.5, max(w, h) * 0.8, "coral", 0.35 * red * a)
+    p = skia.Path(); p.moveTo(x - w / 2, base)
+    p.cubicTo(x - w * 0.3, base - h * 0.35, x - w * 0.12, base - h, x, base - h)
+    p.cubicTo(x + w * 0.12, base - h, x + w * 0.3, base - h * 0.35, x + w / 2, base)
+    p.close()
+    c.drawPath(p, hgrad(x - w / 2, x + w / 2, ["#F7C9BC", "#FFF4EE", "#D7DEFA"], [0, 0.4, 1]))
+    c.save(); c.clipPath(p, doAntiAlias=True)
+    n = int(40 + h * 0.25)
+    for k in range(n):
+        cx_ = x + (rng(k, 51) - 0.5) * w
+        cy_ = base - rng(k, 52) * h
+        sz = 5 + 6 * rng(k, 53)
+        c.save(); c.translate(cx_, cy_); c.rotate(45 * rng(k, 54))
+        c.drawRect(skia.Rect(-sz, -sz, sz, sz), paint("white", 0.9 * a))
+        c.drawLine(-sz, -sz, sz, -sz, paint("#E76F51", 0.5 * a * red, stroke=2))
+        c.restore()
+    c.restore()
+    ar = skia.Path(); ar.moveTo(x - w / 2, base); ar.cubicTo(x - w * 0.3, base - h * 0.35, x - w * 0.12, base - h, x, base - h)
+    c.drawPath(ar, paint("coral", 0.8 * a * red, stroke=6))
+    ar2 = skia.Path(); ar2.moveTo(x, base - h); ar2.cubicTo(x + w * 0.12, base - h, x + w * 0.3, base - h * 0.35, x + w / 2, base)
+    c.drawPath(ar2, paint(COOL, 0.6 * a, stroke=5))
+
+
+def _limb(x0, y0, x1, y1, w):
+    L = math.hypot(x1 - x0, y1 - y0)
+    p = skia.Path(); p.addRRect(rr(0, -w / 2, L, w / 2, w / 2))
+    m = skia.Matrix(); m.setTranslate(x0, y0); m.preRotate(math.degrees(math.atan2(y1 - y0, x1 - x0)))
+    p.transform(m)
+    return p
+
+
+def gut_section(c, cx, cy, r, t, a=1.0, fade=0.0):
+    """Clean cross-section of the gut: a pink wall with finger-like villi and glowing bacteria in the middle."""
+    c.save(); c.translate(cx, cy)
+    glow(c, 0, 0, r * 1.5, "magenta", 0.35 * a)
+    c.drawCircle(0, 0, r, paint("#B8406A", a))
+    c.drawCircle(0, 0, r, paint("amber", 0.7 * a, stroke=6))
+    c.drawCircle(0, 0, r * 0.8, paint("#6E1E48", a))
+    n = 36
+    for k in range(n):
+        ang = 2 * math.pi * k / n
+        x0, y0 = math.cos(ang) * r * 0.8, math.sin(ang) * r * 0.8
+        x1, y1 = math.cos(ang) * r * 0.6, math.sin(ang) * r * 0.6
+        c.drawLine(x0, y0, x1, y1, paint("#E07090", a, stroke=r * 0.07))
+        c.drawCircle(x1, y1, r * 0.035, paint("#F49AB0", a))
+    c.drawCircle(0, 0, r * 0.52, paint("#1C0E30", a))
+    cols = ["teal", "amber", "#7FC4FF", "#9BE07A", "sand"]
+    for k in range(70):
+        rr_ = r * 0.48 * math.sqrt(rng(k, 61))
+        ang = rng(k, 62) * 6.28 + t * 0.2 * (1 if k % 2 else -1)
+        bx, by = rr_ * math.cos(ang), rr_ * math.sin(ang)
+        gone = rng(k, 63) < fade
+        colr = "#5A5068" if gone else cols[k % 5]
+        al = (0.3 if gone else 1.0) * a
+        if k % 3:
+            c.save(); c.translate(bx, by); c.rotate(rng(k, 64) * 180)
+            c.drawRRect(rr(-r * 0.04, -r * 0.015, r * 0.04, r * 0.015, r * 0.015), paint(colr, al)); c.restore()
+        else:
+            c.drawCircle(bx, by, r * 0.022, paint(colr, al))
+        if not gone and k % 4 == 0:
+            glow(c, bx, by, r * 0.07, colr, 0.25 * a)
+    c.restore()
+
+
+def fuel_gauge(c, x, y, r, p, title="NUTRIENTS", a=1.0):
+    """Car fuel gauge E..F with the needle at p (0 = empty)."""
+    c.drawCircle(x, y, r + 30, paint("#1C1238", a))
+    c.drawCircle(x, y, r + 30, paint("cream", 0.8 * a, stroke=6))
+    for k in range(9):
+        ang = math.radians(210 + k * 15 * 8 / 8 * 1.0 + k * 0)
+        ang = math.radians(210 - k * 30)
+        c.drawLine(x + (r - 30) * math.cos(ang), y - (r - 30) * math.sin(ang), x + r * math.cos(ang), y - r * math.sin(ang),
+                   paint("coral" if k < 2 else "cream", a, stroke=8))
+    label(c, "E", x + (r - 80) * math.cos(math.radians(210)), y - (r - 80) * math.sin(math.radians(210)) + 18, 52, "coral", "extrabold", a)
+    label(c, "F", x + (r - 80) * math.cos(math.radians(-30)), y - (r - 80) * math.sin(math.radians(-30)) + 18, 52, "cream", "extrabold", a)
+    ang = math.radians(210 - 240 * clamp(p))
+    c.drawLine(x, y, x + (r - 40) * math.cos(ang), y - (r - 40) * math.sin(ang), paint("coral", a, stroke=12))
+    c.drawCircle(x, y, 24, paint("cream", a))
+    label(c, title, x, y + r * 0.55, 40, "cream", "extrabold", a)
+
+
+def shoe_print(c, x, y, s, rot=0.0, a=1.0, left=True):
+    if a <= 0:
+        return
+    c.save(); c.translate(x, y); c.rotate(rot); c.scale(s * (1 if left else -1), s)
+    glow(c, 0, 0, 110, "gold", 0.3 * a)
+    ellipse(c, 0, -30, 30, 50, paint("gold", a))
+    ellipse(c, 4, 52, 22, 26, paint("gold", a))
+    c.restore()
+
+
+def blackboard(c, t, a=1.0):
+    c.drawRect(skia.Rect(0, 0, W, H), vgrad(0, H, ["#1A1236", "#24164A"]))
+    c.drawRRect(rr(160, 70, 1760, 560, 16), paint("#1E3A30", a))
+    c.drawRRect(rr(160, 70, 1760, 560, 16), paint("#6A4A2E", a, stroke=22))
+    for k in range(5):
+        c.drawLine(260, 160 + k * 80, 1100 - (k % 2) * 300, 160 + k * 80, paint("cream", 0.35 * a, stroke=6))
+
+
+def xray_heart(c, x, y, r, t, a=1.0):
+    """X-ray inset: a circular window with a fast-straining heart and pressure pulses."""
+    c.save()
+    glow(c, x, y, r * 1.3, COOL, 0.35 * a)
+    c.drawCircle(x, y, r, paint("#0A1A3A", a))
+    cl = skia.Path(); cl.addCircle(x, y, r); c.clipPath(cl, doAntiAlias=True)
+    for k in range(5):   # ribs
+        c.drawLine(x - r, y - r * 0.6 + k * r * 0.3, x + r, y - r * 0.5 + k * r * 0.3, paint("#7FB2FF", 0.25 * a, stroke=10))
+    for k in range(3):
+        ph = (t * 1.6 + k / 3) % 1
+        c.drawCircle(x, y, r * 0.3 + ph * r * 0.7, paint("coral", (1 - ph) * 0.6 * a, stroke=6))
+    heart(c, x, y + 10, r / 300, t, rate=2.0, a=a)
+    c.restore()
+    c.drawCircle(x, y, r, paint("cream", 0.9 * a, stroke=8))
