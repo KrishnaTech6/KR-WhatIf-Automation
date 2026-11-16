@@ -44,34 +44,34 @@ In twenty fifteen, a scientist in London, Tim Spector, tried this on his own son
 By the end, about forty percent of the bacteria types in his gut... were gone.
 {neutral} Your roommate is sure you'll quit before day fifteen. Would you? What's the longest you've ever survived on just Maggi? Tell me in the comments.
 
-[Day twenty - the surprise | neutral]
-Day twenty. You're still going. And here's the surprise.
-Protein? Not that bad. Seven packets give you around forty grams. You need about fifty-four.
-Calories? Fine. You're not even hungry.
+[Day twenty - the biryani | neutral]
+Day twenty. Nine p.m. Your roommate orders biryani... and eats it right next to you.
+The smell fills the room. You almost quit.
+And here's the surprise. You're not even hungry. Protein? Not that bad. Seven packets give you around forty grams. You need about fifty-four.
 {tense} But in class, you read the same line five times. Heavy. Like your phone stuck at five percent.
 Because full... is not the same as fed.
-{neutral} And this isn't only a thirty-day problem. A twenty fourteen study of over ten thousand Korean adults found something odd.
-Women who ate instant noodles twice a week or more had higher odds of metabolic syndrome. Belly fat, high blood sugar, high blood pressure... together.
-{deadpan} Twice a week. You're on seven a day.
+{neutral} A study of over ten thousand Korean adults found women eating instant noodles just twice a week had higher odds of belly fat, high blood sugar and high blood pressure... together.
+{deadpan} You're on seven a day.
 
 [Day thirty - gums | deep]
 Day thirty. (pause 0.4)
-The last packet. You've won. (pause 0.4)
-But you're so tired, you climb the stairs one step at a time. Your legs ache. (pause 0.4)
-In thirty days of Maggi... you've had almost zero vitamin C. (pause 0.5)
+The last packet. Your roommate hands over the five thousand. (pause 0.4)
+You won the bet. (pause 0.4)
+But your body lost it. You climb the stairs one step at a time. Your legs ache. (pause 0.5)
+In thirty days of Maggi... you've had almost zero vitamin C.
 Keep going a few more weeks... and your gums start to bleed. Bruises show up from nowhere. Small cuts stop healing.
 
 [Twist - the sailors | neutral]
 Here's the twist. This has a name.
 {dramatic} Scurvy.
-The disease that killed sailors on long sea voyages, hundreds of years ago.
+The disease of old sailing ships... showing up in a hostel room.
 With little or no vitamin C, the tiredness can start within weeks. The bleeding... within one to three months.
 {soft} And it's not just history. In twenty sixteen, doctors in Sydney found scurvy in twelve patients. Some were overweight. They looked well fed.
 {deadpan} You can be full every day... and still be starving.
 
 [Payoff - the lemon | warm]
-Your roommate pays up. And the good news? With vitamin C again, the signs usually start fading within days.
-Back on that hostel shelf: add peas. An egg. One squeeze of lemon.
+The good news? With vitamin C again, the signs usually start fading within days.
+So spend a little of your winnings: add peas. An egg. One squeeze of lemon.
 {playful} Same two minutes. Completely different month.
 What's your secret Maggi add-on?
 {neutral} Next time: What if you walked ten thousand steps every day for a year? But that story... is for the next What If.

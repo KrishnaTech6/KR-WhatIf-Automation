@@ -58,7 +58,7 @@ Voice: talk to one friend at night, close to the mic, ~150 wpm, slower on number
 
 ## 4. Full script
 
-Told as one story: your roommate Rohan bets you ₹5,000 you can't eat only Maggi for a month (Krishna's comment, 16 Nov). Scenes, tone and sound per beat: see the doc.
+Told as one story: your roommate bets you ₹5,000 you can't eat only Maggi for a month (rule: no skipping meals). Scenes, tone and sound per beat: see the doc.
 
 ### Hook
 
@@ -142,25 +142,23 @@ Told as one story: your roommate Rohan bets you ₹5,000 you can't eat only Magg
 >
 > Your roommate is sure you'll quit before day fifteen. Would you? What's the longest you've ever survived on just Maggi? Tell me in the comments.
 
-### Day twenty - the surprise
+### Day twenty - the biryani
 
 **Voiceover:**
 
-> Day twenty. You're still going. And here's the surprise.
+> Day twenty. Nine p.m. Your roommate orders biryani... and eats it right next to you.
 >
-> Protein? Not that bad. Seven packets give you around forty grams. You need about fifty-four.
+> The smell fills the room. You almost quit.
 >
-> Calories? Fine. You're not even hungry.
+> And here's the surprise. You're not even hungry. Protein? Not that bad. Seven packets give you around forty grams. You need about fifty-four.
 >
 > But in class, you read the same line five times. Heavy. Like your phone stuck at five percent.
 >
 > Because full... is not the same as fed.
 >
-> And this isn't only a thirty-day problem. A twenty fourteen study of over ten thousand Korean adults found something odd.
+> A study of over ten thousand Korean adults found women eating instant noodles just twice a week had higher odds of belly fat, high blood sugar and high blood pressure... together.
 >
-> Women who ate instant noodles twice a week or more had higher odds of metabolic syndrome. Belly fat, high blood sugar, high blood pressure... together.
->
-> Twice a week. You're on seven a day.
+> You're on seven a day.
 
 ### Day thirty - gums
 
@@ -168,9 +166,11 @@ Told as one story: your roommate Rohan bets you ₹5,000 you can't eat only Magg
 
 > Day thirty.
 >
-> The last packet. You've won.
+> The last packet. Your roommate hands over the five thousand.
 >
-> But you're so tired, you climb the stairs one step at a time. Your legs ache.
+> You won the bet.
+>
+> But your body lost it. You climb the stairs one step at a time. Your legs ache.
 >
 > In thirty days of Maggi... you've had almost zero vitamin C.
 >
@@ -184,7 +184,7 @@ Told as one story: your roommate Rohan bets you ₹5,000 you can't eat only Magg
 >
 > Scurvy.
 >
-> The disease that killed sailors on long sea voyages, hundreds of years ago.
+> The disease of old sailing ships... showing up in a hostel room.
 >
 > With little or no vitamin C, the tiredness can start within weeks. The bleeding... within one to three months.
 >
@@ -196,9 +196,9 @@ Told as one story: your roommate Rohan bets you ₹5,000 you can't eat only Magg
 
 **Voiceover:**
 
-> Your roommate pays up. And the good news? With vitamin C again, the signs usually start fading within days.
+> The good news? With vitamin C again, the signs usually start fading within days.
 >
-> Back on that hostel shelf: add peas. An egg. One squeeze of lemon.
+> So spend a little of your winnings: add peas. An egg. One squeeze of lemon.
 >
 > Same two minutes. Completely different month.
 >
@@ -217,7 +217,7 @@ Told as one story: your roommate Rohan bets you ₹5,000 you can't eat only Magg
 
 ## 6. Retention map and runtime
 
-644 narrated words, ~4.4–4.7 min. Cut first if long: the Korean study lines (Day 20).
+726 narrated words, ~5.0 min. Cut first if long: the Korean study lines (Day 20).
 
 | Time | Mechanic | Energy |
 | --- | --- | --- |
@@ -246,7 +246,7 @@ Told as one story: your roommate Rohan bets you ₹5,000 you can't eat only Magg
 | 0:25 | Week one. The bathroom stops working. There's almost no fibre in a packet. | Fibre meter empty | WEEK 1 |
 | 0:31 | Day ten. The tiny bacteria in your gut start disappearing. They lived on vegetables. You stopped feeding them. | Gut city fading | DAY 10 |
 | 0:39 | But on day thirty, something starts that no label warns you about. | DAY 30 calendar page, red glow | DAY 30… |
-| 0:45 | Full video on K R's What If Explained. Because to live on Maggi alone... | Back to the bowl (loop) | |
+| 0:45 | Full video on YouTube. Because to live on Maggi alone... | Back to the bowl (loop) | |
 
 Posting kit: title "7 Maggi Packets a Day for a Month? #shorts" · description: "Day 3 your face changes. Day 30 is worse. Full video: {MAIN_URL}"
 
@@ -259,6 +259,6 @@ Posting kit: title "7 Maggi Packets a Day for a Month? #shorts" · description: 
 | 0:00 | Ten days of only Maggi... and part of you starts dying. | Bowl, zoom into the body | 10 DAYS OF ONLY MAGGI |
 | 0:04 | Not your heart. Not your brain. Your gut is home to trillions of tiny bacteria. And they eat fibre... from dal, sabzi, fruit. Maggi gives them almost nothing. | Gut city, dal/sabzi outlines dashed | YOUR GUT BACTERIA |
 | 0:17 | In London, a scientist's son ate only fast food for ten days. When they checked his gut... around forty percent of the bacteria types were gone. You feel full. They're starving. | London card, 40% fade | −40% |
-| 0:29 | And by day thirty... something even stranger starts in your body. What's your go-to Maggi add-on? Full story on YouTube. K R's What If Explained. Link in bio. | DAY 30 page, end card | FULL STORY ON YOUTUBE |
+| 0:29 | And by day thirty... something even stranger starts in your body. What's your go-to Maggi add-on? Full story on YouTube. Link in bio. | DAY 30 page, end card | FULL STORY ON YOUTUBE |
 
 Posting kit: caption in `caption_reel.txt` (made at the text stage) · hashtags #whatif #maggi #guthealth #india · pinned comment: "What's your go-to Maggi add-on?"
