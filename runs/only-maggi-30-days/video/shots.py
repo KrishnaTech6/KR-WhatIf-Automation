@@ -22,28 +22,20 @@ def headline(c, t, s, t_in, y=110, size=64, color="cream", t_out=None):
 
 # ================================================================ HOOK
 def s_hook_bowl(c, t, t0):
-    """Frame 0: the bowl, packet #210, the pile of 209 empty pouches, a salt heap 3x the daily limit, DAY 30."""
+    """Frame 0, one focal point: the glowing bowl and a huge salt heap 3x over the DAILY LIMIT line."""
     room_bg(c, t, warn=0.7)
     z = keys(t, [(t0, 1.07), (t0 + 2.4, 1.0)])
-    with Cam(c, z, W / 2, 560, t=t):
-        pts = []
-        for i in range(34):
-            u = rng(i, 1) - 0.5
-            mh = 330 * (1 - (2 * u) ** 2)
-            pts.append((720 + u * 1150, 760 - rng(i, 2) * mh, (rng(i, 3) - 0.5) * 70, i))
-        for x_, y_, r_, i in sorted(pts, key=lambda q: -q[1]):
-            empty_pouch(c, x_, y_, 0.42, r_, shade=0.45 + 0.3 * rng(i, 4))
-        table_top(c, 860)
-        bowl(c, 740, 740, 1.15, t, warn=1.0)
-        # salt heap: 3x the daily limit
-        lim = 150
-        salt_heap(c, 1530, 940, 3 * lim, 380, t)
-        c.drawLine(1180, 940 - lim, 1780, 940 - lim, dashed("cream", 0.95, 5, 16, 10))
-        c.drawRRect(rr(1120, 940 - lim - 62, 1360, 940 - lim - 12, 24), paint("#0E0A1C", 0.85))
-        label(c, "DAILY LIMIT", 1240, 940 - lim - 24, 34, "cream", "extrabold")
-        big_text(c, "3×", 1530, 940 - 3 * lim - 30, 140, 1.0, "coral")
-        calendar_page(c, 1760, 240, 0.5, "DAY", "30", rot=8)
-    pill(c, W / 2, 110, 1.0, "PACKET #210", "coral", "cream", 64)
+    with Cam(c, z, W / 2, 600, t=t):
+        table_top(c, 880)
+        bowl(c, 620, 760, 1.1, t, warn=1.0)
+        lim = 190
+        base = 1000
+        salt_heap(c, 1400, base, 3 * lim, 560, t)
+        c.drawLine(1060, base - lim, 1800, base - lim, dashed("cream", 0.95, 6, 18, 12))
+        c.drawRRect(rr(1500, base - lim - 70, 1790, base - lim - 14, 26), paint("#0E0A1C", 0.9))
+        label(c, "DAILY LIMIT", 1645, base - lim - 28, 38, "cream", "extrabold")
+        big_text(c, "3× SALT", 1400, base - 3 * lim - 40, 120, 1.0, "coral")
+    pill(c, W / 2, 80, 1.0, "PACKET #210", "coral", "cream", 40)
 
 
 def s_hook_pile(c, t, t0):
@@ -64,8 +56,8 @@ def s_hook_pile(c, t, t0):
             k += 1
     for i in range(min(day - 1, 9)):   # torn pages on the floor
         calendar_page(c, 1160 + rng(i, 5) * 640, 930 + rng(i, 6) * 30, 0.42, "DAY", str(i + 1), rot=(rng(i, 7) - 0.5) * 70)
-    calendar_page(c, 1420, 470, 1.25, "DAY", str(day), rot=6)
-    big_text(c, f"{n} PACKETS", 1420, 820, 72, 1.0, "gold")
+    calendar_page(c, 1420, 400, 1.05, "DAY", str(day), rot=6)
+    big_text(c, f"{n} PACKETS", 1420, 760, 80, 1.0, "gold")
     headline(c, t, "ONLY MAGGI · 30 DAYS", S("hook", "only", -0.2), 120, 64)
 
 
@@ -188,19 +180,19 @@ def s_how_many(c, t, t0):
 
 
 def s_calories(c, t, t0):
-    """Body as a fuel tank: 2,100 kcal needed; one packet = 300 fills a seventh."""
-    explainer_bg(c, t, "deep")
+    """You, with an empty fuel tank: 2,100 kcal needed; one packet = 300 fills a seventh."""
+    room_bg(c, t)
     tn = S("promise", "two", -0.1, 1)
     tp = S("promise", "packet", -0.4)
-    body_outline(c, 560, 1000, 1.1, water=0.0, t=t)
-    meter(c, 1100, 940, 180, 640, span(t, tp, tp + 0.6) / 7, "gold", "2,100 kcal / DAY", None, a=span(t, tn, tn + 0.4))
+    figure(c, 480, 1050, 1.15, arm_l=115, arm_r=40, expr="happy")
+    meter(c, 1050, 940, 180, 640, span(t, tp, tp + 0.6) / 7, "gold", "2,100 kcal / DAY", None, a=span(t, tn, tn + 0.4))
     for k in range(1, 7):
-        c.drawLine(1010, 940 - 8 - 624 * k / 7, 1190, 940 - 8 - 624 * k / 7, dashed("sand", 0.5 * span(t, tn, tn + 0.4), 3, 10, 8))
+        c.drawLine(960, 940 - 8 - 624 * k / 7, 1140, 940 - 8 - 624 * k / 7, dashed("sand", 0.5 * span(t, tn, tn + 0.4), 3, 10, 8))
     pa = span(t, tp, tp + 0.3)
     if pa > 0:
-        packet(c, 1560, 560, 0.75 * back_out(pa), t)
-        big_text(c, "1 PACKET", 1560, 900, 64, pa, "cream")
-        big_text(c, "≈ 300 kcal", 1560, 990, 64, pa, "gold")
+        packet(c, 1540, 560, 0.75 * back_out(pa), t)
+        big_text(c, "1 PACKET", 1540, 900, 64, pa, "cream")
+        big_text(c, "≈ 300 kcal", 1540, 990, 64, pa, "gold")
     headline(c, t, "YOUR BODY NEEDS", t0 + 0.1, 110, 60, "sand", t_out=tn + 0.2)
 
 
@@ -255,7 +247,7 @@ def s_film(c, t, t0):
     label(c, "REC", -40, -250, 30, "coral", "extrabold")
     c.restore()
     for i, s_ in enumerate(["LOL", "7 A DAY?!", "BRO NO"]):
-        bubble(c, 300 + i * 330, 200 + (i % 2) * 120, 290, 100, s_, 40, "teal", "cream",
+        bubble(c, 580 + i * 300, 200 + (i % 2) * 120, 270, 100, s_, 40, "teal", "cream",
                span(t, S("day_one", "group", -0.3) + 0.3 * i, S("day_one", "group", 0) + 0.3 * i), tail=-1)
     headline(c, t, "FOR THE GROUP CHAT", S("day_one", "group", -0.3), 1030, 56, "cream")
 
@@ -399,23 +391,18 @@ def s_ring(c, t, t0):
 
 
 def s_bottles(c, t, t0):
-    """Water pours into a body outline that puffs up."""
-    explainer_bg(c, t, "deep")
+    """You, drinking bottle after bottle; your face puffs up."""
+    room_bg(c, t, mode="morning")
     tb = S("day_three", "two", -0.2)
     pour = span(t, t0, S("day_three", "lunch", 0.3))
-    c.save(); c.translate(1150, 1060); c.scale(1.0 + 0.16 * pour, 1.0); c.translate(-1150, -1060)
-    body_outline(c, 1150, 1060, 0.85, water=0.15 + 0.55 * pour, t=t)
-    c.restore()
-    c.save(); c.translate(900, 120); c.rotate(125)
-    water_bottle(c, 0, 0, 0.9, 1 - 0.6 * pour)
-    c.restore()
-    st = skia.Path(); st.moveTo(1173, 311); st.cubicTo(1185, 330, 1170, 360, 1150, 395)
-    c.drawPath(st, paint("#4FA3E0", 0.9, stroke=16))
+    figure(c, 760, 1050, 1.15, arm_l=110, arm_r=-60, expr="worried", puff=0.3 + 0.5 * pour, head_tilt=-8)
+    # the bottle at the mouth, tilted up
+    glow_bottle(c, 920, 305, 0.55, fill=1 - 0.8 * pour, rot=-140)
     for i in range(2):
         a_ = span(t, tb + 0.4 * i, tb + 0.4 * i + 0.3)
-        water_bottle(c, 1620 + i * 140, 1000, 0.55 * (0.6 + 0.4 * back_out(a_)) if a_ > 0 else 0.33, 0.0 if a_ > 0 else 1.0, a=0.5 + 0.5 * a_)
-    big_text(c, "2 BOTTLES", 1700, 680, 64, span(t, tb, tb + 0.3), "gold")
-    label(c, "before lunch", 1700, 750, 44, "cream", "bold", span(t, S("day_three", "lunch", -0.4), S("day_three", "lunch", -0.1)))
+        glow_bottle(c, 1380 + i * 220, 900, 0.8, fill=1.0 if i else 1.0 - 0.9 * pour, a=0.4 + 0.6 * a_)
+    big_text(c, "2 BOTTLES", 1200, 250, 80, span(t, tb, tb + 0.3), "gold")
+    big_text(c, "before lunch", 1200, 330, 52, span(t, S("day_three", "lunch", -0.5), S("day_three", "lunch", -0.2)), "cream")
 
 
 def s_jar_one(c, t, t0):
@@ -441,15 +428,26 @@ def s_jar_seven(c, t, t0):
 
 
 def s_hold_water(c, t, t0):
-    explainer_bg(c, t, "deep")
-    body_outline(c, 760, 1050, 1.0, water=0.45 + 0.35 * span(t, t0, S("day_three", "dilute", 0.4)), t=t)
+    """You, puffy, with the water your body is holding glowing inside the torso."""
+    room_bg(c, t, mode="morning")
+    wp = 0.45 + 0.35 * span(t, t0, S("day_three", "dilute", 0.4))
+    figure(c, 700, 1060, 1.25, arm_l=115, arm_r=65, expr="worried", puff=0.8, belly=0.3)
+    c.save(); cl = skia.Path(); cl.addRRect(rr(580, 520, 820, 800, 80)); c.clipPath(cl, doAntiAlias=True)
+    top = 800 - 280 * wp
+    wv = skia.Path(); wv.moveTo(560, 820); wv.lineTo(560, top)
+    for k in range(14):
+        xx = 560 + k * 22
+        wv.lineTo(xx, top + 10 * math.sin(xx * 0.05 + t * 4))
+    wv.lineTo(860, 820); wv.close()
+    c.drawPath(wv, paint("#8FD8FF", 0.6))
+    c.restore()
     for i in range(6):
         ph = (t * 0.8 + i / 6) % 1
         d = skia.Path(); x, y = 1250 + (i % 3) * 140, 300 + ph * 400
         d.moveTo(x, y - 40); d.cubicTo(x + 30, y, x + 30, y + 20, x, y + 20); d.cubicTo(x - 30, y + 20, x - 30, y, x, y - 40)
         c.drawPath(d, paint("#4FA3E0", math.sin(math.pi * ph)))
     headline(c, t, "HOLDING EXTRA WATER", t0 + 0.1, 130, 64, "cream")
-    label(c, "to dilute the salt", 1400, 900, 52, "cream", "extrabold", span(t, t0 + 0.4, t0 + 0.8))
+    big_text(c, "to dilute the salt", 1400, 900, 56, span(t, t0 + 0.4, t0 + 0.8), "cream")
 
 
 def s_pressure(c, t, t0):
@@ -461,18 +459,25 @@ def s_pressure(c, t, t0):
 
 # ================================================================ WEEK 1
 def s_bathroom(c, t, t0):
-    room_bg(c, t, lamp=0.4)
-    c.drawRRect(rr(560, 160, 1040, 1000, 12), paint("#3A2A5E"))
-    c.drawRRect(rr(600, 200, 1000, 560, 8), paint("#2E2250")); c.drawRRect(rr(600, 600, 1000, 960, 8), paint("#2E2250"))
-    c.drawCircle(950, 600, 20, paint("gold"))
-    pill(c, 800, 120, 1.0, "OCCUPIED", "coral", "cream", 40)
+    """Bathroom door, OCCUPIED; a big kitchen-style timer runs to 20 minutes."""
+    room_bg(c, t, lamp=0.5)
+    c.drawRRect(rr(420, 150, 900, 1000, 12), paint("#4A3A70"))
+    c.drawRRect(rr(460, 190, 860, 560, 8), paint("#3A2A5E")); c.drawRRect(rr(460, 600, 860, 960, 8), paint("#3A2A5E"))
+    c.drawRRect(rr(420, 150, 900, 1000, 12), paint("amber", 0.5, stroke=5))
+    c.drawCircle(810, 600, 22, paint("gold"))
+    pill(c, 660, 330, 1.0, "OCCUPIED", "coral", "cream", 48)
+    glow(c, 660, 1000, 300, "gold", 0.4)
+    c.drawRect(skia.Rect(430, 992, 890, 1002), paint("gold", 0.8))
     p = span(t, t0, S("week_one", "nothing", 0.2))
-    c.drawCircle(1460, 500, 220, paint("#1C1238")); c.drawCircle(1460, 500, 220, paint("cream", stroke=8))
-    ang = math.radians(-90 + 360 * 4 * ease(p))
-    c.drawLine(1460, 500, 1460 + 170 * math.cos(ang), 500 + 170 * math.sin(ang), paint("gold", stroke=10))
-    c.drawLine(1460, 500, 1460 + 110 * math.cos(ang / 12), 500 + 110 * math.sin(ang / 12), paint("cream", stroke=14))
-    big_text(c, f"{int(20 * ease(p))} MIN", 1460, 840, 72, 1.0, "gold")
-    headline(c, t, "NOTHING.", S("week_one", "nothing", -0.1), 1020, 64, "sand")
+    cx, cy, r = 1360, 470, 250
+    c.drawCircle(cx, cy, r + 20, paint("#0E0A1C")); c.drawCircle(cx, cy, r + 20, paint("cream", stroke=8))
+    arc = skia.Path(); arc.addArc(skia.Rect(cx - r, cy - r, cx + r, cy + r), -90, 360 * 20 / 60 * ease(p))
+    c.drawPath(arc, paint("coral", 0.85, stroke=40))
+    for k in range(12):
+        ang = math.radians(-90 + k * 30)
+        c.drawLine(cx + (r - 60) * math.cos(ang), cy + (r - 60) * math.sin(ang), cx + (r - 30) * math.cos(ang), cy + (r - 30) * math.sin(ang), paint("cream", stroke=6))
+    big_text(c, f"{int(round(20 * ease(p)))} MIN", cx, cy + 40, 110, 1.0, "cream")
+    headline(c, t, "NOTHING.", S("week_one", "nothing", -0.1), 900, 90, "gold")
 
 
 def s_fibre(c, t, t0):
@@ -601,21 +606,18 @@ def s_fastfood(c, t, t0):
 
 
 def s_forty(c, t, t0):
-    """100 dots = his gut bacteria types; 40 fade out."""
+    """Before/after: the same gut on day 0 and after 10 days of fast food, ~40% of bacteria types drained out."""
     explainer_bg(c, t, "deep")
-    tf = S("day_ten", "forty", -0.2)
-    fp = span(t, tf, S("day_ten", "gone", 0.3))
-    cols = ["teal", "amber", "#7FC4FF", "magenta", "#9BE07A"]
-    idx = sorted(range(100), key=lambda j: rng(j, 77))
-    for i in range(100):
-        x, y = 420 + (i % 10) * 76, 260 + (i // 10) * 70
-        gone = i in idx[:int(40 * ease(fp))]
-        c.drawCircle(x, y, 26, paint("#5A5068" if gone else cols[i % 5], 0.25 if gone else 1.0))
-        if not gone:
-            glow(c, x, y, 40, cols[i % 5], 0.12)
-    counter_text(c, 0, 40, fp, lambda v: f"−{v:.0f}%", 1450, 560, 150, "coral")
-    label(c, "of bacteria types", 1450, 660, 46, "cream", "bold", span(t, tf, tf + 0.4))
-    label(c, "gone in 10 days", 1450, 740, 46, "sand", "bold", span(t, S("day_ten", "gone", -0.2), S("day_ten", "gone", 0.2)))
+    tf = S("day_ten", "forty", -0.3)
+    fp = span(t, tf, S("day_ten", "percent", 0.3))
+    gut_section(c, 500, 560, 300, t)
+    gut_section(c, 1420, 560, 300, t, fade=0.4 * ease(fp))
+    c.drawCircle(1420, 560, 300, paint("#2A2438", 0.4 * ease(fp)))
+    pill(c, 500, 950, 1.0, "BEFORE", "teal", "cream", 48)
+    pill(c, 1420, 950, 1.0, "AFTER 10 DAYS", "coral", "cream", 48)
+    c.drawRRect(rr(W / 2 - 170, 470, W / 2 + 170, 650, 30), paint("#0E0A1C", 0.85))
+    counter_text(c, 0, 40, fp, lambda v: f"−{v:.0f}%", W / 2, 600, 110, "coral")
+    big_text(c, "OF BACTERIA TYPES GONE", W / 2, 130, 64, span(t, tf, tf + 0.4), "cream")
 
 
 def s_quit_bet(c, t, t0):
@@ -759,16 +761,21 @@ def s_seven_a_day(c, t, t0):
 
 # ================================================================ DAY 30
 def s_silence(c, t, t0):
-    """The hard cut: near-black room, one rim-lit empty bowl (never fully black)."""
+    """The hard cut: near-black, a slow push-in on the empty rim-lit bowl; '#210' ghosts in."""
     c.drawRect(skia.Rect(0, 0, W, H), paint("#07050F"))
+    z = keys(t, [(t0, 1.0), (t0 + 2.0, 1.15)])
+    gp = span(t, t0 + 0.3, t0 + 1.5)
+    big_text(c, "#210", W / 2, 420 - 30 * gp, 260, 1.0, "#2A2040")
+    c.save(); c.translate(W / 2, 600); c.scale(z, z); c.translate(-W / 2, -600)
     glow(c, W / 2 - 300, 560, 380, "amber", 0.16)
     glow(c, W / 2 + 300, 560, 380, COOL, 0.14)
-    bowl(c, W / 2, 600, 0.85, t, steam_a=0.0, empty=True)
+    bowl(c, W / 2, 640, 0.85, t, steam_a=0.0, empty=True)
     c.drawRect(skia.Rect(0, 0, W, H), paint("space", 0.25))
-    rim = skia.Path(); rim.moveTo(W / 2 - 255, 600); rim.cubicTo(W / 2 - 248, 745, W / 2 - 128, 808, W / 2, 808)
+    rim = skia.Path(); rim.moveTo(W / 2 - 255, 640); rim.cubicTo(W / 2 - 248, 785, W / 2 - 128, 848, W / 2, 848)
     c.drawPath(rim, paint("amber", 0.8, stroke=6))
-    rim2 = skia.Path(); rim2.moveTo(W / 2 + 255, 600); rim2.cubicTo(W / 2 + 248, 745, W / 2 + 128, 808, W / 2, 808)
+    rim2 = skia.Path(); rim2.moveTo(W / 2 + 255, 640); rim2.cubicTo(W / 2 + 248, 785, W / 2 + 128, 848, W / 2, 848)
     c.drawPath(rim2, paint(COOL, 0.7, stroke=5))
+    c.restore()
 
 
 def s_last_packet(c, t, t0):
@@ -793,10 +800,11 @@ def s_money(c, t, t0):
 
 
 def s_body_lost(c, t, t0):
-    explainer_bg(c, t, "deep")
-    body_outline(c, W / 2, 1060, 1.0, t=t)
-    glow(c, W / 2, 600, 400, "coral", 0.25 * span(t, t0, t0 + 1.0))
-    stamp(c, W / 2, 520, "LOST", span(t, S("day_thirty", "lost", -0.1), S("day_thirty", "lost", 0.25)), "coral", -10)
+    room_bg(c, t, mode="dark")
+    s1 = span(t, t0, t0 + 1.2)
+    figure(c, W / 2, 1060, 1.3, arm_l=100, arm_r=80, slump=0.6 * s1, expr="tired")
+    glow(c, W / 2, 600, 400, "coral", 0.25 * s1)
+    stamp(c, W / 2 + 260, 560, "LOST", span(t, S("day_thirty", "lost", -0.1), S("day_thirty", "lost", 0.25)), "coral", -10)
     headline(c, t, "BUT YOUR BODY...", t0 + 0.05, 120, 64, "sand")
 
 
@@ -973,17 +981,16 @@ def tease_bg(c, t):
     explainer_bg(c, t, "teal")
     t1 = S("payoff", "ten", -0.4)
     p = span(t, t1, S("payoff", "steps", 1.0))
-    n = 14
+    n = 10
     for i in range(n):
-        u = i / (n - 1)
-        x = 160 + u * 1600
-        y = 960 - 120 * math.sin(u * math.pi * 0.9) + (22 if i % 2 else -22)
+        x = 220 + i * 165
+        y = 930 + (34 if i % 2 else -34)
         a_ = clamp((p * n - i) * 1.5)
-        shoe_print(c, x, y, 1.1, rot=80 - 30 * u, a=a_, left=i % 2 == 0)
-    c.drawRRect(rr(W / 2 - 360, 400, W / 2 + 360, 700, 40), paint("#0E0A1C", 0.75))
-    c.drawRRect(rr(W / 2 - 360, 400, W / 2 + 360, 700, 40), paint("gold", 0.8, stroke=5))
-    counter_text(c, 0, 10000, p, lambda v: f"{v:,.0f}", W / 2, 590, 160, "cream")
-    label(c, "STEPS TODAY", W / 2, 665, 44, "gold", "extrabold")
+        shoe_print(c, x, y, 1.4, rot=90, a=a_, left=i % 2 == 0)
+    c.drawRRect(rr(W / 2 - 420, 380, W / 2 + 420, 740, 44), paint("#0E0A1C", 0.85))
+    c.drawRRect(rr(W / 2 - 420, 380, W / 2 + 420, 740, 44), paint("gold", 0.9, stroke=6))
+    counter_text(c, 0, 10000, p, lambda v: f"{v:,.0f}", W / 2, 600, 190, "cream")
+    label(c, "STEPS A DAY", W / 2, 690, 56, "gold", "extrabold")
 
 
 # ================================================================ the list
@@ -1219,3 +1226,10 @@ def s_stages(c, t, t0):
         label(c, lab_, 1460, y_ - 10, 60, colr, "extrabold", a_)
         label(c, sub_, 1460, y_ + 55, 40, "cream", "bold", a_)
     headline(c, t, "NO VITAMIN C", t0 + 0.1, 130, 64, "gold")
+
+
+def glow_bottle(c, x, y, s, fill=1.0, a=1.0, rot=0.0):
+    c.save(); c.translate(x, y); c.rotate(rot)
+    glow(c, 0, -170 * s, 220 * s, "#4FA3E0", 0.45 * a * fill)
+    water_bottle(c, 0, 0, s, fill, a=a)
+    c.restore()
