@@ -43,7 +43,7 @@ def plan_reel(vt):
         scene(w("friend") - 0.3, MT("month_one", "walking") - 0.2, **F),       # friend laughs
         scene(w("but") - 0.2, MT("month_one", "dinner") - 0.5, **F),           # walking after dinner
         scene(w("calls") - 0.3, MT("month_three", "calls") - 0.2, **F),        # calls while walking, no lift
-        scene(w("and") - 0.2, MT("month_three", "less") - 0.6, **F),           # the cloud shrinks
+        scene(w("and", 2) - 0.2, MT("month_three", "less") - 0.6, **F),           # the cloud shrinks
         scene(w("by") - 0.2, MT("hook", "grew") - 0.8, **F),                   # something grew (no reveal)
         scene(w("full") - 0.2, MT("bonus", "happens") + 0.4, **F),             # out for a walk at dusk
     ]
