@@ -1426,13 +1426,11 @@ def crowd(c, cx, cy, cols, rows, grey_n, t, you_p=0.0, a=1.0, sp=86):
             y = cy + (r - (rows - 1) / 2) * sp * 1.15
             g = k < grey_n
             colr = "#4A4660" if g else ["teal", "coral", "plum", "#3BB273"][k % 4]
+            q_ = sp / 86
             if g and k == grey_n // 2 and you_p > 0:
-                colr2 = "gold"
-                y -= 60 * ease(you_p); x += 0
-                c.drawCircle(x, y - 26, 14, paint(colr2, a)); c.drawRRect(rr(x - 15, y - 10, x + 15, y + 30, 10), paint(colr2, a))
-                glow(c, x, y, 70, "gold", 0.6 * you_p * a)
-            else:
-                c.drawCircle(x, y - 26, 14, paint(colr, a)); c.drawRRect(rr(x - 15, y - 10, x + 15, y + 30, 10), paint(colr, a))
+                colr = "gold"; y -= 60 * ease(you_p)
+                glow(c, x, y, 70 * q_, "gold", 0.6 * you_p * a)
+            c.drawCircle(x, y - 26 * q_, 14 * q_, paint(colr, a)); c.drawRRect(rr(x - 15 * q_, y - 10 * q_, x + 15 * q_, y + 30 * q_, 10 * q_), paint(colr, a))
             k += 1
 
 

@@ -70,22 +70,27 @@ def CS(fn):
 
 
 # ================================================================ HOOK
+def walker_fig(c, x, y, s_, t, rim="gold", a=1.0, expr="happy", who="you"):
+    """The hero figure walking: arms swing, slight bob."""
+    sw = math.sin(t * 6)
+    figure(c, x, y - 6 * abs(sw), s_, arm_l=100 + 25 * sw, arm_r=80 - 25 * sw, lean=2 * sw, expr=expr, rim=rim, a=a, who=who)
+
+
 def s_hook_walk(c, t, t0):
-    """Frame 0: night street, the glowing sneakers mid-stride, the phone counter racing past 10,000 to a year."""
-    street_bg(c, t)
-    z = keys(t, [(t0, 1.08), (t0 + 3.0, 1.0)])
+    """Frame 0: sunset street, YOU walking big with gold rim light, one huge number: a year of steps."""
+    street_bg(c, t, mode="dusk")
+    z = keys(t, [(t0, 1.06), (t0 + 3.5, 1.0)])
     with Cam(c, z, W / 2, 620, t=t):
-        bob = 18 * math.sin(t * 7)
-        sneaker(c, 560, 760 - max(0, bob), 1.35, glow_a=1.0, rot=-8 + 4 * math.sin(t * 7))
-        sneaker(c, 860, 790 - max(0, -bob), 1.35, glow_a=1.0, rot=6 - 4 * math.sin(t * 7), colr="#E05A3A")
-        for k in range(5):
-            shoe_print(c, 1000 + k * 120, 900 + (k % 2) * 30, 0.6, rot=90, a=0.25 + 0.12 * k)
-        p = span(t, t0 + 0.3, S("hook", "year", 0.3))
-        steps = 10000 + 3640000 * ease(span(p, 0.15, 1.0))
-        step_phone(c, 1420, 520, 0.95, steps, 10000 if steps <= 10000 else 3650000, t=t, sub="STEPS · DAY 1" if steps <= 10000 else "STEPS · 1 YEAR",
-                   done_flash=1.0 - span(t, t0 + 0.8, t0 + 1.4))
-        head_side(c, 230, 260, 0.45, grow=0.0, glow_a=0.35 + 0.15 * math.sin(t * 3), a=0.35)
-    pill(c, W / 2, 80, 1.0, "10,000 STEPS · EVERY DAY · 1 YEAR", "coral", "cream", 40)
+        glow(c, 620, 640, 420, "gold", 0.35)
+        walker_fig(c, 620, 1010, 1.25, t)
+        sneaker(c, 560, 1010, 0.0)
+        for k in range(6):
+            shoe_print(c, 900 + k * 130, 960 + (k % 2) * 34, 0.6, rot=90, a=0.5 - 0.06 * k)
+    v = 3600000 + 50000 * ease(span(t, t0, S("hook", "year", 0.3)))
+    glow(c, 1350, 400, 380, "gold", 0.4)
+    big_text(c, f"{int(v):,}", 1350, 420, 150, 1.0, "gold")
+    big_text(c, "STEPS IN 1 YEAR", 1350, 530, 60, 1.0, "cream")
+    pill(c, 1350, 640, 1.0, "10,000 A DAY × 365", "coral", "cream", 40)
 
 
 def s_hook_map(c, t, t0):
@@ -124,8 +129,8 @@ def papers_bg(c, t):
         a = span(t, t0 + dt * i, t0 + dt * i + 0.3)
         if a <= 0:
             continue
-        x = 300 + (i % 5) * 330
-        y = 300 if i < 5 else 820
+        x = 300 + (i % 5) * 330 if i < 5 else 465 + (i - 5) * 330
+        y = 230 if i < 5 else 900
         paper(c, x, y + (1 - ease(a)) * 200, 0.7, names[i], "STUDY", ["teal", "coral", "plum"][i % 3], (rng(i, 4) - 0.5) * 14, a)
 
 
@@ -180,8 +185,8 @@ def s_six_pm(c, t, t0):
 def s_store(c, t, t0):
     street_bg(c, t)
     store_front(c, 1450, 820, 1.0, t=t)
-    x = 200 + 900 * span(t, t0, t0 + 4.5)
-    walker_sil(c, x, 830, 1.2, t, colr="#0A0618")
+    x = 250 + 800 * span(t, t0, t0 + 4.5)
+    walker_fig(c, x, 1000, 0.95, t, rim="amber")
     pop(c, 1450, 300, "GROCERY STORE", t, S("day_one", "grocery", -0.1), "teal", 44)
     if t > S("day_one", "long", -0.2):
         pop(c, 560, 240, "THE LONG WAY BACK", t, S("day_one", "long", -0.2), "plum", 44)
@@ -193,18 +198,27 @@ def s_laps(c, t, t0):
     for k in range(9):
         c.drawLine(360 + k * 150, 300, 360 + k * 150, 420, paint("cream", 0.6, stroke=6))
         c.drawLine(360 + k * 150, 660, 360 + k * 150, 780, paint("cream", 0.6, stroke=6))
-    for k in range(8):
-        c.drawRRect(rr(385 + k * 150, 310, 485 + k * 150, 410, 16), paint(["#3A6A8A", "#8A2A5C", "#C8A040", "#4A4660"][k % 4], 0.9))
+    for row, yy in ((0, 360), (1, 720)):
+        for k in range(8):
+            if (k + row) % 3 == 2:
+                continue
+            cx_ = 435 + k * 150
+            colr = ["#3A6A8A", "#8A2A5C", "#C8A040", "#4A4660"][(k + row) % 4]
+            c.drawRRect(rr(cx_ - 48, yy - 62, cx_ + 48, yy + 62, 22), paint(colr))
+            c.drawRRect(rr(cx_ - 36, yy - 40, cx_ + 36, yy - 10, 8), paint("#9AD0F0", 0.8))
+            c.drawRRect(rr(cx_ - 36, yy + 18, cx_ + 36, yy + 40, 8), paint("#9AD0F0", 0.6))
+            c.drawRRect(rr(cx_ - 48, yy - 62, cx_ + 48, yy + 62, 22), paint("cream", 0.4, stroke=3))
     loop = skia.Path(); loop.addRRect(rr(260, 230, 1660, 850, 160))
     c.drawPath(loop, dashed(STEP, 0.5, 6, 14, 12))
     meas = skia.PathMeasure(loop, False); L = meas.getLength()
     u = ((t - t0) * 0.35) % 1
     pos, _ = meas.getPosTan(L * u)
-    glow(c, pos.x(), pos.y(), 90, "gold", 0.7)
-    c.drawCircle(pos.x(), pos.y(), 20, paint("gold"))
+    glow(c, pos.x(), pos.y(), 110, "gold", 0.7)
+    c.drawCircle(pos.x(), pos.y(), 34, paint("#3E5BA8")); c.drawCircle(pos.x(), pos.y(), 22, paint("#1A1236"))
+    c.drawCircle(pos.x(), pos.y(), 34, paint("gold", stroke=5))
     laps = 1 + int((t - t0) * 0.35)
-    big_text(c, f"LAP {laps}", W / 2, 560, 110, 1.0, "gold")
-    label(c, "BUILDING PARKING LOT", W / 2, 650, 40, "sand", "extrabold")
+    pill(c, W / 2, 545, 1.0, f"LAP {laps}", "coral", "cream", 64)
+    label(c, "YOUR BUILDING'S PARKING LOT", W / 2, 1040, 40, "sand", "extrabold")
 
 
 def s_cost(c, t, t0):
@@ -258,13 +272,20 @@ def s_calves(c, t, t0):
 
 def s_sleep(c, t, t0):
     room_bg(c, t, mode="dark", moon=1.2)
-    c.drawRRect(rr(420, 700, 1500, 860, 30), paint("#3A2A5E"))
-    c.drawRRect(rr(420, 640, 1500, 720, 30), paint("#5A4A8A"))
-    ellipse(c, 560, 650, 120, 50, paint("cream", 0.9))
-    head_side(c, 640, 600, 0.35, glow_a=0.5 + 0.2 * math.sin(t * 2), a=0.9)
+    c.drawRRect(rr(380, 700, 1540, 860, 30), paint("#3A2A5E"))
+    c.drawRRect(rr(380, 860, 420, 960, 8), paint("#2A1E48")); c.drawRRect(rr(1500, 860, 1540, 960, 8), paint("#2A1E48"))
+    ellipse(c, 520, 650, 130, 50, paint("cream", 0.95))
+    br = 1 + 0.02 * math.sin(t * 2)
+    c.save(); c.translate(1500, 690); c.rotate(-90); c.scale(1, br)
+    figure(c, 0, 0, 1.45, arm_l=80, arm_r=100, expr="tired")
+    c.restore()
+    blanket = skia.Path(); blanket.moveTo(760, 600); blanket.cubicTo(1000, 560 - 6 * math.sin(t * 2), 1300, 570, 1520, 610)
+    blanket.lineTo(1520, 720); blanket.lineTo(760, 720); blanket.close()
+    c.drawPath(blanket, hgrad(760, 1520, ["#2A9D8F", "#1B6A60"])); c.drawPath(blanket, paint("cream", 0.3, stroke=4))
+    glow(c, 560, 560, 120, "gold", 0.35 + 0.15 * math.sin(t * 2))
     for k in range(3):
         ph = ((t - t0) * 0.5 + k / 3) % 1
-        label(c, "z", 760 + 60 * ph + k * 20, 520 - 160 * ph, int(40 + 30 * ph), "cream", "extrabold", 1 - ph)
+        label(c, "z", 640 + 60 * ph + k * 20, 470 - 160 * ph, int(40 + 30 * ph), "cream", "extrabold", 1 - ph)
     pop(c, W / 2, 220, "SLEEPING LIKE A BABY", t, S("week_one", "sleeping", -0.2), "plum", 52)
 
 
@@ -301,9 +322,9 @@ def s_meme_nobody(c, t, t0):
     label(c, "1960s pedometer company:", 220, 340, 64, "cream", "extrabold", span(t, t0 + 0.5, t0 + 0.8), align="left")
     sh = 6 * math.sin(t * 40) * span(t, t0 + 0.9, t0 + 1.0)
     big_text(c, "10,000 STEPS!!", 760 + sh, 560, 120, span(t, t0 + 0.9, t0 + 1.2), "gold")
-    pedometer_box(c, 760, 860, 0.45, t=t * 3, rot=-8)
-    kr_cutout(c, lambda k: draw_kr(k, 1560, 1000, 1.3, "neutral", t))
-    stamp(c, 1180, 820, "AN ADVERT", span(t, S("week_one", "advert", -0.1), S("week_one", "advert", 0.2)), "coral", -12)
+    pedometer_box(c, 380, 840, 0.42, t=t * 3, rot=-8)
+    kr_cutout(c, lambda k: draw_kr(k, 1640, 1000, 1.2, "neutral", t))
+    stamp(c, 940, 830, "AN ADVERT", span(t, S("week_one", "advert", -0.1), S("week_one", "advert", 0.2)), "coral", -12)
 
 
 # ================================================================ MONTH ONE
@@ -336,13 +357,13 @@ def s_friend(c, t, t0):
     room_bg(c, t)
     shake = math.sin(t * 18) * 4 * span(t, S("month_one", "laughs", -0.2), S("month_one", "laughs", 0.5))
     figure(c, 760 + shake, 980, 1.1, arm_l=110, arm_r=70, head_tilt=-14 + shake * 2, who="mate", expr="laugh")
-    bubble(c, 1300, 300, 860, 150, "WALKING DOESN'T WORK, BRO", 52, a=span(t, S("month_one", "walking", -0.1), S("month_one", "walking", 0.3)), tail=-1)
+    bubble(c, 1280, 600, 860, 150, "WALKING DOESN'T WORK, BRO", 52, a=span(t, S("month_one", "walking", -0.1), S("month_one", "walking", 0.3)), tail=-1)
 
 
 def s_dinner_walk(c, t, t0):
     street_bg(c, t)
-    x = 300 + 1000 * span(t, t0, t0 + 6.0)
-    walker_sil(c, x, 830, 1.3, t, colr="#0A0618")
+    x = 300 + 800 * span(t, t0, t0 + 6.0)
+    walker_fig(c, x, 1000, 1.0, t, rim="amber")
     plate_meal(c, 1650, 960, 0.6)
     pop(c, W / 2, 180, "AFTER DINNER", t, S("month_one", "dinner", -0.2), "teal", 52)
 
@@ -352,7 +373,7 @@ def s_sugar(c, t, t0):
     x0, y0, w, h = 300, 860, 1320, 560
     c.drawLine(x0, y0, x0 + w, y0, paint("cream", stroke=4)); c.drawLine(x0, y0, x0, y0 - h - 40, paint("cream", stroke=4))
     label(c, "BLOOD SUGAR AFTER A MEAL", x0 + 10, y0 - h - 60, 34, "sand", "extrabold", align="left")
-    label(c, "TIME →", x0 + w - 60, y0 + 50, 30, "sand", "bold")
+    label(c, "TIME", x0 + w - 40, y0 + 50, 30, "sand", "bold")
     sugar_curve(c, x0, y0, w, h, span(t, t0 + 0.3, t0 + 1.8), "sit", 1.0, "coral")
     sugar_curve(c, x0, y0, w, h, span(t, S("month_one", "softens", -0.4), S("month_one", "softens", 1.0)), "walk", 1.0, GREEN)
     pop(c, 1000, 330, "SITTING", t, t0 + 1.0, "coral", 44)
@@ -396,11 +417,13 @@ def s_lancet(c, t, t0):
     papers_l = ["COHORT", "TRIAL", "STUDY"]
     explainer_bg(c, t, "plum")
     n = int(57 * ease(span(t, t0 + 0.2, S("month_three", "studies", 0.4))))
+    glow(c, W / 2, 900, 520, "amber", 0.35)
     for i in range(min(n, 57)):
-        x = 260 + (i % 19) * 77
-        y = 700 + (i // 19) * 90
-        paper(c, x, y, 0.22, "", "", ["teal", "coral", "plum"][i % 3], (rng(i, 4) - 0.5) * 20, 1.0)
-    big_text(c, f"{n} STUDIES", W / 2, 400, 130, 1.0, "gold")
+        ang = -60 + 120 * i / 56
+        c.save(); c.translate(W / 2, 1180); c.rotate(ang)
+        paper(c, 0, -420, 0.42, "", "", ["teal", "coral", "plum"][i % 3], 0, 1.0)
+        c.restore()
+    big_text(c, f"{n} STUDIES", W / 2, 380, 130, 1.0, "gold")
     pop(c, W / 2, 180, "THE LANCET · 2025 REVIEW", t, S("month_three", "lancet", -0.2), "teal", 46)
 
 
@@ -422,24 +445,23 @@ def s_paris_rome(c, t, t0):
 
 def s_crowd(c, t, t0):
     explainer_bg(c, t, "magenta")
-    crowd(c, W / 2, 560, 11, 3, 11, t, you_p=span(t, S("month_six", "not", -0.4), S("month_six", "not", 0.4)))
+    crowd(c, W / 2, 580, 9, 3, 9, t, sp=170, you_p=span(t, S("month_six", "not", -0.4), S("month_six", "not", 0.4)))
     pop(c, W / 2, 160, "1 IN 3 ADULTS DON'T MOVE ENOUGH", t, S("month_six", "one", -0.2), "plum", 48)
     label(c, "LANCET GLOBAL HEALTH · 2024", W / 2, 1000, 34, "sand", "bold", span(t, S("month_six", "lancet", -0.2), S("month_six", "lancet", 0.3)))
-    if t > S("month_six", "not", -0.2):
-        pop(c, W / 2, 900, "NOT ANYMORE", t, S("month_six", "not", -0.1), "teal", 56)
+
 
 
 # ================================================================ YEAR ONE (biggest escalation)
 def s_silence(c, t, t0):
     c.drawRect(skia.Rect(0, 0, W, H), paint("#07050F"))
     gp = span(t, t0 + 0.3, t0 + 1.8)
-    big_text(c, "365", W / 2, 560, 260, 1.0, "#2A2040")
-    glow(c, W / 2, 520, 300, "amber", 0.08 * gp)
+    glow(c, W / 2, 520, 420, "amber", 0.25 * gp)
+    big_text(c, "365", W / 2, 600, 300, 0.3 + 0.7 * gp, "gold")
 
 
 def bd_year(c, t):
     room_bg(c, t, mode="dark")
-    bath_scale(c, W / 2, 760, 1.3, t=t)
+    bath_scale(c, W / 2, 330, 1.0, t=t)
 
 
 def s_calc(c, t, t0):
@@ -447,12 +469,17 @@ def s_calc(c, t, t0):
     rows = [("EXTRA STEPS / DAY", "≈ 5,000", t0 + 0.3), ("× CALORIES / STEP", "≈ 0.04", t0 + 1.1), ("× DAYS", "365", t0 + 1.9)]
     for i, (a, b, when) in enumerate(rows):
         al = span(t, when, when + 0.3)
-        label(c, a, 520, 300 + i * 120, 50, "cream", "extrabold", al, align="left")
-        label(c, b, 1400, 300 + i * 120, 56, "gold", "extrabold", al, align="right")
+        label(c, a, 300, 240 + i * 120, 50, "cream", "extrabold", al, align="left")
+        label(c, b, 1200, 240 + i * 120, 56, "gold", "extrabold", al, align="right")
     al = span(t, S("year_one", "almost", -0.4), S("year_one", "almost", 0.0))
-    c.drawLine(520, 640, 1400, 640, paint("cream", al, stroke=5))
-    big_text(c, "≈ 10 kg LOST", W / 2, 800, 110, al, "gold")
-    label(c, "ON PAPER", W / 2, 900, 44, "sand", "extrabold", al)
+    c.drawLine(300, 620, 1200, 620, paint("cream", al, stroke=5))
+    big_text(c, "≈ 10 kg LOST", 760, 800, 100, al, "gold")
+    label(c, "ON PAPER", 760, 900, 48, "cream", "extrabold", al)
+    for k in range(10):
+        a_ = span(t, S("year_one", "almost", -0.4 + 0.06 * k), S("year_one", "almost", -0.2 + 0.06 * k))
+        y_ = 1010 - k * 52
+        c.drawRRect(rr(1480, y_ - 46, 1720, y_, 12), paint("#5A5470", a_)); c.drawRRect(rr(1480, y_ - 46, 1720, y_, 12), paint("cream", 0.6 * a_, stroke=3))
+        label(c, "1 kg", 1600, y_ - 12, 30, "cream", "extrabold", a_)
     if t < S("year_one", "almost", 0):
         pass
 
@@ -481,18 +508,33 @@ def s_hadza(c, t, t0):
 def s_cal_bars(c, t, t0):
     explainer_bg(c, t, "deep")
     big_text(c, "CALORIES BURNED PER DAY", W / 2, 160, 60, span(t, t0, t0 + 0.4))
-    p1 = ease(span(t, t0 + 0.2, t0 + 1.0)); p2 = ease(span(t, S("year_one", "office", -0.3), S("year_one", "office", 0.5)))
+    p1 = ease(span(t, t0 + 0.2, t0 + 1.0)); p2 = ease(span(t, t0 + 0.6, t0 + 1.4))
     calorie_bar(c, 700, 880, 520 * p1 + 2, "HADZA", "coral", 1.0)
     walker_sil(c, 700, 300 + 520 * (1 - p1), 0.5, t, colr="cream", a=p1)
-    calorie_bar(c, 1220, 880, 510 * p2 + 2, "OFFICE WORKER", "teal", 1.0 if p2 > 0 else 0.3)
+    calorie_bar(c, 1220, 880, 510 * p2 + 2, "OFFICE WORKER", "teal", 1.0)
+    figure(c, 1220, 360 + 510 * (1 - p2), 0.32, arm_l=60, arm_r=40, seated=True, expr="neutral", a=p2)
     pop(c, 960, 1025, "ABOUT THE SAME", t, S("year_one", "same", -0.1), "plum", 50)
 
 
 def s_house(c, t, t0):
-    explainer_bg(c, t, "plum")
+    """Daily energy budget: one fixed-size bar shared by LEGS, REPAIR, IMMUNE, FIDGET. Walking grows LEGS, the rest shrink."""
+    street_bg(c, t, mode="dusk")
+    dim(c, 0.35)
     legs = ease(span(t, t0 + 0.3, S("year_one", "back", 0.3)))
-    house_body(c, W / 2, 800, 1.0, t, legs=legs)
-    headline(c, t, "THE TOTAL BARELY CHANGES", S("year_one", "total", -0.1), 1050, 52, "gold")
+    walker_fig(c, 330, 1010, 0.95, t, rim="gold")
+    x0, x1, y = 640, 1820, 520
+    big_text(c, "YOUR DAILY ENERGY BUDGET", (x0 + x1) / 2, 300, 54, 1.0, "cream")
+    parts = [("LEGS", 0.25 + 0.3 * legs, STEP), ("REPAIR", 0.30 - 0.12 * legs, "teal"), ("IMMUNE", 0.25 - 0.1 * legs, "plum"),
+             ("FIDGET", 0.20 - 0.08 * legs, "coral")]
+    x = x0
+    for nm, f, colr in parts:
+        w_ = (x1 - x0) * f
+        c.drawRRect(rr(x + 3, y - 90, x + w_ - 3, y + 90, 22), paint(colr))
+        label(c, nm, x + w_ / 2, y + 14, 40 if w_ > 220 else 30, "#1A1236", "extrabold")
+        x += w_
+    c.drawRRect(rr(x0 - 8, y - 98, x1 + 8, y + 98, 28), paint("cream", 0.9, stroke=6))
+    label(c, "SAME TOTAL", (x0 + x1) / 2, y + 170, 46, "gold", "extrabold", span(t, S("year_one", "total", -0.2), S("year_one", "total", 0.2)))
+    headline(c, t, "THE TOTAL BARELY CHANGES", S("year_one", "total", -0.1), 1040, 52, "gold")
 
 
 def s_plate(c, t, t0):
@@ -584,13 +626,102 @@ def s_callback(c, t, t0):
         x = 400 + 800 * span(t, tn, tn + 6.0)
         figure(c, x, 1000, 1.0, arm_l=100 + 20 * math.sin(t * 6), arm_r=80 - 20 * math.sin(t * 6), expr="happy", rim="gold")
         step_phone(c, 1620, 440, 0.6, 10000, t=t, done_flash=span(t, tn + 0.4, tn + 0.8) * 0.5)
-        pop(c, 1620, 140, "10,000 · DIDN'T EVEN NOTICE", t, S("bonus", "happens", -0.2), "teal", 40)
+        pop(c, 1400, 140, "10,000 · DIDN'T EVEN NOTICE", t, S("bonus", "happens", -0.2), "teal", 40)
 
 
 def s_tease(c, t, t0):
-    room_bg(c, t, mode="dark")
+    explainer_bg(c, t, "deep")
     alarm_clock(c, W / 2, 600, 1.2, t, ring=span(t, S("sign_off", "five", -0.2), S("sign_off", "five", 0.2)))
     big_text(c, "NEXT: WHAT IF YOU WOKE UP AT 5 AM FOR 30 DAYS?", W / 2, 180, 50, span(t, t0 + 0.3, t0 + 0.8), "gold")
+
+
+
+# ================================================================ extra cuts (keep shots 2-5 s)
+def s_pacing_phone(c, t, t0):
+    room_bg(c, t, mode="night", lamp=0.4)
+    dim(c, 0.3)
+    tw = S("day_one", "done", -0.1)
+    v = 9990 if t < tw else 10000
+    z = keys(t, [(t0, 1.0), (tw, 1.15)])
+    with Cam(c, z, W / 2, 540, t=t):
+        step_phone(c, W / 2, 540, 1.35, v, t=t, clock="11:50 PM", done_flash=span(t, tw, tw + 0.3) - span(t, tw + 1.0, tw + 1.6))
+    if t >= tw:
+        pop(c, 1450, 300, "DONE.", t, tw, "teal", 80)
+    else:
+        pop(c, 1450, 300, "10 MORE...", t, t0 + 0.2, "coral", 56)
+
+
+def s_box_close(c, t, t0):
+    explainer_bg(c, t, "magenta")
+    z = keys(t, [(t0, 1.0), (t0 + 3.0, 1.25)])
+    with Cam(c, z, W / 2, 620, t=t):
+        pedometer_box(c, W / 2, 560, 1.3, t=t)
+    pop(c, W / 2, 110, "MANPO-KEI = \"10,000 STEP METER\"", t, S("week_one", "meter", -0.5), "coral", 48)
+
+
+def s_kanji_a(c, t, t0):
+    explainer_bg(c, t, "deep")
+    glow(c, W / 2, 520, 360, "gold", 0.3)
+    kanji_man(c, W / 2, 560, 1.4, 0.0, colr="cream")
+    pop(c, W / 2, 140, "THE JAPANESE SYMBOL FOR 10,000", t, S("week_one", "symbol", -0.3), "plum", 46)
+    label(c, "HARVARD'S I-MIN LEE", W / 2, 1010, 36, "sand", "bold", span(t, S("week_one", "harvard", 0), S("week_one", "harvard", 0.4)))
+
+
+def s_seven_studies(c, t, t0):
+    explainer_bg(c, t, "plum")
+    for i in range(7):
+        a = span(t, t0 + 0.15 * i, t0 + 0.15 * i + 0.3)
+        paper(c, 360 + i * 200, 560 + (1 - ease(a)) * 200 + 30 * (i % 2), 0.75, "STUDY", f"#{i + 1}", ["teal", "coral", "plum"][i % 3], (i - 3) * 3, a)
+    pop(c, W / 2, 180, "IRELAND · 7 STUDIES POOLED", t, S("month_one", "ireland", -0.2), "teal", 50)
+
+
+def s_people_steps(c, t, t0):
+    def left(c, t):
+        room_bg(c, t, mode="night")
+        figure(c, W / 4, 1000, 1.0, arm_l=60, arm_r=40, seated=True, expr="tired")
+        label(c, "2,000 / DAY", W / 4, 200, 60, "sand", "extrabold")
+
+    def right(c, t):
+        street_bg(c, t, mode="dusk")
+        walker_fig(c, W * 3 / 4, 1000, 1.0, t)
+        label(c, "7,000 / DAY", W * 3 / 4, 200, 60, "gold", "extrabold")
+    split(left, right, None, None, wipe_at=t0 + 0.4)(c, t, t0)
+
+
+def s_check_phone(c, t, t0):
+    room_bg(c, t, mode="dusk")
+    sh = 4 * math.sin(t * 30) * span(t, t0 + 0.2, t0 + 0.6)
+    step_phone(c, W / 2 + sh, 540, 1.2, 0, t=t, sub="YOUR STEPS TODAY")
+    big_text(c, "?", W / 2, 540, 140, span(t, t0 + 0.1, t0 + 0.4), "gold")
+    pop(c, W / 2, 1000, "BE HONEST", t, S("month_three", "honest", -0.2), "coral", 52)
+
+
+def s_you_out(c, t, t0):
+    explainer_bg(c, t, "magenta")
+    for k in range(5):
+        figure(c, 260 + k * 170, 1000, 0.7, arm_l=60, arm_r=40, expr="tired", a=0.35, shirt="#4A4660")
+    p = ease(span(t, t0 + 0.2, S("month_six", "not", 0.4)))
+    walker_fig(c, 900 + 650 * p, 1000, 1.0, t, rim="gold")
+    glow(c, 900 + 650 * p, 650, 300, "gold", 0.4 * p)
+    pop(c, 1450, 180, "NOT ANYMORE", t, S("month_six", "not", -0.1), "teal", 60)
+
+
+def s_healthy(c, t, t0):
+    street_bg(c, t, mode="dusk")
+    walker_fig(c, 700, 1010, 1.15, t)
+    heart(c, 1350, 480, 1.1, t, rate=1.0, colr="coral")
+    pop(c, 1350, 200, "WALKING = HEALTHY", t, S("year_one", "healthy", -0.2), "teal", 52)
+
+
+def s_scan(c, t, t0):
+    explainer_bg(c, t, "deep")
+    head_side(c, W / 2, 600, 1.3, glow_a=0.3, t=t)
+    for k in range(3):   # scanner rings sweeping
+        ph = ((t - t0) * 0.6 + k / 3) % 1
+        c.drawCircle(W / 2, 480, 200 + 260 * ph, paint("teal", (1 - ph) * 0.6, stroke=6))
+    y = 260 + 440 * (0.5 + 0.5 * math.sin((t - t0) * 2))
+    c.drawLine(W / 2 - 360, y, W / 2 + 360, y, paint("teal", 0.8, stroke=4))
+    pop(c, W / 2, 1000, "BRAIN SCANS", t, t0 + 0.2, "coral", 52)
 
 
 # ================================================================ chapter cards over their own scene
@@ -631,7 +762,7 @@ def bd_week1(c, t):
 
 
 def bd_month1(c, t):
-    room_bg(c, t, mode="morning"); bath_scale(c, W / 2, 760, 1.3, t=t)
+    room_bg(c, t, mode="morning"); bath_scale(c, W / 2, 330, 1.0, t=t)
 
 
 def bd_month3(c, t):
@@ -657,6 +788,8 @@ def SHOTS():
         (S("promise", "first", -0.3), s_january, "iris"),
         (S("promise", "work", -0.4), s_desk, "cut"),
         (S("promise", "thats", -0.3), s_world, "whip"),
+        (S("promise", "world", -0.3), counter(0, 4961, "{:,.0f}", until=S("promise", "average", 0.6), label="WORLD AVERAGE · STEPS A DAY",
+                                              label_at=S("promise", "average", -0.2), bg=lambda c, t: street_bg(c, t, mode="dusk")), "cut"),
         (S("promise", "so", -0.3), s_promise_goal, "zoom"),
     ]
     day1 = [
@@ -664,9 +797,11 @@ def SHOTS():
         (S("day_one", "six", -0.3), s_six_pm, "iris"),
         (S("day_one", "walk", -0.4), s_store, "whip"),
         (S("day_one", "then", -0.3, 2), s_laps, "cut"),
-        (S("day_one", "and", -0.3), s_cost, "whip"),
+        (S("day_one", "and", -0.3), kr_react("worried", "HIDDEN COST"), "whip"),
+        (S("day_one", "take", -0.9), s_cost, "cut"),
         (S("day_one", "over", -0.3), s_25days, "cut"),
         (S("day_one", "eleven", -0.3), s_pacing, "fade"),
+        (S("day_one", "nine", -0.3), s_pacing_phone, "zoom"),
     ]
     week1 = [
         (B("week_one") - 0.6, scene_card("WEEK 1", "The myth", bd_week1), "iris"),
@@ -676,7 +811,9 @@ def SHOTS():
         (S("week_one", "heres", -0.3), kr_react("curious", "HERE'S THE FUNNY PART"), "cut"),
         (S("week_one", "no", -0.3), layer(statement("NO DOCTOR EVER DID.", size=110, color="gold"), stamp_at("NOT SCIENCE", S("week_one", "doctor", 0.3), y=760)), "flash"),
         (S("week_one", "in", -0.3), s_pedometer, "whip"),
-        (S("week_one", "why", -0.3, 2), s_kanji, "fade"),
+        (S("week_one", "manpokei", -0.3), s_box_close, "zoom"),
+        (S("week_one", "why", -0.3, 2), s_kanji_a, "fade"),
+        (S("week_one", "looks", -0.3), s_kanji, "cut"),
         (S("week_one", "so", -0.3), s_meme_nobody, "cut"),
     ]
     month1 = [
@@ -685,7 +822,8 @@ def SHOTS():
         (S("month_one", "few", -0.4), s_meme_expect, "cut"),
         (S("month_one", "friend", -0.5), s_friend, "whip"),
         (S("month_one", "but", -0.3), s_dinner_walk, "fade"),
-        (S("month_one", "researchers", -0.3), s_sugar, "cut"),
+        (S("month_one", "researchers", -0.3), s_seven_studies, "cut"),
+        (S("month_one", "even", -0.3), s_sugar, "whip"),
         (S("month_one", "body", -0.5), s_changing, "fade"),
     ]
     month3 = [
@@ -693,14 +831,17 @@ def SHOTS():
         (S("month_three", "dont", -0.4), s_no_lift, "iris"),
         (S("month_three", "and", -0.3), s_cloud, "fade"),
         (S("month_three", "huge", -0.4), s_lancet, "whip"),
-        (S("month_three", "people", -0.3), s_mood_bars, "cut"),
+        (S("month_three", "people", -0.3), s_people_steps, "cut"),
+        (S("month_three", "had", -0.3), s_mood_bars, "whip"),
         (S("month_three", "quick", -0.3), comment_prompt("What's your step count today?",
                                                          bg=lambda c, t: room_bg(c, t, mode="dusk")), "fade"),
+        (S("month_three", "check", -0.3), s_check_phone, "cut"),
     ]
     month6 = [
         (B("month_six") - 0.6, scene_card("MONTH 6", "One in three", bd_month6), "iris"),
         (S("month_six", "youve", -0.3), s_paris_rome, "iris"),
         (S("month_six", "and", -0.3), s_crowd, "whip"),
+        (S("month_six", "six", -0.3, 2), s_you_out, "fade"),
     ]
     year = [
         (E("month_six") + 0.1, s_silence, "cut"),
@@ -710,12 +851,14 @@ def SHOTS():
         (S("year_one", "why", -0.3), s_hadza, "iris"),
         (S("year_one", "they", -0.3), s_cal_bars, "cut"),
         (S("year_one", "when", -0.3), s_house, "fade"),
-        (S("year_one", "keeps", -0.6), s_plate, "whip"),
+        (S("year_one", "walking", -0.3, 2), s_healthy, "whip"),
+        (S("year_one", "but", -0.3), s_plate, "cut"),
     ]
     payoff = [
         (B("payoff") - 0.2, kr_react("thinking", "ALL FOR NOTHING?"), "fade"),
         (S("payoff", "no", -0.3), s_head_return, "iris"),
         (S("payoff", "twenty", -0.6), s_study2011, "whip"),
+        (S("payoff", "then", -0.3), s_scan, "cut"),
         (S("payoff", "hippocampus", -0.4), s_hippo, "zoom"),
         (S("payoff", "group", -0.6), s_shrink, "cut"),
         (S("payoff", "walkers", -0.4), s_clock_back, "fade"),
@@ -727,14 +870,14 @@ def SHOTS():
         (S("bonus", "remember", -0.3), s_callback, "iris"),
     ]
     outro = [
-        (B("sign_off") - 0.2, s_tease, "fade"),
+        (B("sign_off") - 0.2, zoom(s_tease, 1.0, 1.15, dur=9.0), "fade"),
         (E("sign_off") + 0.3, end_screen(), "fade"),
     ]
     out = []
     for blk in (hook, promise, day1, week1, month1, month3, month6, year, payoff, bonus, outro):
         for start, fn, tr in blk:
             k = getattr(fn, "kind", None)
-            if k in ("card", "logo", "end") or fn in (s_silence, s_tease) or getattr(fn, "__name__", "") in ("comment_prompt", "kr_react", "statement"):
+            if k in ("card", "logo", "end") or fn in (s_silence,) or getattr(fn, "__name__", "") in ("comment_prompt", "kr_react", "statement", "counter", "s_tease"):
                 out.append((start, fn, tr))
             else:
                 out.append((start, CS(fn), tr))
