@@ -272,22 +272,48 @@ def s_calves(c, t, t0):
 
 
 def s_sleep(c, t, t0):
-    room_bg(c, t, mode="dark", moon=1.2)
-    c.drawRRect(rr(380, 700, 1540, 860, 30), paint("#3A2A5E"))
-    c.drawRRect(rr(380, 860, 420, 960, 8), paint("#2A1E48")); c.drawRRect(rr(1500, 860, 1540, 960, 8), paint("#2A1E48"))
-    ellipse(c, 520, 650, 130, 50, paint("cream", 0.95))
-    br = 1 + 0.02 * math.sin(t * 2)
-    c.save(); c.translate(1500, 690); c.rotate(-90); c.scale(1, br)
-    figure(c, 0, 0, 1.45, arm_l=80, arm_r=100, expr="tired")
-    c.restore()
-    blanket = skia.Path(); blanket.moveTo(760, 600); blanket.cubicTo(1000, 560 - 6 * math.sin(t * 2), 1300, 570, 1520, 610)
-    blanket.lineTo(1520, 720); blanket.lineTo(760, 720); blanket.close()
-    c.drawPath(blanket, hgrad(760, 1520, ["#2A9D8F", "#1B6A60"])); c.drawPath(blanket, paint("cream", 0.3, stroke=4))
-    glow(c, 560, 560, 120, "gold", 0.35 + 0.15 * math.sin(t * 2))
+    """Week 1 night: you fast asleep under a blanket, moonlight on the bed, the phone on the nightstand at 10,000."""
+    room_bg(c, t, mode="dark", moon=1.3)
+    z = keys(t, [(t0, 1.0), (t0 + 3.0, 1.08)])
+    with Cam(c, z, 900, 640, t=t):
+        # moonlight pool on the bed
+        sh = skia.Path(); sh.moveTo(1460, 470); sh.lineTo(1820, 470); sh.lineTo(1300, 900); sh.lineTo(700, 900); sh.close()
+        c.drawPath(sh, paint(COOL, 0.07))
+        # bed: headboard, frame, mattress
+        c.drawRRect(rr(300, 470, 380, 900, 20), hgrad(300, 380, ["#4A3A7A", "#2E2250"]))
+        c.drawRRect(rr(320, 720, 1480, 860, 26), paint("#2E2250"))
+        c.drawRRect(rr(340, 660, 1460, 760, 30), paint("#C9C3DC"))
+        c.drawRRect(rr(340, 900 - 40, 380, 940, 6), paint("#1E1640")); c.drawRRect(rr(1420, 900 - 40, 1460, 940, 6), paint("#1E1640"))
+        # pillow + head (side view, eyes closed, little smile)
+        ellipse(c, 520, 640, 150, 58, paint("#F4EFE6")); ellipse(c, 520, 640, 150, 58, paint("#B9B2C6", stroke=4))
+        br = 3 * math.sin(t * 1.6)
+        hx, hy = 560, 585 + br * 0.3
+        c.drawCircle(hx, hy, 62, hgrad(hx - 62, hx + 62, [SKIN_L, SKIN_D]))
+        hair = skia.Path(); hair.addArc(skia.Rect(hx - 64, hy - 66, hx + 64, hy + 62), 160, 170)
+        c.drawPath(hair, paint("#1E1A2E", stroke=30))
+        for ex in (hx + 8, hx + 36):
+            e = skia.Path(); e.addArc(skia.Rect(ex - 12, hy - 6, ex + 12, hy + 10), 10, 160)
+            c.drawPath(e, paint("#3A2A1A", stroke=5))
+        m = skia.Path(); m.addArc(skia.Rect(hx + 10, hy + 18, hx + 40, hy + 36), 20, 140)
+        c.drawPath(m, paint("#7A3A2A", stroke=4))
+        c.drawCircle(hx + 44, hy + 14, 9, paint("coral", 0.35))
+        glow(c, hx - 10, hy - 20, 110, "gold", 0.30 + 0.12 * math.sin(t * 2))
+        # blanket over the body, rises and falls with breathing
+        bl = skia.Path(); bl.moveTo(600, 760); bl.lineTo(600, 640 - br)
+        bl.cubicTo(760, 600 - br, 1000, 610 - br, 1150, 640); bl.cubicTo(1250, 600, 1360, 610, 1440, 660)
+        bl.lineTo(1450, 780); bl.close()
+        c.drawPath(bl, hgrad(600, 1450, ["#2A9D8F", "#1B6A60"]))
+        for k in range(5):
+            c.drawLine(700 + k * 150, 650 - br, 690 + k * 150, 770, paint("#156058", 0.6, stroke=4))
+        c.drawPath(bl, paint(COOL, 0.45, stroke=4))
+        # nightstand + phone glowing 10,000
+        c.drawRRect(rr(1520, 700, 1760, 900, 14), paint("#3A2A5E"))
+        c.drawRRect(rr(1520, 700, 1760, 900, 14), paint("amber", 0.3, stroke=3))
+        step_phone(c, 1640, 610, 0.27, 10000, t=t, done_flash=0.5)
     for k in range(3):
-        ph = ((t - t0) * 0.5 + k / 3) % 1
-        label(c, "z", 640 + 60 * ph + k * 20, 470 - 160 * ph, int(40 + 30 * ph), "cream", "extrabold", 1 - ph)
-    pop(c, W / 2, 220, "SLEEPING LIKE A BABY", t, S("week_one", "sleeping", -0.2), "plum", 52)
+        ph = ((t - t0) * 0.45 + k / 3) % 1
+        label(c, "z", 650 + 70 * ph + k * 24, 470 - 170 * ph, int(46 + 34 * ph), "cream", "extrabold", 1 - ph)
+    pop(c, W / 2, 140, "SLEEPING LIKE A BABY", t, S("week_one", "sleeping", -0.2), "plum", 52)
 
 
 def s_why(c, t, t0):
