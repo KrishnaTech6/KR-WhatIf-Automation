@@ -1,16 +1,70 @@
 {
- "fetched": "2026-11-13T18:19+00:00",
+ "fetched": "2026-11-16T20:45+00:00",
  "channel": "kr's what if explained",
  "subscribers": 11,
  "analytics": "HTTP 403: needs the yt-analytics.readonly permission (re-run scripts/youtube_auth.py)",
  "ctr": null,
  "videos": [
   {
+   "id": "ln8WLM94qRs",
+   "title": "Six Kids in Nani's Photo. One in Yours. #shorts",
+   "published": "2026-11-16T14:36:34Z",
+   "duration": 38,
+   "views": 145,
+   "likes": 3,
+   "comments": 0
+  },
+  {
+   "id": "6qtLlbcDHmw",
+   "title": "India Will Lose 20 Crore People. No War. #shorts",
+   "published": "2026-11-16T03:34:25Z",
+   "duration": 49,
+   "views": 1107,
+   "likes": 8,
+   "comments": 0
+  },
+  {
+   "id": "8Et89Xt8enA",
+   "title": "What If India's Population Started Shrinking?",
+   "published": "2026-11-15T12:37:18Z",
+   "duration": 285,
+   "views": 14,
+   "likes": 0,
+   "comments": 1
+  },
+  {
+   "id": "TsuFIdqzL2A",
+   "title": "Day 3 Without UPI: Your Sabziwala Is Broke #shorts",
+   "published": "2026-11-15T12:24:01Z",
+   "duration": 41,
+   "views": 62,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "P8twkS6UrQA",
+   "title": "7 Days Without UPI, You Can't Even Buy Chai #shorts",
+   "published": "2026-11-15T03:12:35Z",
+   "duration": 53,
+   "views": 84,
+   "likes": 0,
+   "comments": 1
+  },
+  {
+   "id": "TmdZ7zeFApI",
+   "title": "What If UPI Stopped Working for One Week?",
+   "published": "2026-11-14T12:38:01Z",
+   "duration": 300,
+   "views": 5,
+   "likes": 0,
+   "comments": 0
+  },
+  {
    "id": "ek5GqPS1-SQ",
    "title": "India Was Frozen 300 Million Years Ago #shorts",
    "published": "2026-11-13T03:29:17Z",
    "duration": 44,
-   "views": 948,
+   "views": 1005,
    "likes": 5,
    "comments": 0
   },
@@ -19,7 +73,7 @@
    "title": "What If You Woke Up 300 Million Years Ago?",
    "published": "2026-11-12T15:30:11Z",
    "duration": 310,
-   "views": 2,
+   "views": 3,
    "likes": 0,
    "comments": 0
   },
@@ -28,7 +82,7 @@
    "title": "Don't Move. This Bug Has 70 cm Wings #shorts",
    "published": "2026-11-12T14:30:35Z",
    "duration": 59,
-   "views": 35,
+   "views": 38,
    "likes": 0,
    "comments": 0
   },
@@ -55,7 +109,7 @@
    "title": "What If the Sun Vanished for 8 Minutes?",
    "published": "2026-11-11T03:54:38Z",
    "duration": 346,
-   "views": 7,
+   "views": 8,
    "likes": 0,
    "comments": 1
   },
@@ -64,7 +118,7 @@
    "title": "If Earth Had Rings, Delhi Nights Never Go Dark #shorts",
    "published": "2026-11-10T16:30:13Z",
    "duration": 36,
-   "views": 315,
+   "views": 314,
    "likes": 3,
    "comments": 0
   },
@@ -73,7 +127,7 @@
    "title": "Mumbai's Noon Sun Hidden for 80 Days? #shorts",
    "published": "2026-11-10T15:40:35Z",
    "duration": 49,
-   "views": 659,
+   "views": 660,
    "likes": 5,
    "comments": 1
   },
@@ -82,7 +136,7 @@
    "title": "What If the Himalayas Vanished Overnight? #shorts",
    "published": "2026-11-10T15:00:06Z",
    "duration": 45,
-   "views": 1016,
+   "views": 1015,
    "likes": 8,
    "comments": 0
   },
@@ -91,7 +145,7 @@
    "title": "Kangchenjunga Vanished From My Window #shorts",
    "published": "2026-11-09T15:49:49Z",
    "duration": 54,
-   "views": 706,
+   "views": 705,
    "likes": 3,
    "comments": 0
   },
@@ -100,7 +154,7 @@
    "title": "What If Delhi Was Trapped Under Smog Forever?",
    "published": "2026-11-09T14:15:35Z",
    "duration": 346,
-   "views": 2,
+   "views": 3,
    "likes": 0,
    "comments": 0
   },
@@ -118,7 +172,7 @@
    "title": "What If India Woke Up Without the Himalayas?",
    "published": "2026-11-09T04:46:54Z",
    "duration": 375,
-   "views": 5,
+   "views": 9,
    "likes": 1,
    "comments": 0
   },
@@ -136,7 +190,7 @@
    "title": "What If the Whole World Lost the Internet for One Week?",
    "published": "2026-11-08T13:00:06Z",
    "duration": 306,
-   "views": 8,
+   "views": 12,
    "likes": 0,
    "comments": 0
   },
@@ -163,7 +217,7 @@
    "title": "What If the Moon Disappeared Tomorrow? | KR's What if Explained",
    "published": "2026-11-07T12:30:34Z",
    "duration": 376,
-   "views": 85,
+   "views": 94,
    "likes": 1,
    "comments": 1
   },
@@ -181,7 +235,7 @@
    "title": "What if no motors were invented? #whatif #science",
    "published": "2026-11-07T01:40:10Z",
    "duration": 39,
-   "views": 59,
+   "views": 60,
    "likes": 0,
    "comments": 0
   },
@@ -199,7 +253,7 @@
    "title": "At 1 mm Tall, a Raindrop Is a Falling Boulder #shorts",
    "published": "2026-11-06T12:52:48Z",
    "duration": 39,
-   "views": 1251,
+   "views": 1252,
    "likes": 18,
    "comments": 0
   },
@@ -217,9 +271,9 @@
    "title": "What If You Woke Up 1 Millimetre Tall Tomorrow? | KR's What if Explained",
    "published": "2026-11-06T12:45:21Z",
    "duration": 336,
-   "views": 57,
+   "views": 58,
    "likes": 2,
-   "comments": 3
+   "comments": 4
   },
   {
    "id": "wIa9JXi8Rgw",
