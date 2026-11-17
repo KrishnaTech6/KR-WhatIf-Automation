@@ -443,12 +443,12 @@ def s_cloud(c, t, t0):
 def s_lancet(c, t, t0):
     papers_l = ["COHORT", "TRIAL", "STUDY"]
     explainer_bg(c, t, "plum")
-    n = int(57 * ease(span(t, t0 + 0.2, S("month_three", "studies", 0.4))))
+    n = int(57 * ease(span(t, t0, t0 + 1.2)))
     glow(c, W / 2, 900, 520, "amber", 0.35)
     for i in range(min(n, 57)):
         ang = -60 + 120 * i / 56
         c.save(); c.translate(W / 2, 1180); c.rotate(ang)
-        paper(c, 0, -420, 0.42, "", "", ["teal", "coral", "plum"][i % 3], 0, 1.0)
+        paper(c, 0, -520, 0.26, "", "", ["teal", "coral", "plum"][i % 3], 0, 1.0)
         c.restore()
     big_text(c, f"{n} STUDIES", W / 2, 380, 130, 1.0, "gold")
     pop(c, W / 2, 180, "THE LANCET · 2025 REVIEW", t, S("month_three", "lancet", -0.2), "teal", 46)
@@ -563,13 +563,28 @@ def s_house(c, t, t0):
 
 
 def s_plate(c, t, t0):
+    """A balance: your plate vs your steps. It tips hard toward the plate."""
     explainer_bg(c, t, "magenta")
-    k = 0.6 + 0.9 * ease(span(t, S("year_one", "plate", -0.3), S("year_one", "plate", 0.5)))
-    plate_meal(c, 760, 640, k)
-    sneaker(c, 1420, 700, 0.55, glow_a=0.3)
-    big_text(c, ">", 1150, 660, 140, span(t, S("year_one", "matters", -0.1), S("year_one", "matters", 0.3)), "gold")
-    pop(c, 1420, 300, "STILL HEALTHY", t, S("year_one", "healthy", -0.2), "teal", 46)
-    headline(c, t, "YOUR PLATE > YOUR STEPS", S("year_one", "matters", -0.1), 1000, 64, "gold")
+    tip = ease(span(t, S("year_one", "plate", -0.3), S("year_one", "plate", 0.6)))
+    ang = -14 * tip
+    cx, cy = W / 2, 560
+    c.drawLine(cx, cy, cx, 960, paint("cream", stroke=16))
+    tri = skia.Path(); tri.moveTo(cx - 120, 980); tri.lineTo(cx + 120, 980); tri.lineTo(cx, 900); tri.close()
+    c.drawPath(tri, paint("cream"))
+    r = math.radians(ang)
+    for side, draw in ((-1, "plate"), (1, "shoe")):
+        x = cx + side * 520 * math.cos(r); y = cy + side * 520 * math.sin(r)
+        c.drawLine(x, y, x, y + 160, paint("sand", stroke=6))
+        ellipse(c, x, y + 170, 200, 26, paint("sand"))
+        if draw == "plate":
+            plate_meal(c, x, y + 130, 0.75)
+            label(c, "YOUR PLATE", x, y + 270, 46, "gold", "extrabold")
+        else:
+            sneaker(c, x, y + 160, 0.6)
+            label(c, "YOUR STEPS", x, y + 270, 46, "cream", "extrabold")
+    c.drawLine(cx - 520 * math.cos(r), cy - 520 * math.sin(r), cx + 520 * math.cos(r), cy + 520 * math.sin(r), paint("cream", stroke=14))
+    c.drawCircle(cx, cy, 20, paint("gold"))
+    headline(c, t, "FOR WEIGHT LOSS", S("year_one", "weight", -0.2), 140, 64, "gold")
 
 
 # ================================================================ PAYOFF (the brain)
@@ -652,6 +667,10 @@ def s_callback(c, t, t0):
         figure(c, x, 1000, 1.0, arm_l=100 + 20 * math.sin(t * 6), arm_r=80 - 20 * math.sin(t * 6), expr="happy", rim="gold")
         step_phone(c, 1620, 440, 0.6, 10000, t=t, done_flash=span(t, tn + 0.4, tn + 0.8) * 0.5)
         pop(c, 1400, 140, "10,000 · DIDN'T EVEN NOTICE", t, S("bonus", "happens", -0.2), "teal", 40)
+        v = int(3650000 * ease(span(t, S("bonus", "simply", -0.4), S("bonus", "simply", 1.2))))
+        if v > 0:
+            big_text(c, f"{v:,} STEPS", 560, 300, 80, 1.0, "gold")
+            big_text(c, "≈ 2,500 km WALKED", 560, 390, 50, span(t, S("bonus", "walk", 0.0), S("bonus", "walk", 0.4)), "cream")
 
 
 def s_tease(c, t, t0):
@@ -715,9 +734,12 @@ def s_people_steps(c, t, t0):
 
 def s_check_phone(c, t, t0):
     room_bg(c, t, mode="dusk")
-    sh = 4 * math.sin(t * 30) * span(t, t0 + 0.2, t0 + 0.6)
-    step_phone(c, W / 2 + sh, 540, 1.2, 0, t=t, sub="YOUR STEPS TODAY")
-    big_text(c, "?", W / 2, 540, 140, span(t, t0 + 0.1, t0 + 0.4), "gold")
+    p = span(t, t0 + 0.1, t0 + 2.2)
+    v = int(6212 * ease(p))
+    sh = 4 * math.sin(t * 30) * span(t, t0 + 2.2, t0 + 2.6)
+    step_phone(c, W / 2 + sh, 540, 1.2, v, t=t, sub="YOUR STEPS TODAY")
+    if p >= 1:
+        big_text(c, "YOURS?", 1450, 560, 90, span(t, t0 + 2.2, t0 + 2.5), "gold")
     pop(c, W / 2, 1000, "BE HONEST", t, S("month_three", "honest", -0.2), "coral", 52)
 
 
@@ -739,14 +761,22 @@ def s_healthy(c, t, t0):
 
 
 def s_scan(c, t, t0):
+    """Two brain-scan slices: day 1 vs after a year; the hippocampus region lights up bigger."""
     explainer_bg(c, t, "deep")
-    head_side(c, W / 2, 600, 1.3, glow_a=0.3, t=t)
-    for k in range(3):   # scanner rings sweeping
-        ph = ((t - t0) * 0.6 + k / 3) % 1
-        c.drawCircle(W / 2, 480, 200 + 260 * ph, paint("teal", (1 - ph) * 0.6, stroke=6))
-    y = 260 + 440 * (0.5 + 0.5 * math.sin((t - t0) * 2))
-    c.drawLine(W / 2 - 360, y, W / 2 + 360, y, paint("teal", 0.8, stroke=4))
-    pop(c, W / 2, 1000, "BRAIN SCANS", t, t0 + 0.2, "coral", 52)
+    for k, (x, lab, g) in enumerate(((620, "BEFORE", 0.0), (1300, "AFTER 1 YEAR", 1.0))):
+        a = span(t, t0 + 0.2 + 0.8 * k, t0 + 0.6 + 0.8 * k)
+        c.drawCircle(x, 520, 270, paint("#0B0F1E", a)); c.drawCircle(x, 520, 270, paint("teal", 0.8 * a, stroke=6))
+        ellipse(c, x, 520, 210, 240, paint("#3A3E5A", a))
+        for q in range(6):
+            c.drawLine(x - 150 + q * 60, 330, x - 170 + q * 60, 710, paint("#5A5E7A", 0.6 * a, stroke=5))
+        rr_ = (40 + 22 * g) * (1 + 0.1 * g * math.sin(t * 3))
+        for sd in (-1, 1):
+            glow(c, x + sd * 90, 600, rr_ * 1.8, "gold", 0.5 * a * (0.5 + g))
+            ellipse(c, x + sd * 90, 600, rr_, rr_ * 0.6, paint("gold", a))
+        label(c, lab, x, 860, 48, "gold" if g else "cream", "extrabold", a)
+    y = 250 + 540 * (0.5 + 0.5 * math.sin((t - t0) * 2))
+    c.drawLine(300, y, 1620, y, paint("teal", 0.6, stroke=4))
+    pop(c, W / 2, 1000, "MRI BRAIN SCANS", t, t0 + 0.2, "coral", 50)
 
 
 # ================================================================ chapter cards over their own scene
