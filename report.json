@@ -1,0 +1,264 @@
+{
+ "main": {
+  "kind": "main",
+  "dur": 329.66,
+  "overall": 98.0,
+  "beats": [
+   {
+    "n": 1,
+    "name": "Hook",
+    "start": 0.3,
+    "dur": 20.55,
+    "issues": [
+     {
+      "text": "You walked ten thousand steps. Every day. For a year. That's like walking from London... all the way to Moscow.",
+      "heard": "you walk 10000 steps every day for a year that is like walking from london all the way to moscow",
+      "why": "3.0s stuck silence, 1 word(s) wrong/missing/extra",
+      "lexicon_words": []
+     }
+    ]
+   },
+   {
+    "n": 2,
+    "name": "Promise - logo",
+    "start": 22.05,
+    "dur": 31.18,
+    "issues": [
+     {
+      "text": "This is K R's What If Explained. I went through nine studies for this one. First of January. You work at a desk. Your phone says you walk about five thousand steps a day. That's normal.",
+      "heard": "this is krs what if explained i went through 9 studies for this 11st of january you work at a desk your phone says you walk about 5000 steps a day that is normal",
+      "why": "1.7s stuck silence, 2 word(s) wrong/missing/extra",
+      "lexicon_words": []
+     }
+    ]
+   },
+   {
+    "n": 3,
+    "name": "Day one - the time",
+    "start": 54.44,
+    "dur": 31.47,
+    "issues": [
+     {
+      "text": "Day one. Six p.m. Your phone says... two thousand eight hundred.",
+      "heard": "day one 6 pm your phone says 2800",
+      "why": "2 word(s) wrong/missing/extra",
+      "lexicon_words": []
+     },
+     {
+      "text": "Done.",
+      "heard": "done",
+      "why": "speed 1.2 words/s",
+      "lexicon_words": []
+     }
+    ]
+   },
+   {
+    "n": 4,
+    "name": "Week one - the myth",
+    "start": 87.11,
+    "dur": 39.86,
+    "issues": [
+     {
+      "text": "In the nineteen sixties, a Japanese company needed a catchy name for a new pedometer. Manpo-kei. The ten thousand step meter. Why ten thousand?",
+      "heard": "in the 1960s a japanese company needed a catchy name for a new pedometer mahan po ke the 10000 step meter why 10000",
+      "why": "3 word(s) wrong/missing/extra",
+      "lexicon_words": [
+       "manpo-kei"
+      ]
+     }
+    ]
+   },
+   {
+    "n": 5,
+    "name": "Month one - sugar",
+    "start": 128.17,
+    "dur": 29.5,
+    "issues": [
+     {
+      "text": "Month one. Three hundred thousand steps. You step on the weighing scale...",
+      "heard": "month one 300000 steps you step on the weighing scale",
+      "why": "3 word(s) wrong/missing/extra",
+      "lexicon_words": []
+     }
+    ]
+   },
+   {
+    "n": 6,
+    "name": "Month three - mood",
+    "start": 158.87,
+    "dur": 33.55,
+    "issues": [
+     {
+      "text": "Month three. You don't take the lift anymore. You take phone calls walking. And your bad days... feel less bad. A huge Lancet review in twenty twenty-five pulled together fifty-seven studies.",
+      "heard": "month 3 you do not take the lift anymore you take phone calls walking and your bad days feel less bad a huge lancet review in 2025 pulled together 57 studies",
+      "why": "3.3s stuck silence",
+      "lexicon_words": []
+     }
+    ]
+   },
+   {
+    "n": 7,
+    "name": "Month six - the half",
+    "start": 193.62,
+    "dur": 15.62,
+    "issues": []
+   },
+   {
+    "n": 8,
+    "name": "Year one - the scale",
+    "start": 211.64,
+    "dur": 37.45,
+    "issues": []
+   },
+   {
+    "n": 9,
+    "name": "Payoff - the brain",
+    "start": 250.29,
+    "dur": 45.55,
+    "issues": [
+     {
+      "text": "No. Because the thing that changed most... was never on the scale. In twenty eleven, scientists in the US had a hundred and twenty older adults walk for a year. Then they scanned their brains.",
+      "heard": "no because the thing that changed most was never on the scale in 2011 scientists in the us had 120 older adults walk for a year then they scanned their brains",
+      "why": "9.0s stuck silence, 1 word(s) wrong/missing/extra",
+      "lexicon_words": []
+     },
+     {
+      "text": "The hippocampus, the part that makes your memories... had grown about two percent. In the group that only stretched... it shrank.",
+      "heard": "the hippocampus the part that makes your memories had grown about 2% in the group that only stretched it shrank",
+      "why": "speed 1.4 words/s",
+      "lexicon_words": []
+     }
+    ]
+   },
+   {
+    "n": 10,
+    "name": "Bonus - seven thousand",
+    "start": 297.04,
+    "dur": 22.63,
+    "issues": [
+     {
+      "text": "Remember pacing your bedroom near midnight? Now ten thousand just... happens. You're simply out for a walk.",
+      "heard": "remember pacing your bedroom near midnight now 10000 just happens you are simply out for a walk",
+      "why": "3.2s stuck silence",
+      "lexicon_words": []
+     }
+    ]
+   },
+   {
+    "n": 11,
+    "name": "Sign off",
+    "start": 320.87,
+    "dur": 7.99,
+    "issues": []
+   }
+  ]
+ },
+ "short": {
+  "kind": "short",
+  "dur": 51.89,
+  "overall": 96.9,
+  "beats": [
+   {
+    "n": 1,
+    "name": "Hook",
+    "start": 0.05,
+    "dur": 4.55,
+    "issues": []
+   },
+   {
+    "n": 2,
+    "name": "Maths",
+    "start": 4.85,
+    "dur": 11.56,
+    "issues": []
+   },
+   {
+    "n": 3,
+    "name": "Reality",
+    "start": 16.67,
+    "dur": 17.18,
+    "issues": []
+   },
+   {
+    "n": 4,
+    "name": "Myth",
+    "start": 34.09,
+    "dur": 6.57,
+    "issues": []
+   },
+   {
+    "n": 5,
+    "name": "Tease",
+    "start": 40.91,
+    "dur": 8.59,
+    "issues": [
+     {
+      "text": "But after that year, something inside you really does grow. Just not where you'd look. Full video on K R's What If Explained.",
+      "heard": "but after that year something inside you really does grow just not where you would look full video on chaos what if explained",
+      "why": "2 word(s) wrong/missing/extra",
+      "lexicon_words": []
+     }
+    ]
+   },
+   {
+    "n": 6,
+    "name": "Loop",
+    "start": 49.75,
+    "dur": 1.94,
+    "issues": []
+   }
+  ]
+ },
+ "reel": {
+  "kind": "short",
+  "dur": 42.02,
+  "overall": 96.6,
+  "beats": [
+   {
+    "n": 1,
+    "name": "Hook",
+    "start": 0.05,
+    "dur": 6.6,
+    "issues": []
+   },
+   {
+    "n": 2,
+    "name": "Promise",
+    "start": 6.9,
+    "dur": 5.36,
+    "issues": []
+   },
+   {
+    "n": 3,
+    "name": "Change",
+    "start": 12.51,
+    "dur": 14.09,
+    "issues": []
+   },
+   {
+    "n": 4,
+    "name": "Tease",
+    "start": 26.85,
+    "dur": 6.41,
+    "issues": []
+   },
+   {
+    "n": 5,
+    "name": "CTA",
+    "start": 33.52,
+    "dur": 8.31,
+    "issues": [
+     {
+      "text": "Full story on YouTube: K R's What If Explained. Link in bio.",
+      "heard": "full story on youtube kr is what if explained link in bio",
+      "why": "speed 1.4 words/s, 2.0s stuck silence",
+      "lexicon_words": []
+     }
+    ]
+   }
+  ]
+ },
+ "_lexicon_hits": {
+  "hadza": "Hadza"
+ }
+}
