@@ -1,0 +1,36 @@
+{
+ "title": "What If You Walked 10,000 Steps Every Day for a Year?",
+ "lang": "en",
+ "tries": 4,
+ "jobs": [
+  {
+   "name": "main",
+   "kind": "main",
+   "script": "TITLE: What If You Walked 10,000 Steps Every Day for a Year?\nLANG: en\nKEY_BEATS: hook, scale, brain\nHARD_CUT_BEFORE: scale\n\n[Hook | tense]\nYou walked ten thousand steps. Every day. For a year.\nThat's like walking from London... all the way to Moscow.\n{deadpan} And the weighing scale? It barely moved.\n{soft} But something inside your head... grew.\n\n[Promise - logo | neutral]\nThis is K R's What If Explained. I went through nine studies for this one.\nFirst of January. You work at a desk. Your phone says you walk about five thousand steps a day.\nThat's normal. A Stanford study of phone data from over a hundred countries found the world average is right about there.\n{playful} So you make a promise. Ten thousand. Every day. No excuses.\n\n[Day one - the time | tense]\nDay one. Six p.m. Your phone says... two thousand eight hundred.\n{playful} You walk to the grocery store. Then the long way back. Then laps around your building's parking lot.\nAnd you find the first hidden cost. Ten thousand steps take an hour and a half to two hours.\nOver a year, that's around twenty-five full days of just... walking.\n{deadpan} Eleven fifty p.m. You're pacing your bedroom. Nine thousand nine hundred and ninety. (beat) Done.\n\n[Week one - the myth | neutral]\nWeek one. Your calves hurt on the stairs. But you're sleeping like a baby.\nAnd you start wondering... why ten thousand? Who decided that?\n{playful} Here's the funny part.\n{dramatic} No doctor ever did.\n{playful} In the nineteen sixties, a Japanese company needed a catchy name for a new pedometer. Manpo-kei. The ten thousand step meter.\nWhy ten thousand? One Harvard scientist thinks it's because the Japanese symbol for ten thousand... looks a bit like a little man walking.\n{deadpan} So the most famous health goal on Earth... started as an advert.\n\n[Month one - sugar | tense]\nMonth one. Three hundred thousand steps. You step on the weighing scale... (beat) A few hundred grams. That's it.\nYour friend laughs. Walking doesn't work, bro.\n{neutral} But something is working. You've started walking after dinner.\nResearchers in Ireland pooled seven studies. Even a few minutes of light walking after eating softens the blood sugar spike that sitting brings.\nYour body is changing. Just not where you're looking.\n\n[Month three - mood | warm]\nMonth three. You don't take the lift anymore. You take phone calls walking.\nAnd your bad days... feel less bad.\nA huge Lancet review in twenty twenty-five pulled together fifty-seven studies.\nPeople walking seven thousand steps a day, compared with two thousand, had about a fifth lower risk of depression symptoms.\n{playful} Quick question. What's your step count today? Check your phone and tell me in the comments. Be honest.\n\n[Month six - the half | wonder]\nMonth six. You've now walked about as far as Paris to Rome.\nAnd here's the thing. One in three adults on Earth doesn't move enough, says a twenty twenty-four Lancet study.\n{soft} Six months ago, you were one of them. Not anymore.\n\n[Year one - the scale | deep]\nDay three hundred and sixty-five. (pause 0.4)\nI ran the numbers. All that extra walking burned enough calories to lose almost ten kilos.\nYou step on the scale. (beat)\nRoughly two and a half.\n{neutral} Why? Scientists studied the Hadza in Tanzania, hunter-gatherers who walk all day.\nThey burn about the same calories per day as an office worker.\nWhen you move more, your body quietly cuts back somewhere else. So the total barely changes.\n{deadpan} Walking keeps you healthy. But for weight loss... your plate matters more than your steps.\n\n[Payoff - the brain | wonder]\n{soft} So... was it all for nothing? (beat)\nNo. Because the thing that changed most... was never on the scale.\nIn twenty eleven, scientists in the US had a hundred and twenty older adults walk for a year. Then they scanned their brains.\nThe hippocampus, the part that makes your memories... had grown about two percent.\nIn the group that only stretched... it shrank.\n{wonder} The walkers had turned back one to two years of brain ageing.\n\n[Bonus - seven thousand | warm]\nBest part? About seven thousand steps gets you most of it.\n{playful} Comment below: for that extra hour, what would you give up? Netflix... or sleep?\n{soft} Remember pacing your bedroom near midnight? Now ten thousand just... happens. You're simply out for a walk.\n\n[Sign off | soft]\nNext time: What if you woke up at five a.m. for thirty days? But that story... is for the next What If.\n",
+   "strict": [
+    "hook",
+    "scale",
+    "brain"
+   ],
+   "hard_cut_before": [
+    "scale"
+   ]
+  },
+  {
+   "name": "short",
+   "kind": "short",
+   "script": "TITLE: What If You Walked 10,000 Steps Every Day for a Year? — Short\nLANG: en\nKEY_BEATS: hook\nHARD_CUT_BEFORE:\n\n[Hook | dramatic]\nYour ten thousand steps won't fix your weight. Here's why.\n\n[Maths | neutral]\nWalk them for a year. That's up to two hours of walking, every single day.\nOn paper, a year of that extra walking burns enough calories to lose almost ten kilos.\n\n[Reality | dramatic]\nIn real walking studies? People lose way less than that.\nBecause your body cheats. Scientists studied hunter-gatherers in Tanzania who walk all day long.\nThey burn about the same calories per day as someone sitting in an office.\n\n[Myth | playful]\nAnd the magic number ten thousand? It wasn't science. It was the name of a Japanese pedometer.\n\n[Tease | dramatic]\nBut after that year, something inside you really does grow. Just not where you'd look.\nFull video on K R's What If Explained.\n\n[Loop | neutral]\nAnd that's exactly why...\n",
+   "strict": [
+    "hook"
+   ]
+  },
+  {
+   "name": "reel",
+   "kind": "short",
+   "script": "TITLE: What If You Walked 10,000 Steps Every Day for a Year? — Reel\nLANG: en\nKEY_BEATS: hook\nHARD_CUT_BEFORE:\n\n[Hook | playful]\nNine thousand nine hundred and ninety steps. Eleven fifty p.m. Your bedroom has never seen this much walking.\n\n[Promise | neutral]\nBecause you promised yourself ten thousand. Every day. For a whole year.\n\n[Change | warm]\nMonth one, the scale barely moves. Your friend laughs at you.\nBut you start walking after dinner. You take calls walking. You skip the lift.\n{soft} And your bad days... feel a little less bad.\n\n[Tease | wonder]\nBy the end of that year, one part of you has actually grown. And it's not your legs.\n\n[CTA | warm]\nFull story on YouTube: K R's What If Explained. Link in bio.\n",
+   "strict": [
+    "hook"
+   ]
+  }
+ ]
+}
