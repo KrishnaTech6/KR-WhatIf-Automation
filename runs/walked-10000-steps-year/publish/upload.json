@@ -1,0 +1,68 @@
+{
+ "slug": "walked-10000-steps-year",
+ "dry_run": false,
+ "privacy": "private",
+ "publish_at": null,
+ "synthetic": false,
+ "language": "en",
+ "main": {
+  "file": "MAIN.mp4",
+  "title": "What If You Walked 10,000 Steps Every Day for a Year?",
+  "description": "What if you walked 10,000 steps every day for a year? That's 3.65 million steps, roughly London to Moscow on foot. The weighing scale barely moves... but something inside your head grows.\nA year of walking, month by month: the hidden time cost, where the 10,000 number really came from, blood sugar, mood, why your body cancels out the calories, and the brain twist.\n\nThe real science:\n- The world average is about 5,000 steps a day (Althoff et al., Nature 2017: smartphone data from 717,527 people in 111 countries).\n- 10,000 steps take about 1.5 to 2 hours a day, around 25 full days a year.\n- The 10,000 target started as a 1960s Japanese pedometer name, Manpo-kei (\"10,000-step meter\"), not a medical number. Harvard's I-Min Lee: the character for 10,000 looks a bit like a walking man.\n- A few minutes of light walking after meals softens the blood sugar spike (Buffey et al., Sports Medicine 2022, 7 studies).\n- 7,000 vs 2,000 steps a day: about 22% lower risk of depressive symptoms; most benefits show up by about 7,000 steps (Ding et al., Lancet Public Health 2025, 57 studies).\n- About 1 in 3 adults worldwide is not active enough (Strain et al., Lancet Global Health 2024).\n- On paper, 5,000 extra steps a day for a year burns enough for almost 10 kg; walking programs average about 0.05 kg a week (Richardson et al., Annals of Family Medicine 2008), roughly 2.5 kg a year. The Hadza of Tanzania walk all day yet burn about the same calories per day as Westerners (Pontzer et al., PLoS ONE 2012).\n- One year of walking grew the hippocampus (the memory centre) by about 2% in 120 older adults, while the stretching group's shrank (Erickson et al., PNAS 2011).\n\nChapters:\n0:00 10,000 steps a day for a year\n0:16 The promise\n0:42 Day 1 · The time\n1:10 Week 1 · The myth\n1:47 Month 1 · Sugar\n2:15 Month 3 · Mood\n2:45 Month 6 · One in three\n3:03 Day 365 · The scale\n3:38 The brain\n4:08 Seven thousand\n\nThis is a thought experiment, not medical advice. Distances and calories are rough estimates (0.7 m and 0.04 kcal per step).\n\nFor that extra hour of walking a day, what would you give up: Netflix or sleep?\n\nSources:\nAlthoff et al., Nature 2017 (Stanford): https://news.stanford.edu/stories/2017/07/stanford-researchers-find-intriguing-clues-obesity-counting-steps-via-smartphones\nHarvard Health on the 10,000-step origin: https://www.health.harvard.edu/blog/do-you-really-need-to-walk-10000-steps-a-day-2019070917090\nLee et al., JAMA Internal Medicine 2019: https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/2734709\nBuffey et al., Sports Medicine 2022: https://link.springer.com/article/10.1007/s40279-022-01649-4\nDing et al., Lancet Public Health 2025: https://www.thelancet.com/journals/lanpub/article/PIIS2468-2667(25)00164-1/fulltext\nStrain et al., Lancet Global Health 2024: https://doi.org/10.1016/S2214-109X(24)00150-5\nRichardson et al., Annals of Family Medicine 2008: https://www.annfammed.org/content/6/1/69\nPontzer et al., PLoS ONE 2012: https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0040503\nErickson et al., PNAS 2011: https://www.pnas.org/doi/10.1073/pnas.1015950108\n\n#10000steps #walking #whatif",
+  "tags": [
+   "what if you walked 10000 steps a day",
+   "10000 steps a day",
+   "walking 10000 steps a day for a year",
+   "walking for weight loss",
+   "does walking help you lose weight",
+   "why am i not losing weight walking",
+   "benefits of walking every day",
+   "how many steps a day",
+   "7000 steps a day",
+   "10000 steps myth",
+   "walking and brain health",
+   "hippocampus exercise",
+   "calories burned walking",
+   "what if",
+   "KR's What If Explained"
+  ],
+  "category": "27",
+  "thumbnail": "THUMB.jpg",
+  "comment": "For that extra hour of walking a day, what would you give up: Netflix or sleep?",
+  "privacy": "private",
+  "publish_at": "2026-11-23T12:33:00Z"
+ },
+ "shorts": [
+  {
+   "file": "SHORT.mp4",
+   "title": "Walking 10,000 Steps a Day Won't Fix Your Weight #shorts",
+   "description": "Walking 10,000 steps a day for a year sounds like the perfect weight loss plan. But your body ends up burning about the same calories anyway. Here's why the scale barely moves.\nFull video: {MAIN_URL}\n#10000steps #walking #weightloss",
+   "tags": [
+    "10000 steps a day",
+    "walking for weight loss",
+    "does walking help you lose weight",
+    "why am i not losing weight walking",
+    "10000 steps myth",
+    "calories burned walking",
+    "shorts"
+   ],
+   "privacy": "private",
+   "publish_at": "2026-11-24T03:38:00Z"
+  },
+  {
+   "file": "REEL.mp4",
+   "title": "What a Year of 10,000 Steps a Day Does to You #shorts",
+   "description": "9,990 steps at 11:50 PM. Month one the scale barely moves, but something else quietly changes.\nFull video: {MAIN_URL}\n#10000steps #walking #whatif",
+   "tags": [
+    "10000 steps a day",
+    "walking every day",
+    "benefits of walking",
+    "daily steps",
+    "walking motivation",
+    "shorts"
+   ],
+   "privacy": "private",
+   "publish_at": "2026-11-24T14:36:00Z"
+  }
+ ]
+}
