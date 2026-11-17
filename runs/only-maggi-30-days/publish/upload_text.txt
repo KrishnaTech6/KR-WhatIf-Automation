@@ -1,0 +1,81 @@
+RELEASE TIMES (IST)
+MAIN : Sat 21 Nov, 06:06 PM IST  (YouTube)
+SHORT: Sun 22 Nov, 09:10 AM IST  (YouTube Short + Instagram)
+REEL : Sun 22 Nov, 08:12 PM IST  (YouTube Short + Instagram)
+
+===== MAIN =====
+Title: What If You Ate Only Maggi for 30 Days?
+
+What if you ate only Maggi for 30 days? Seven packets a day, breakfast, lunch and dinner, for a ₹5,000 bet. By day 30 you've won... but your body has lost.
+What really happens to your body when you eat only instant noodles for a month, day by day: the salt, the fibre, your gut bacteria, protein, and a disease you thought only sailors got.
+
+Real science in this video:
+- One 70 g Maggi Masala packet has about 299 kcal and 862.5 mg sodium, 36% of the daily guideline (pack label). An adult needs about 2,110 kcal a day (ICMR-NIN 2020), so living on it means ~7 packets a day, about 3 times the WHO salt limit (under 2,000 mg sodium / 5 g salt).
+- Too much salt makes your body hold extra water and raises blood pressure (WHO).
+- Instant noodles have very little fibre, and your gut bacteria live on fibre. In 2015, Tim Spector (King's College London) had his son eat only fast food for 10 days; he lost about 40% of his gut bacteria types (one person, not a big study).
+- Protein is closer than you'd think: 7 packets give about 40 g vs about 54 g needed (ICMR-NIN 2020: 0.83 g/kg).
+- A 2014 study of 10,711 Korean adults (Journal of Nutrition) found women eating instant noodles 2+ times a week had higher odds of metabolic syndrome.
+- Maggi has almost no vitamin C. With little or none, tiredness can start within weeks and scurvy signs like bleeding gums within 1 to 3 months. In 2016, doctors in Sydney found scurvy in 12 patients, some of them overweight. Vitamin C fixes it fast.
+- Myth busted: Maggi is NOT coated in wax (fact-checkers; Nestlé denies it).
+
+Chapters:
+0:00 Only Maggi for 30 days
+0:16 The bet
+0:49 Day 1 · The dream
+1:16 Day 3 · The salt
+1:40 Week 1 · Mom's call
+2:11 Day 10 · The bacteria
+2:47 Day 20 · The biryani
+3:36 Day 30 · You won
+4:09 The twist · Scurvy
+4:38 The lemon
+
+This is a thought experiment, not medical advice. Please don't actually eat only one food for a month; if you live on instant noodles, add vegetables, dal, an egg or a squeeze of lemon.
+
+What's the longest you've ever survived on just Maggi?
+
+Sources:
+Maggi Masala 70 g pack nutrition label (India)
+ICMR-NIN Recommended Dietary Allowances 2020: https://www.nin.res.in/rdabook/brief_note.pdf
+WHO salt reduction fact sheet: https://www.who.int/news-room/fact-sheets/detail/salt-reduction
+Nestlé India FY2023-24 (6 billion+ Maggi servings) via afaqs: https://www.afaqs.com/news/brands/india-is-the-largest-market-for-maggi-second-largest-for-kit-kat-nestls-fy24-report
+Tim Spector on junk food and gut bacteria (WEF / The Conversation): https://www.weforum.org/stories/all/what-junk-food-does-to-your-gut-bacteria/
+Shin et al., J Nutr 2014 (instant noodles and metabolic syndrome): https://pubmed.ncbi.nlm.nih.gov/24966409/
+Scurvy (Cleveland Clinic): https://my.clevelandclinic.org/health/diseases/24318-scurvy
+Vitamin C deficiency (Merck Manual): https://www.merckmanuals.com/professional/nutritional-disorders/vitamin-deficiency-dependency-and-toxicity/vitamin-c-deficiency
+Sydney scurvy cases 2016 (Taipei Times): https://www.taipeitimes.com/News/world/archives/2016/11/30/2003660291
+Instant noodle wax myth fact check (Lead Stories): https://leadstories.com/hoax-alert/2020/12/fact-check-instant-noodles-are-not-coated-in-wax-that-causes-cancer.html
+
+#maggi #whatif #health
+
+Tags: what if you ate only maggi for 30 days, eating maggi every day, maggi side effects, is maggi bad for health, instant noodles every day, maggi for 30 days, maggi health, salt intake, gut bacteria, fibre, scurvy, vitamin c deficiency, maggi wax myth, hostel life, health facts india, what if, KR's What If Explained
+Comment: What's the longest you've ever survived on just Maggi?
+
+===== SHORT (YouTube) =====
+7 Maggi Packets a Day for a Month? #shorts
+7 Maggi packets a day is about 3× your daily salt limit. Day 3 your face changes. Day 30 is worse.
+Full video: {MAIN_URL}
+#maggi #health #whatif
+
+===== REEL (YouTube) =====
+10 Days of Only Maggi Does This to Your Gut #shorts
+Your gut bacteria live on fibre. 10 days of only Maggi starves them.
+Full video: {MAIN_URL}
+#maggi #guthealth #whatif
+
+===== INSTAGRAM: SHORT caption =====
+7 Maggi packets a day for a month: your face changes first. Here's what only eating Maggi does to your body.
+One 70 g packet has about 36% of your daily salt limit, so 7 packets is about 3 times the limit. By day 3 you look puffy, by week 1 there's almost no fibre, by day 10 your gut bacteria are starving.
+Full story on YouTube, with what happens on day 30.
+Longest you've ever survived on just Maggi? Tell me in the comments.
+#whatif #maggi #health
+
+===== INSTAGRAM: REEL caption =====
+10 days of only Maggi can wipe out a big part of your gut bacteria. What instant noodles every day do inside you.
+Your gut bacteria live on fibre from dal, sabzi and fruit. In a 2015 experiment, a scientist's son ate only fast food for 10 days and lost about 40% of his gut bacteria types.
+Full story on YouTube: what 30 days of only Maggi does to your body, day by day.
+What's your go-to Maggi add-on? Tell me in the comments.
+#whatif #maggi #guthealth
+
+Cover text: SHORT "7 PACKETS A DAY" · REEL "10 DAYS OF ONLY MAGGI"
+Studio: set each Short's 'Related video' = the main video (API can't).
