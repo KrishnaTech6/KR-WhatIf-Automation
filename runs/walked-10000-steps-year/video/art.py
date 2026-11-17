@@ -1234,24 +1234,57 @@ STEP = "#FFB347"
 
 
 def sneaker(c, x, y, s, a=1.0, glow_a=0.0, rot=0.0, t=0.0, colr="#E94F37"):
-    """Running shoe in side view, sole bottom-centre at (x, y), ~360 px long at s=1."""
+    """Running shoe in side view (toe to the right), sole bottom-centre at (x, y), ~380 px long at s=1.
+    Our own generic design: chunky white midsole, gum outsole, padded collar, tongue, laces, toe cap, heel tab."""
     if a <= 0:
         return
     c.save(); c.translate(x, y); c.rotate(rot); c.scale(s, s)
+    if a < 1:
+        c.saveLayerAlpha(None, int(255 * a))
     if glow_a > 0:
-        glow(c, 0, -60, 300, "gold", 0.55 * glow_a * a)
-    sole = skia.Path(); sole.moveTo(-180, 0); sole.lineTo(170, 0); sole.quadTo(205, -8, 200, -40); sole.lineTo(-185, -36); sole.close()
-    c.drawPath(sole, paint("#F4EFE6", a))
-    c.drawLine(-178, -14, 190, -14, paint("#B9B2C6", a, stroke=6))
-    up = skia.Path(); up.moveTo(-185, -36); up.cubicTo(-200, -120, -150, -170, -90, -175)
-    up.lineTo(-40, -150); up.cubicTo(20, -120, 120, -100, 170, -70); up.quadTo(205, -55, 200, -40); up.close()
-    c.drawPath(up, hgrad(-200, 200, [colr, "#B8322A"]))
-    c.drawPath(up, paint("cream", 0.35 * a, stroke=4))
-    sw = skia.Path(); sw.moveTo(-120, -60); sw.cubicTo(-40, -100, 40, -60, 120, -80)
-    c.drawPath(sw, paint("cream", 0.9 * a, stroke=12))
-    for k in range(4):
-        c.drawLine(-60 + k * 30, -150 + k * 10, -30 + k * 30, -130 + k * 10, paint("cream", a, stroke=6))
-    c.drawPath(up, paint("amber", 0.6 * a, stroke=3))
+        glow(c, 0, -80, 320, "gold", 0.55 * glow_a)
+    dark = "#8E2A22"
+    # outsole + midsole
+    out = skia.Path(); out.moveTo(-190, -6); out.lineTo(170, -6); out.quadTo(205, -10, 205, -36); out.lineTo(-195, -30); out.close()
+    c.drawPath(out, paint("#3A2A3E"))
+    mid = skia.Path(); mid.moveTo(-195, -14); mid.lineTo(172, -14); mid.quadTo(210, -20, 206, -58)
+    mid.quadTo(120, -64, -10, -58); mid.quadTo(-120, -66, -198, -74); mid.close()
+    c.drawPath(mid, vgrad(-74, -14, ["#FFFFFF", "#D8D2E4"]))
+    for k in range(6):
+        c.drawLine(-150 + k * 55, -22, -160 + k * 55, -50, paint("#BDB6CC", stroke=3))
+    # upper
+    up = skia.Path(); up.moveTo(-198, -74); up.cubicTo(-212, -130, -196, -178, -170, -196)
+    up.quadTo(-120, -168, -70, -176); up.lineTo(-40, -232); up.quadTo(-10, -236, 4, -214)
+    up.cubicTo(40, -170, 120, -128, 178, -98); up.quadTo(214, -82, 206, -58); up.quadTo(120, -64, -10, -58); up.quadTo(-120, -66, -198, -74); up.close()
+    c.drawPath(up, hgrad(-210, 210, [colr, colr, dark], [0, 0.55, 1]))
+    # toe cap + side panel + heel counter
+    toe = skia.Path(); toe.moveTo(110, -62); toe.cubicTo(120, -100, 160, -112, 190, -96); toe.quadTo(212, -80, 206, -58); toe.close()
+    c.drawPath(toe, paint("#FFFFFF", 0.22))
+    heel = skia.Path(); heel.moveTo(-198, -74); heel.cubicTo(-210, -120, -200, -160, -176, -186); heel.lineTo(-130, -150); heel.quadTo(-140, -100, -120, -66); heel.close()
+    c.drawPath(heel, paint(dark, 0.55))
+    wave = skia.Path(); wave.moveTo(-150, -96); wave.cubicTo(-80, -140, -20, -70, 60, -110); wave.cubicTo(100, -128, 130, -100, 160, -96)
+    c.drawPath(wave, paint("#FFE57A", stroke=14))
+    c.drawPath(wave, paint("#FFFFFF", 0.5, stroke=4))
+    # collar opening + tongue
+    col_ = skia.Path(); col_.moveTo(-168, -194); col_.quadTo(-120, -164, -72, -174); col_.quadTo(-118, -150, -168, -176); col_.close()
+    c.drawPath(col_, paint("#2A1420"))
+    c.drawPath(col_, paint("#FFB3A0", 0.8, stroke=5))
+    tg = skia.Path(); tg.moveTo(-70, -176); tg.lineTo(-42, -234); tg.quadTo(-12, -240, 4, -214); tg.lineTo(-20, -178); tg.close()
+    c.drawPath(tg, paint("#F2EDE4"))
+    # laces + eyelets
+    for k in range(5):
+        x0 = -30 + k * 34; y0 = -186 + k * 21
+        c.drawCircle(x0 - 14, y0 + 8, 5, paint("#2A1420")); c.drawCircle(x0 + 16, y0 + 22, 5, paint("#2A1420"))
+        c.drawLine(x0 - 18, y0 - 2, x0 + 22, y0 + 26, paint("#FFFFFF", stroke=8))
+        c.drawLine(x0 + 18, y0 + 2, x0 - 10, y0 + 22, paint("#F0ECF6", stroke=7))
+    tab = skia.Path(); tab.moveTo(-176, -190); tab.lineTo(-196, -214); tab.lineTo(-184, -224); tab.lineTo(-162, -198); tab.close()
+    c.drawPath(tab, paint("#FFE57A"))
+    # rim light: warm top edge, cool back
+    edge = skia.Path(); edge.moveTo(-40, -232); edge.quadTo(-10, -236, 4, -214); edge.cubicTo(40, -170, 120, -128, 178, -98)
+    c.drawPath(edge, paint("amber", 0.85, stroke=5))
+    c.drawPath(up, paint("#5A1A14", 0.6, stroke=3))
+    if a < 1:
+        c.restore()
     c.restore()
 
 
