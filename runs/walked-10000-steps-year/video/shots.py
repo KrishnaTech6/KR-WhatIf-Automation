@@ -86,11 +86,12 @@ def s_hook_walk(c, t, t0):
         sneaker(c, 560, 1010, 0.0)
         for k in range(6):
             shoe_print(c, 900 + k * 130, 960 + (k % 2) * 34, 0.6, rot=90, a=0.5 - 0.06 * k)
-    v = 3600000 + 50000 * ease(span(t, t0, S("hook", "year", 0.3)))
-    glow(c, 1350, 400, 380, "gold", 0.4)
-    big_text(c, f"{int(v):,}", 1350, 420, 150, 1.0, "gold")
-    big_text(c, "STEPS IN 1 YEAR", 1350, 530, 60, 1.0, "cream")
-    pill(c, 1350, 640, 1.0, "10,000 A DAY × 365", "coral", "cream", 40)
+    c.drawRRect(rr(880, 250, 1840, 700, 40), paint("#0E0A1C", 0.72))
+    glow(c, 1360, 420, 380, "gold", 0.35)
+    big_text(c, "3,650,000", 1360, 450, 170, 1.0, "gold")
+    big_text(c, "STEPS IN 1 YEAR", 1360, 560, 64, 1.0, "cream")
+    pill(c, 1360, 650, 1.0, "10,000 A DAY × 365", "coral", "cream", 40)
+    bath_scale(c, 1420, 900, 0.55, needle=-0.03, t=t)
 
 
 def s_hook_map(c, t, t0):
@@ -143,7 +144,7 @@ def s_january(c, t, t0):
 def s_desk(c, t, t0):
     desk_bg(c, t)
     figure(c, 700, 1000, 1.0, arm_l=60, arm_r=40, seated=True, expr="neutral")
-    v = 5012 * ease(span(t, S("promise", "phone", -0.2), S("promise", "five", 0.6)))
+    v = round(5012 * ease(span(t, S("promise", "phone", -0.2), S("promise", "five", 0.6))))
     step_phone(c, 1350, 470, 0.95, v, t=t, clock="5:40 PM")
     headline(c, t, "≈ 5,000 STEPS A DAY", S("promise", "five", 0.0), 110, 60, "gold")
 
@@ -396,7 +397,7 @@ def s_no_lift(c, t, t0):
     room_bg(c, t, mode="morning")
     c.drawRRect(rr(1250, 300, 1650, 900, 10), paint("#5A5470"))
     c.drawLine(1450, 300, 1450, 900, paint("#3A3450", stroke=6))
-    label(c, "LIFT", 1450, 260, 44, "cream", "extrabold")
+    pill(c, 1450, 250, 1.0, "LIFT", "plum", "cream", 40)
     xmark(c, 1450, 600, 2.2, span(t, S("month_three", "lift", -0.2), S("month_three", "lift", 0.2)))
     stairs(c, 640, 980, 1.2)
     figure(c, 560, 860, 1.0, arm_l=150, arm_r=40, expr="happy")
@@ -409,7 +410,7 @@ def s_cloud(c, t, t0):
     room_bg(c, t, mode="dusk")
     figure(c, W / 2, 1000, 1.1, arm_l=100, arm_r=80, expr="neutral" if t < S("month_three", "less", 0) else "happy")
     s_ = 1.4 - 0.9 * ease(span(t, S("month_three", "less", -0.4), S("month_three", "less", 1.0)))
-    grey_cloud(c, W / 2, 300, s_, a=0.9, t=t)
+    grey_cloud(c, W / 2, 150, s_ * 0.8, a=0.9, t=t)
     headline(c, t, "BAD DAYS FEEL LESS BAD", S("month_three", "bad", -0.1), 110, 56, "gold")
 
 
@@ -510,21 +511,19 @@ def s_cal_bars(c, t, t0):
     big_text(c, "CALORIES BURNED PER DAY", W / 2, 160, 60, span(t, t0, t0 + 0.4))
     p1 = ease(span(t, t0 + 0.2, t0 + 1.0)); p2 = ease(span(t, t0 + 0.6, t0 + 1.4))
     calorie_bar(c, 700, 880, 520 * p1 + 2, "HADZA", "coral", 1.0)
-    walker_sil(c, 700, 300 + 520 * (1 - p1), 0.5, t, colr="cream", a=p1)
     calorie_bar(c, 1220, 880, 510 * p2 + 2, "OFFICE WORKER", "teal", 1.0)
-    figure(c, 1220, 360 + 510 * (1 - p2), 0.32, arm_l=60, arm_r=40, seated=True, expr="neutral", a=p2)
     pop(c, 960, 1025, "ABOUT THE SAME", t, S("year_one", "same", -0.1), "plum", 50)
 
 
 def s_house(c, t, t0):
     """Daily energy budget: one fixed-size bar shared by LEGS, REPAIR, IMMUNE, FIDGET. Walking grows LEGS, the rest shrink."""
     street_bg(c, t, mode="dusk")
-    dim(c, 0.35)
+    dim(c, 0.6)
     legs = ease(span(t, t0 + 0.3, S("year_one", "back", 0.3)))
     walker_fig(c, 330, 1010, 0.95, t, rim="gold")
     x0, x1, y = 640, 1820, 520
     big_text(c, "YOUR DAILY ENERGY BUDGET", (x0 + x1) / 2, 300, 54, 1.0, "cream")
-    parts = [("LEGS", 0.25 + 0.3 * legs, STEP), ("REPAIR", 0.30 - 0.12 * legs, "teal"), ("IMMUNE", 0.25 - 0.1 * legs, "plum"),
+    parts = [("LEGS", 0.25 + 0.3 * legs, STEP), ("REPAIR", 0.30 - 0.12 * legs, "teal"), ("IMMUNE", 0.25 - 0.1 * legs, "#B48AE0"),
              ("FIDGET", 0.20 - 0.08 * legs, "coral")]
     x = x0
     for nm, f, colr in parts:
@@ -552,7 +551,7 @@ def s_head_return(c, t, t0):
     explainer_bg(c, t, "deep")
     z = keys(t, [(t0, 1.0), (t0 + 4.0, 1.1)])
     with Cam(c, z, W / 2, 560, t=t):
-        head_side(c, W / 2, 600, 1.45, glow_a=0.5 + 0.3 * math.sin(t * 2), t=t)
+        head_side(c, W / 2, 660, 1.2, glow_a=0.5 + 0.3 * math.sin(t * 2), t=t)
     bath_scale(c, 300, 900, 0.5, t=t, a=0.35)
     headline(c, t, "NEVER ON THE SCALE", S("payoff", "never", -0.1), 130, 64, "gold")
 
@@ -576,7 +575,7 @@ def s_hippo(c, t, t0):
     z = keys(t, [(t0, 1.0), (t0 + 3.0, 1.25)])
     with Cam(c, z, W / 2 + 40, 470, t=t):
         head_side(c, W / 2, 620, 1.7, grow=g, glow_a=0.5 + 0.5 * g, t=t)
-    pop(c, 1500, 260, "HIPPOCAMPUS = MEMORY", t, S("payoff", "hippocampus", -0.1), "plum", 44)
+    pop(c, 1560, 120, "HIPPOCAMPUS = MEMORY", t, S("payoff", "hippocampus", -0.1), "plum", 44)
     big_text(c, "+2%", 330, 760, 150, span(t, S("payoff", "two", -0.2), S("payoff", "two", 0.3)), "gold")
 
 
@@ -783,7 +782,7 @@ def SHOTS():
         (E("hook") + 0.1, logo_sting(), "flash"),
     ]
     promise = [
-        (E("hook") + 1.9, counter(0, 9, "{:.0f}", until=S("promise", "nine", 0.6), label="STUDIES CHECKED", size=200,
+        (E("hook") + 1.9, counter(0, 9, "{:.0f}", until=S("promise", "nine", 0.6), label=None, size=200,
                                   label_at=S("promise", "studies", -0.2), bg=papers_bg), "fade"),
         (S("promise", "first", -0.3), s_january, "iris"),
         (S("promise", "work", -0.4), s_desk, "cut"),
