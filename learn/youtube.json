@@ -1,16 +1,43 @@
 {
- "fetched": "2026-11-16T20:45+00:00",
+ "fetched": "2026-11-18T19:12+00:00",
  "channel": "kr's what if explained",
  "subscribers": 11,
  "analytics": "HTTP 403: needs the yt-analytics.readonly permission (re-run scripts/youtube_auth.py)",
  "ctr": null,
  "videos": [
   {
+   "id": "Ph30AWvB6Ds",
+   "title": "30 Days Without Your Phone = 6 Free Days #shorts",
+   "published": "2026-11-18T14:40:02Z",
+   "duration": 39,
+   "views": 7,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "jxfziPoeLOE",
+   "title": "What If You Didn't Use Your Phone for 30 Days?",
+   "published": "2026-11-17T12:37:19Z",
+   "duration": 284,
+   "views": 1,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "tMOsJTgbpRE",
+   "title": "Your Phone's at Home. So Why Did Your Leg Buzz? #shorts",
+   "published": "2026-11-17T02:41:49Z",
+   "duration": 49,
+   "views": 9,
+   "likes": 0,
+   "comments": 0
+  },
+  {
    "id": "ln8WLM94qRs",
    "title": "Six Kids in Nani's Photo. One in Yours. #shorts",
    "published": "2026-11-16T14:36:34Z",
    "duration": 38,
-   "views": 145,
+   "views": 193,
    "likes": 3,
    "comments": 0
   },
@@ -19,7 +46,7 @@
    "title": "India Will Lose 20 Crore People. No War. #shorts",
    "published": "2026-11-16T03:34:25Z",
    "duration": 49,
-   "views": 1107,
+   "views": 1111,
    "likes": 8,
    "comments": 0
   },
@@ -28,16 +55,16 @@
    "title": "What If India's Population Started Shrinking?",
    "published": "2026-11-15T12:37:18Z",
    "duration": 285,
-   "views": 14,
+   "views": 23,
    "likes": 0,
-   "comments": 1
+   "comments": 4
   },
   {
    "id": "TsuFIdqzL2A",
    "title": "Day 3 Without UPI: Your Sabziwala Is Broke #shorts",
    "published": "2026-11-15T12:24:01Z",
    "duration": 41,
-   "views": 62,
+   "views": 67,
    "likes": 0,
    "comments": 0
   },
@@ -46,7 +73,7 @@
    "title": "7 Days Without UPI, You Can't Even Buy Chai #shorts",
    "published": "2026-11-15T03:12:35Z",
    "duration": 53,
-   "views": 84,
+   "views": 80,
    "likes": 0,
    "comments": 1
   },
@@ -91,7 +118,7 @@
    "title": "The Sun Vanished. You Won't Know for 8 Minutes #shorts",
    "published": "2026-11-11T15:15:27Z",
    "duration": 41,
-   "views": 38,
+   "views": 39,
    "likes": 1,
    "comments": 0
   },
@@ -118,7 +145,7 @@
    "title": "If Earth Had Rings, Delhi Nights Never Go Dark #shorts",
    "published": "2026-11-10T16:30:13Z",
    "duration": 36,
-   "views": 314,
+   "views": 315,
    "likes": 3,
    "comments": 0
   },
@@ -127,7 +154,7 @@
    "title": "Mumbai's Noon Sun Hidden for 80 Days? #shorts",
    "published": "2026-11-10T15:40:35Z",
    "duration": 49,
-   "views": 660,
+   "views": 662,
    "likes": 5,
    "comments": 1
   },
@@ -154,7 +181,7 @@
    "title": "What If Delhi Was Trapped Under Smog Forever?",
    "published": "2026-11-09T14:15:35Z",
    "duration": 346,
-   "views": 3,
+   "views": 4,
    "likes": 0,
    "comments": 0
   },
@@ -217,7 +244,7 @@
    "title": "What If the Moon Disappeared Tomorrow? | KR's What if Explained",
    "published": "2026-11-07T12:30:34Z",
    "duration": 376,
-   "views": 94,
+   "views": 103,
    "likes": 1,
    "comments": 1
   },
@@ -244,7 +271,7 @@
    "title": "What If the Electric Motor Was Never Invented?",
    "published": "2026-11-07T01:33:09Z",
    "duration": 311,
-   "views": 63,
+   "views": 64,
    "likes": 1,
    "comments": 1
   },
@@ -253,7 +280,7 @@
    "title": "At 1 mm Tall, a Raindrop Is a Falling Boulder #shorts",
    "published": "2026-11-06T12:52:48Z",
    "duration": 39,
-   "views": 1252,
+   "views": 1255,
    "likes": 18,
    "comments": 0
   },
