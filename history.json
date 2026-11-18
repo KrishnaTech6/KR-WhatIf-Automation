@@ -115,8 +115,16 @@
   },
   {
    "title": "What If You Walked 10,000 Steps Every Day for a Year?",
-   "status": "in progress",
-   "slug": "walked-10000-steps-year"
+   "status": "published",
+   "slug": "walked-10000-steps-year",
+   "date": "2026-11-23",
+   "youtube": "https://youtu.be/D7XMkWJcQDM",
+   "shorts": [
+    "https://youtube.com/shorts/N2F-1NzVZbY",
+    "https://youtube.com/shorts/z02tQRHJ91w"
+   ],
+   "instagram": [],
+   "note": "Scheduled: YouTube main Mon 23 Nov 18:03 IST, Short Tue 24 Nov 09:08, Reel Tue 24 Nov 20:06; Instagram tasks trig_01VGPLdmi7VAcGGMM184qEFN (short) + trig_018hTn8kCiYjM8xX7ZxoRfBH (reel); main comment failed 403 while private - the Short IG task retries it."
   }
  ]
 }
