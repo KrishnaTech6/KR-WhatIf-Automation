@@ -235,7 +235,7 @@ def script(R):
         R.ok(len(f1) <= 7, f"{job} line 1", f"{len(f1)} words: {' '.join(f1)[:60]!r} (under 2 s)", "WARN")
         hp = os.path.join(ctx.SCRIPT, f"hooks_{job}.txt")
         if os.path.exists(hp):
-            scores = [float(x) for x in re.findall(r"^\s*([\d.]+)\s+(?:STRONG|OK|WEAK|SOLID|FAIR|POOR)", _run("hookscore.py", hp), re.M)]
+            scores = [float(x) for x in re.findall(r"^\s*(?:->)?\s*([\d.]+)\s+(?:STRONG|OK|WEAK|SOLID|FAIR|POOR)", _run("hookscore.py", hp), re.M)]
             if scores:
                 top = max(scores)
                 R.line("PASS" if top >= 70 else "WARN" if top >= 50 else "FAIL", f"{job} hook score",
