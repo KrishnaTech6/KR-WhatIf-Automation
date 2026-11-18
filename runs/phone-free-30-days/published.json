@@ -16,7 +16,8 @@
    "publish_at": "2026-11-18T03:39:00Z",
    "schedule_kept": true,
    "file": "SHORT.mp4",
-   "url": "https://youtube.com/shorts/tMOsJTgbpRE"
+   "url": "https://youtube.com/shorts/tMOsJTgbpRE",
+   "verified": "public"
   },
   {
    "id": "Ph30AWvB6Ds",
@@ -24,8 +25,10 @@
    "publish_at": "2026-11-18T14:42:00Z",
    "schedule_kept": true,
    "file": "REEL.mp4",
-   "url": "https://youtube.com/shorts/Ph30AWvB6Ds"
+   "url": "https://youtube.com/shorts/Ph30AWvB6Ds",
+   "verified": "public"
   }
  ],
- "note": "publish_at changed by Krishna in YouTube Studio on 14 Nov to the jittered times (6:10 PM / 9:09 AM / 8:12 PM IST)"
+ "note": "publish_at changed by Krishna in YouTube Studio on 14 Nov to the jittered times (6:10 PM / 9:09 AM / 8:12 PM IST)",
+ "files_cleaned": true
 }
