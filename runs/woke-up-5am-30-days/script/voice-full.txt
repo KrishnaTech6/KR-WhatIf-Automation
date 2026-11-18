@@ -4,9 +4,9 @@ KEY_BEATS: hook, fourteen, payoff
 HARD_CUT_BEFORE: fourteen
 
 [Hook | tense]
-Your alarm. Five AM. Thirty days straight.
-By day fourteen, your brain works like you skipped up to two nights of sleep.
-You won't feel it... unless you change one number. Not on your alarm.
+Two of you. Same five AM alarm. Thirty days. (beat)
+By day fourteen, one brain works like it skipped up to two nights of sleep.
+One difference between these rooms. Spot it before I do.
 
 [Promise - logo | neutral]
 This is K R's What If Explained.
@@ -53,7 +53,9 @@ Their sleepiness barely rose after the first few days.
 Remember that "I feel fine" on day seven? That was this.
 
 [Day twenty-one - the fix | warm]
-Day twenty-one. You change one number. Not the alarm. The bedtime.
+Day twenty-one. Did you spot the difference? (beat)
+It's the small dial on the clock. The bedtime. Left room: eleven. Right room: ten.
+So you change one number. Not the alarm. The bedtime.
 Phone out of the bedroom. Lights off at ten.
 Ten to five is seven hours, the minimum sleep experts recommend for adults.
 {playful} The first few nights, you stare at the ceiling.

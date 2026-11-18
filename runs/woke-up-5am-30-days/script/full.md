@@ -58,11 +58,13 @@ Countdown ladder over 30 days: Day 1 → Day 3 → Day 7 (trap) → Day 10 (myth
 
 ### Hook (0:00–0:16)
 
-> Your alarm. Five AM. Thirty days straight.
+> Two of you. Same five AM alarm. Thirty days. *(beat)*
 >
-> By day fourteen, your brain works like you skipped up to two nights of sleep.
+> By day fourteen, one brain works like it skipped up to two nights of sleep.
 >
-> You won't feel it... unless you change one number. Not on your alarm.
+> One difference between these rooms. Spot it before I do.
+
+- **Opening idea: a "spot the difference" game (Krishna 18 Nov).** Split screen: two identical bedrooms, two of "you", the same 5:00 alarm. One tiny detail differs (the bedtime dial: 11 left, 10 right). The viewer gets a job in second 1; the answer comes on Day 21. The split screen returns each chapter as a left-vs-right scoreboard.
 
 - **Tone:** Tense, close.
 - **Scenes:** (1) Frame 0: the twin-bell alarm clock at 5:00, ringing and shaking on a bedside table, dark star-filled window behind, a small "30 DAYS" calendar page. (2) A brain icon inside a head silhouette dimming like a battery, "2 NIGHTS" tiles crossing out. (3) Close on the clock face: the hands frozen, a question mark over a second, hidden dial.
@@ -179,7 +181,11 @@ Countdown ladder over 30 days: Day 1 → Day 3 → Day 7 (trap) → Day 10 (myth
 
 ### Day twenty-one - the fix (3:00–3:23)
 
-> Day twenty-one. You change one number. Not the alarm. The bedtime.
+> Day twenty-one. Did you spot the difference? *(beat)*
+>
+> It's the small dial on the clock. The bedtime. Left room: eleven. Right room: ten.
+>
+> So you change one number. Not the alarm. The bedtime.
 >
 > Phone out of the bedroom. Lights off at ten.
 >
@@ -240,7 +246,7 @@ Countdown ladder over 30 days: Day 1 → Day 3 → Day 7 (trap) → Day 10 (myth
 
 ## Retention map and runtime
 
-Word count: 587 (target 620–720; −5%, inside ±10%). Estimated runtime ~4:15 with pauses. Cut first if long: the "same job, same phone" line and the Day 1 "post a photo" line.
+Word count: 610 (target 620–720; −5%, inside ±10%). Estimated runtime ~4:15 with pauses. Cut first if long: the "same job, same phone" line and the Day 1 "post a photo" line.
 
 | Time | Mechanic | Energy |
 | --- | --- | --- |
