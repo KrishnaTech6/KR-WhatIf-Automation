@@ -611,7 +611,7 @@ def bed_scene(c, x0, w, t, bedtime=None, ring=0.0, made=False, sleeper=True, pho
     c.drawRRect(rr(660, 766, 740, 780, 5), paint("#0B0B12"))
     if phone_glow > 0:
         glow(c, 700, 760, 120, "teal", 0.5 * phone_glow)
-    alarm_clock(c, 810, 650, 0.62, t, ring=ring, bedtime=bedtime)
+    alarm_clock(c, 790, 640, 0.85, t, ring=ring, bedtime=bedtime)
     vignette(c, 960, H, 0.4)
     c.restore()
 
@@ -746,10 +746,16 @@ def reaction_screen(c, cx, cy, t, t0, slow=1.0):
         c.drawCircle(cx, cy - 40, 70, paint("coral"))
     rt = 0.25 + 0.46 * slow
     shown = min(rt, max(0.0, cyc - 0.05))
-    label(c, f"{shown:.2f} s", cx, cy + 170, 84, "coral" if shown > 0.4 else "teal", "extrabold")
-    if slow > 0.5 and 1.25 < cyc < 1.6:
-        c.drawRRect(rr(cx - 480, cy - 300, cx + 480, cy + 300, 26), paint("#000000", 0.92))
-        label(c, "LAPSE", cx, cy + 20, 60, "coral", "extrabold")
+    lapse = slow > 0.5 and 1.25 < cyc < 1.6
+    if lapse:
+        c.drawRRect(rr(cx - 480, cy - 300, cx + 480, cy + 300, 26), paint("#000000", 0.7))
+        label(c, "LAPSE", cx, cy - 40, 60, "coral", "extrabold")
+    label(c, f"{shown:.2f} s", cx, cy + 170, 96, "coral" if shown > 0.4 else "teal", "extrabold")
+    # comparison bars beside the screen: normal vs now
+    for i, (lab, v, colr) in enumerate((("NORMAL", 0.25, "teal"), ("DAY 14", rt, "coral"))):
+        y = cy - 120 + i * 200
+        c.drawRRect(rr(cx + 540, y, cx + 540 + 260 * v / 0.75, y + 60, 14), paint(colr))
+        label(c, f"{lab} {v:.2f} s", cx + 540, y - 16, 34, colr, "extrabold", align="left")
 
 
 def balance(c, cx, cy, tilt, left, right, a=1.0):

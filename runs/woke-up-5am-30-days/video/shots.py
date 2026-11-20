@@ -15,6 +15,33 @@ def night(c, t):
     explainer_bg(c, t, "deep")
 
 
+def month_grid(c, t):
+    """30-day calendar whose squares fill in with 2-hour wedges (behind the 60-hours counter)."""
+    explainer_bg(c, t)
+    t0 = S("day_one", "month", -0.3)
+    for k in range(30):
+        x = 360 + (k % 10) * 120; y = 760 + (k // 10) * 90
+        on = t > t0 + 0.05 * k
+        c.drawRRect(rr(x - 46, y - 36, x + 46, y + 36, 10), paint("gold" if on else "sand", 0.85 if on else 0.15))
+        if on:
+            label(c, "+2h", x, y + 12, 28, "ink", "extrabold")
+
+
+def two_nights(c, t):
+    night(c, t)
+    for i, x in enumerate((720, 1200)):
+        glow(c, x, 790, 160, "plum", 0.4)
+        c.drawCircle(x, 790, 80, paint("gold")); c.drawCircle(x + 34, 770, 72, paint("deep"))
+        c.drawCircle(x, 790, 130, dashed("coral", 0.9, 6))
+        xmark(c, x, 790, 1.4, 1.0)
+
+
+def alarm_row(c, t):
+    explainer_bg(c, t, "plum")
+    for i, (h, m) in enumerate(((5, 0), (6, 30), (7, 0), (8, 15))):
+        alarm_clock(c, 330 + i * 420, 860, 0.7, t, hour=h, minute=m, ring=0.3 if i == 0 else 0.0)
+
+
 # ---------------------------------------------------------------- HOOK
 def _title_strip(c, t, t0, txt="SPOT THE DIFFERENCE"):
     p = span(t, t0, t0 + 0.4)
@@ -263,8 +290,7 @@ def s_scale(c, t, t0):
 
 def s_reaction(c, t, t0):
     night(c, t)
-    reaction_screen(c, W / 2, 560, t, t0, slow=1.0)
-    label(c, "normal: about 0.25 s", W / 2, 960, 40, "sand", "bold")
+    reaction_screen(c, 620, 560, t, t0, slow=1.0)
 
 
 def s_lines(c, t, t0):
@@ -298,15 +324,22 @@ def s_note_fall(c, t, t0):
 # ---------------------------------------------------------------- DAY 21 (the fix)
 def s_reveal(c, t, t0):
     zm = keys(t, [(t0 + 1.2, 1.0), (t0 + 2.6, 1.6)])
-    with Cam(c, zm, 1290, 660, t=t):
+    with Cam(c, zm, 1270, 640, t=t):
         bed_scene(c, 0, 960, t, bedtime=11)
         bed_scene(c, 960, 960, t + 0.11, bedtime=10)
         c.drawLine(960, 0, 960, H, paint("cream", 0.9, stroke=6))
         mp = span(t, S("day_twenty_one", "dial", -0.2), S("day_twenty_one", "dial", 0.5))
-        for cx in (810 * 1.0, 960 + 810):
-            arc = skia.Path(); arc.addArc(skia.Rect(cx - 32, 678 - 32, cx + 32, 678 + 32), -90, 360 * mp)
+        for cx in (810, 960 + 810):
+            arc = skia.Path(); arc.addArc(skia.Rect(cx - 20 - 32, 679 - 32, cx - 20 + 32, 679 + 32), -90, 360 * mp)
             c.drawPath(arc, paint("coral", stroke=8))
     _title_strip(c, t, t0, "FOUND IT: THE BEDTIME")
+    bp = span(t, S("day_twenty_one", "eleven", -0.1), S("day_twenty_one", "eleven", 0.3))
+    rp = span(t, S("day_twenty_one", "ten", -0.1), S("day_twenty_one", "ten", 0.3))
+    for (x, txt, colr, p) in ((420, "BED 11 PM", "coral", bp), (1500, "BED 10 PM", "teal", rp)):
+        if p > 0:
+            c.drawRRect(rr(x - 230, 860, x + 230, 990, 30), paint("space", 0.85 * p))
+            c.drawRRect(rr(x - 230, 860, x + 230, 990, 30), dashed(colr, p, 5))
+            label(c, txt, x, 950, 80, colr, "extrabold", p)
 
 
 def s_lights_off(c, t, t0):
@@ -353,7 +386,7 @@ def s_depression(c, t, t0):
     h = 520 * (1 - 0.23 * ease(p))
     c.drawRRect(rr(x - 90, y0 + 520 - h + 20, x + 90, y0 + 500, 18), paint("teal"))
     label(c, f"-{23 * ease(p):.0f}%", x, y0 - 40, 96, "gold", "extrabold", min(1.0, p * 3))
-    label(c, "depression risk", x, y0 + 590, 40, "cream", "bold", min(1.0, p * 3))
+    label(c, "depression risk", x, y0 + 590, 40, "cream", "bold")
     label(c, "sleep set 1 hour earlier (by genes) · Daghlas et al., JAMA Psychiatry 2021", W / 2, 1010, 30, "sand", "bold", 0.8)
 
 
@@ -421,7 +454,7 @@ def SHOTS():
         (S("day_one", "photo", -1.2), s_photo, "cut"),
         (S("day_one", "used", -0.3), s_two_hours, "fade"),
         (S("day_one", "month", -0.3), counter(0, 60, "{:.0f} HOURS", until=S("day_one", "sixty", 0.3), label="FREE · IN ONE MONTH",
-                                              label_at=S("day_one", "free", 0)), "zoom"),
+                                              label_at=S("day_one", "free", 0), bg=month_grid), "zoom"),
 
         (B("day_three") - 0.6, card("DAY 3", "11:40 PM"), "iris"),
         (S("day_three", "bed", -0.4), s_phone_bed, "fade"),
@@ -433,7 +466,7 @@ def SHOTS():
         (B("day_seven") + 0.4, s_fine, "fade"),
         (S("day_seven", "yawn", -0.3), s_yawn, "whip"),
         (S("day_seven", "trap", -0.6), s_trap, "cut"),
-        (S("day_seven", "quick", -0.2), comment_prompt("What time does your alarm ring right now?", bg=lambda c, t: bed_scene(c, 0, W, t, ring=0.4)), "fade"),
+        (S("day_seven", "quick", -0.2), comment_prompt("What time does your alarm ring right now?", bg=alarm_row), "fade"),
 
         (S("day_seven", "already", -0.4), kr_react("curious", "WHO'S UP AT 5?", line_at=S("day_seven", "already", 0)), "cut"),
 
@@ -449,7 +482,7 @@ def SHOTS():
         (B("the_big_one") - 0.6, card("DAY 14", "The brain"), "iris"),
         (S("the_big_one", "thousand", -0.6), s_lab, "fade"),
         (S("the_big_one", "end", -0.4), s_scale, "fade"),
-        (S("the_big_one", "skipped", -0.3), statement("= UP TO 2 NIGHTS WITHOUT SLEEP", bg=night, color="coral"), "flash"),
+        (S("the_big_one", "skipped", -0.3), statement("= UP TO 2 NIGHTS WITHOUT SLEEP", bg=two_nights, color="coral"), "flash"),
         (S("the_big_one", "slower", -0.3), s_reaction, "cut"),
         (S("the_big_one", "scariest", -0.3), s_lines, "fade"),
         (S("the_big_one", "remember", -0.3), s_note_fall, "fade"),
