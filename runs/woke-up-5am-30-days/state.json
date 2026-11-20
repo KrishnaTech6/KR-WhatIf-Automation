@@ -33,12 +33,12 @@
   ]
  },
  "frames_ok": true,
- "release_d1": "2026-11-21",
+ "release_d1": "2026-11-25",
  "release_plan": {
   "mode": "direct public upload at the time (Krishna 20 Nov: no pre-scheduling)",
-  "main": "2026-11-21T18:05 IST",
-  "short": "2026-11-21T21:06 IST",
-  "reel": "2026-11-22T20:12 IST",
+  "main": "2026-11-25T18:05 IST",
+  "short": "2026-11-25T21:06 IST",
+  "reel": "2026-11-26T20:12 IST",
   "files_branch": "release-files/woke-up-5am-30-days",
   "workflow_branch": "claude/affectionate-keller-o8qucx",
   "tasks": {
@@ -46,6 +46,6 @@
    "reel": "trig_01VtnN1SdyGh7BfTAkCULYYp",
    "short": "trig_01VVw7TdaC1jWKSnqF5ysibH"
   },
-  "status": "ON HOLD: 21-22 Nov clashed with only-maggi-30-days (main 21 Nov 6:06 PM, Short 22 Nov 9:10 AM, Reel 22 Nov 8:12 PM) and walked-10000-steps-year is on 23-24 Nov (both scheduled from other session branches). All 3 upload tasks disabled 20 Nov; waiting for Krishna to pick new dates (suggested 25 Nov main + Short, 26 Nov Reel)."
+  "status": "Krishna OK'd new dates 20 Nov (21-24 Nov taken by Maggi + 10,000 Steps from other sessions). Upload tasks re-enabled."
  }
 }
