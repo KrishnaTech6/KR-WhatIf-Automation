@@ -98,7 +98,19 @@ def main(argv):
         x, sr = sf.read(src, dtype="float32")
         if x.ndim > 1:
             x = x.mean(1)
-        y, cuts = cap_silences(x, sr, mg, kp)
+        # keep the long gaps between beats (the HARD_CUT_BEFORE silence) untouched
+        protect = []
+        rp = os.path.join(ctx.RUN, "audio", "report.json")
+        if os.path.exists(rp):
+            import json
+            beats = json.load(open(rp)).get(job, {}).get("beats", [])
+            for a, b in zip(beats, beats[1:]):
+                gap0 = a["start"] + a["dur"]
+                if b["start"] - gap0 > 2.0:
+                    protect.append((gap0 + b["start"]) / 2)
+        y, cuts = cap_silences(x, sr, mg, kp, protect=protect)
+        if protect:
+            print(f"kept hard-cut gap(s) at {', '.join(f'{p:.1f}' for p in protect)} s")
         sf.write(os.path.join(ctx.FINAL, f"{job}_edit.wav"), y, sr)
         print(f"{job}: {len(x) / sr:.2f} -> {len(y) / sr:.2f} s, {len(cuts)} cuts")
     elif cmd == "anchors":
