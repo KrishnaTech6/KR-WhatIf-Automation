@@ -1,16 +1,43 @@
 {
- "fetched": "2026-11-18T19:12+00:00",
+ "fetched": "2026-11-20T18:56+00:00",
  "channel": "kr's what if explained",
- "subscribers": 11,
+ "subscribers": 12,
  "analytics": "HTTP 403: needs the yt-analytics.readonly permission (re-run scripts/youtube_auth.py)",
  "ctr": null,
  "videos": [
+  {
+   "id": "F1sJxDTOLes",
+   "title": "Signed As Loan Guarantor? Watch This #shorts",
+   "published": "2026-11-20T14:31:32Z",
+   "duration": 38,
+   "views": 23,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "O3sy6S0j8tA",
+   "title": "EMI Not Paid? Day 1 to Day 91 Explained #shorts",
+   "published": "2026-11-20T03:38:16Z",
+   "duration": 52,
+   "views": 40,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "7WDEIAyEExg",
+   "title": "What If You Stopped Paying Your EMI?",
+   "published": "2026-11-19T12:37:36Z",
+   "duration": 346,
+   "views": 1,
+   "likes": 0,
+   "comments": 0
+  },
   {
    "id": "Ph30AWvB6Ds",
    "title": "30 Days Without Your Phone = 6 Free Days #shorts",
    "published": "2026-11-18T14:40:02Z",
    "duration": 39,
-   "views": 7,
+   "views": 18,
    "likes": 0,
    "comments": 0
   },
@@ -19,7 +46,7 @@
    "title": "What If You Didn't Use Your Phone for 30 Days?",
    "published": "2026-11-17T12:37:19Z",
    "duration": 284,
-   "views": 1,
+   "views": 2,
    "likes": 0,
    "comments": 0
   },
@@ -37,7 +64,7 @@
    "title": "Six Kids in Nani's Photo. One in Yours. #shorts",
    "published": "2026-11-16T14:36:34Z",
    "duration": 38,
-   "views": 193,
+   "views": 198,
    "likes": 3,
    "comments": 0
   },
@@ -46,8 +73,8 @@
    "title": "India Will Lose 20 Crore People. No War. #shorts",
    "published": "2026-11-16T03:34:25Z",
    "duration": 49,
-   "views": 1111,
-   "likes": 8,
+   "views": 1112,
+   "likes": 9,
    "comments": 0
   },
   {
@@ -55,9 +82,9 @@
    "title": "What If India's Population Started Shrinking?",
    "published": "2026-11-15T12:37:18Z",
    "duration": 285,
-   "views": 23,
-   "likes": 0,
-   "comments": 4
+   "views": 65,
+   "likes": 1,
+   "comments": 7
   },
   {
    "id": "TsuFIdqzL2A",
@@ -73,7 +100,7 @@
    "title": "7 Days Without UPI, You Can't Even Buy Chai #shorts",
    "published": "2026-11-15T03:12:35Z",
    "duration": 53,
-   "views": 80,
+   "views": 83,
    "likes": 0,
    "comments": 1
   },
@@ -100,7 +127,7 @@
    "title": "What If You Woke Up 300 Million Years Ago?",
    "published": "2026-11-12T15:30:11Z",
    "duration": 310,
-   "views": 3,
+   "views": 4,
    "likes": 0,
    "comments": 0
   },
@@ -190,7 +217,7 @@
    "title": "What If Delhi's Smog Never Lifted? #shorts",
    "published": "2026-11-09T08:30:08Z",
    "duration": 50,
-   "views": 58,
+   "views": 59,
    "likes": 0,
    "comments": 0
   },
@@ -271,7 +298,7 @@
    "title": "What If the Electric Motor Was Never Invented?",
    "published": "2026-11-07T01:33:09Z",
    "duration": 311,
-   "views": 64,
+   "views": 67,
    "likes": 1,
    "comments": 1
   },
@@ -280,7 +307,7 @@
    "title": "At 1 mm Tall, a Raindrop Is a Falling Boulder #shorts",
    "published": "2026-11-06T12:52:48Z",
    "duration": 39,
-   "views": 1255,
+   "views": 1256,
    "likes": 18,
    "comments": 0
   },
