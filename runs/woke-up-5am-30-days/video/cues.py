@@ -43,6 +43,16 @@ def HITS():
         (at("payoff", "magic", 0.0), X.impact(5, 0.7), 0.5),
         (at("payoff", "percent", 0.0), X.pop(1000), 0.5),
         (at("bonus", "five", 0.0), _ring(1.0), 0.35),
+        # boredom-audit fixes: a hit in every long gap
+        (at("day_seven", "quick", 0.4), X.tick(), 0.5),
+        (at("day_ten", "reel", -0.3), X.riser(1.6), 0.35),
+        (at("day_ten", "spots", 0.0), X.impact(6, 0.5), 0.45),
+        (B("the_big_one") + 1.2, X.heartbeat(), 0.35),
+        (at("the_big_one", "weeks", 0.0), X.pop(600), 0.4),
+        (at("day_twenty_one", "eleven", 0.0), X.chime(1175), 0.5),
+        (at("day_twenty_one", "ten", 0.0), X.chime(1568), 0.6),
+        (at("payoff", "seven", 0.0), X.pop(1100), 0.45),
+        (B("bonus") - 0.8, X.riser(2.0, 7), 0.4),
     ]
 
 
