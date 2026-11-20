@@ -52,22 +52,11 @@ circles and underlines, rubber stamps ("MISSING", "BANNED", "SOLD OUT"), red str
 newspaper-style headline strips. Motion is 12 fps stop-motion (automatic); give each loose piece `jit(key, t)`.
 Don't: glows, gradients, smooth tweens on paper pieces.
 
-## Krishna's notes on look (20 Nov 2026) — part of the quality bar
+## Tried and rejected (20 Nov 2026)
 
-Past videos weren't at the quality he wants: people looked half-finished and objects didn't look like the real thing.
-From now on, every video must:
-1. **Put the viewer inside the scene.** Use first-person shots (your hand hitting the alarm, your phone glowing in your
-   hands, the ceiling fan seen from your pillow) and a detailed "you" character (an Indian young adult, the face kept
-   simple or turned away, right proportions, hair, clothes, shading, a few clear expressions). The viewer should see
-   themselves in it.
-2. **Draw things so they read as the real thing at a glance.** A real Indian bedroom (ceiling fan, steel almirah,
-   phone charger), Delhi rooftops with water tanks and dish antennas, real-looking clocks and phones. No flat
-   icons standing in for objects.
-3. **Look epic.** Layered depth (parallax foreground, mid and back), slow camera push-ins, light rays and haze,
-   soft depth blur, grain, and a colour journey (night blue → gold at sunrise).
-4. **Get the look approved early:** 3 hero stills go to Krishna before the full contact sheets.
-The review agent fails any shot where a character or object would not be recognised instantly, or where the frame
-feels flat. A failed shot is redrawn before the next checkpoint.
+A detailed, painterly "scene" look (realistic bedroom, back-view people, rooftop sunrise) was tried for the 5 AM video.
+Krishna: "bekaar hai, weird lag raha hai, jaisa tha waisa hi rakho." Keep the standard look of each style; don't
+switch to that kit again unless he asks.
 
 ## Quality bar (non-negotiable, every style)
 
