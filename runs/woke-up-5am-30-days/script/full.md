@@ -225,16 +225,16 @@ Countdown ladder over 30 days: Day 1 → Day 3 → Day 7 (trap) → Day 10 (myth
 >
 > Five AM, same alarm. But this time... you're already awake.
 >
-> Would you try it? Ten to five, for thirty days? Yes or no, in the comments.
+> Ten to five, thirty days. Would you? Yes or no, in the comments.
 >
-> Next time: what if India had a four-day work week? *(beat)*
+> Next time: what if every Indian got one crore rupees tomorrow? *(beat)*
 >
 > But that story... is for the next What If.
 
 - **Tone:** Warm; deadpan tease.
-- **Scenes:** (1) Delhi rooftop, silhouette with arms out, sunrise filling the frame (the "wow" shot). (2) Callback: the same bedside table and 5:00 clock from frame 0, but the bed is already empty and made. (3) Comment prompt "10 PM → 5 AM? YES / NO". (4) Tease: an office calendar with Friday torn off, a "4 DAYS" stamp. (5) End screen.
+- **Scenes:** (1) Delhi rooftop, silhouette with arms out, sunrise filling the frame (the "wow" shot). (2) Callback: the same bedside table and 5:00 clock from frame 0, but the bed is already empty and made. (3) Comment prompt "10 PM → 5 AM? YES / NO". (4) Tease: a fat ₹1 crore note bundle dropping onto every rooftop of an Indian street at once. (5) End screen.
 - **Sound:** Soft single-note piano; rumble on "Next time".
-- **On-screen text:** "DAY 31"; "YES or NO?"; "NEXT: 4-DAY WORK WEEK?"
+- **On-screen text:** "DAY 31"; "YES or NO?"; "NEXT: ₹1 CRORE FOR EVERY INDIAN?"
 
 ## Visual approach
 
@@ -278,7 +278,7 @@ Angle: the shock — 6 hours a night for 2 weeks = up to 2 nights of no sleep, a
 | 0:26 | Now look at the five AM club. Alarm at five. Phone in bed till eleven. That's six hours. Every single night. | Phone glow in a dark bedroom; sleep bar 11→5 | "5 AM CLUB = 6 HRS" |
 | 0:34 | And everyone doing it says the same thing. I feel fine. | Many "I FEEL FINE" notes | — |
 | 0:38 | The fix isn't skipping the alarm. It's one number... and it's not on your clock. | Hidden second dial glints | "1 NUMBER" |
-| 0:44 | Full video on KR's What If Explained. Because when your alarm says five, and your sleep starts at eleven... that's | Clock + logo badge → loops to frame 0 | "FULL VIDEO ↑" |
+| 0:44 | Full video on YouTube. Because when your alarm says five, and your sleep starts at eleven... that's | Clock + logo badge → loops to frame 0 | "FULL VIDEO ↑" |
 
 Posting kit — Title: **5 AM Club on 6 Hours? Your Brain Loses 2 Nights #shorts** · Description: "Six hours a night for two weeks and your brain acts like it skipped up to two nights. Full video: {MAIN_URL}"
 
