@@ -20,11 +20,11 @@ def month_grid(c, t):
     explainer_bg(c, t)
     t0 = S("day_one", "month", -0.3)
     for k in range(30):
-        x = 360 + (k % 10) * 120; y = 760 + (k // 10) * 90
+        x = 330 + (k % 10) * 140; y = 800 + (k // 10) * 92
         on = t > t0 + 0.05 * k
-        c.drawRRect(rr(x - 46, y - 36, x + 46, y + 36, 10), paint("gold" if on else "sand", 0.85 if on else 0.15))
+        c.drawRRect(rr(x - 56, y - 38, x + 56, y + 38, 10), paint("gold" if on else "sand", 0.85 if on else 0.15))
         if on:
-            label(c, "+2h", x, y + 12, 28, "ink", "extrabold")
+            label(c, "+2h", x, y + 14, 38, "ink", "extrabold")
 
 
 def two_nights(c, t):
@@ -60,6 +60,8 @@ def s_split_open(c, t, t0):
         bed_scene(c, 960, 960, t + 0.11, bedtime=10, ring=1.0)
     c.drawLine(960, 0, 960, H, paint("cream", 0.9, stroke=6))
     _title_strip(c, t, t0)
+    battery(c, 300, 380, 0.42, 0.15, t); battery(c, 1260, 380, 0.42, 1.0, t)
+    label(c, "DAY 14", 300, 260, 34, "coral", "extrabold"); label(c, "DAY 14", 1260, 260, 34, "teal", "extrabold")
     c.drawRRect(rr(W / 2 - 230, 976, W / 2 + 230, 1048, 36), paint("space", 0.8))
     label(c, "5 AM · 30 DAYS", W / 2, 1030, 50, "cream", "extrabold")
 
@@ -383,6 +385,8 @@ def s_depression(c, t, t0):
     p = span(t, S("payoff", "percent", -0.8), S("payoff", "percent", 0.6))
     x, y0 = 1420, 300
     c.drawRRect(rr(x - 110, y0, x + 110, y0 + 520, 24), paint("#0E0A22"))
+    c.drawRRect(rr(x - 330, y0, x - 150, y0 + 520, 20), paint("sand", 0.35))
+    label(c, "before", x - 240, y0 + 590, 34, "sand", "bold")
     h = 520 * (1 - 0.23 * ease(p))
     c.drawRRect(rr(x - 90, y0 + 520 - h + 20, x + 90, y0 + 500, 18), paint("teal"))
     label(c, f"-{23 * ease(p):.0f}%", x, y0 - 40, 96, "gold", "extrabold", min(1.0, p * 3))
@@ -506,7 +510,7 @@ def SHOTS():
         (B("bonus") - 0.6, card("DAY 31", "Sunrise"), "iris"),
         (S("bonus", "roof", -0.6), s_sunrise, "fade"),
         (S("bonus", "five", -0.3), s_callback, "fade"),
-        (S("bonus", "would", -0.6), comment_prompt("10 PM to 5 AM for 30 days. Would you?", bg=lambda c, t: rooftop(c, t, 1.4)), "fade"),
+        (S("bonus", "would", -0.6), comment_prompt("10 PM to 5 AM for 30 days. Would you?", bg=lambda c, t: rooftop(c, t, 1.4, clothes=False)), "fade"),
         (S("bonus", "next", -0.3), s_tease, "flash"),
         (S("bonus", "story", -0.3), statement("...FOR THE NEXT WHAT IF", bg=lambda c, t: dusk_bg(c, t, 0.9), color="gold"), "fade"),
         (E(LAST_BEAT) + 0.3, end_screen(), "fade"),
