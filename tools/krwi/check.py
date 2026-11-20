@@ -315,8 +315,8 @@ def shots(R):
     R.ok(len(cards) >= 3, "chapter cards", f"{len(cards)} (every chapter gets one)", "WARN")
     long = [(i, L[i + 1][0] - st) for i, (st, fn, tr) in enumerate(L[:-1]) if L[i + 1][0] - st > 8.0]
     R.ok(not long, "shot length", "no shot over 8 s" if not long else
-         f"{len(long)} shot(s) over 8 s, e.g. #{long[0][0]} {getattr(L[long[0][0]][1], '__name__', '')} {long[0][1]:.1f} s "
-         "(needs a change inside at least every 3 s)", "WARN")
+         f"{len(long)} shot(s) over 8 s: " + ", ".join(f"#{i} {getattr(L[i][1], '__name__', '')} {d:.1f} s" for i, d in long)
+         + " (needs a change inside at least every 3 s)", "WARN")
     R.ok(L[-1][0] >= TOTAL - 1.0, "end card", f"last shot at {L[-1][0]:.1f} s, voice ends {TOTAL:.1f} s", "WARN")
     R.line("INFO" if MODE == "estimate" else "PASS", "timing", f"{MODE} mode")
     for job, f, lim in (("main", "anchors.json", 0.90), ("short", "anchors_short.json", 0.85), ("reel", "anchors_reel.json", 0.85)):
