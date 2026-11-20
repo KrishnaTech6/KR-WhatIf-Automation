@@ -13,6 +13,10 @@ on:
         description: "optional: branch holding the release files; the workflow then creates the Release itself"
         required: false
         default: ""
+      upto:
+        description: 'upload in steps: "main", "1" (main + first Short), "2"/empty = everything'
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -49,6 +53,8 @@ jobs:
         if: inputs.files_branch == ''
         run: gh release download "$SLUG" -D assets
       - name: Upload to YouTube
+        env:
+          KR_UPTO: ${{ inputs.upto }}
         run: python scripts/youtube_upload.py assets/upload.json assets "runs/$SLUG/published.json"
       - name: Save links
         if: always()

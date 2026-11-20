@@ -231,15 +231,22 @@ def main():
             done["comment"] = f"failed: HTTP {e.resp.status}"
         save(out, done)
     done.setdefault("shorts", [])
+    # KR_UPTO: upload in steps on release day (Krishna, 20 Nov 2026: no pre-scheduling, publish at the time).
+    # "main" = only the main video; "1" = also the first Short; "2" or unset = everything.
+    upto = os.environ.get("KR_UPTO", "").strip()
+    n_shorts = len(pkg.get("shorts", [])) if upto in ("", "all") else (0 if upto == "main" else int(upto))
     for i, s in enumerate(pkg.get("shorts", [])):
         if i < len(done["shorts"]):
             continue
+        if i >= n_shorts:
+            print(f"KR_UPTO={upto}: {s['file']} waits for its own release time")
+            break
         item = dict(s, description=s["description"].replace("{MAIN_URL}", done["main"]["url"]))
         rec = upload(yt, os.path.join(assets, s["file"]), item, pkg)
         done["shorts"].append(dict(rec, file=s["file"], url=f"https://youtube.com/shorts/{rec['id']}"))
         save(out, done)
         print(f"{s['file']}: {done['shorts'][-1]['url']}", flush=True)
-    print("ALL UPLOADED")
+    print("ALL UPLOADED" if len(done["shorts"]) == len(pkg.get("shorts", [])) else "UPLOADED UP TO " + (upto or "all"))
 
 
 if __name__ == "__main__":
