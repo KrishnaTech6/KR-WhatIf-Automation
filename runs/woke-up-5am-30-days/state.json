@@ -40,6 +40,11 @@
   "short": "2026-11-21 9:06 (AM/PM to confirm)",
   "reel": "2026-11-22T20:12 IST",
   "files_branch": "release-files/woke-up-5am-30-days",
-  "workflow_branch": "claude/affectionate-keller-o8qucx"
+  "workflow_branch": "claude/affectionate-keller-o8qucx",
+  "tasks": {
+   "main": "trig_01FMcVUfCeFhYhg7HxYfE7Uu",
+   "reel": "trig_01VtnN1SdyGh7BfTAkCULYYp",
+   "short": "pending: Krishna to confirm 9:06 AM or PM on 21 Nov"
+  }
  }
 }
