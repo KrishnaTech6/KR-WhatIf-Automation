@@ -1,0 +1,59 @@
+{
+ "slug": "woke-up-5am-30-days",
+ "dry_run": false,
+ "privacy": "private",
+ "publish_at": null,
+ "synthetic": false,
+ "language": "en",
+ "main": {
+  "file": "MAIN.mp4",
+  "title": "What If You Woke Up at 5 AM for 30 Days?",
+  "description": "Two of you. Same 5 AM alarm. Thirty days.\nBy day 14, one brain works like it skipped up to two nights of sleep, and doesn't feel a thing. The difference is one number, and it's not on the alarm.\n\nReal numbers in this video:\n- 58% of Indians go to sleep after 11 PM (Wakefit Great Indian Sleep Scorecard 2024). Alarm at 5 means about 6 hours of sleep.\n- Adults need 7 hours or more (American Academy of Sleep Medicine + Sleep Research Society, 2015).\n- People given 6 hours in bed for 2 weeks performed as badly as people who skipped up to 2 full nights of sleep, and barely felt sleepier (Van Dongen et al., Sleep, 2003).\n- 351 spots in our genes are linked to being a morning person or a night owl (Jones et al., Nature Communications 2019, ~7 lakh people).\n- People whose genes set their sleep 1 hour earlier had a 23% lower risk of depression (Daghlas et al., JAMA Psychiatry 2021).\n- Waking at 5 instead of 7 gives 2 extra hours a day: 60 hours a month, if you get the sleep.\n\nChapters:\n0:00 Two rooms, one alarm\n0:30 Day 1 · 5 AM\n0:56 Day 3 · 11:40 PM\n1:14 Day 7 · I feel fine\n1:41 Day 10 · The myth\n2:17 Day 14 · The brain\n2:53 Day 21 · The fix\n3:26 Day 30 · The twist\n3:53 Day 31 · Sunrise\n\nThis is a thought experiment: the numbers are real, the 30 days are imagined from them.\n\nTen to five, thirty days. Would you try it?\n\nSources:\nVan Dongen et al. 2003, Sleep (PubMed): https://pubmed.ncbi.nlm.nih.gov/12683469/\nJones et al. 2019, Nature Communications (PMC): https://pmc.ncbi.nlm.nih.gov/articles/PMC6351539/\nDaghlas et al. 2021, JAMA Psychiatry (CU Boulder): https://www.colorado.edu/today/2021/05/27/want-reduce-your-depression-risk-wake-hour-earlier\nAASM / SRS sleep duration consensus 2015: https://www.aasm.org/resources/pdf/adultsleepdurationconsensus.pdf\nWakefit Great Indian Sleep Scorecard 2024 (Curly Tales): https://curlytales.com/1-in-4-indians-has-insomnia-58-of-indians-sleep-after-11-pm-heres-how-indians-fare-on-great-indian-sleep-scorecard-2024\n\n#whatif #5amclub #sleep",
+  "tags": [
+   "what if",
+   "what if you woke up at 5 am for 30 days",
+   "5 am club",
+   "waking up at 5am",
+   "morning routine",
+   "sleep",
+   "sleep deprivation",
+   "30 day challenge",
+   "night owl",
+   "india",
+   "KR's What If Explained"
+  ],
+  "category": "27",
+  "thumbnail": "THUMB.jpg",
+  "comment": "Ten to five, thirty days. Would you try it? Yes or no.",
+  "privacy": "private",
+  "publish_at": "2026-11-21T12:35:00Z"
+ },
+ "shorts": [
+  {
+   "file": "SHORT.mp4",
+   "title": "5 AM Club on 6 Hours? Your Brain Loses 2 Nights #shorts",
+   "description": "Six hours a night for two weeks, and your brain acts like it skipped up to two nights. The scary part: you feel fine.\nFull video: {MAIN_URL}",
+   "tags": [
+    "what if",
+    "5 am club",
+    "sleep",
+    "shorts"
+   ],
+   "privacy": "private",
+   "publish_at": "2026-11-22T03:36:00Z"
+  },
+  {
+   "file": "REEL.mp4",
+   "title": "5 AM for 30 Days: It's Not Your Alarm #shorts",
+   "description": "The silent 5 AM house feels amazing. But one thing you didn't change decides everything.\nFull video: {MAIN_URL}",
+   "tags": [
+    "what if",
+    "morning routine",
+    "5 am club",
+    "shorts"
+   ],
+   "privacy": "private",
+   "publish_at": "2026-11-22T14:42:00Z"
+  }
+ ]
+}
