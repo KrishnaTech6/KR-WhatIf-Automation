@@ -194,7 +194,7 @@ def s_moved(c, t, t0):
         label(c, "ALARM: MOVED", 480, 250, 56, "teal", "extrabold")
     def right(c, t):
         explainer_bg(c, t, "plum")
-        alarm_clock(c, 1440, 600, 1.2, t, hour=11, body="plum")
+        alarm_clock(c, 1440, 600, 1.2, t, hour=11, body="plum", pm=True)
         label(c, "BEDTIME: STUCK", 1440, 250, 56, "coral", "extrabold")
     split(left, right, wipe_at=S("day_three", "bedtime", -0.3))(c, t, t0)
 

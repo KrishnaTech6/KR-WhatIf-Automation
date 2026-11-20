@@ -528,9 +528,10 @@ def coin_stack(c, x, y, n, s=1.0):
 
 
 # ================================================================ 5 AM video additions (atlas, flat)
-def alarm_clock(c, x, y, s, t, ring=0.0, bedtime=None, hour=5.0, minute=0.0, a=1.0, body="coral"):
+def alarm_clock(c, x, y, s, t, ring=0.0, bedtime=None, hour=5.0, minute=0.0, a=1.0, body="coral", pm=False, digital=True):
     """Twin-bell alarm clock, face centre (x, y), face radius 100*s. ring 0..1 shakes it.
-    bedtime: number on a small 'BED' sub-dial (the spot-the-difference)."""
+    bedtime: number on a small 'BED' sub-dial (the spot-the-difference).
+    The hands show exactly hour:minute, and `digital` prints the same time under the clock ("5:00 AM")."""
     if a <= 0:
         return
     sh = math.sin(t * 60) * 5 * ring * s
@@ -562,6 +563,14 @@ def alarm_clock(c, x, y, s, t, ring=0.0, bedtime=None, hour=5.0, minute=0.0, a=1
     c.drawLine(0, 0, math.cos(ma) * 78, math.sin(ma) * 78, paint("ink", a, stroke=8))
     c.drawCircle(0, 0, 11, paint("coral", a))
     c.restore()
+    if digital:
+        h12 = int(hour) % 12 or 12
+        txt = f"{h12}:{int(minute):02d} {'PM' if pm else 'AM'}"
+        fs = max(22, int(56 * s))
+        tw = text_w(txt, font("extrabold", fs))
+        yy = y + 200 * s
+        c.drawRRect(rr(x - tw / 2 - 18 * s, yy - fs * 0.95, x + tw / 2 + 18 * s, yy + fs * 0.35, fs * 0.6), paint("space", 0.85 * a))
+        label(c, txt, x, yy, fs, "gold", "extrabold", a)
     if ring > 0:
         for k in range(3):
             ph = (t * 2 + k / 3) % 1
