@@ -826,3 +826,160 @@ def desk_lamp_student(c, x, y, s, t, a=1.0):
     c.drawCircle(-90, -360, 44, paint("#140A26", a))
     c.drawRect(skia.Rect(-20, -140, 120, -124), paint("cream", a))
     c.restore()
+
+
+# ---------------------------------------------------------------- v2 drawings (Krishna's ✅3 notes, 20 Nov)
+def _P(pts):
+    p = skia.Path(); p.moveTo(*pts[0][:2])
+    for q in pts[1:]:
+        if len(q) == 2:
+            p.lineTo(*q)
+        else:
+            p.quadTo(q[2], q[3], q[0], q[1])
+    p.close(); return p
+
+
+def _limb(c, pts, colr, w):
+    for (x0, y0), (x1, y1) in zip(pts, pts[1:]):
+        c.drawLine(x0, y0, x1, y1, paint(colr, stroke=w))
+    for x, y in pts[1:-1]:
+        c.drawCircle(x, y, w / 2, paint(colr))
+
+
+def runner(c, x, y, s, t, shirt="teal", a=1.0):
+    """A jogger in side view running to the right, a real stride cycle (feet at y)."""
+    ph = math.sin(t * 9)
+    c.save(); c.translate(x, y - 8 * abs(math.cos(t * 9)) * s); c.scale(s, s)
+    c.drawOval(skia.Rect(-70, -8, 70, 8), paint("#000000", 0.25))
+    hip = (0, -215)
+    # back leg then back arm (darker), torso, front leg + arm
+    def leg(k, colr):
+        sw = ph * k
+        knee = (hip[0] + 55 * sw, hip[1] + 95 - 10 * abs(sw))
+        foot = (knee[0] - 40 + 50 * sw, knee[1] + 105 - (40 if sw < 0 else 0))
+        _limb(c, [hip, knee, foot], colr, 34)
+        c.drawRRect(rr(foot[0] - 14, foot[1] - 12, foot[0] + 34, foot[1] + 10, 8), paint("cream"))
+    def arm(k, colr):
+        sw = -ph * k
+        sh = (6, -365)
+        el = (sh[0] + 45 * sw, sh[1] + 70)
+        hd = (el[0] + 55, el[1] - 30 + 20 * sw)
+        _limb(c, [sh, el, hd], colr, 24)
+        c.drawCircle(*hd, 15, paint("skin"))
+    leg(-1, "#1E2440"); arm(-1, "skin_shade")
+    c.drawRRect(rr(-30, -240, 40, -190, 18), paint("#1E2440"))              # shorts
+    c.save(); c.rotate(6, 0, -215)
+    c.drawRRect(rr(-38, -395, 42, -210, 30), paint(shirt))                  # torso, leaning forward
+    c.drawLine(42, -385, 40, -220, paint("amber", 0.5, stroke=4))           # rim light
+    c.restore()
+    leg(1, "#2A3258"); arm(1, "skin")
+    c.drawCircle(40, -440, 40, paint("skin"))                               # head
+    c.drawPath(_P([(4, -444), (18, -484, 0, -476), (62, -482, 40, -490), (80, -452, 76, -470), (40, -460), (8, -440)]), paint("hair"))
+    c.drawRect(skia.Rect(4, -462, 80, -450), paint("coral"))                # headband
+    c.drawCircle(64, -440, 4, paint("ink"))                                 # eye
+    c.restore()
+
+
+def jog_scene(c, t, t0):
+    """Dark street before sunrise: a jogger running past streetlights, motion lines behind him."""
+    dusk_bg(c, t, 0.35)
+    c.drawRect(skia.Rect(0, 900, W, H), paint("#1A1030"))
+    c.drawRect(skia.Rect(0, 900, W, 912), paint("#3A2A58"))
+    for k in range(4):                                                      # streetlights scrolling past
+        x = (k * 620 - (t - t0) * 260) % (W + 400) - 200
+        c.drawLine(x, 900, x, 470, paint("#2A1E40", stroke=12))
+        c.drawLine(x, 470, x + 60, 470, paint("#2A1E40", stroke=10))
+        glow(c, x + 60, 480, 170, "amber", 0.45)
+        c.drawCircle(x + 60, 482, 12, paint("gold"))
+    for k in range(4):
+        c.drawLine(560 - k * 30, 620 + k * 60, 760 - k * 30, 620 + k * 60, paint("cream", 0.25, stroke=6))
+    runner(c, 960, 905, 1.25, t)
+    label(c, "5:00 AM", 1600, 200, 70, "gold", "extrabold")
+
+
+def topper_scene(c, t, t0):
+    """A student at a desk before dawn: lamp light, open book, a stack of books, the window just turning blue."""
+    c.drawRect(skia.Rect(0, 0, W, H), paint("#1A1236"))
+    c.drawRRect(rr(1200, 140, 1700, 520, 12), paint("#2B3F7A"))            # window: dawn blue
+    c.drawRect(skia.Rect(1200, 420, 1700, 520), paint("#E7875A", 0.5))
+    c.drawRRect(rr(1200, 140, 1700, 520, 12), paint("#3A2A5E", stroke=14))
+    c.drawLine(1450, 140, 1450, 520, paint("#3A2A5E", stroke=10))
+    glow(c, 760, 560, 520, "amber", 0.5)
+    c.drawRect(skia.Rect(260, 700, 1500, 740), paint(WOOD_L))              # desk
+    c.drawRect(skia.Rect(300, 740, 340, 1080), paint(WOOD_D)); c.drawRect(skia.Rect(1420, 740, 1460, 1080), paint(WOOD_D))
+    # lamp
+    c.drawRRect(rr(1000, 680, 1120, 700, 8), paint("#3A3A48"))
+    c.drawLine(1060, 690, 1010, 520, paint("#3A3A48", stroke=12)); c.drawLine(1010, 520, 900, 470, paint("#3A3A48", stroke=12))
+    c.drawPath(_P([(830, 450), (940, 470), (900, 540), (800, 520)]), paint("coral"))
+    # stack of books + open book
+    for i, colr in enumerate(["teal", "plum", "coral", "amber"]):
+        c.drawRRect(rr(1180, 650 - i * 30, 1380, 680 - i * 30, 6), paint(colr))
+    c.drawPath(_P([(640, 690), (780, 680), (780, 700), (640, 700)]), paint("cream"))
+    c.drawPath(_P([(780, 680), (920, 690), (920, 700), (780, 700)]), paint("#E9E2D2"))
+    for k in range(4):
+        c.drawLine(660, 688 + k * 3, 760, 684 + k * 3, paint("ink", 0.25, stroke=1.5))
+    # student: chair, body bent over the book, writing hand
+    c.drawRRect(rr(330, 560, 380, 980, 16), paint("#2A1E40"))
+    c.drawRect(skia.Rect(330, 820, 560, 850), paint("#2A1E40"))
+    c.drawPath(_P([(390, 830), (400, 610, 380, 700), (560, 560, 470, 560), (600, 640), (560, 830)]), paint("plum"))   # hoodie
+    c.drawLine(560, 600, 720, 680, paint("plum", stroke=40)); c.drawCircle(730, 684, 20, paint("skin"))
+    c.drawLine(735, 690, 760, 660, paint("ink", stroke=5))                   # pen
+    c.drawCircle(600, 520, 62, paint("skin"))
+    c.drawPath(_P([(540, 520), (560, 455, 530, 470), (660, 470, 620, 440), (650, 520, 668, 495), (600, 490)]), paint("hair"))
+    c.drawCircle(640, 530, 5, paint("ink"))
+    c.drawLine(390, 830, 560, 830, paint("amber", 0.4, stroke=4))
+    alarm_clock(c, 1500, 610, 0.42, t, hour=5)
+
+
+def lark2(c, x, y, s, t, a=1.0):
+    """A morning bird (skylark-style songbird) on a branch, singing, with the rising sun behind it."""
+    c.save(); c.translate(x, y); c.scale(s, s)
+    glow(c, 40, -120, 260, "gold", 0.55 * a)
+    c.drawCircle(40, -120, 110, paint("gold", 0.9 * a))
+    c.drawLine(-200, 60, 220, 30, paint(WOOD_D, a, stroke=18))               # branch
+    c.drawLine(60, 40, 140, -10, paint(WOOD_D, a, stroke=10))
+    c.drawPath(_P([(-130, -30), (-60, -90, -120, -80), (40, -60, -10, -105), (60, 0, 80, -30), (-40, 20, 20, 30)]), paint("#B8783A", a))   # body
+    c.drawPath(_P([(-40, -10), (-10, -50, -40, -40), (40, -20, 30, -50), (0, 15, 30, 5)]), paint("#F2D2A0", a))                        # belly
+    c.drawPath(_P([(-110, -40), (-30, -70, -90, -80), (10, -30, -10, -60), (-60, -10, -40, -10)]), paint("#7A4A22", a))                # wing
+    for k in range(3):
+        c.drawLine(-90 + k * 25, -50, -40 + k * 25, -30, paint("#5A3214", a, stroke=3))
+    c.drawPath(_P([(-130, -30), (-210, -10), (-200, 10), (-120, -10)]), paint("#7A4A22", a))   # tail
+    c.drawCircle(30, -95, 42, paint("#B8783A", a))                                             # head
+    c.drawPath(_P([(10, -128), (40, -150, 20, -150), (60, -125, 55, -140)]), paint("#7A4A22", a))   # crest
+    c.drawCircle(45, -100, 9, paint("ink", a)); c.drawCircle(48, -103, 3, paint("cream", a))
+    op = 0.5 + 0.5 * math.sin(t * 10)
+    c.drawPath(_P([(68, -98), (100, -92 - 8 * op), (70, -88)]), paint("amber", a))             # beak, singing
+    for k in range(3):                                                                          # song notes
+        yy = -150 - ((t * 60 + k * 40) % 120)
+        c.drawCircle(130 + k * 30, yy, 9, paint("cream", 0.7 * a)); c.drawLine(139 + k * 30, yy, 139 + k * 30, yy - 34, paint("cream", 0.7 * a, stroke=4))
+    for k in (-1, 1):
+        c.drawLine(k * 15, 18, k * 15, 40, paint("amber", a, stroke=5))
+    c.restore()
+
+
+def owl2(c, x, y, s, t, a=1.0):
+    """A night owl on a branch under a crescent moon: ear tufts, facial disc, big round eyes, feather chevrons."""
+    c.save(); c.translate(x, y); c.scale(s, s)
+    glow(c, 90, -230, 220, "cream", 0.25 * a)
+    c.drawCircle(90, -230, 70, paint("cream", 0.95 * a)); c.drawCircle(120, -250, 64, paint("deep", a))
+    c.drawLine(-220, 90, 220, 70, paint(WOOD_D, a, stroke=18))
+    c.drawOval(skia.Rect(-95, -150, 95, 90), paint("#6B4A30", a))                               # body
+    c.drawOval(skia.Rect(-60, -40, 60, 85), paint("#C9A27A", a))                               # belly
+    for r in range(3):
+        for k in range(3):
+            cx, cy = -30 + k * 30, -10 + r * 28
+            c.drawPath(_P([(cx - 10, cy), (cx, cy + 10), (cx + 10, cy), (cx, cy + 5)]), paint("#6B4A30", a))
+    for sx in (-1, 1):
+        c.drawPath(_P([(sx * 50, -140), (sx * 95, -205), (sx * 85, -130)]), paint("#6B4A30", a))   # ear tufts
+        c.drawPath(_P([(sx * 95, -80), (sx * 120, 20, sx * 125, -40), (sx * 80, 40)]), paint("#4E3420", a))  # wings
+    c.drawOval(skia.Rect(-85, -150, 85, -40), paint("#E8D2B0", a))                              # facial disc
+    blink = 1.0 if (t % 3.0) > 0.15 else 0.15
+    for sx in (-1, 1):
+        c.drawCircle(sx * 38, -98, 32, paint("gold", a))
+        c.drawOval(skia.Rect(sx * 38 - 17, -98 - 17 * blink, sx * 38 + 17, -98 + 17 * blink), paint("ink", a))
+        c.drawCircle(sx * 38 + 6, -106, 5, paint("cream", a))
+    c.drawPath(_P([(-10, -70), (10, -70), (0, -45)]), paint("amber", a))                        # beak
+    for sx in (-1, 1):
+        for k in range(3):
+            c.drawLine(sx * 30 + (k - 1) * 10, 85, sx * 30 + (k - 1) * 12, 100, paint("amber", a, stroke=5))
+    c.restore()

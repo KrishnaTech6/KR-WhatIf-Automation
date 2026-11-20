@@ -157,14 +157,28 @@ def s_two_hours(c, t, t0):
 def s_phone_bed(c, t, t0):
     room_bg(c, t, 0.3)
     with Cam(c, keys(t, [(t0, 1.0), (t0 + 5, 1.1)]), W / 2, 700, t=t):
-        c.drawRRect(rr(300, 700, 1620, 820, 30), paint("#C9C2DE"))
-        c.drawRRect(rr(340, 640, 600, 720, 34), paint("cream"))
-        person_lying = skia.Path(); person_lying.moveTo(560, 720); person_lying.cubicTo(800, 640, 1200, 660, 1600, 720)
-        person_lying.lineTo(1600, 820); person_lying.lineTo(560, 820); person_lying.close()
-        c.drawPath(person_lying, paint("#3D5A80"))
-        c.drawCircle(560, 660, 56, paint("skin")); c.drawCircle(548, 640, 54, paint("hair"))
-        glow(c, 700, 600, 260, "teal", 0.55)
-        smartphone(c, 720, 590, 0.35, t, "feed", rot=-20, scroll=t)
+        c.drawRRect(rr(260, 600, 340, 900, 22), paint(WOOD_D))                       # headboard
+        c.drawRect(skia.Rect(300, 820, 1640, 900), paint(WOOD))                     # bed frame
+        c.drawRRect(rr(300, 760, 1640, 840, 26), paint("#C9C2DE"))                  # mattress
+        c.drawRRect(rr(330, 660, 640, 760, 40), paint("cream"))                     # pillow
+        # head on the pillow, then a blanket raised over the whole body (shoulder, hip, knees, feet)
+        c.drawCircle(520, 680, 58, paint("skin")); c.drawCircle(505, 655, 56, paint("hair"))
+        bl = skia.Path(); bl.moveTo(560, 800)
+        bl.cubicTo(560, 640, 760, 600, 860, 640)          # shoulder
+        bl.cubicTo(960, 600, 1110, 600, 1180, 660)        # hip
+        bl.cubicTo(1260, 630, 1380, 640, 1440, 690)       # knees
+        bl.cubicTo(1500, 660, 1600, 690, 1620, 760)       # feet
+        bl.lineTo(1640, 840); bl.lineTo(550, 840); bl.close()
+        c.drawPath(bl, paint("#3D5A80"))
+        c.drawPath(bl, paint("amber", 0.3, stroke=4))
+        for x0, x1 in ((780, 820), (1060, 1100), (1330, 1370)):
+            fold = skia.Path(); fold.moveTo(x0, 650); fold.quadTo(x0 - 30, 750, x1, 830)
+            c.drawPath(fold, paint("#2A4060", stroke=6))
+        # arm out of the blanket holding the phone above the face
+        c.drawLine(640, 700, 700, 600, paint("#3D5A80", stroke=34))
+        c.drawCircle(704, 594, 20, paint("skin"))
+        glow(c, 650, 600, 260, "teal", 0.55)
+        smartphone(c, 690, 560, 0.33, t, "feed", rot=-25, scroll=t)
     label(c, "11:40 PM", 560, 200, 90, "gold", "extrabold", span(t, t0, t0 + 0.4))
 
 
@@ -230,10 +244,14 @@ def _mug_handle(x):
 def s_trap(c, t, t0):
     explainer_bg(c, t, "plum")
     sticky(c, W / 2, 560, 1.6, "I FEEL\nFINE", rot=-5, a=span(t, t0, t0 + 0.3))
-    stamp(c, W / 2 + 40, 860, "THE TRAP", span(t, S("day_seven", "trap", 0), S("day_seven", "trap", 0.3)), "coral", -14)
+    stamp(c, W / 2 + 40, 830, "THE TRAP", span(t, S("day_seven", "trap", 0), S("day_seven", "trap", 0.3)), "coral", -14)
     if t > S("day_seven", "fourteen", -0.3):
-        pop(c, W / 2, 940, "BACK TO THIS ON DAY 14", t, S("day_seven", "fourteen", -0.3), "teal", 44)
+        pop(c, W / 2, 1010, "BACK TO THIS ON DAY 14", t, S("day_seven", "fourteen", -0.3), "teal", 44)
 
+
+def s_comment_alarm(c, t, t0):
+    alarm_row(c, t)
+    comment_card(c, W / 2, 380, 1.2, "What time does your alarm ring right now?", span(t, t0 + 0.2, t0 + 0.8), t)
 
 # ---------------------------------------------------------------- DAY 10
 def s_reel(c, t, t0):
@@ -243,6 +261,16 @@ def s_reel(c, t, t0):
     label(c, "5 AM =", W / 2, 448, 50, "gold", "extrabold")
     label(c, "SUCCESS", W / 2, 504, 50, "gold", "extrabold")
     big_text(c, "EVERY SUCCESSFUL PERSON...?", W / 2, 140, 60, span(t, t0, t0 + 0.4), "cream")
+
+
+def s_jog(c, t, t0):
+    jog_scene(c, t, t0)
+    big_text(c, "IN THE MOVIES...", W / 2, 150, 72, span(t, t0, t0 + 0.4), "gold")
+
+
+def s_topper(c, t, t0):
+    topper_scene(c, t, t0)
+    big_text(c, "THE TOPPER AT DAWN", W / 2, 150, 66, span(t, t0, t0 + 0.4), "gold")
 
 
 def s_movies(c, t, t0):
@@ -263,8 +291,8 @@ def s_dna(c, t, t0):
 
 def s_owl_lark(c, t, t0):
     explainer_bg(c, t, "plum")
-    lark(c, 560, 520, 1.6, t, span(t, S("day_ten", "morning", -0.3), S("day_ten", "morning", 0.2)))
-    owl(c, 1360, 540, 1.6, span(t, S("day_ten", "owl", -0.3), S("day_ten", "owl", 0.2)))
+    lark2(c, 560, 560, 1.5, t, span(t, S("day_ten", "morning", -0.3), S("day_ten", "morning", 0.2)))
+    owl2(c, 1360, 560, 1.5, t, span(t, S("day_ten", "owl", -0.3), S("day_ten", "owl", 0.2)))
     label(c, "MORNING PERSON", 560, 820, 50, "gold", "extrabold", span(t, S("day_ten", "morning", -0.3), S("day_ten", "morning", 0.2)))
     label(c, "NIGHT OWL", 1360, 820, 50, "teal", "extrabold", span(t, S("day_ten", "owl", -0.3), S("day_ten", "owl", 0.2)))
 
@@ -470,13 +498,14 @@ def SHOTS():
         (B("day_seven") + 0.4, s_fine, "fade"),
         (S("day_seven", "yawn", -0.3), s_yawn, "whip"),
         (S("day_seven", "trap", -0.6), s_trap, "cut"),
-        (S("day_seven", "quick", -0.2), comment_prompt("What time does your alarm ring right now?", bg=alarm_row), "fade"),
+        (S("day_seven", "quick", -0.2), s_comment_alarm, "fade"),
 
         (S("day_seven", "already", -0.4), kr_react("curious", "WHO'S UP AT 5?", line_at=S("day_seven", "already", 0)), "cut"),
 
         (B("day_ten") - 0.6, card("DAY 10", "The myth"), "iris"),
         (S("day_ten", "reel", -0.4), s_reel, "fade"),
-        (S("day_ten", "movies", -0.3), layer(s_movies, stamp_at("MYTH", S("day_ten", "science", -0.4))), "whip"),
+        (S("day_ten", "movies", -0.3), s_jog, "whip"),
+        (S("day_ten", "topper", -0.3), layer(s_topper, stamp_at("MYTH", S("day_ten", "science", -0.4))), "cut"),
         (S("day_ten", "science", -0.5), statement("HERE'S WHAT THE SCIENCE SAYS", bg=lambda c, t: explainer_bg(c, t, "deep"), color="gold"), "flash"),
         (S("day_ten", "nineteen", -0.6), s_dna, "fade"),
         (S("day_ten", "found", -0.3), zoom(s_dna, 1.0, 1.15, dur=4), "cut"),
