@@ -14,7 +14,7 @@ Claude does the creative work; this repo holds the free parts.
 | `runs/<slug>/` | Per-video state, voice scripts, shot list, and published links. |
 | `tools/` | The video engine: `python3 tools/wi.py <slug> sheets / render / vertical ...` (see `tools/README.md`). |
 | `kaggle/` | Chatterbox voiceover that runs on Kaggle's free GPU. |
-| `scripts/` | YouTube login (one time, on your computer), the uploader, and `release_times.py` (when each video goes out: main D1 ~6 PM, Short D2 ~9 AM, Reel D2 ~8 PM IST, each 1-12 min past the hour). |
+| `scripts/` | YouTube login (one time, on your computer), the uploader, `release_times.py` (when each video goes out: a main video every 2nd day, one Short/Reel every day, each at a random test time, separately for YouTube and Instagram) and `time_test.py` (the posting-time test: calendar, daily views snapshots and the report `time_test.md` on branch `time-test`). |
 | `.github/workflows/` | `voiceover` (Kaggle), `publish-youtube`, `verify-youtube` (nightly: did the scheduled videos really go public?), `keepalive` (weekly login check), `learn-youtube` (Mon/Wed/Fri: YouTube stats -> `yt_learnings.md`). |
 | `docs/` | Home page and privacy policy (GitHub Pages) for the Google OAuth app. |
 
