@@ -1,0 +1,166 @@
+{
+ "_help": "Posting-time test. Written by scripts/time_test.py and scripts/release_times.py; never edit by hand.",
+ "plan": [
+  {
+   "slug": "stopped-paying-emi",
+   "kind": "main",
+   "track": "yt_main",
+   "at": "2026-11-19T18:07+05:30",
+   "window": "16-19",
+   "rule": "fixed (before 21 Nov)"
+  },
+  {
+   "slug": "stopped-paying-emi",
+   "kind": "short",
+   "track": "yt_short",
+   "at": "2026-11-20T09:08+05:30",
+   "window": "07-10",
+   "rule": "fixed (before 21 Nov)"
+  },
+  {
+   "slug": "stopped-paying-emi",
+   "kind": "short",
+   "track": "ig",
+   "at": "2026-11-20T09:08+05:30",
+   "window": "07-10",
+   "rule": "fixed (before 21 Nov)"
+  },
+  {
+   "slug": "stopped-paying-emi",
+   "kind": "reel",
+   "track": "yt_short",
+   "at": "2026-11-20T20:01+05:30",
+   "window": "19-22",
+   "rule": "fixed (before 21 Nov)"
+  },
+  {
+   "slug": "stopped-paying-emi",
+   "kind": "reel",
+   "track": "ig",
+   "at": "2026-11-20T20:01+05:30",
+   "window": "19-22",
+   "rule": "fixed (before 21 Nov)"
+  },
+  {
+   "slug": "only-maggi-30-days",
+   "kind": "main",
+   "track": "yt_main",
+   "at": "2026-11-21T18:06+05:30",
+   "window": "16-19",
+   "rule": "fixed (before 21 Nov)"
+  },
+  {
+   "slug": "only-maggi-30-days",
+   "kind": "short",
+   "track": "yt_short",
+   "at": "2026-11-22T09:10+05:30",
+   "window": "07-10",
+   "rule": "fixed (before 21 Nov)"
+  },
+  {
+   "slug": "only-maggi-30-days",
+   "kind": "short",
+   "track": "ig",
+   "at": "2026-11-22T09:10+05:30",
+   "window": "07-10",
+   "rule": "fixed (before 21 Nov)"
+  },
+  {
+   "slug": "only-maggi-30-days",
+   "kind": "reel",
+   "track": "yt_short",
+   "at": "2026-11-22T20:12+05:30",
+   "window": "19-22",
+   "rule": "fixed (before 21 Nov)"
+  },
+  {
+   "slug": "only-maggi-30-days",
+   "kind": "reel",
+   "track": "ig",
+   "at": "2026-11-22T20:12+05:30",
+   "window": "19-22",
+   "rule": "fixed (before 21 Nov)"
+  },
+  {
+   "slug": "walked-10000-steps-year",
+   "kind": "main",
+   "track": "yt_main",
+   "at": "2026-11-23T18:03+05:30",
+   "window": "16-19",
+   "rule": "fixed (before 21 Nov)"
+  },
+  {
+   "slug": "walked-10000-steps-year",
+   "kind": "short",
+   "track": "yt_short",
+   "at": "2026-11-24T09:08+05:30",
+   "window": "07-10",
+   "rule": "fixed (before 21 Nov)"
+  },
+  {
+   "slug": "walked-10000-steps-year",
+   "kind": "short",
+   "track": "ig",
+   "at": "2026-11-24T09:08+05:30",
+   "window": "07-10",
+   "rule": "fixed (before 21 Nov)"
+  },
+  {
+   "slug": "walked-10000-steps-year",
+   "kind": "reel",
+   "track": "yt_short",
+   "at": "2026-11-24T20:06+05:30",
+   "window": "19-22",
+   "rule": "fixed (before 21 Nov)"
+  },
+  {
+   "slug": "walked-10000-steps-year",
+   "kind": "reel",
+   "track": "ig",
+   "at": "2026-11-24T20:06+05:30",
+   "window": "19-22",
+   "rule": "fixed (before 21 Nov)"
+  },
+  {
+   "slug": "woke-up-5am-30-days",
+   "kind": "main",
+   "track": "yt_main",
+   "at": "2026-11-25T18:05+05:30",
+   "window": "16-19",
+   "rule": "fixed (before 21 Nov)"
+  },
+  {
+   "slug": "woke-up-5am-30-days",
+   "kind": "short",
+   "track": "yt_short",
+   "at": "2026-11-25T21:06+05:30",
+   "window": "19-22",
+   "rule": "fixed (before 21 Nov)"
+  },
+  {
+   "slug": "woke-up-5am-30-days",
+   "kind": "short",
+   "track": "ig",
+   "at": "2026-11-25T21:06+05:30",
+   "window": "19-22",
+   "rule": "fixed (before 21 Nov)"
+  },
+  {
+   "slug": "woke-up-5am-30-days",
+   "kind": "reel",
+   "track": "yt_short",
+   "at": "2026-11-26T20:12+05:30",
+   "window": "19-22",
+   "rule": "fixed (before 21 Nov)"
+  },
+  {
+   "slug": "woke-up-5am-30-days",
+   "kind": "reel",
+   "track": "ig",
+   "at": "2026-11-26T20:12+05:30",
+   "window": "19-22",
+   "rule": "fixed (before 21 Nov)"
+  }
+ ],
+ "results": []
+}
