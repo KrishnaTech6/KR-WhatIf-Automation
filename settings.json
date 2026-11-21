@@ -8,14 +8,28 @@
  "_ab_test": "off = one thumbnail, one title (Krishna, 11 Nov 2026). native = 3 title+thumbnail pairs for Test & Compare",
  "publish": "on_finish",
  "_publish": "on_finish, or a fixed IST time like 18:00 (needs youtube_upload = api)",
- "release_schedule": {
-  "main": "D1 18:00",
-  "short": "D2 09:00",
-  "reel": "D2 20:00"
+ "release_plan": {
+  "main_every_days": 2,
+  "short_day": 1,
+  "reel_day": 2,
+  "lead_minutes": 60
  },
- "_release_schedule": "IST. Main first, then the Short next morning and the Reel next evening, so something goes out daily and the verticals link to a live main video (Krishna, 13 Nov 2026; from general India data, re-check with the channel's own Studio data after ~3 weeks). scripts/release_times.py <slug> gives the exact times. YouTube and Instagram post the Short/Reel at the same times.",
- "release_jitter_minutes": [1, 12],
- "_release_jitter_minutes": "Each slot goes out a random 1-12 min past its hour (e.g. Short 9:03, main 6:11), fixed per video (Krishna, 14 Nov 2026).",
+ "_release_plan": "Krishna, 21 Nov 2026: a main video every 2nd day and exactly one Short or Reel every day (Short the day after its main, Reel the day after that, i.e. on the next main's day). lead_minutes = how far ahead the main must be when booked. scripts/release_times.py <slug> gives the days and times.",
+ "time_test": {
+  "windows": [
+   "07-10",
+   "10-13",
+   "13-16",
+   "16-19",
+   "19-22",
+   "22-24"
+  ],
+  "min_tests": 3,
+  "exploit_share": 0.7,
+  "score_at_hours": 48,
+  "data_branch": "time-test"
+ },
+ "_time_test": "Krishna, 21 Nov 2026: no fixed 'best time' guesses. Every post goes out at a random minute inside one of these IST windows (7 AM to midnight), separately for YouTube main, YouTube Shorts and Instagram, spread evenly until each window has min_tests measured posts; then exploit_share of posts use the best window and the rest keep testing. Score = views at score_at_hours vs the track's typical. Calendar + data + daily report (time_test.md) live on branch data_branch; scripts/time_test.py.",
  "default_language": "en",
  "synthetic_label": false,
  "min_days_between_videos": 2,

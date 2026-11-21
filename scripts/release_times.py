@@ -1,76 +1,107 @@
-"""Release times for one video, from settings.json "release_schedule".
+"""Release times for one video: main every 2nd day, one Short/Reel every day, random test times (Krishna, 21 Nov 2026).
 
-  python scripts/release_times.py <slug> [--now 2026-11-13T10:00:00Z]
+  python3 scripts/release_times.py <slug> [--now 2026-11-27T10:00:00Z]          # preview, changes nothing
+  python3 scripts/release_times.py <slug> --save                                 # book the times (do this at publish)
 
-Prints JSON: each video's publish_at in UTC (for upload.json) and in IST (for upload_text.txt).
+Prints JSON with five times, in UTC (for upload.json / run_once_at) and IST (for upload_text.txt and messages):
+  main      YouTube main video
+  short_yt  the Short on YouTube Shorts      short_ig  the Short on Instagram
+  reel_yt   the Reel on YouTube Shorts       reel_ig   the Reel on Instagram
 
-Rule (Krishna, 13 Nov 2026): main first, so the Short and Reel can point viewers to it.
-  D1 = first day whose main slot is at least 1 h away and where neither D1 nor D2
-       already has another video's release (runs/*/published.json), so no day gets two.
-  D2 = the day after D1.
-Each slot then moves a few minutes past its hour (settings "release_jitter_minutes", e.g. 9:03,
-6:11), so uploads don't land on round times (Krishna, 14 Nov 2026). The minute comes from the
-slug, so re-running for the same video gives the same times.
+Days (settings "release_plan"):
+  D1 (main) = the later of today and the last booked main + main_every_days (2), on a day with no other main.
+  Short = D1 + short_day (1), Reel = D1 + reel_day (2); a day that already has a Short/Reel moves it to the
+  next free day, so exactly one vertical goes out per day and it always comes after its main video.
+Times (settings "time_test"): each post gets a random minute inside one of the active-hour windows (IST),
+picked per track (YouTube main, YouTube Shorts, Instagram), so YouTube and Instagram get separate times.
+  Exploring: the window with the fewest booked posts on that track (ties at random).
+  Once every window has min_tests measured posts: exploit_share of posts go to the best window, the rest test others.
+Booked times live on the time-test branch (scripts/time_test.py), so every session sees one calendar.
+Once booked, re-running for the same slug prints the same times.
 """
-import hashlib
 import json
+import random
 import sys
 from datetime import datetime, timedelta, timezone
-from pathlib import Path
 
-IST = timezone(timedelta(hours=5, minutes=30))
-ROOT = Path(__file__).resolve().parent.parent
+from time_test import IST, best_window, cfg, load, parse, settings, update, window_of, window_stats, windows
 
-
-def parse(at):
-    return datetime.fromisoformat(at.replace("Z", "+00:00"))
+NAMES = {("main", "yt_main"): "main", ("short", "yt_short"): "short_yt", ("short", "ig"): "short_ig",
+         ("reel", "yt_short"): "reel_yt", ("reel", "ig"): "reel_ig"}
 
 
-def busy_days(slug):
-    """IST dates that already carry a release of another video."""
-    days = set()
-    for f in ROOT.glob("runs/*/published.json"):
-        if f.parent.name == slug:
-            continue
-        pub = json.loads(f.read_text())
-        for rec in [pub.get("main")] + pub.get("shorts", []):
-            if rec and rec.get("publish_at"):
-                days.add(parse(rec["publish_at"]).astimezone(IST).date())
-    return days
+def pick_window(data, track, rng, not_before_min=0):
+    """A window with at least 20 usable minutes after not_before_min (IST minute of the day), or None."""
+    cand = [w for w, a, b in windows() if b - max(a, not_before_min) >= 20]
+    if not cand:
+        return None
+    best = best_window(data, track)
+    if best in cand and rng.random() < cfg()["exploit_share"]:
+        return best
+    pool = [w for w in cand if w != best] or cand
+    st = window_stats(data, track)
+    least = min(st[w]["planned"] for w in pool)
+    return rng.choice([w for w in pool if st[w]["planned"] == least])
 
 
-def slot(day, spec):
-    """'D2 09:00' on D1 = day -> aware IST datetime."""
-    d, hm = spec.split()
-    h, m = map(int, hm.split(":"))
-    return datetime(day.year, day.month, day.day, h, m, tzinfo=IST) + timedelta(days=int(d[1:]) - 1)
+def random_time(day, w, rng, not_before_min=0):
+    a, b = next((a, b) for n, a, b in windows() if n == w)
+    mins = [m for m in range(max(a, not_before_min), b) if m % 30]      # never exactly :00 or :30
+    m = rng.choice(mins)
+    return datetime(day.year, day.month, day.day, m // 60, m % 60, tzinfo=IST)
 
 
-def jitter(slug, name, lo, hi):
-    """Stable minute offset in [lo, hi] for this video's slot."""
-    h = int(hashlib.sha256(f"{slug}:{name}".encode()).hexdigest(), 16)
-    return timedelta(minutes=lo + h % (hi - lo + 1))
+def book(data, slug, kind, track, at):
+    data["plan"].append({"slug": slug, "kind": kind, "track": track,
+                         "at": at.isoformat(timespec="minutes"), "window": window_of(at)})
 
 
-def release_times(slug, now):
-    settings = json.loads((ROOT / "settings.json").read_text())
-    sched = settings["release_schedule"]
-    lo, hi = settings.get("release_jitter_minutes", [0, 0])
-    busy = busy_days(slug)
-    day = now.astimezone(IST).date()
-    for _ in range(30):
-        main = slot(day, sched["main"])
-        if main >= now + timedelta(hours=1) and not {day, day + timedelta(days=1)} & busy:
-            return {name: slot(day, spec) + jitter(slug, name, lo, hi) for name, spec in sched.items()}
+def plan_video(slug, now, data):
+    mine = [p for p in data["plan"] if p["slug"] == slug]
+    if mine:
+        return mine
+    rp = settings()["release_plan"]
+    rng = random.Random(slug)
+    today = now.astimezone(IST).date()
+    lead = now + timedelta(minutes=rp["lead_minutes"])
+    days = lambda tracks: {parse(p["at"]).astimezone(IST).date() for p in data["plan"] if p["track"] in tracks}
+    mains = days({"yt_main"})
+    day = max([today] + [d + timedelta(days=rp["main_every_days"]) for d in mains])
+    for _ in range(60):
+        nb = lead.astimezone(IST).hour * 60 + lead.astimezone(IST).minute + 1 if day == lead.astimezone(IST).date() else 0
+        w = None if (day in mains or day < lead.astimezone(IST).date()) else pick_window(data, "yt_main", rng, nb)
+        if w:
+            book(data, slug, "main", "yt_main", random_time(day, w, rng, nb))
+            break
         day += timedelta(days=1)
-    sys.exit("no free release days in the next 30 days")
+    else:
+        sys.exit("no free main day in the next 60 days")
+    d1, last = day, day
+    for kind, offset in (("short", rp["short_day"]), ("reel", rp["reel_day"])):
+        d = max(d1 + timedelta(days=offset), last + timedelta(days=1))
+        while d in days({"yt_short", "ig"}):
+            d += timedelta(days=1)
+        for track in ("yt_short", "ig"):
+            book(data, slug, kind, track, random_time(d, pick_window(data, track, rng), rng))
+        last = d
+    return [p for p in data["plan"] if p["slug"] == slug]
+
+
+def show(posts):
+    t = {NAMES[(p["kind"], p["track"])]: parse(p["at"]) for p in posts}
+    order = ["main", "short_yt", "short_ig", "reel_yt", "reel_ig"]
+    return {"utc": {k: t[k].astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ") for k in order if k in t},
+            "ist": {k: t[k].astimezone(IST).strftime("%a %d %b, %I:%M %p IST") for k in order if k in t},
+            "window": {k: window_of(t[k]) for k in order if k in t}}
 
 
 if __name__ == "__main__":
     args = sys.argv[1:]
+    slug = args[0]
     now = parse(args[args.index("--now") + 1]) if "--now" in args else datetime.now(timezone.utc)
-    times = release_times(args[0], now)
-    print(json.dumps({
-        "utc": {k: v.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ") for k, v in times.items()},
-        "ist": {k: v.strftime("%a %d %b, %I:%M %p IST") for k, v in times.items()},
-    }, indent=1))
+    if "--save" in args:
+        saved = update(lambda d: plan_video(slug, now, d), f"time-test: book {slug}")
+        posts = [p for p in saved["plan"] if p["slug"] == slug]
+    else:
+        posts = plan_video(slug, now, load())
+    print(json.dumps(show(posts), indent=1))

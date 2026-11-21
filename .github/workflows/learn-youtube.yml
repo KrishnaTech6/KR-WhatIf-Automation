@@ -2,10 +2,11 @@ name: learn-youtube
 
 # What is working on YouTube: views, % viewed, retention curve (where viewers leave) and thumbnail CTR for every
 # public upload -> learn/youtube.json + yt_learnings.md, which the script stage reads before writing.
-# Runs Mon/Wed/Fri 16:25 IST, 35 min before the topic picks at 17:00 IST, and on demand.
+# Also takes the daily views snapshot for the posting-time test (scripts/time_test.py -> branch time-test).
+# Runs daily 16:25 IST (Krishna, 21 Nov 2026: check posting times every day), before the topic picks at 16:43 IST, and on demand.
 on:
   schedule:
-    - cron: "55 10 * * 1,3,5"   # 10:55 UTC = 16:25 IST
+    - cron: "55 10 * * *"   # 10:55 UTC = 16:25 IST
   workflow_dispatch:
 
 permissions:
@@ -36,5 +37,7 @@ jobs:
           git config user.name "kr-autopilot"
           git config user.email "actions@users.noreply.github.com"
           git add learn/youtube.json yt_learnings.md
-          git commit -qm "learn: YouTube stats" || exit 0
+          git commit -qm "learn: YouTube stats" || true
           git pull --rebase -q && git push -q
+      - name: Posting-time test snapshot (branch time-test)
+        run: python scripts/time_test.py youtube
