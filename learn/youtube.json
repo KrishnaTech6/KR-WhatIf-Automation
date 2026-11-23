@@ -1,16 +1,25 @@
 {
- "fetched": "2026-11-22T18:05+00:00",
+ "fetched": "2026-11-23T22:16+00:00",
  "channel": "kr's what if explained",
  "subscribers": 12,
  "analytics": "HTTP 403: needs the yt-analytics.readonly permission (re-run scripts/youtube_auth.py)",
  "ctr": null,
  "videos": [
   {
+   "id": "D7XMkWJcQDM",
+   "title": "What If You Walked 10,000 Steps Every Day for a Year?",
+   "published": "2026-11-23T12:33:15Z",
+   "duration": 282,
+   "views": 0,
+   "likes": 0,
+   "comments": 0
+  },
+  {
    "id": "QvCQcQaYeEE",
    "title": "10 Days of Only Maggi Does This to Your Gut #shorts",
    "published": "2026-11-22T14:42:01Z",
    "duration": 42,
-   "views": 22,
+   "views": 80,
    "likes": 0,
    "comments": 0
   },
@@ -19,7 +28,7 @@
    "title": "7 Maggi Packets a Day for a Month? #shorts",
    "published": "2026-11-22T03:40:35Z",
    "duration": 49,
-   "views": 119,
+   "views": 188,
    "likes": 2,
    "comments": 0
   },
@@ -28,7 +37,7 @@
    "title": "What If You Ate Only Maggi for 30 Days?",
    "published": "2026-11-21T12:36:07Z",
    "duration": 311,
-   "views": 1,
+   "views": 4,
    "likes": 0,
    "comments": 0
   },
@@ -46,7 +55,7 @@
    "title": "EMI Not Paid? Day 1 to Day 91 Explained #shorts",
    "published": "2026-11-20T03:38:16Z",
    "duration": 52,
-   "views": 62,
+   "views": 65,
    "likes": 0,
    "comments": 0
   },
@@ -55,7 +64,7 @@
    "title": "What If You Stopped Paying Your EMI?",
    "published": "2026-11-19T12:37:36Z",
    "duration": 346,
-   "views": 1,
+   "views": 3,
    "likes": 0,
    "comments": 0
   },
@@ -109,7 +118,7 @@
    "title": "What If India's Population Started Shrinking?",
    "published": "2026-11-15T12:37:18Z",
    "duration": 285,
-   "views": 83,
+   "views": 84,
    "likes": 2,
    "comments": 7
   },
@@ -127,7 +136,7 @@
    "title": "7 Days Without UPI, You Can't Even Buy Chai #shorts",
    "published": "2026-11-15T03:12:35Z",
    "duration": 53,
-   "views": 84,
+   "views": 85,
    "likes": 0,
    "comments": 1
   },
@@ -136,7 +145,7 @@
    "title": "What If UPI Stopped Working for One Week?",
    "published": "2026-11-14T12:38:01Z",
    "duration": 300,
-   "views": 5,
+   "views": 6,
    "likes": 0,
    "comments": 0
   },
@@ -145,7 +154,7 @@
    "title": "India Was Frozen 300 Million Years Ago #shorts",
    "published": "2026-11-13T03:29:17Z",
    "duration": 44,
-   "views": 1005,
+   "views": 1006,
    "likes": 5,
    "comments": 0
   },
@@ -298,7 +307,7 @@
    "title": "What If the Moon Disappeared Tomorrow? | KR's What if Explained",
    "published": "2026-11-07T12:30:34Z",
    "duration": 376,
-   "views": 109,
+   "views": 110,
    "likes": 1,
    "comments": 1
   },
@@ -325,7 +334,7 @@
    "title": "What If the Electric Motor Was Never Invented?",
    "published": "2026-11-07T01:33:09Z",
    "duration": 311,
-   "views": 69,
+   "views": 70,
    "likes": 1,
    "comments": 1
   },
@@ -334,7 +343,7 @@
    "title": "At 1 mm Tall, a Raindrop Is a Falling Boulder #shorts",
    "published": "2026-11-06T12:52:48Z",
    "duration": 39,
-   "views": 1260,
+   "views": 1261,
    "likes": 18,
    "comments": 0
   },
@@ -352,7 +361,7 @@
    "title": "What If You Woke Up 1 Millimetre Tall Tomorrow? | KR's What if Explained",
    "published": "2026-11-06T12:45:21Z",
    "duration": 336,
-   "views": 58,
+   "views": 60,
    "likes": 2,
    "comments": 4
   },
