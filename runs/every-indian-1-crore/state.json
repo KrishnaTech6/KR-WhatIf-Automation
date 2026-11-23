@@ -1,0 +1,10 @@
+{
+ "stage": "waiting_script",
+ "title": "What If Every Indian Got ₹1 Crore Tomorrow?",
+ "fails": 0,
+ "notes": "23 Nov: Krishna picked #2 (the 5 AM video's tease) from the topic list. Defaults India/English/4-5 min/no memes. Style collage, verticals standard captions. Script 632 words (~4:42 est). Fact-check agent 8 PASS / 1 PARTIAL (per-capita income rebased Feb 2026; line unchanged, fact sheet shows both). Reviewers: retention 8/7.5/6, engagement 8/7/7 (main/short/reel, before fixes); fixes applied. check script: 0 FAIL, 2 WARN (story start 20.1 s, short line 1 is 8 words). Scores hook 9, value 8, clarity 9, accuracy 9, retention 8. vidIQ title scores: #1 93, #2 89, #3 97. Next tease: 4-day work week. ✅1 sent 23 Nov. Session could not push (GH token invalid): committed locally only.",
+ "style": "collage",
+ "captions": "standard",
+ "package": 1,
+ "scores": {"hook": 9, "value": 8, "clarity": 9, "accuracy": 9, "retention": 8}
+}
