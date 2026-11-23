@@ -1,4 +1,4 @@
-# Posting-time test (updated Sun 22 Nov 2026, 11:35 PM IST)
+# Posting-time test (updated Tue 24 Nov 2026, 03:46 AM IST)
 
 Each post goes out at a random time inside one window. Score = median of (views at 48 h ÷ that track's typical 48 h views); 1.00 = typical, 1.50 = 50% better. A window counts once it has 3 measured posts; until every window has, posts are spread evenly (exploring). After that 70% of posts go to the best window and the rest keep testing the others.
 
@@ -9,7 +9,7 @@ Each post goes out at a random time inside one window. Score = median of (views 
 | 7-10 AM | 0 | 0 | – | – |
 | 10 AM-1 PM | 0 | 0 | – | – |
 | 1-4 PM | 0 | 0 | – | – |
-| 4-7 PM | 4 | 0 | – | – |
+| 4-7 PM | 4 | 1 | 3 | 1.00 ⭐ |
 | 7-10 PM | 0 | 0 | – | – |
 | 10 PM-12 AM | 0 | 0 | – | – |
 
@@ -43,7 +43,6 @@ Status: exploring (needs 3 measured posts in every window).
 
 ## Coming up
 
-- Mon 23 Nov 06:03 PM · YouTube main videos · walked-10000-steps-year main (4-7 PM)
 - Tue 24 Nov 09:08 AM · YouTube Shorts · walked-10000-steps-year short (7-10 AM)
 - Tue 24 Nov 09:08 AM · Instagram Reels · walked-10000-steps-year short (7-10 AM)
 - Tue 24 Nov 08:06 PM · YouTube Shorts · walked-10000-steps-year reel (7-10 PM)
