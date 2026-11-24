@@ -1,0 +1,36 @@
+{
+ "title": "What If Every Indian Got ₹1 Crore Tomorrow?",
+ "lang": "en",
+ "tries": 4,
+ "jobs": [
+  {
+   "name": "main",
+   "kind": "main",
+   "script": "TITLE: What If Every Indian Got ₹1 Crore Tomorrow?\nLANG: en\nKEY_BEATS: hook, zimbabwe, grandmother\nHARD_CUT_BEFORE: zimbabwe\n\n[Hook | tense]\nEight A M. Your phone buzzes. One crore rupees... credited. (beat)\nNot just you. Every Indian. All one hundred forty-six crore of us.\nAnd the person who loses the most... is sitting in your house.\n\n[Promise - logo | neutral]\nThis is K R's What If Explained... and here's how it plays out.\nBrand new money. No tax. One crore each... even every baby.\nI went through seven reports, from the R B I to the U N, to see what happens next.\n\n[Hour one - buzz | neutral]\nHour one. You check the app three times. It's real.\nFor the average Indian, one crore is about fifty years of income.\nYou call your mother. She's crying. {playful} She's already planning a wedding... she just doesn't know whose. (beat)\n{neutral} Then you open a car website. So does everyone else in India.\n\n[Hour six - showroom | tense]\nHour six. You walk into the car showroom near your house.\nA few cars on the floor. A crowd at the door. Everyone has a crore. Nobody wants to wait.\nSo the manager does the only thing he can.\n{deadpan} He changes the price tag. (beat)\n{neutral} Today there's more money in India. There are not more cars.\n{playful} So, comment in one word: what would you buy first?\n\n[Day three - nobody comes | neutral]\nDay three. Your doorbell doesn't ring.\nThe didi who cleans your house isn't coming. She has a crore too.\n{tense} The delivery app shows no riders. NITI Aayog counted about seventy-seven lakh gig workers a few years ago. Today, almost none log in.\n{neutral} The sabzi cart at the corner is gone.\n{soft} You're a crorepati... eating dry bread, because nobody brought the milk. (beat)\n{neutral} That's when it hits you. Money was never the thing. It was a promise that someone would work for you.\n\n[Week two - the numbers | playful]\nWeek two. Time to answer a question every Indian kid has asked.\nWhy doesn't the R B I just print more notes, and make everyone rich?\n{neutral} Here's why. All the money in India... cash, bank accounts, F Ds... just got about forty-seven times bigger. In one morning.\nSame tomatoes. Same houses. Same cars.\nSo prices climb... until they catch up.\n{dramatic} I ran the numbers. Your crore now buys roughly what two lakh rupees bought last month. (beat)\n\n[Month two - zimbabwe | deep]\nMonth two. And now... nobody trusts the rupee.\nA farmer in Nashik won't sell his onions for notes anymore. He wants gold. Or rice. Or your phone.\nThis isn't a guess. It happened in Zimbabwe.\nThe government printed money to pay its bills. At the worst point, prices doubled roughly every day.\nThey even printed a note for one hundred trillion dollars. And soon, people stopped using their own money.\n\n[Month three - grandmother | soft]\nMonth three. Remember the person in your house who loses the most?\nIt's your grandmother.\nFor forty years, she saved. A little every month. Ten lakh rupees in an F D.\nBefore that morning, it was her safety for the rest of her life.\n{deep} Now it buys what about twenty thousand rupees used to. (beat)\nShe got a crore like everyone else. But a lifetime of saving... just melted.\n\n[Payoff - already happening | dramatic]\nAnd here's the part that's real.\nA slow version of this is already happening.\nThe R B I's own target is four percent inflation, every year.\nAt that speed, prices double about every eighteen years.\n{soft} Nobody is handing out crores. But a little of your grandmother's F D... melts every single year anyway.\n{warm} Tell me in the comments: who's the best saver in your family?... Send this to them.\n\n[Bonus - kyc | warm]\nAnd the one thing that never lost value through all of this? The farmer's skill. Your skill. Money can be printed. That can't.\n{deadpan} Eight A M. Your phone buzzes again. It's your bank... asking you to update your K Y C.\n{warm} Next time: what if India had a four-day work week?... But that story... is for the next What If.\n",
+   "strict": [
+    "hook",
+    "zimbabwe",
+    "grandmother"
+   ],
+   "hard_cut_before": [
+    "zimbabwe"
+   ]
+  },
+  {
+   "name": "short",
+   "kind": "short",
+   "script": "TITLE: What If Every Indian Got ₹1 Crore Tomorrow? — Short\nLANG: en\nKEY_BEATS: hook\nHARD_CUT_BEFORE:\n\n[Hook | dramatic]\nYour one crore just shrank to two lakh. And nobody stole it.\n\n[Showroom | neutral]\nEvery Indian got a crore today. Your phone buzzes. Credited. Your neighbour's too. Your didi's too. Everyone's.\nBy noon, you're at the car showroom. So is everyone else.\n{deadpan} The manager changes the price tag.\n{neutral} Because all the money in India just got way bigger... in one morning.\nBut nobody made more cars overnight. Same tomatoes. Same houses. Same everything.\nSo prices climb... until they catch up.\nThat's why the R B I can't just print notes and make everyone rich.\n\n[Tease | dramatic]\nAnd the person who loses the most? She's sitting in your house.\nFull video on YouTube.\nBecause the day every Indian gets a crore...\n",
+   "strict": [
+    "hook"
+   ]
+  },
+  {
+   "name": "reel",
+   "kind": "short",
+   "script": "TITLE: What If Every Indian Got ₹1 Crore Tomorrow? — Reel\nLANG: en\nKEY_BEATS: hook\nHARD_CUT_BEFORE:\n\n[Hook | dramatic]\nOne crore arrived at eight A M. Your milk didn't.\n\n[Morning | warm]\nEvery Indian got a crore today. You call your mother. She's crying. {playful} She's planning a wedding... she doesn't know whose.\n{neutral} Day three. Your doorbell doesn't ring.\nThe didi who cleans your house isn't coming. She got a crore too.\nNo delivery riders. No sabzi cart.\n{soft} You're a crorepati... eating dry bread. (beat)\n{neutral} Because money was never the thing. It was a promise that someone would work for you.\n\n[Tease | dramatic]\nAnd the person who loses the most? She's sitting in your house. Guess who in the comments. The answer's on K R's What If Explained. Link in bio.\n",
+   "strict": [
+    "hook"
+   ]
+  }
+ ]
+}
