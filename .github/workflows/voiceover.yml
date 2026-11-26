@@ -102,7 +102,13 @@ jobs:
         if: always() && (inputs.fetch_run == '' || inputs.fetch_run == 'kaggle')
         run: |
           mkdir -p out
-          kaggle kernels output "$KAGGLE_USERNAME/kr-voiceover" -p out || true
+          kaggle --version || true
+          kaggle kernels status "$KAGGLE_USERNAME/kr-voiceover" || true
+          kaggle kernels output "$KAGGLE_USERNAME/kr-voiceover" -p out -o 2>&1 || echo "kernels output failed: $?"
+          # some CLI versions ignore -p and write into the working directory
+          if [ ! -f out/report.json ] && [ -f report.json ]; then
+            for f in report.json final parts log.txt; do [ -e "$f" ] && mv "$f" out/; done
+          fi
           ls -R out | head -50
           test -f out/report.json && cat out/report.json | head -80 || true
       - uses: actions/upload-artifact@v4
