@@ -86,6 +86,18 @@
     "https://youtube.com/shorts/ln8WLM94qRs"
    ],
    "note": "Scheduled: YouTube main 15 Nov 18:07 IST, Short 16 Nov 09:04, Reel 16 Nov 20:06; Instagram tasks trig_01ABQXmdaLaxrk3z9WCukCAy (short) + trig_01KYyWT44dnJmbomM3HhW6CX (reel); main comment retried by the Short task"
+  },
+  {
+   "slug": "every-indian-1-crore",
+   "title": "What If Every Indian Got ₹1 Crore Tomorrow?",
+   "status": "published",
+   "date": "2026-11-26",
+   "youtube": "https://youtu.be/vo3Z2btALRM",
+   "shorts": [
+    "https://youtube.com/shorts/HBKKA0ZKTqU",
+    "https://youtube.com/shorts/HSII6wvHUGY"
+   ],
+   "note": "Voice: Krishna's own recording. Scheduled (times set by Krishna): YouTube main 26 Nov 14:05 IST, Short 16:30, Reel 19:30; Instagram tasks trig_01MeWXskwiQWBFnwGZkqtRsa (short 16:30), trig_013NeqjQ63qez5ht3Vvx1UEt (reel 19:30). Run files on branch claude/every-indian-1-crore."
   }
  ]
 }
