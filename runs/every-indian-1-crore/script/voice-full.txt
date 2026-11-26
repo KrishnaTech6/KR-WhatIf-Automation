@@ -25,7 +25,7 @@ A few cars on the floor. A crowd at the door. Everyone has a crore. Nobody wants
 So the manager does the only thing he can.
 {deadpan} He changes the price tag. (beat)
 {neutral} Today there's more money in India. There are not more cars.
-{playful} So, comment in one word: what would you buy first?
+{playful} So, comment in one word: what would you buy first... when you get one crore?
 
 [Day three - nobody comes | neutral]
 Day three. Your doorbell doesn't ring.
@@ -42,6 +42,7 @@ Why doesn't the R B I just print more notes, and make everyone rich?
 Same tomatoes. Same houses. Same cars.
 So prices climb... until they catch up.
 {dramatic} I ran the numbers. Your crore now buys roughly what two lakh rupees bought last month. (beat)
+This is called inflation.
 
 [Month two - zimbabwe | deep]
 Month two. And now... nobody trusts the rupee.
@@ -64,7 +65,7 @@ A slow version of this is already happening.
 The R B I's own target is four percent inflation, every year.
 At that speed, prices double about every eighteen years.
 {soft} Nobody is handing out crores. But a little of your grandmother's F D... melts every single year anyway.
-{warm} Tell me in the comments: who's the best saver in your family?... Send this to them.
+{warm} Tell me in the comments: who's the best saver in your family?... Send this video to them.
 
 [Bonus - kyc | warm]
 And the one thing that never lost value through all of this? The farmer's skill. Your skill. Money can be printed. That can't.
