@@ -160,6 +160,41 @@
    "at": "2026-11-26T20:12+05:30",
    "window": "19-22",
    "rule": "fixed (before 21 Nov)"
+  },
+  {
+   "slug": "every-indian-1-crore",
+   "kind": "main",
+   "track": "yt_main",
+   "at": "2026-11-26T14:05+05:30",
+   "window": "13-16"
+  },
+  {
+   "slug": "every-indian-1-crore",
+   "kind": "short",
+   "track": "yt_short",
+   "at": "2026-11-26T16:30+05:30",
+   "window": "16-19"
+  },
+  {
+   "slug": "every-indian-1-crore",
+   "kind": "short",
+   "track": "ig",
+   "at": "2026-11-26T16:30+05:30",
+   "window": "16-19"
+  },
+  {
+   "slug": "every-indian-1-crore",
+   "kind": "reel",
+   "track": "yt_short",
+   "at": "2026-11-26T19:30+05:30",
+   "window": "19-22"
+  },
+  {
+   "slug": "every-indian-1-crore",
+   "kind": "reel",
+   "track": "ig",
+   "at": "2026-11-26T19:30+05:30",
+   "window": "19-22"
   }
  ],
  "results": [
