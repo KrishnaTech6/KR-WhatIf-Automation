@@ -14,7 +14,7 @@ on:
         required: false
         default: ""
       fetch_run:
-        description: "copy only: id of an earlier voiceover run whose audio should be pushed to artifacts/<slug> (no Kaggle run)"
+        description: "copy only: id of an earlier voiceover run whose audio should be pushed to artifacts/<slug> (no Kaggle run), or 'kaggle' to download the last finished Kaggle output (when the wait step timed out)"
         required: false
         default: ""
 
@@ -36,7 +36,7 @@ jobs:
       ONLY: ${{ inputs.only }}
     steps:
       - name: Copy an earlier run's audio (fetch_run mode)
-        if: inputs.fetch_run != ''
+        if: inputs.fetch_run != '' && inputs.fetch_run != 'kaggle'
         uses: actions/download-artifact@v4
         with:
           name: audio-${{ inputs.slug }}
@@ -44,20 +44,20 @@ jobs:
           github-token: ${{ github.token }}
           path: out
       - name: Push copied audio to artifacts/<slug>
-        if: inputs.fetch_run != ''
+        if: inputs.fetch_run != '' && inputs.fetch_run != 'kaggle'
         run: |
           cd out && git init -q && git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -q -b "artifacts/$SLUG" && git add -A && git commit -qm "audio from run ${{ inputs.fetch_run }}"
           git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" "artifacts/$SLUG"
       - uses: actions/checkout@v4
-        if: inputs.fetch_run == ''
+        if: (inputs.fetch_run == '' || inputs.fetch_run == 'kaggle')
       - uses: actions/setup-python@v5
-        if: inputs.fetch_run == ''
+        if: (inputs.fetch_run == '' || inputs.fetch_run == 'kaggle')
         with:
           python-version: "3.12"
       - name: Kaggle login
-        if: inputs.fetch_run == ''
+        if: (inputs.fetch_run == '' || inputs.fetch_run == 'kaggle')
         env:
           T: ${{ secrets.KAGGLE_API_TOKEN }}
           K: ${{ secrets.KAGGLE_KEY }}
@@ -68,7 +68,7 @@ jobs:
           elif [ -n "$K" ]; then mkdir -p ~/.kaggle && umask 077 && printf '{"username":"%s","key":"%s"}' "$KAGGLE_USERNAME" "$K" > ~/.kaggle/kaggle.json
           else echo "::error::add the KAGGLE_API_TOKEN secret"; exit 1; fi
       - name: Install tools
-        if: inputs.fetch_run == ''
+        if: (inputs.fetch_run == '' || inputs.fetch_run == 'kaggle')
         run: pip install -q kaggle six numpy soundfile
       - name: Build kernel
         if: inputs.fetch_run == ''
@@ -99,20 +99,20 @@ jobs:
           done
           echo "::error::Kaggle run did not finish in time"; exit 1
       - name: Download output
-        if: always() && inputs.fetch_run == ''
+        if: always() && (inputs.fetch_run == '' || inputs.fetch_run == 'kaggle')
         run: |
           mkdir -p out
           kaggle kernels output "$KAGGLE_USERNAME/kr-voiceover" -p out || true
           ls -R out | head -50
           test -f out/report.json && cat out/report.json | head -80 || true
       - uses: actions/upload-artifact@v4
-        if: always() && inputs.fetch_run == ''
+        if: always() && (inputs.fetch_run == '' || inputs.fetch_run == 'kaggle')
         with:
           name: audio-${{ inputs.slug }}
           path: out/
           retention-days: 14
       - name: Also push the audio to artifacts/<slug> (git-fetchable)
-        if: always() && inputs.fetch_run == '' && hashFiles('out/report.json') != ''
+        if: always() && (inputs.fetch_run == '' || inputs.fetch_run == 'kaggle') && hashFiles('out/report.json') != ''
         run: |
           cd out && git init -q && git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
