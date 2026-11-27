@@ -1,4 +1,4 @@
-# Posting-time test (updated Fri 27 Nov 2026, 01:22 AM IST)
+# Posting-time test (updated Sat 28 Nov 2026, 01:10 AM IST)
 
 Each post goes out at a random time inside one window. Score = median of (views at 48 h ÷ that track's typical 48 h views); 1.00 = typical, 1.50 = 50% better. A window counts once it has 3 measured posts; until every window has, posts are spread evenly (exploring). After that 70% of posts go to the best window and the rest keep testing the others.
 
